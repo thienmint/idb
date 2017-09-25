@@ -1,0 +1,21 @@
+.thumbnail {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  position: relative;
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.attributes {
+  text-align: center;
+  margin: auto;
+}
