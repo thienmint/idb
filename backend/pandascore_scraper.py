@@ -4,22 +4,120 @@ import json
 API_TOKEN = 'Bearer lfKRr_rlDBE2Fua9xDMe00HTXd-7bWlJ8y4ZJBTtdglCmGnDufs'
 BASE_URL = 'https://api.pandascore.co/'
 
+class Player:
+	p_id = 0
+	name = "null"
+	first_name = "null"
+	last_name = "null"
+	role = "null"
+	hometown = "null"
+	image_url = "null"
+	current_team = "null"
+	current_videogame = "null"
+
+class Team:
+	t_id = 0
+	name = "null"
+	acronym = "null"
+	image_url = "null"
+	players = []
+	current_videogame = "null"
+
+class Tournaments:
+	t_id = 0
+	name = "null"
+	winner_id = 0
+	begin_at = "null"
+	end_at = "null"
+	videogame = "null"
+	teams = []
+
+def parse_players(data) :
+	players = []
+	for player in data :
+		p = Player()
+
+		p.id = player["id"]
+		p.name = player["name"]
+		p.first_name = player["first_name"]
+		p.last_name = player["last_name"]
+		p.hometown = player["hometown"]
+		p.role = player["role"]
+		p.current_team = player["current_team"]
+		p.current_videogame = player["current_videogame"]
+
+	players += [p]
+
+	return players
+
+def parse_teams(data) :
+	teams = []
+	for team in data :
+		p = Team()
+
+		p.t_id = team["id"]
+		p.name = team["name"]
+		p.acronym = team["acronym"]
+		p.image_url = team["image_url"]
+		p.players = team["players"]
+		p.current_videogame = team["current_videogame"]
+
+	teams += [p]
+
+	return teams
+
+def parse_tournaments(data) :
+	
+	tourneys = []
+	for tourney in data :
+		p = Tournaments()
+
+		p.t_id = tourney["id"]
+		p.name = tourney["name"]
+		p.winner_id = tourney["winner_id"]
+		p.begin_at = tourney["begin_at"]
+		p.end_at = tourney["end_at"]
+		p.videogame = tourney["videogame"]["name"]
+		p.teams = tourney["teams"]
+
+	tourneys += [p]
+
+	return tourneys
+
 # api_request is the additional url params for the api call
-def scrape_data (api_request) :
+def scrape_data (class_name) :
 	global API_TOKEN, BASE_URL
 	session = requests.Session()
 	response = session.get(BASE_URL, headers={'Authorization': API_TOKEN})
 
 	if (response.status_code == requests.codes.ok) :
-		response = session.get(BASE_URL + api_request, 
+		response = session.get(BASE_URL + class_name + '/', 
 							   headers={'Authorization': API_TOKEN})
+
 		if (response.status_code == requests.codes.ok) :
-			json = response.json()
-			print (json)
+			data = json.loads(response.text)
+
+			if class_name == 'players' :
+				players = parse_players(data)
+				print(players[0].name)
+
+			elif class_name == 'teams' :
+				teams = parse_teams(data)
+				print(teams[0].name)
+
+			elif class_name == 'tournaments' :
+				tourneys = parse_tournaments(data)
+				print(tourneys[0].name)
+
+			# elif class_name == 'games' :
+			# 	games = parse_games(data)
+			# 	print(games[0].name)
+
 		else :
 			raise Exception ('Could not get data from ' + api_request)
 	else :
 		raise Exception ('Could not authorize PandaScore API token!')
 
-
-scrape_data('players/')
+scrape_data('players')
+scrape_data('teams')
+scrape_data('tournaments')
