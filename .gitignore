@@ -8,3 +8,6 @@
 *.ipr
 *.iws
 *.ids
+
+#GCloud
+project/lib/
