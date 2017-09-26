@@ -12,7 +12,7 @@ class Player:
 	role = "null"
 	hometown = "null"
 	image_url = "null"
-	current_team = "null"
+	current_team_id = 0
 	current_videogame = "null"
 
 class Team:
@@ -20,20 +20,19 @@ class Team:
 	name = "null"
 	acronym = "null"
 	image_url = "null"
-	players = []
+	player_ids = set()
 	current_videogame = "null"
 
 class Tournaments:
 	t_id = 0
 	name = "null"
-	winner_id = 0
 	begin_at = "null"
 	end_at = "null"
 	videogame = "null"
-	teams = []
+	team_ids = set()
 
 def parse_players(data) :
-	players = []
+	players = set()
 	for player in data :
 		p = Player()
 
@@ -43,15 +42,17 @@ def parse_players(data) :
 		p.last_name = player["last_name"]
 		p.hometown = player["hometown"]
 		p.role = player["role"]
-		p.current_team = player["current_team"]
-		p.current_videogame = player["current_videogame"]
+		p.current_team = (player["current_team"]["id"] 
+							if player["current_team"] != None else None)
+		p.current_videogame = (player["current_videogame"]["name"] 
+								if player["current_videogame"] != None else None)
 
-	players += [p]
+		players.add(p)
 
 	return players
 
 def parse_teams(data) :
-	teams = []
+	teams = set()
 	for team in data :
 		p = Team()
 
@@ -59,28 +60,31 @@ def parse_teams(data) :
 		p.name = team["name"]
 		p.acronym = team["acronym"]
 		p.image_url = team["image_url"]
-		p.players = team["players"]
 		p.current_videogame = team["current_videogame"]
 
-	teams += [p]
+		for k in range(0, len(team["players"])) :
+			p.player_ids.add(team["players"][k]["id"])
+
+		teams.add(p)
 
 	return teams
 
 def parse_tournaments(data) :
 	
-	tourneys = []
+	tourneys = set()
 	for tourney in data :
 		p = Tournaments()
 
 		p.t_id = tourney["id"]
 		p.name = tourney["name"]
-		p.winner_id = tourney["winner_id"]
 		p.begin_at = tourney["begin_at"]
 		p.end_at = tourney["end_at"]
 		p.videogame = tourney["videogame"]["name"]
-		p.teams = tourney["teams"]
 
-	tourneys += [p]
+		for k in range(0, len(tourney["teams"])) :
+			p.team_ids.add(tourney["teams"][k]["id"])
+
+		tourneys.add(p)
 
 	return tourneys
 
@@ -99,15 +103,15 @@ def scrape_data (class_name) :
 
 			if class_name == 'players' :
 				players = parse_players(data)
-				print(players[0].name)
+				print(next(iter(players)).name)
 
 			elif class_name == 'teams' :
 				teams = parse_teams(data)
-				print(teams[0].name)
+				print(next(iter(teams)).name)
 
 			elif class_name == 'tournaments' :
 				tourneys = parse_tournaments(data)
-				print(tourneys[0].name)
+				print(next(iter(tourneys)).name)
 
 			# elif class_name == 'games' :
 			# 	games = parse_games(data)
