@@ -54,3 +54,11 @@
     bottom: 0;
     padding-right: 20px;
 }
+
+.page-title {
+    text-align: center;
+}
+
+.circle {
+    border-radius: 50%;
+}
