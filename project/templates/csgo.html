@@ -7,10 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--styles-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/css/templates.css">
     <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/templates.css">
     <link rel="stylesheet" href="static/css/about.css">
+    <link rel="stylesheet" href="static/css/style.css">
 
     <style type="text/css">
         body {
@@ -20,14 +29,7 @@
 </head>
 <body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="height: 5%;">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,34 +58,45 @@
     </div>
 </nav>
 
-<h1 style="width: 100%; margin-left: 1%; padding-top: 10px; text-align: center">Counter-Strike: Global Offensive</h1>
-
-<hr>
-
-<div class="container-fluid">
-    <div class="row align-items-start">
-        <div class="col">
-            <div class="detail-image">
-                <img class="img-game" src="../static/images/csgo.png">
+<div class="row">
+    <div class="card offset-2 col-8" style="margin-top: 15px;">
+        <div class="card-block">
+            <h1 class="col-12" style="text-align: center;">Counter-Strike: Global Offensive</h1>
+            <div class="row align-items-start">
+                <div class="col-10 offset-1">
+                    <div class="detail-image" style="text-align: center;">
+                        <img class="img" style="max-width: 50vw; max-height: 15vh" src="../static/images/csgo.png">
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col labels lists">
-            <div>Name</div>
-            <div>Year published</div>
-            <div>Company</div>
-            <div>Genre</div>
-            <div>Current Champion</div>
-            <div>Teams</div>
-            <div>Tournaments</div>
-        </div>
-        <div class="col lists">
-            <div> Counter-Strike: Global Offensive</div>
-            <div> 2012</div>
-            <div> Valve</div>
-            <div> First person shooter</div>
-            <div> SK Gaming</div>
-            <div> Cloud9, <a href="./fnatic">Fnatic</a>, <a href="./liquid">Liquid</a></div>
-            <div> <a href="./dreamhack">DreamHack</a>, Intel Extreme Masters</div>
+            <div class="row detail-rows">
+                <div class="col-4 offset-2 labels lists">Name</div>
+                <div class="col-4 lists detail-columns">Counter-Strike: Global Offensive</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Year published</div>
+                <div class="col-4 lists detail-columns"> 2012</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Company</div>
+                <div class="col-4 lists detail-columns">Valve</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Genre</div>
+                <div class="col-4 lists detail-columns">First person shooter</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Current Champion</div>
+                <div class="col-4 lists detail-columns">SK Gaming</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Teams</div>
+                <div class="col-4 lists detail-columns">Cloud9, <a href="./fnatic">Fnatic</a>, <a href="./liquid">Liquid</a></div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Tournaments</div>
+                <div class="col-4 lists detail-columns"><a href="./dreamhack">DreamHack</a>, Intel Extreme Masters</div>
+            </div>
         </div>
     </div>
 </div>
