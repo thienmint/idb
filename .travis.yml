@@ -29,7 +29,7 @@ before_install:
 - gcloud auth activate-service-account --key-file client-secret.json
 # [END auth]
 install:
-- echo "No install steps."
+- gcloud -q components update gae-python
 script:
 # Run unit tests here
 - echo "No testing for now."
