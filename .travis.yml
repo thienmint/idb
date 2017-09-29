@@ -35,6 +35,10 @@ install:
 - gcloud -q components update gae-python
 # Install the Python dependencies
 - pip install -r requirements.txt -t lib/
+script:
+# Run unit tests here
+- echo "No testing for now."
+# Run E2E tests here
 deploy:
   provider: script
   script: project/deploy.sh
