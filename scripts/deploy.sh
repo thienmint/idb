@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Switch to project folder
+ cd project
+
 # Set the correct project to deploy to
 if [ "$1" == "master" ]; then
   gcloud config set project esportguru-181021
@@ -15,3 +18,6 @@ fi
 # Deployment starts
  gcloud app deploy
 # Deployment ends
+
+# Go back outside of project folder
+ cd ..
