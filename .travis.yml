@@ -24,7 +24,6 @@ script:
 # Run unit tests here
 - echo "No testing for now."
 # Run E2E tests here
-before_deploy: ./scripts/auth.sh
 deploy:
   # deploy develop to the staging environment
   - provider: script
