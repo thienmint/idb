@@ -29,19 +29,20 @@ before_install:
 - gcloud auth activate-service-account --key-file client-secret.json
 # [END auth]
 install:
-- cd project
-# Set the correct project to deploy to
-- gcloud config set project esportguru-181021
-- gcloud -q components update gae-python
-# Install the Python dependencies
-- pip install -r requirements.txt -t lib/
+- echo "No install steps."
 script:
 # Run unit tests here
 - echo "No testing for now."
 # Run E2E tests here
 deploy:
-  provider: script
-  script: project/deploy.sh
-  on:
-    branch: master
+  # deploy develop to the staging environment
+  - provider: script
+    script: project/deploy.sh staging
+    on:
+      branch: dev
+  # deploy master to production
+  - provider: script
+    script: project/deploy.sh production
+    on:
+      branch: master
 
