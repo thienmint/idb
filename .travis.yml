@@ -28,12 +28,12 @@ before_deploy: ./scripts/auth.sh
 deploy:
   # deploy develop to the staging environment
   - provider: script
-    script: scripts/deploy.sh
+    script: scripts/deploy.sh dev
     on:
       branch: bugfix/travis-ci-build
   # deploy master to production
   - provider: script
-    script: scripts/deploy.sh
+    script: scripts/deploy.sh master
     on:
       branch: master
 
