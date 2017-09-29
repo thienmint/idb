@@ -40,7 +40,7 @@ deploy:
   - provider: script
     script: scripts/deploy.sh
     on:
-      branch: dev
+      branch: bugfix/travis-ci-build
   # deploy master to production
   - provider: script
     script: scripts/deploy.sh
