@@ -25,16 +25,16 @@ script:
 - echo "No testing for now."
 # Run E2E tests here
 before_deploy:
-   # authentication for dev project
-   - provider: script
-     script: scripts/auth.sh dev
-     on:
-       branch: dev
-   # authentication for master project
-   - provider: script
-     script: scripts/auth.sh master
-     on:
-       branch: master
+  # authentication for dev project
+  - provider: script
+    script: scripts/auth.sh dev
+    on:
+      branch: bugfix/travis-ci-build
+  # authentication for master project
+  - provider: script
+    script: scripts/auth.sh master
+    on:
+      branch: master
 deploy:
   # deploy develop to the staging environment
   - provider: script
