@@ -35,9 +35,9 @@ install:
 - gcloud -q components update gae-python
 # Install the Python dependencies
 - pip install -r requirements.txt -t lib/
-script:
-# [START deploy]
-# Deploy the app
-- gcloud app deploy app.yaml
-# [END deploy]
+deploy:
+  provider: script
+  script: project/deploy.sh
+  on:
+    branch: master
 
