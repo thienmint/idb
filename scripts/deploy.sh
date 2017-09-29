@@ -2,7 +2,7 @@
 
  echo "START DEPLOYMENT: deploy.sh"
  echo "CURRENT PATH: `pwd`"
- 
+
 # Set the correct project to deploy to
 if [ "$1" == "master" ]; then
   echo "Authenticating with master project"
