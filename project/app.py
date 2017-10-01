@@ -68,6 +68,12 @@ def soloMid():
     return render_template('soloMid.html')
 
 
+
+@app.route('/solomid')
+def solomid():
+    return render_template('soloMid.html')
+
+
 @app.route('/fnatic')
 def fnatic():
     return render_template('fnatic.html')
