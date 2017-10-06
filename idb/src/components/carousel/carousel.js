@@ -14,13 +14,13 @@ class MyCarousel extends Component {
         return (
             <Carousel showStatus={false} infiniteLoop={true} autoPlay={true}>
                 <div>
-                    <img className="carousel-img" src={first}/>
+                    <img className="carousel-img" src={first} alt=""/>
                 </div>
                 <div>
-                    <img className="carousel-img" src={second}/>
+                    <img className="carousel-img" src={second} alt=""/>
                 </div>
                 <div>
-                    <img className="carousel-img" src={third}/>
+                    <img className="carousel-img" src={third} alt=""/>
                 </div>
             </Carousel>
         );
