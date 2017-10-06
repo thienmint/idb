@@ -12,7 +12,7 @@ import third from '../../static/images/esports-trophy.jpg';
 class MyCarousel extends Component {
     render() {
         return (
-            <Carousel showStatus={false} infiniteLoop={true} autoPlay={true}>
+            <Carousel showStatus={false} infiniteLoop={true} autoPlay={true} showThumbs={false}>
                 <div>
                     <img className="carousel-img" src={first} alt=""/>
                 </div>
