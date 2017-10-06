@@ -17,7 +17,7 @@ class AboutTeam extends Component {
                     <div className="col">
                         <h1 className="name">Rachel Beale</h1>
                         <div className="thumbnail">
-                            <img src={Rachel} className="img-fluid circle"/>
+                            <img src={Rachel} className="img-fluid circle" alt=""/>
                         </div>
                         <div className="details">
                             <p>Currently a software engineering intern at Blackbaud. She will be graduating in Winter 2017 with
@@ -32,7 +32,7 @@ class AboutTeam extends Component {
                     <div className="col">
                         <h1 className="name">Persia Ghaffari</h1>
                         <div className="thumbnail">
-                            <img src={Persia} className="img-fluid circle"/>
+                            <img src={Persia} className="img-fluid circle" alt=""/>
                         </div>
                         <div className="details">
                             <p>Is looking to get a job in the gaming industry and programmed for hidden achievement where her team
@@ -48,7 +48,7 @@ class AboutTeam extends Component {
                     <div className="col">
                         <h1 className="name">Kevin Zhang</h1>
                         <div className="thumbnail">
-                            <img src={Kevin} className="img-fluid circle"/>
+                            <img src={Kevin} className="img-fluid circle" alt=""/>
                         </div>
                         <div className="details">
                             <p>Kevin Zhang likes to spend his free time working on personal projects and practicing technical interviews.
@@ -65,7 +65,7 @@ class AboutTeam extends Component {
                     <div className="col">
                         <h1 className="name">Thien Q Vo</h1>
                         <div className="thumbnail">
-                            <img src={Thien} className="img-fluid circle"/>
+                            <img src={Thien} className="img-fluid circle" alt=""/>
                         </div>
                         <div className="details">
                             <p>Thien is an avid gamer who also like to spend time doing coding challenges on HackerRank.
@@ -80,7 +80,7 @@ class AboutTeam extends Component {
                     <div className="col">
                         <h1 className="name">Eric Liu</h1>
                         <div className="thumbnail">
-                            <img src={Eric} className="img-fluid circle"/>
+                            <img src={Eric} className="img-fluid circle" alt=""/>
                         </div>
                         <div className="details">
                             <p>Eric Liu will be graduating in spring of 2019.</p>
