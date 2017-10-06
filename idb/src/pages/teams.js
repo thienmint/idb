@@ -12,6 +12,7 @@ class Teams extends Component {
             <div>
                 <Navbar/>
                 <h1 className="page-title">Teams</h1>
+                <hr/>
                 <div className="container">
                     <div className="row align-items-start">
                         <div className="col">
