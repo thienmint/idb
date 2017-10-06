@@ -2,20 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import Navbar from "./components/nav/navbar";
-import MyCarousel from "./components/carousel/carousel";
+import Home from './pages/home';
+import About from "./pages/about";
 
-class Home extends Component {
-    render() {
-        return (
-            <div>
-                <Navbar/>
-                <MyCarousel/>
-            </div>
-
-        );
-    }
-}
-
-ReactDOM.render(<Home />, document.getElementById('root'));
+ReactDOM.render(<About />, document.getElementById('root'));
 registerServiceWorker();
