@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './about.css';
-import '../../global.css'
+import '../../pages/global.css'
 
 import Rachel from './../../static/images/Rachel-Head-Shot.jpg'
 import Persia from './../../static/images/Persia-Head-Shot.jpg'
