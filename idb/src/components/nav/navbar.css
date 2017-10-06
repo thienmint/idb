@@ -2,6 +2,7 @@
 
 nav {
     font-family: 'Saira Semi Condensed', sans-serif;
+    height: 5%;
 }
 
 body {
@@ -31,12 +32,12 @@ body {
 .bg-faded {
     background-color: #338481;
 }
-a {
-    color: #338481;
+Link.nav-link {
+    color: whitesmoke;
 }
-a:hover {
-    color: #338481;
+Link.nav-link:hover {
+    color: lightslategray;
 }
-a:visited {
-    color: #338481;
+Link.nav-link:visited {
+    color: whitesmoke;
 }

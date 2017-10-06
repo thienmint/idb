@@ -6,7 +6,9 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14",
-    "react-responsive-carousel": "^3.1.27"
+    "react-responsive-carousel": "^3.1.27",
+    "react-router-dom": "latest",
+    "react-router": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
