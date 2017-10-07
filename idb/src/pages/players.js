@@ -45,21 +45,42 @@ class Players extends Component {
             image_url: Nikola,
             current_team: 'FaZe Clan',
             current_videogame: 'CounterStrike: Global Offensive'
+        },
+        {
+            id: 4,
+            name: 'Nikola Kovač',
+            first_name: 'Nikola',
+            last_name: 'Kovač',
+            tag: 'NiKo',
+            role: 'ghi',
+            hometown: 'Austin',
+            image_url: Nikola,
+            current_team: 'FaZe Clan',
+            current_videogame: 'CounterStrike: Global Offensive'
         }
     ];
 
     render() {
+        let numRows = Math.ceil(this.player_data.length / 3);
+        let rows = [];
+        let cols = [];
+        for (let i=0; i< numRows; i++) {
+            cols = this.player_data.splice(0,3);
+            rows.push(
+                <div className="row align-items-start">
+                    {cols.map((player, index) => (
+                        <GridPlayers value={player} key={index}/>
+                    ))}
+                </div>
+            )
+        }
       return (
             <div>
                 <Navbar/>
                 <h1 className="page-title">Players</h1>
                 <hr/>
                 <div className="container">
-                    <div className="row align-items-start">
-                        {this.player_data.map((player, index) => (
-                             <GridPlayers value={player} key={index}/>
-                        ))}
-                    </div>
+                    {rows}
                 </div>
             </div>
         );

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './../../pages/global.css'
 
-
 class GridPlayers extends Component {
     render() {
         return (
