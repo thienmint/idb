@@ -5,58 +5,60 @@ import './global.css'
 import Adam from '../static/images/adam.jpg';
 import Nikola from '../static/images/niki.jpeg';
 import Yilliang from '../static/images/yiliang_peng.jpg';
+import GridPlayers from "../components/grid-details/players";
+
 
 class Players extends Component {
+    player_data = [
+        {
+            id: 1,
+            name: 'Yiliang Peng',
+            first_name: 'Yiliang',
+            last_name: 'Peng',
+            tag: 'Doublelift',
+            role: 'abc',
+            hometown: 'Austin',
+            image_url: Yilliang,
+            current_team: 'SoloMid',
+            current_videogame: 'League of Legends'
+        },
+        {
+            id: 2,
+            name: 'Adam Lindgren',
+            first_name: 'Adam',
+            last_name: 'Lindgren',
+            tag: 'Armada',
+            role: 'def',
+            hometown: 'Austin',
+            image_url: Adam,
+            current_team: 'Alliance',
+            current_videogame: 'Super Smash Bros. Melee'
+        },
+        {
+            id: 3,
+            name: 'Nikola Kovač',
+            first_name: 'Nikola',
+            last_name: 'Kovač',
+            tag: 'NiKo',
+            role: 'ghi',
+            hometown: 'Austin',
+            image_url: Nikola,
+            current_team: 'FaZe Clan',
+            current_videogame: 'CounterStrike: Global Offensive'
+        }
+    ];
+
     render() {
-        return (
+      return (
             <div>
                 <Navbar/>
                 <h1 className="page-title">Players</h1>
                 <hr/>
                 <div className="container">
                     <div className="row align-items-start">
-                        <div className="col">
-                            <div className="thumbnail">
-                                <a href="">
-                                    <img className="img-fluid" src={Yilliang} alt=""/>
-                                </a>
-                            </div>
-                            <div className="attributes">
-                                <div>Tag: Doublelift</div>
-                                <div>Real name: Yiliang Peng</div>
-                                <div>Game: <a href="">League of Legends</a></div>
-                                <div>Team: <a href="">Team SoloMid</a></div>
-                                <div>Rank: (Team SoloMid) #1 in North America</div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="thumbnail">
-                                <a href="">
-                                    <img className="img-fluid" src={Adam} alt=""/>
-                                </a>
-                            </div>
-                            <div className="attributes">
-                                <div>Tag: Armada</div>
-                                <div>Real name: Adam Lindgren</div>
-                                <div>Game: <a href="">Super Smash Bros. Melee</a></div>
-                                <div>Team: Alliance</div>
-                                <div>Rank: #1 Summer 2017 SSBM</div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="thumbnail">
-                                <a href="">
-                                    <img className="img-fluid" src={Nikola} alt=""/>
-                                </a>
-                            </div>
-                            <div className="attributes">
-                                <div>Tag: NiKo</div>
-                                <div>Real name: Nikola Kovač</div>
-                                <div>Game: <a href="">CounterStrike: Global Offensive</a></div>
-                                <div>Team: FaZe Clan</div>
-                                <div>Rank: N/A</div>
-                            </div>
-                        </div>
+                        {this.player_data.map((player, index) => (
+                             <GridPlayers value={player} key={index}/>
+                        ))}
                     </div>
                 </div>
             </div>
