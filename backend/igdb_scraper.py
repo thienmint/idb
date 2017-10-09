@@ -7,8 +7,7 @@ class Game:
 	g_id = 0
 	name = "null"
 	release_date = "null"
-	developers = set()		#list of ids
-	genres = set()				#list of ids
+	summary = "null"
 	websites = set()
 	screenshots = set()
 
@@ -23,13 +22,8 @@ def parse_games(data) :
 		if ("first_release_date" in game) :
 			g.release_date = game["first_release_date"]
 
-		if ("developers" in game) :
-			for k in range(0, len(game["developers"])) :
-				g.developers.add(game["developers"][k])
-
-		if ("genres" in game) :
-			for k in range(0, len(game["genres"])) :
-				g.genres.add(game["genres"][k])
+		if ("summary" in game)
+			g.summary = game["summary"]
 
 		if ("websites" in game) :
 			for k in range(0, len(game["websites"])) :
