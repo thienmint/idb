@@ -26,6 +26,7 @@ class Team:
 class Tournaments:
 	t_id = 0
 	name = "null"
+	w_id = 0
 	begin_at = "null"
 	end_at = "null"
 	videogame = "null"
@@ -47,7 +48,8 @@ def parse_players(data) :
 		p.current_videogame = (player["current_videogame"]["name"] 
 								if player["current_videogame"] != None else None)
 
-		players.add(p)
+		if (p.current_videogame != None) :
+			players.add(p)
 
 	return players
 
@@ -65,7 +67,8 @@ def parse_teams(data) :
 		for k in range(0, max(0, len(team["players"]))) :
 			p.player_ids.add(team["players"][k]["id"])
 
-		teams.add(p)
+		if (p.current_videogame != None) :
+			teams.add(p)
 
 	return teams
 
@@ -77,6 +80,7 @@ def parse_tournaments(data) :
 
 		p.t_id = tourney["id"]
 		p.name = tourney["name"]
+		p.w_id = tourney["winner_id"]
 		p.begin_at = tourney["begin_at"]
 		p.end_at = tourney["end_at"]
 		p.videogame = tourney["videogame"]["name"]
@@ -84,7 +88,8 @@ def parse_tournaments(data) :
 		for k in range(0, len(tourney["teams"])) :
 			p.team_ids.add(tourney["teams"][k]["id"])
 
-		tourneys.add(p)
+		if (p.w_id != None and p.videogame != None) :
+			tourneys.add(p)
 
 	return tourneys
 
@@ -102,26 +107,28 @@ def scrape_data (class_name) :
 			data = json.loads(response.text)
 
 			if class_name == 'players' :
-				players = parse_players(data)
-				print(next(iter(players)).name)
+				return parse_players(data)
 
 			elif class_name == 'teams' :
-				teams = parse_teams(data)
-				print(next(iter(teams)).name)
+				return parse_teams(data)
 
 			elif class_name == 'tournaments' :
-				tourneys = parse_tournaments(data)
-				print(next(iter(tourneys)).name)
-
-			# elif class_name == 'games' :
-			# 	games = parse_games(data)
-			# 	print(games[0].name)
+				return parse_tournaments(data)
 
 		else :
 			raise Exception ('Could not get data from ' + api_request)
 	else :
 		raise Exception ('Could not authorize PandaScore API token!')
 
-scrape_data('players')
-scrape_data('teams')
-scrape_data('tournaments')
+players = scrape_data('players')
+teams = scrape_data('teams')
+tourneys = scrape_data('tournaments')
+
+for p in players:
+	print ("Player Name: " + p.name)
+
+for t in teams:
+	print ("Team Name: " + t.name)
+
+for t in tourneys:
+	print ("Tourney Name: " + t.name)
