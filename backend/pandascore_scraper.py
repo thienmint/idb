@@ -62,7 +62,7 @@ def parse_teams(data) :
 		p.image_url = team["image_url"]
 		p.current_videogame = team["current_videogame"]
 
-		for k in range(0, len(team["players"])) :
+		for k in range(0, max(0, len(team["players"]))) :
 			p.player_ids.add(team["players"][k]["id"])
 
 		teams.add(p)
