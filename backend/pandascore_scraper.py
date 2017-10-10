@@ -49,13 +49,13 @@ class Tournaments:
 #
 
 # api_request is the additional url params for the api call
-def scrape_data (class_name) :
+def scrape_data (class_name, page=0) :
 	global API_TOKEN, BASE_URL
 	session = requests.Session()
 	response = session.get(BASE_URL, headers={'Authorization': API_TOKEN})
 
 	if (response.status_code == requests.codes.ok) :
-		response = session.get(BASE_URL + class_name + '/', 
+		response = session.get(BASE_URL + class_name + '/?page=' + str(page), 
 							   headers={'Authorization': API_TOKEN})
 
 		if (response.status_code == requests.codes.ok) :
@@ -70,13 +70,13 @@ def scrape_data (class_name) :
 			elif class_name == 'tournaments' :
 				return parse_tournaments(data)
 
+			else :
+				raise Exception ('Could not get data from ' + api_request)
 		else :
-			raise Exception ('Could not get data from ' + api_request)
-	else :
-		raise Exception ('Could not authorize PandaScore API token!')
+			raise Exception ('Could not authorize PandaScore API token!')
 
 def parse_players(data) :
-	players = set()
+	players = []
 	for player in data :
 		p = Player()
 
@@ -92,7 +92,7 @@ def parse_players(data) :
 								if player["current_videogame"] != None else None)
 
 		if (p.current_videogame != None) :
-			players.add(p)
+			players += [p]
 
 	return players
 
@@ -111,12 +111,13 @@ def parse_teams(data) :
 			p.player_ids += [team["players"][k]["id"]]
 
 		if (p.current_videogame != None) :
-			teams.add(p)
+			p.player_ids = json.dumps(p.player_ids)
+			teams += [p]
 
 	return teams
 
 def parse_tournaments(data) :
-	tourneys = set()
+	tourneys = []
 	for tourney in data :
 		p = Tournaments()
 
@@ -131,6 +132,7 @@ def parse_tournaments(data) :
 			p.team_ids += [tourney["teams"][k]["id"]]
 
 		if (p.w_id != None and p.videogame != None) :
-			tourneys.add(p)
+			p.teams = json.dumps(p.teams)
+			tourneys += [p]
 
 	return tourneys

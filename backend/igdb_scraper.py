@@ -5,7 +5,7 @@
 #
 
 import json
-import datetime
+import time
 
 from igdb_api_python.igdb import igdb
 
@@ -26,22 +26,29 @@ class Game:
 #
 
 def scrape_games() :
+	games = []
+
 	gdb = igdb("0b9882f6e66f4a7157102571ea180e80")
 	result = gdb.games(
 		{
-			'filters': 
-			{
-				'[rating][gt]': 70,
-			},
+			# 'filters': 
+			# {
+			# 	'[rating][gt]': 70,
+			# },
 			'order': 'name:asc',
-			'limit': 50
+			'limit': 50,
+			'scroll': 1
 		})
 
-	games = parse_games(result.body)
+	r = result
+	for x in range(0, 50) :
+		games += parse_games(r.body)
+		r = gdb.scroll(result)
+
 	return games
 
 def parse_games(data) :
-	games = set()
+	games = []
 	for game in data :
 		g = Game()
 
@@ -49,7 +56,8 @@ def parse_games(data) :
 		g.name = game["name"]
 
 		if ("first_release_date" in game) :
-			g.release_date = game["first_release_date"]
+			date = game["first_release_date"] / 1000
+			g.release_date = time.strftime('%Y-%m-%d', time.localtime(date))
 
 		if ("summary" in game) :
 			g.summary = game["summary"]
@@ -62,6 +70,9 @@ def parse_games(data) :
 			for k in range(0, len(game["screenshots"])) :
 				g.screenshots += [game["screenshots"][k]["url"]]
 
-		games.add(g)
+		g.websites = json.dumps(g.websites)
+		g.screenshots = json.dumps(g.screenshots)
+
+		games += [g]
 
 	return games
