@@ -1,15 +1,29 @@
+# eSportGuru
+
+#
+# Include Files
+#
+
 import MySQLdb
 
-db = MySQLdb.connect(host="db.esportguru.com", 
-										 user="persia", 
-										 passwd="bigboss",
-										 db="devDB")
+from igdb_scraper import scrape_games
+from pandascore_scraper import scrape_data
 
-cur = db.cursor()
+#
+# Public Function Definitions
+#
 
-cur.execute("describe PLAYER")
+if __name__ == "__main__" :
+	db = MySQLdb.connect(host="db.esportguru.com", 
+											 user="persia", 
+											 passwd="bigboss",
+											 db="devDB")
 
-for row in cur.fetchall() : 
-	print (row[0])
+	cur = db.cursor()
 
-db.close()
+	cur.execute("describe GAME")
+
+	for row in cur.fetchall() : 
+		print (row[0])
+
+	db.close()

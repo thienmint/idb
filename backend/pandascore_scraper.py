@@ -1,8 +1,20 @@
+# eSportGuru
+
+#
+# Include Files
+#
+
 import requests
 import json
 
+# Global Variables
+
 API_TOKEN = 'Bearer lfKRr_rlDBE2Fua9xDMe00HTXd-7bWlJ8y4ZJBTtdglCmGnDufs'
 BASE_URL = 'https://api.pandascore.co/'
+
+#
+# Typedefs
+#
 
 class Player:
 	p_id = 0
@@ -20,7 +32,7 @@ class Team:
 	name = "null"
 	acronym = "null"
 	image_url = "null"
-	player_ids = set()
+	player_ids = []
 	current_videogame = "null"
 
 class Tournaments:
@@ -30,7 +42,38 @@ class Tournaments:
 	begin_at = "null"
 	end_at = "null"
 	videogame = "null"
-	team_ids = set()
+	team_ids = []
+
+#
+# Public Function Definitions
+#
+
+# api_request is the additional url params for the api call
+def scrape_data (class_name) :
+	global API_TOKEN, BASE_URL
+	session = requests.Session()
+	response = session.get(BASE_URL, headers={'Authorization': API_TOKEN})
+
+	if (response.status_code == requests.codes.ok) :
+		response = session.get(BASE_URL + class_name + '/', 
+							   headers={'Authorization': API_TOKEN})
+
+		if (response.status_code == requests.codes.ok) :
+			data = json.loads(response.text)
+
+			if class_name == 'players' :
+				return parse_players(data)
+
+			elif class_name == 'teams' :
+				return parse_teams(data)
+
+			elif class_name == 'tournaments' :
+				return parse_tournaments(data)
+
+		else :
+			raise Exception ('Could not get data from ' + api_request)
+	else :
+		raise Exception ('Could not authorize PandaScore API token!')
 
 def parse_players(data) :
 	players = set()
@@ -65,7 +108,7 @@ def parse_teams(data) :
 		p.current_videogame = team["current_videogame"]
 
 		for k in range(0, max(0, len(team["players"]))) :
-			p.player_ids.add(team["players"][k]["id"])
+			p.player_ids += [team["players"][k]["id"]]
 
 		if (p.current_videogame != None) :
 			teams.add(p)
@@ -73,7 +116,6 @@ def parse_teams(data) :
 	return teams
 
 def parse_tournaments(data) :
-	
 	tourneys = set()
 	for tourney in data :
 		p = Tournaments()
@@ -86,49 +128,9 @@ def parse_tournaments(data) :
 		p.videogame = tourney["videogame"]["name"]
 
 		for k in range(0, len(tourney["teams"])) :
-			p.team_ids.add(tourney["teams"][k]["id"])
+			p.team_ids += [tourney["teams"][k]["id"]]
 
 		if (p.w_id != None and p.videogame != None) :
 			tourneys.add(p)
 
 	return tourneys
-
-# api_request is the additional url params for the api call
-def scrape_data (class_name) :
-	global API_TOKEN, BASE_URL
-	session = requests.Session()
-	response = session.get(BASE_URL, headers={'Authorization': API_TOKEN})
-
-	if (response.status_code == requests.codes.ok) :
-		response = session.get(BASE_URL + class_name + '/', 
-							   headers={'Authorization': API_TOKEN})
-
-		if (response.status_code == requests.codes.ok) :
-			data = json.loads(response.text)
-
-			if class_name == 'players' :
-				return parse_players(data)
-
-			elif class_name == 'teams' :
-				return parse_teams(data)
-
-			elif class_name == 'tournaments' :
-				return parse_tournaments(data)
-
-		else :
-			raise Exception ('Could not get data from ' + api_request)
-	else :
-		raise Exception ('Could not authorize PandaScore API token!')
-
-players = scrape_data('players')
-teams = scrape_data('teams')
-tourneys = scrape_data('tournaments')
-
-for p in players:
-	print ("Player Name: " + p.name)
-
-for t in teams:
-	print ("Team Name: " + t.name)
-
-for t in tourneys:
-	print ("Tourney Name: " + t.name)
