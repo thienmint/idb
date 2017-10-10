@@ -31,10 +31,10 @@ def scrape_games() :
 	gdb = igdb("0b9882f6e66f4a7157102571ea180e80")
 	result = gdb.games(
 		{
-			# 'filters': 
-			# {
-			# 	'[rating][gt]': 70,
-			# },
+			'filters': 
+			{
+				'[rating][gt]': 70,
+			},
 			'order': 'name:asc',
 			'limit': 50,
 			'scroll': 1
@@ -45,7 +45,7 @@ def scrape_games() :
 		games += parse_games(r.body)
 		r = gdb.scroll(result)
 
-	return games
+	return list(set(games))
 
 def parse_games(data) :
 	games = []
