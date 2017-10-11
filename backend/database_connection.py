@@ -26,6 +26,13 @@ if __name__ == "__main__" :
 										 db="devDB")
 	cur = db.cursor()
 
+	# Make sure character set is utf8
+	db.set_character_set('utf8')
+	cur.execute('SET NAMES utf8;')
+	cur.execute('SET CHARACTER SET utf8;')
+	cur.execute('SET character_set_connection=utf8;')
+
+	# Mine GAME data from IGDB
 	cur.execute("describe GAME")
 	games = scrape_games()
 	for g in games :
