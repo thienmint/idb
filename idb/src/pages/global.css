@@ -80,3 +80,7 @@ body {
 .img {
     border-radius: 5px;
 }
+
+.row {
+    padding-bottom: 15px;
+}
