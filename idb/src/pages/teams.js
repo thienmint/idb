@@ -5,59 +5,73 @@ import './global.css'
 import SoloMid from '../static/images/soloMid.jpg';
 import Fnatic from '../static/images/fnatic-logo-font.png';
 import Liquid from '../static/images/team-liquid-logo-B045C2BBCC-seeklogo.com.png';
+import GridTeams from "../components/grid-details/teams";
 
 class Teams extends Component {
+    team_data = [
+        {
+            id: 1,
+            name: 'Team SoloMid',
+            games: ['League of Legends'],
+            roster: ['JHauntzer', 'Svenskeren', 'Bjergsen', 'Doublelift', 'Biofrost'],
+            date: '2009',
+            championships: ['NALCS #1 2017'],
+            logo_url: SoloMid,
+            location: 'California, USA'
+        },
+        {
+            id: 2,
+            name: 'Fnatic',
+            games: ['League of Legends'],
+            roster: ['Krimz', 'JW', 'flusha', 'golden', 'lekr0', 'jump'],
+            date: '2004',
+            championships: ['#2 DreamHack summer 2017'],
+            logo_url: Fnatic,
+            location: 'Europe'
+        },
+        {
+            id: 3,
+            name: 'Liquid',
+            games: ['League of Legends'],
+            roster: ['ken', 'hungrybox', 'chillindude', 'crunch', 'chudat'],
+            date: '2000',
+            championships: ['The International 2017'],
+            logo_url: Liquid,
+            location: 'Netherlands'
+        },
+        {
+            id: 4,
+            name: 'Team SoloMid',
+            games: ['League of Legends'],
+            roster: ['ken', 'hungrybox', 'chillindude', 'crunch', 'chudat'],
+            date: '2000',
+            championships: ['The International 2017'],
+            logo_url: Fnatic,
+            location: 'Netherlands'
+        }
+    ];
+
     render() {
+        let numRows = Math.ceil(this.team_data.length / 3);
+        let rows = [];
+        let cols = [];
+        for (let i=0; i< numRows; i++) {
+            cols = this.team_data.splice(0,3);
+            rows.push(
+                <div className="row align-items-start">
+                    {cols.map((team, index) => (
+                        <GridTeams value={team} key={index}/>
+                    ))}
+                </div>
+            )
+        }
         return (
             <div>
                 <Navbar/>
                 <h1 className="page-title">Teams</h1>
                 <hr/>
                 <div className="container">
-                    <div className="row align-items-start">
-                        <div className="col">
-                            <div className="thumbnail">
-                                <a href="">
-                                    <img className="img-fluid" src={SoloMid} alt=""/>
-                                </a>
-                            </div>
-                            <div className="attributes">
-                                <div>Name: Team SoloMid</div>
-                                <div>Games: <a href="">League of Legends</a></div>
-                                <div>Roster: Hauntzer, Svenskeren, Bjergsen, <a href="">Doublelift</a>, Biofrost</div>
-                                <div>Date founded: 2009</div>
-                                <div> Championships: <a href="">NALCS #1 2017</a></div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="thumbnail">
-                                <a href="">
-                                    <img className="img-fluid" src={Fnatic} alt=""/>
-                                </a>
-                            </div>
-                            <div className="attributes">
-                                <div>Name: Fnatic</div>
-                                <div>Games: <a href="">League of Legends</a>, <a href="">CS:GO</a></div>
-                                <div>Roster: Krimz, JW, flusha, golden, lekr0, jumpy</div>
-                                <div>Date founded: 2004</div>
-                                <div>Championships: <a href="">#2 Dreamhack summer 2017</a></div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="thumbnail">
-                                <a href="">
-                                    <img className="img-fluid" src={Liquid} alt=""/>
-                                </a>
-                            </div>
-                            <div className="attributes">
-                                <div>Name: Liquid</div>
-                                <div>Games: <a href="">League of Legends</a>, <a href="">CS:GO</a></div>
-                                <div>Roster: ken, hungrybox, chillindude, crunch, chudat</div>
-                                <div>Date founded: 2000</div>
-                                <div>Championships: <a href="">The International 2017</a></div>
-                            </div>
-                        </div>
-                    </div>
+                    {rows}
                 </div>
             </div>
         );
