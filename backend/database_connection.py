@@ -16,7 +16,7 @@ from pandascore_scraper import scrape_data
 INSERT_GAME = "INSERT INTO GAME(id, name, summary, release_date, website, screenshots) VALUES (%s, %s, %s, %s, %s, %s)"
 INSERT_PLAYER = "INSERT INTO PLAYER(id, tag, first_name, last_name, role, hometown, image_url, current_team, current_game) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 INSERT_TEAM = "INSERT INTO TEAM(id, name, acronym, image_url, current_players, current_game) VALUES (%s, %s, %s, %s, %s, %s)"
-
+INSERT_TOURNEY = "INSERT INTO TOURNEY(id, name, slug, begin_at, end_at, teams, game) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 #
 # Public Function Definitions
 #
@@ -86,6 +86,30 @@ def scrape_teams (db, cur):
 			print (e)
 			print ()
 
+def scrape_tourneys(db, cur) :
+	# Mine TOURNEY data from IGDB
+	cur.execute("describe TOURNEY")
+	result = cur.fetchall()
+	for row in result :
+		print (row[0] + '\t' + row[1])
+
+	tourneys = []
+	for page in range(0, 1):
+		tourneys += scrape_data("tournaments", page)
+
+	for t in tourneys :
+		try:
+			cur.execute(INSERT_TOURNEY, (t.t_id, t.name, t.slug, t.begin_at, 
+												t.end_at, t.videogame, t.team_ids))
+			print ("Succeeded in adding " + str(t.t_id))
+			db.commit()
+
+		except Exception as e:
+			db.rollback()
+			print ("Could not insert " + t.name)
+			print (e)
+			print ()
+
 if __name__ == "__main__" :
 	db = MySQLdb.connect(host="db.esportguru.com", 
 										 user="persia", 
@@ -101,7 +125,7 @@ if __name__ == "__main__" :
 
 	cur.execute('SET FOREIGN_KEY_CHECKS=0')
 
-	scrape_teams(db, cur)
+	scrape_tourneys(db, cur)
 
 	cur.execute('SET FOREIGN_KEY_CHECKS=1')
 

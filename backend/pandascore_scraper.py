@@ -38,7 +38,7 @@ class Team:
 class Tournaments:
 	t_id = 0
 	name = "null"
-	w_id = 0
+	slug = "null"
 	begin_at = "null"
 	end_at = "null"
 	videogame = "null"
@@ -124,16 +124,20 @@ def parse_tournaments(data) :
 
 		p.t_id = tourney["id"]
 		p.name = tourney["name"]
-		p.w_id = tourney["winner_id"]
-		p.begin_at = tourney["begin_at"]
-		p.end_at = tourney["end_at"]
-		p.videogame = tourney["videogame"]["name"]
+		p.slug = tourney["slug"]
+		p.begin_at = (tourney["begin_at"][:10]
+						if tourney["begin_at"] != None else None)
+		p.end_at = (tourney["end_at"][:10]
+						if tourney["end_at"] != None else None)
+		p.videogame = (tourney["videogame"]["id"] 
+								if tourney["videogame"] != None else None)
 
-		for k in range(0, len(tourney["teams"])) :
+		for k in range(0, max(0, len(tourney["teams"]))) :
 			p.team_ids += [tourney["teams"][k]["id"]]
 
-		if (p.w_id != None and p.videogame != None) :
-			p.teams = json.dumps(p.teams)
+		if (p.videogame != None) :
+			p.team_ids = str(json.dumps(p.team_ids))
+			#print(p.team_ids)
 			tourneys += [p]
 
 	return tourneys
