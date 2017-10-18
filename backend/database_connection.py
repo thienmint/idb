@@ -77,7 +77,7 @@ def scrape_teams (db, cur):
 		try:
 			cur.execute(INSERT_TEAM, (t.t_id, t.name, t.acronym, t.image_url, 
 															  t.player_ids, t.current_videogame))
-			print ("Succeeded in adding " + t.name)
+			print ("Succeeded in adding " + str(t.t_id))
 			db.commit()
 
 		except Exception as e:

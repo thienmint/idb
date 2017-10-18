@@ -97,7 +97,7 @@ def parse_players(data) :
 	return players
 
 def parse_teams(data) :
-	teams = set()
+	teams = []
 	for team in data :
 		p = Team()
 
@@ -105,7 +105,8 @@ def parse_teams(data) :
 		p.name = team["name"]
 		p.acronym = team["acronym"]
 		p.image_url = team["image_url"]
-		p.current_videogame = team["current_videogame"]
+		p.current_videogame = (team["current_videogame"]["id"] 
+								if team["current_videogame"] != None else None)
 
 		for k in range(0, max(0, len(team["players"]))) :
 			p.player_ids += [team["players"][k]["id"]]
