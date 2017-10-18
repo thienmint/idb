@@ -94,14 +94,14 @@ def scrape_tourneys(db, cur) :
 		print (row[0] + '\t' + row[1])
 
 	tourneys = []
-	for page in range(0, 1):
+	for page in range(0, 100):
 		tourneys += scrape_data("tournaments", page)
 
 	for t in tourneys :
 		try:
 			cur.execute(INSERT_TOURNEY, (t.t_id, t.name, t.slug, t.begin_at, 
-												t.end_at, t.videogame, t.team_ids))
-			print ("Succeeded in adding " + str(t.t_id))
+												t.end_at, t.team_ids, t.videogame))
+			print ("Succeeded in adding " + t.name)
 			db.commit()
 
 		except Exception as e:

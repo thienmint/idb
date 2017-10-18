@@ -136,8 +136,7 @@ def parse_tournaments(data) :
 			p.team_ids += [tourney["teams"][k]["id"]]
 
 		if (p.videogame != None) :
-			p.team_ids = str(json.dumps(p.team_ids))
-			#print(p.team_ids)
+			p.team_ids = json.dumps(p.team_ids)
 			tourneys += [p]
 
 	return tourneys
