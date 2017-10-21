@@ -1,1 +1,25 @@
-/* custom styles */
+.navbar {
+    font-size: 15px;
+}
+body {
+    font-family: 'Saira Semi Condensed', sans-serif;
+    background-color: #F0F0F0;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: whitesmoke;
+}
+.navbar-light .navbar-brand {
+    color: whitesmoke;
+}
+.bg-faded {
+    background-color: #338481;
+}
+a {
+    color: #338481;
+}
+a:hover {
+    color: #338481;
+}
+a:visited {
+    color: #338481;
+}

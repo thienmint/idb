@@ -7,31 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--styles-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="static/css/templates.css">
+    <link rel="stylesheet" href="static/css/about.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <style type="text/css">
+        body {
+            font-family: 'Saira Semi Condensed', sans-serif;
+        }
+    </style>
 </head>
 <body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="height: 5%;">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="./">eSports Guru</a>
+    <a class="navbar-brand" href="./">eSport Guru</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
-            </li>
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" href="./about">About</a>
             </li>
@@ -51,30 +56,45 @@
     </div>
 </nav>
 
-<h2 style="width: 100%; margin-left: 1%; padding-top: 10px; text-align: center">Super Smash Bros. Melee</h2>
-
-<hr>
-
-<div class="container-fluid">
-    <div class="row align-items-start">
-        <div class="col">
-            <div class="detail-image">
-                <img class="img" src="../static/images/ssbm.jpeg">
+<div class="row">
+    <div class="card offset-2 col-8" style="margin-top: 15px;">
+        <div class="card-block">
+            <h1 class="col-12" style="text-align: center;">Super Smash Bros. Melee</h1>
+            <div class="row align-items-start">
+                <div class="col-10 offset-1">
+                    <div class="detail-image" style="text-align: center;">
+                        <img class="img" src="../static/images/ssbm.jpeg">
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col labels lists">
-            <div>Name</div>
-            <div>Year published</div>
-            <div>Company</div>
-            <div>Genre</div>
-            <div>Current Champion</div>
-        </div>
-        <div class="col lists">
-            <div> Super Smash Bros. Melee</div>
-            <div> 2001</div>
-            <div> HAL Laboratory</div>
-            <div> Fighting Game</div>
-            <div> Armada</div>
+            <div class="row detail-rows">
+                <div class="col-4 offset-2 labels lists">Name</div>
+                <div class="col-4 lists detail-columns">Super Smash Bros. Melee</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Year published</div>
+                <div class="col-4 lists detail-columns"> 2001</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Company</div>
+                <div class="col-4 lists detail-columns">HAL Laboratory</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Genre</div>
+                <div class="col-4 lists detail-columns">Fighting Game</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Current Champion</div>
+                <div class="col-4 lists detail-columns"><a href="./adam"> Armada</a></div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Teams</div>
+                <div class="col-4 lists detail-columns"> Alliance, <a href="./liquid">Liquid</a>, <a href="./solomid">SoloMid</a>, Cloud9</div>
+            </div>
+            <div class="row align-items-start detail-rows">
+                <div class="col-4 offset-2 labels lists">Tournaments</div>
+                <div class="col-4 lists detail-columns">Apex, <a href="./dreamhack">DreamHack</a>, Genesis</div>
+            </div>
         </div>
     </div>
 </div>

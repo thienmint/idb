@@ -4,26 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-</head>
-<body>
 
     <!--scripts-->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/about.css">
+    <link rel="stylesheet" href="static/css/syle.css">
+
+    <style type="text/css">
+        nav {
+            font-family: 'Saira Semi Condensed', sans-serif;
+        }
+        body {
+          font-family: 'Saira Semi Condensed', sans-serif;
+          background-color: #F0F0F0;
+        }
+        .navbar-light .navbar-nav .nav-link {
+            color: whitesmoke;
+        }
+        .navbar-light .navbar-brand {
+            color: whitesmoke;
+        }
+        .bg-faded {
+            background-color: #338481;
+        }
+        a {
+            color: #338481;
+        }
+        a:hover {
+            color: #338481;
+        }
+        a:visited {
+            color: #338481;
+        }
+    </style>
+</head>
+<body>
+
+
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="height: 5%;">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="./">eSports Guru</a>
+        <a class="navbar-brand" href="./">eSport Guru</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
-                </li>
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="./about">About</a>
                 </li>
@@ -43,21 +74,21 @@
         </div>
     </nav>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:95%;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:93vh;">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item">
-                <img class="d-block img-fluid active" style="width: 100%; height: 700px;" src="../static/images/carousel-3.jpg" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block img-fluid" style="width: 100%; height: 700px;" src="../static/images/iem-cup.jpg" alt="Second slide">
-            </div>
             <div class="carousel-item active">
-                <img class="d-block img-fluid" style="width: 100%; height: 700px;" src="../static/images/does-esports-need-a-players’-union.jpg" alt="Third slide">
+                <img class="d-block img-fluid" style="width: 100%; height: 93vh;" src="../static/images/esports-arena.png" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block img-fluid active" style="width: 100%; height: 93vh;" src="../static/images/carousel-3.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block img-fluid" style="width: 100%; height: 93vh;" src="../static/images/esports-trophy.jpg" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -69,12 +100,6 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
-    <footer class="footer navbar-fixed-bottom" style="position: fixed; bottom: 0px; width: 100%">
-        <div class="container" style="text-align: center;>
-            <span class="text-muted">eSports Guru - Copyright 2017</span>
-        </div>
-    </footer>
 
 </body>
 </html>

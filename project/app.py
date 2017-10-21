@@ -63,6 +63,12 @@ def csgo():
     return render_template('csgo.html')
 
 
+@app.route('/soloMid')
+def soloMid():
+    return render_template('soloMid.html')
+
+
+
 @app.route('/solomid')
 def solomid():
     return render_template('soloMid.html')

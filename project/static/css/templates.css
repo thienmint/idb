@@ -25,11 +25,13 @@
     margin: auto;
     height: auto;
     padding-right: 10px;
+    padding-bottom: 15px;
+    border-radius: 5px;
 }
 
 .labels {
     font-weight: bold;
-    text-align: left;
+    text-align: right;
 }
 
 .lists {
@@ -38,7 +40,7 @@
 }
 
 .detail-columns {
-    width: 20%;
+    text-align: left;
 }
 
 .col {
@@ -53,4 +55,20 @@
     top: 0;
     bottom: 0;
     padding-right: 20px;
+}
+
+.page-title {
+    text-align: center;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.detail-rows {
+    text-align: center;
+}
+
+.img {
+    border-radius: 5px;
 }

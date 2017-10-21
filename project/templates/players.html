@@ -6,32 +6,37 @@
       <title>Players</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--styles-->
+      <!--styles-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
       <link rel="stylesheet" href="static/css/templates.css">
+      <link rel="stylesheet" href="static/css/about.css">
+      <link rel="stylesheet" href="static/css/style.css">
+
+      <style type="text/css">
+          body {
+              font-family: 'Saira Semi Condensed', sans-serif;
+          }
+      </style>
   </head>
   <body>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="height: 5%;">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="./">eSports Guru</a>
+        <a class="navbar-brand" href="./">eSport Guru</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
-                </li>
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="./about">About</a>
                 </li>
@@ -51,7 +56,7 @@
         </div>
     </nav>
 
-    <h2 style="width: 100%; margin-left: 1%; padding-top: 10px; text-align: center">Players</h2>
+    <h1 style="width: 100%; margin-left: 1%; padding-top: 10px; text-align: center">Players</h1>
 
     <hr>
 
@@ -66,8 +71,8 @@
                 <div class="attributes">
                     <div>Tag: Doublelift</div>
                     <div>Real name: Yiliang Peng</div>
-                    <div>Game: League of Legends</div>
-                    <div>Team: Team SoloMid</div>
+                    <div>Game: <a href="./league">League of Legends</a></div>
+                    <div>Team: <a href="./soloMid">Team SoloMid</a></div>
                     <div>Rank: (Team SoloMid) #1 in North America</div>
                 </div>
             </div>
@@ -80,7 +85,7 @@
                 <div class="attributes">
                     <div>Tag: Armada</div>
                     <div>Real name: Adam Lindgren</div>
-                    <div>Game: Super Smash Bros. Melee</div>
+                    <div>Game: <a href="./ssbm">Super Smash Bros. Melee</a></div>
                     <div>Team: Alliance</div>
                     <div>Rank: #1 Summer 2017 SSBM</div>
                 </div>
@@ -94,7 +99,7 @@
                 <div class="attributes">
                     <div>Tag: NiKo</div>
                     <div>Real name: Nikola Kovač</div>
-                    <div>Game: CounterStrike: Global Offensive</div>
+                    <div>Game: <a href="./csgo">CounterStrike: Global Offensive</a></div>
                     <div>Team: FaZe Clan</div>
                     <div>Rank: N/A</div>
                 </div>
