@@ -69,48 +69,121 @@ class Player(Resource):
         conn.close()
         return jsonify(player)
 
-api.add_resource(Players, '/players')
-api.add_resource(Player, '/players/<player_id>')
-
 
 class Teams(Resource):
     def get(self):
-        pass
+        conn = engine.connect()
+        query = conn.execute("select * from TEAM")
+        list_teams = []
+        for row in query:
+            team = OrderedDict()
+            team['id'] = row['id']
+            team['name'] = row['name']
+            team['acronym'] = row['acronym']
+            team['image_url'] = row['image_url']
+            team['current_players'] = row['current_players']
+            team['current_game'] = row['current_game']
+            list_teams.append(team)
+        conn.close()
+        return jsonify(list_teams)
 
 
 class Team(Resource):
     def get(self, team_id):
-        pass
-
-
-api.add_resource(Players, '/teams')
-api.add_resource(Player, '/teams/<team_id>')
+        conn = engine.connect()
+        query = conn.execute("select * from TEAM where id=%d" % int(team_id))
+        row = query.fetchone()
+        team = OrderedDict()
+        team['id'] = row['id']
+        team['name'] = row['name']
+        team['acronym'] = row['acronym']
+        team['image_url'] = row['image_url']
+        team['current_players'] = row['current_players']
+        team['current_game'] = row['current_game']
+        conn.close()
+        return jsonify(team)
 
 
 class Tourneys(Resource):
     def get(self):
-        pass
+        conn = engine.connect()
+        query = conn.execute("select * from TOURNEY")
+        list_tourneys = []
+        for row in query:
+            tourney = OrderedDict()
+            tourney['id'] = row['id']
+            tourney['name'] = row['name']
+            tourney['slug'] = row['slug']
+            tourney['begin_at'] = row['begin_at']
+            tourney['end_at'] = row['end_at']
+            tourney['game'] = row['game']
+            tourney['teams'] = row['teams']
+            list_tourneys.append(tourney)
+        conn.close()
+        return jsonify(list_tourneys)
 
 
 class Tourney(Resource):
     def get(self, tourney_id):
-        pass
-
-api.add_resource(Players, '/tournaments')
-api.add_resource(Player, '/tournaments/<tourney_id>')
+        conn = engine.connect()
+        query = conn.execute("select * from TOURNEY where id=%d" % int(tourney_id))
+        row = query.fetchone()
+        tourney = OrderedDict()
+        tourney['id'] = row['id']
+        tourney['name'] = row['name']
+        tourney['slug'] = row['slug']
+        tourney['begin_at'] = row['begin_at']
+        tourney['end_at'] = row['end_at']
+        tourney['game'] = row['game']
+        tourney['teams'] = row['teams']
+        conn.close()
+        return jsonify(tourney)
 
 
 class Games(Resource):
     def get(self):
-        pass
+        conn = engine.connect()
+        query = conn.execute("select * from GAME")
+        list_games = []
+        for row in query:
+            game = OrderedDict()
+            game['id'] = row['id']
+            game['name'] = row['name']
+            game['summary'] = row['summary']
+            game['release_date'] = str(row['release_date'])
+            game['website'] = row['website']
+            game['screenshots'] = row['screenshots']
+            list_games.append(game)
+        conn.close()
+        return jsonify(list_games)
 
 
 class Game(Resource):
     def get(self, game_id):
-        pass
+        conn = engine.connect()
+        query = conn.execute("select * from GAME where id=%d" % int(game_id))
+        row = query.fetchone()
+        game = OrderedDict()
+        game['id'] = row['id']
+        game['name'] = row['name']
+        game['summary'] = row['summary']
+        game['release_date'] = str(row['release_date'])
+        game['website'] = row['website']
+        game['screenshots'] = row['screenshots']
+        conn.close()
+        return jsonify(game)
 
-api.add_resource(Players, '/games')
-api.add_resource(Player, '/games/<game_id>')
+api.add_resource(Players, '/players')
+api.add_resource(Player, '/players/<player_id>')
+
+api.add_resource(Teams, '/teams')
+api.add_resource(Team, '/teams/<team_id>')
+
+api.add_resource(Tourneys, '/tournaments')
+api.add_resource(Tourney, '/tournaments/<tourney_id>')
+
+api.add_resource(Games, '/games')
+api.add_resource(Game, '/games/<game_id>')
 
 '=====================END API====================='
 
