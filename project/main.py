@@ -69,8 +69,48 @@ class Player(Resource):
         conn.close()
         return jsonify(player)
 
-api.add_resource(Players, '/players') # Route_1
-api.add_resource(Player, '/player/<player_id>') # Route_2
+api.add_resource(Players, '/players')
+api.add_resource(Player, '/players/<player_id>')
+
+
+class Teams(Resource):
+    def get(self):
+        pass
+
+
+class Team(Resource):
+    def get(self, team_id):
+        pass
+
+
+api.add_resource(Players, '/teams')
+api.add_resource(Player, '/teams/<team_id>')
+
+
+class Tourneys(Resource):
+    def get(self):
+        pass
+
+
+class Tourney(Resource):
+    def get(self, tourney_id):
+        pass
+
+api.add_resource(Players, '/tournaments')
+api.add_resource(Player, '/tournaments/<tourney_id>')
+
+
+class Games(Resource):
+    def get(self):
+        pass
+
+
+class Game(Resource):
+    def get(self, game_id):
+        pass
+
+api.add_resource(Players, '/games')
+api.add_resource(Player, '/games/<game_id>')
 
 '=====================END API====================='
 
