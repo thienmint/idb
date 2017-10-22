@@ -29,7 +29,7 @@ deploy:
   - provider: script
     script: scripts/deploy.sh dev
     on:
-      branch: backend/routing-api
+      branch: dev
   # deploy master to production
   - provider: script
     script: scripts/deploy.sh master
