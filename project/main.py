@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 import MySQLdb
@@ -21,7 +20,7 @@ api = Api(app)
 
 @app.route('/')
 def hello_world():
-    return 'Insert documentation from Apirary.io here'
+    return render_template('api.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
