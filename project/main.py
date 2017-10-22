@@ -6,10 +6,11 @@ import MySQLdb
 from json import dumps
 from flask_jsonpify import jsonify
 from collections import OrderedDict
+import os
 
 '=====================START CONFIGURATION====================='
 
-engine = create_engine('mysql://thien:thienmint@db.esportguru.com:3306/devDB?charset=utf8')
+engine = create_engine(os.environ['ESPORTGURU_DB'])
 app = Flask(__name__)
 app.config["JSON_SORT_KEYS"] = False
 api = Api(app)
