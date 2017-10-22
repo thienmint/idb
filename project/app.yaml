@@ -9,3 +9,13 @@ handlers:
 - url: /.*
   script: app.app
 # [END handlers]
+
+# [START libraries]
+libraries:
+- name: jinja2
+  version: "2.9.6"
+- name: markupsafe
+  version: "1.0"
+- name: MySQLdb
+  version: "1.3.12"
+# [END libraries]
