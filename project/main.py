@@ -15,10 +15,18 @@ app.config["JSON_SORT_KEYS"] = False
 api = Api(app)
 
 '=====================END CONFIGURATION====================='
+'=====================START UI ROUTING====================='
+
+
 @app.route('/')
 def hello_world():
-    return 'Hello from Flask!'
+    return 'Insert documentation from Apirary.io here'
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return "What are you looking for m8?"
+
+'=====================END UI ROUTING====================='
 '=====================START API====================='
 
 
@@ -61,8 +69,8 @@ class Player(Resource):
         conn.close()
         return jsonify(player)
 
-api.add_resource(Players, '/api/players') # Route_1
-api.add_resource(Player, '/api/player/<player_id>') # Route_2
+api.add_resource(Players, '/players') # Route_1
+api.add_resource(Player, '/player/<player_id>') # Route_2
 
 '=====================END API====================='
 
