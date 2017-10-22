@@ -36,8 +36,7 @@ CREATE TABLE `TEAM` (
 CREATE TABLE `GAME` (
     `id` INTEGER NOT NULL,
     `name` VARCHAR(255),
-    `genres` JSON,
-    `summary` MEDIUMTEXT,
+    `summary` LONGTEXT,
     `release_date` DATE,
     `website` VARCHAR(255),
     `screenshots` JSON,
