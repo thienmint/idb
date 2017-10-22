@@ -11,3 +11,6 @@
 
 #GCloud
 project/lib/
+
+#Jupyter
+*.ipynb
