@@ -227,7 +227,7 @@ class Tourneys(Resource):
             tourney['begin_at'] = row['begin_at']
             tourney['end_at'] = row['end_at']
             tourney['game'] = game
-            tourney['teams'] = json.dumps(list(teams))
+            tourney['teams'] = list(teams)
             list_tourneys.append(tourney)
         conn.close()
         return jsonify(list_tourneys)
@@ -262,8 +262,8 @@ class Tourney(Resource):
         tourney['begin_at'] = row['begin_at']
         tourney['end_at'] = row['end_at']
         tourney['game'] = game
+        tourney['teams'] = list(teams)
         # tourney['teams'] = row['teams']
-        tourney['teams'] = json.dumps(list(teams))
         conn.close()
         return jsonify(tourney)
 
