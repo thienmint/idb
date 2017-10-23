@@ -79,16 +79,39 @@ class Player(Resource):
 class Teams(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute("select * from TEAM")
+        query = conn.execute(
+            """
+              select t.id, t.name, t.acronym, t.image_url, t.current_game, 
+                     g.name as game_name
+              from TEAM t
+              join GAME g on g.id = t.current_game
+            """
+        )
         list_teams = []
         for row in query:
             team = OrderedDict()
+
+            players_query = conn.execute("select id, tag from PLAYER where current_team = %d" % int(row['id']))
+            list_players = []
+            for player_row in players_query:
+                player = OrderedDict()
+                player['id'] = player_row['id']
+                player['tag'] = player_row['tag']
+                list_players.append(player)
+
+            game = {
+                "id": row['current_game'],
+                "name": row['game_name']
+            }
+
             team['id'] = row['id']
             team['name'] = row['name']
             team['acronym'] = row['acronym']
             team['image_url'] = row['image_url']
-            team['current_players'] = row['current_players']
-            team['current_game'] = row['current_game']
+            # team['current_players'] = row['current_players']
+            team['current_players'] = list_players
+            # team['current_game'] = row['current_game']
+            team['current_game'] = game
             list_teams.append(team)
         conn.close()
         return jsonify(list_teams)
@@ -97,15 +120,38 @@ class Teams(Resource):
 class Team(Resource):
     def get(self, team_id):
         conn = engine.connect()
-        query = conn.execute("select * from TEAM where id=%d" % int(team_id))
+        query = conn.execute(
+            """
+              select t.id, t.name, t.acronym, t.image_url, t.current_game, 
+                     g.name as game_name
+              from TEAM t
+              join GAME g on g.id = t.current_game
+              where t.id=%d
+            """ % int(team_id)
+        )
         row = query.fetchone()
+
+        players_query = conn.execute("select id, tag from PLAYER where current_team = %d" % int(row['id']))
+        list_players = []
+        for player_row in players_query:
+            player = OrderedDict()
+            player['id'] = player_row['id']
+            player['tag'] = player_row['tag']
+            list_players.append(player)
+
+        game = {
+            "id": row['current_game'],
+            "name": row['game_name']
+        }
+
         team = OrderedDict()
         team['id'] = row['id']
         team['name'] = row['name']
         team['acronym'] = row['acronym']
         team['image_url'] = row['image_url']
-        team['current_players'] = row['current_players']
-        team['current_game'] = row['current_game']
+        # team['current_players'] = row['current_players']
+        team['current_players'] = list_players
+        team['current_game'] = game
         conn.close()
         return jsonify(team)
 
