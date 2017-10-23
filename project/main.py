@@ -6,6 +6,7 @@ from json import dumps
 from flask_jsonpify import jsonify
 from collections import OrderedDict
 import os
+import json
 
 '=====================START CONFIGURATION====================='
 
@@ -39,10 +40,30 @@ def page_not_found(e):
 class Players(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute("select * from PLAYER")
+        query = conn.execute(
+            """
+            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, p.image_url, 
+                   p.current_game, p.current_team,
+                   g.name as game_name, t.name as team_name
+            from PLAYER p
+            join GAME g on g.id = p.current_game
+            join TEAM t on t.id = p.current_team
+            """
+        )
         list_players = []
         for row in query:
             player = OrderedDict()
+
+            team = {
+                "id": row['current_team'],
+                "name": row['team_name']
+            }
+
+            game = {
+                "id": row['current_game'],
+                "name": row['game_name']
+            }
+
             player['id'] = row['id']
             player['tag'] = row['tag']
             player['first_name'] = row['first_name']
@@ -50,8 +71,8 @@ class Players(Resource):
             player['role'] = row['role']
             player['hometown'] = row['hometown']
             player['image_url'] = row['image_url']
-            player['current_team'] = row['current_team']
-            player['current_game'] = row['current_game']
+            player['current_team'] = team
+            player['current_game'] = game
             list_players.append(player)
         conn.close()
         return jsonify(list_players)
@@ -60,9 +81,30 @@ class Players(Resource):
 class Player(Resource):
     def get(self, player_id):
         conn = engine.connect()
-        query = conn.execute("select * from PLAYER where id=%d" % int(player_id))
+        query = conn.execute(
+            """
+            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, p.image_url, 
+                   p.current_game, p.current_team, 
+                   g.name as game_name, t.name as team_name
+            from PLAYER p
+            join GAME g on g.id = p.current_game
+            join TEAM t on t.id = p.current_team
+            where p.id = %d
+            """ % int(player_id)
+        )
         player = OrderedDict()
         row = query.fetchone()
+
+        team = {
+            "id": row['current_team'],
+            "name": row['team_name']
+        }
+
+        game = {
+            "id": row['current_game'],
+            "name": row['game_name']
+        }
+
         player['id'] = row['id']
         player['tag'] = row['tag']
         player['first_name'] = row['first_name']
@@ -70,8 +112,8 @@ class Player(Resource):
         player['role'] = row['role']
         player['hometown'] = row['hometown']
         player['image_url'] = row['image_url']
-        player['current_team'] = row['current_team']
-        player['current_game'] = row['current_game']
+        player['current_team'] = team
+        player['current_game'] = game
         conn.close()
         return jsonify(player)
 
@@ -159,17 +201,33 @@ class Team(Resource):
 class Tourneys(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute("select * from TOURNEY")
+        query = conn.execute(
+            """
+            select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
+                   g.name as game_name
+            from TOURNEY tn
+            join GAME g on g.id = tn.game
+            """
+        )
         list_tourneys = []
         for row in query:
             tourney = OrderedDict()
+
+            game = {
+                "id": row['game'],
+                "name": row['game_name']
+            }
+
+            json_teams = json.loads(row['teams'])
+            teams = set(json_teams)
+
             tourney['id'] = row['id']
             tourney['name'] = row['name']
             tourney['slug'] = row['slug']
             tourney['begin_at'] = row['begin_at']
             tourney['end_at'] = row['end_at']
-            tourney['game'] = row['game']
-            tourney['teams'] = row['teams']
+            tourney['game'] = game
+            tourney['teams'] = json.dumps(list(teams))
             list_tourneys.append(tourney)
         conn.close()
         return jsonify(list_tourneys)
@@ -178,16 +236,34 @@ class Tourneys(Resource):
 class Tourney(Resource):
     def get(self, tourney_id):
         conn = engine.connect()
-        query = conn.execute("select * from TOURNEY where id=%d" % int(tourney_id))
+        query = conn.execute(
+            """
+            select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
+                   g.name as game_name
+            from TOURNEY tn
+            join GAME g on g.id = tn.game
+            where tn.id=%d
+            """ % int(tourney_id)
+        )
         row = query.fetchone()
         tourney = OrderedDict()
+
+        game = {
+            "id": row['game'],
+            "name": row['game_name']
+        }
+
+        json_teams = json.loads(row['teams'])
+        teams = set(json_teams)
+
         tourney['id'] = row['id']
         tourney['name'] = row['name']
         tourney['slug'] = row['slug']
         tourney['begin_at'] = row['begin_at']
         tourney['end_at'] = row['end_at']
-        tourney['game'] = row['game']
-        tourney['teams'] = row['teams']
+        tourney['game'] = game
+        # tourney['teams'] = row['teams']
+        tourney['teams'] = json.dumps(list(teams))
         conn.close()
         return jsonify(tourney)
 
