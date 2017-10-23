@@ -9,7 +9,13 @@ import os
 
 '=====================START CONFIGURATION====================='
 
-engine = create_engine(os.environ['ESPORTGURU_DB'])
+engine = create_engine(
+    'mysql://{0}:{1}@{2}:3306/{3}?charset=utf8'.format(
+        os.environ['DB_USER'],
+        os.environ['DB_PASS'],
+        os.environ['DB_HOST'],
+        os.environ['DB_NAME']))
+
 app = Flask(__name__)
 app.config["JSON_SORT_KEYS"] = False
 api = Api(app)
