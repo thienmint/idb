@@ -34,6 +34,23 @@ def page_not_found(e):
     return "What are you looking for m8?"
 
 '=====================END UI ROUTING====================='
+'=====================START API QUERIES====================='
+
+
+def player_query(player_id = None):
+    pass
+
+def team_query(team_id = None):
+    pass
+
+def tourney_query(tourney_id = None):
+    pass
+
+def game_query(game_id = None):
+    pass
+
+
+'=====================END API QUERIES====================='
 '=====================START API====================='
 
 
