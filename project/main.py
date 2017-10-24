@@ -105,7 +105,7 @@ def process_players(players_row):
         json_players = json.loads(players_row)
         return [OrderedDict([('id', player['id']), ('tag', player['tag'])]) for player in json_players]
     else:
-        return players_row
+        return list()
 
 
 '=====================END API QUERIES====================='
