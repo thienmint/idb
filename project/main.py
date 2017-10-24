@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 import MySQLdb
@@ -37,17 +37,75 @@ def page_not_found(e):
 '=====================START API QUERIES====================='
 
 
-def player_query(player_id = None):
-    pass
+def player_query(player_id=None):
+    query = (
+        """
+            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, p.image_url, 
+                   p.current_game, p.current_team,
+                   g.name as game_name, t.name as team_name
+            from PLAYER p
+            join GAME g on g.id = p.current_game
+            join TEAM t on t.id = p.current_team
+            {0}
+            """.format("where p.id = %d" % int(player_id) if player_id is not None else "")
+    )
 
-def team_query(team_id = None):
-    pass
+    return query
+
+
+def team_query(team_id=None):
+    query = (
+        """
+          select t.id, t.name, t.acronym, t.image_url, t.current_game, 
+                 g.name as game_name,
+                 pt.list_players
+          from TEAM t
+          
+          join GAME g on g.id = t.current_game
+          left join (
+            select concat('[', group_concat(json_object("id", p.id, "tag", p.tag)), ']') list_players, p.current_team
+            from PLAYER p
+            group by p.current_team
+          ) pt on pt.current_team = t.id
+          {0}
+        """.format("where t.id = %d" % int(team_id) if team_id is not None else "")
+    )
+
+    return query
+
 
 def tourney_query(tourney_id = None):
-    pass
+    query = (
+        """
+          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
+                 g.name as game_name
+          from TOURNEY tn
+          join GAME g on g.id = tn.game
+          {0}
+        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
+    )
+
+    return query
+
 
 def game_query(game_id = None):
-    pass
+    query = (
+        """
+          select g.id, g.name, g.release_date, g.screenshots, g.summary, g.website
+          from GAME g
+          {0}
+        """.format("where g.id = %d" % int(game_id) if game_id is not None else "")
+    )
+
+    return query
+
+
+def process_players(players_row):
+    if players_row is not None:
+        json_players = json.loads(players_row)
+        return [OrderedDict([('id', player['id']), ('tag', player['tag'])]) for player in json_players]
+    else:
+        return players_row
 
 
 '=====================END API QUERIES====================='
@@ -57,16 +115,7 @@ def game_query(game_id = None):
 class Players(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute(
-            """
-            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, p.image_url, 
-                   p.current_game, p.current_team,
-                   g.name as game_name, t.name as team_name
-            from PLAYER p
-            join GAME g on g.id = p.current_game
-            join TEAM t on t.id = p.current_team
-            """
-        )
+        query = conn.execute(player_query())
         list_players = []
         for row in query:
             player = OrderedDict()
@@ -98,17 +147,7 @@ class Players(Resource):
 class Player(Resource):
     def get(self, player_id):
         conn = engine.connect()
-        query = conn.execute(
-            """
-            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, p.image_url, 
-                   p.current_game, p.current_team, 
-                   g.name as game_name, t.name as team_name
-            from PLAYER p
-            join GAME g on g.id = p.current_game
-            join TEAM t on t.id = p.current_team
-            where p.id = %d
-            """ % int(player_id)
-        )
+        query = conn.execute(player_query(player_id))
         player = OrderedDict()
         row = query.fetchone()
 
@@ -138,25 +177,11 @@ class Player(Resource):
 class Teams(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute(
-            """
-              select t.id, t.name, t.acronym, t.image_url, t.current_game, 
-                     g.name as game_name
-              from TEAM t
-              join GAME g on g.id = t.current_game
-            """
-        )
+        query = conn.execute(team_query())
         list_teams = []
         for row in query:
             team = OrderedDict()
-
-            players_query = conn.execute("select id, tag from PLAYER where current_team = %d" % int(row['id']))
-            list_players = []
-            for player_row in players_query:
-                player = OrderedDict()
-                player['id'] = player_row['id']
-                player['tag'] = player_row['tag']
-                list_players.append(player)
+            list_players = process_players(row['list_players'])
 
             game = {
                 "id": row['current_game'],
@@ -167,9 +192,7 @@ class Teams(Resource):
             team['name'] = row['name']
             team['acronym'] = row['acronym']
             team['image_url'] = row['image_url']
-            # team['current_players'] = row['current_players']
             team['current_players'] = list_players
-            # team['current_game'] = row['current_game']
             team['current_game'] = game
             list_teams.append(team)
         conn.close()
@@ -179,24 +202,9 @@ class Teams(Resource):
 class Team(Resource):
     def get(self, team_id):
         conn = engine.connect()
-        query = conn.execute(
-            """
-              select t.id, t.name, t.acronym, t.image_url, t.current_game, 
-                     g.name as game_name
-              from TEAM t
-              join GAME g on g.id = t.current_game
-              where t.id=%d
-            """ % int(team_id)
-        )
+        query = conn.execute(team_query(team_id))
         row = query.fetchone()
-
-        players_query = conn.execute("select id, tag from PLAYER where current_team = %d" % int(row['id']))
-        list_players = []
-        for player_row in players_query:
-            player = OrderedDict()
-            player['id'] = player_row['id']
-            player['tag'] = player_row['tag']
-            list_players.append(player)
+        list_players = process_players(row['list_players'])
 
         game = {
             "id": row['current_game'],
@@ -208,7 +216,6 @@ class Team(Resource):
         team['name'] = row['name']
         team['acronym'] = row['acronym']
         team['image_url'] = row['image_url']
-        # team['current_players'] = row['current_players']
         team['current_players'] = list_players
         team['current_game'] = game
         conn.close()
@@ -218,14 +225,7 @@ class Team(Resource):
 class Tourneys(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute(
-            """
-            select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                   g.name as game_name
-            from TOURNEY tn
-            join GAME g on g.id = tn.game
-            """
-        )
+        query = conn.execute(tourney_query())
         list_tourneys = []
         for row in query:
             tourney = OrderedDict()
@@ -253,15 +253,7 @@ class Tourneys(Resource):
 class Tourney(Resource):
     def get(self, tourney_id):
         conn = engine.connect()
-        query = conn.execute(
-            """
-            select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                   g.name as game_name
-            from TOURNEY tn
-            join GAME g on g.id = tn.game
-            where tn.id=%d
-            """ % int(tourney_id)
-        )
+        query = conn.execute(tourney_query(tourney_id))
         row = query.fetchone()
         tourney = OrderedDict()
 
@@ -288,7 +280,7 @@ class Tourney(Resource):
 class Games(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute("select * from GAME")
+        query = conn.execute(game_query())
         list_games = []
         for row in query:
             game = OrderedDict()
@@ -306,7 +298,7 @@ class Games(Resource):
 class Game(Resource):
     def get(self, game_id):
         conn = engine.connect()
-        query = conn.execute("select * from GAME where id=%d" % int(game_id))
+        query = conn.execute(game_query(game_id))
         row = query.fetchone()
         game = OrderedDict()
         game['id'] = row['id']
