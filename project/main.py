@@ -288,8 +288,8 @@ class Games(Resource):
             game['name'] = row['name']
             game['summary'] = row['summary']
             game['release_date'] = str(row['release_date'])
-            game['website'] = row['website']
-            game['screenshots'] = row['screenshots']
+            game['website'] = json.loads(row['website'])
+            game['screenshots'] = json.loads(row['screenshots'])
             list_games.append(game)
         conn.close()
         return jsonify(list_games)
@@ -305,8 +305,8 @@ class Game(Resource):
         game['name'] = row['name']
         game['summary'] = row['summary']
         game['release_date'] = str(row['release_date'])
-        game['website'] = row['website']
-        game['screenshots'] = row['screenshots']
+        game['website'] = json.loads(row['website'])
+        game['screenshots'] = json.loads(row['screenshots'])
         conn.close()
         return jsonify(game)
 
