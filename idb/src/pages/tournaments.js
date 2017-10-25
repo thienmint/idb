@@ -1,13 +1,33 @@
 import React, { Component } from 'react';
 import Navbar from './../components/nav/navbar';
 import './global.css'
+import axios from 'axios';
 
 import Dreamhack from '../static/images/dreamhack.png';
 import NALCS from '../static/images/league-championships.jpeg';
 import TI7 from '../static/images/int7.jpg';
 import GridTournaments from "../components/grid-details/gridTournaments";
 
-class Tournaments extends Component {
+export default class Tournaments extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            tournaments: [],
+        };
+
+        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
+        let apiurl = 'http://api.esportguru.com/';
+        axios.get(proxyurl + apiurl + 'tournaments').then((response) => {
+            let stateCopy = Object.assign({}, this.state);
+            stateCopy.tournaments = stateCopy.tournaments.slice();
+            stateCopy.tournaments = Object.assign({}, response.data);
+            this.setState(stateCopy);
+            console.log(this.state.tournaments);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
 
     tournament_data = [
         {
@@ -53,18 +73,13 @@ class Tournaments extends Component {
     ];
 
     render() {
-        let numRows = Math.ceil(this.tournament_data.length / 3);
-        let rows = [];
-        let cols = [];
-        for (let i=0; i< numRows; i++) {
-            cols = this.tournament_data.splice(0,3);
-            rows.push(
-                <div className="row align-items-start">
-                    {cols.map((team, index) => (
-                        <GridTournaments value={team} key={index}/>
-                    ))}
-                </div>
-            )
+        let numRows = Math.ceil(Object.keys(this.state.tournaments).length / 3);
+        let tournaments = Object.values(this.state.tournaments);
+        let grid = [];
+        let row = [];
+        for(let i = 0; i < numRows; i++){
+            row = tournaments.splice(0,3);
+            grid.push(row);
         }
         return (
             <div>
@@ -72,11 +87,28 @@ class Tournaments extends Component {
                 <h1 className="page-title">Tournaments</h1>
                 <hr/>
                 <div className="container">
-                    {rows}
+                    {grid.map((item, index) => (
+                        <TournamentRow values={item} key={index}/>
+                    ))}
                 </div>
             </div>
         );
     }
 }
 
-export default Tournaments;
+class TournamentRow extends Component {
+    render() {
+        let row = this.props.values;
+        let tournaments = [];
+        tournaments.push(
+            row.map((tournament, index) => (
+                React.createElement(GridTournaments, {value: tournament})
+            ))
+        );
+        return (
+            <div className="row align-items-start">
+                {tournaments}
+            </div>
+        );
+    }
+}
