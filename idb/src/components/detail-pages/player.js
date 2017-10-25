@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Navbar from './../components/nav/navbar';
-import './global.css'
+import Navbar from './../../components/nav/navbar';
+import './../../pages/global.css'
 
 
-class Players extends Component {
+class Player extends Component {
     render() {
         return (
             <div>
@@ -51,4 +51,4 @@ class Players extends Component {
     }
 }
 
-export default Players;
+export default Player;
