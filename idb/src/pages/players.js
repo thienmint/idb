@@ -3,7 +3,7 @@ import Navbar from './../components/nav/navbar';
 import './global.css'
 import axios from 'axios';
 
-import GridPlayers from "../components/grid-details/players";
+import GridPlayers from "../components/grid-details/gridPlayers";
 
 
 export default class Players extends Component {
@@ -28,10 +28,11 @@ export default class Players extends Component {
 
     render() {
         let numRows = Math.ceil(Object.keys(this.state.players).length / 3);
+        let players = Object.values(this.state.players);
         let grid = [];
         let row = [];
         for(let i = 0; i < numRows; i++){
-            row = Object.values(this.state.players).splice(0,3);
+            row = players.splice(0,3);
             grid.push(row);
         }
       return (
