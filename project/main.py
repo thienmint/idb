@@ -177,6 +177,7 @@ class Player(Resource):
 class Teams(Resource):
     def get(self):
         conn = engine.connect()
+        conn.execute("set @@session.group_concat_max_len=4294967295")
         query = conn.execute(team_query())
         list_teams = []
         for row in query:
@@ -202,6 +203,7 @@ class Teams(Resource):
 class Team(Resource):
     def get(self, team_id):
         conn = engine.connect()
+        conn.execute("set @@session.group_concat_max_len=4294967295")
         query = conn.execute(team_query(team_id))
         row = query.fetchone()
         list_players = process_players(row['list_players'])
