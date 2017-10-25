@@ -21,7 +21,7 @@ class GridPlayers extends Component {
                     </div>
                     <div className="attributes">
                         <div>Tag: {this.props.value.tag}</div>
-                        <div>Real name: {this.props.value.name}</div>
+                        <div>Real name: {this.props.value.first_name} {this.props.value.last_name}</div>
                         <div>Game: <a href="">{this.props.value.current_game.name}</a></div>
                         <div>Team: <a href="">{this.props.value.current_team.name}</a></div>
                         <div>Hometown: {this.props.value.hometown}</div>
