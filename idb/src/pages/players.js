@@ -139,7 +139,7 @@ class PlayerRow extends Component {
         console.log(players);
     return (
         <div className="row align-items-start">
-            <GridPlayers value={row}/>
+            {players}
         </div>
         );
     }
