@@ -74,9 +74,6 @@ class TestApi(unittest.TestCase):
     for player in data:
       self.assertTrue(player["tag"] is not None and player["tag"] is not "")
 
-  #
-  # Validate player data
-  #
   def test_validate_player_G(self):
     session = requests.Session()
     response = session.get(BASE_URL + 'players/4464')
@@ -91,8 +88,8 @@ class TestApi(unittest.TestCase):
     self.assertTrue(player["role"] is None)
     self.assertTrue(player["hometown"] == "Russia")
     self.assertTrue(player["image_url"] is None)
-    self.assertTrue(player["current_game"] == {
-                    "id": 2, "name": "Hearthstone"})
+    self.assertTrue(player["current_team"] == {"id": 588, "name": "Virtus.pro"})
+    self.assertTrue(player["current_game"] == {"id": 2, "name": "Hearthstone"})
 
 if __name__ == '__main__':
   unittest.main()
