@@ -8,6 +8,6 @@ def application(req_environ, start_response):
     os.environ['DB_HOST'] = req_environ['DB_HOST']
     os.environ['DB_NAME'] = req_environ['DB_NAME']
 
-    from main import app as _application
+    from models import app as _application
 
     return _application(req_environ, start_response)
