@@ -82,9 +82,29 @@ def tourney_query(tourney_id = None):
           from TOURNEY tn
           join GAME g on g.id = tn.game
           {0}
+          LIMIT 40
         """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
     )
 
+    return query
+
+
+def get_teams_info(list_teams):
+    conditions = []
+    # TODO: Make this in to list comprehension
+    for t_id in list_teams:
+        t_id = int(t_id)
+        conditions.append("t.id=%d" % t_id)
+
+    query = (
+        """
+            select t.id, t.name
+            from TEAM t
+            {0}
+        """.format(
+            "where %s" % (' or '.join(conditions)) if len(conditions) > 0 else '')
+        )
+    # print(query)
     return query
 
 
@@ -240,13 +260,23 @@ class Tourneys(Resource):
             json_teams = json.loads(row['teams'])
             teams = set(json_teams)
 
+            query_2 = conn.execute(get_teams_info(list(teams)))
+
+            list_teams = []
+            for team_row in query_2:
+                one_team = OrderedDict()
+                one_team['id'] = team_row['id']
+                one_team['name'] = team_row['name']
+                list_teams.append(one_team)
+
             tourney['id'] = row['id']
             tourney['name'] = row['name']
             tourney['slug'] = row['slug']
             tourney['begin_at'] = row['begin_at']
             tourney['end_at'] = row['end_at']
             tourney['game'] = game
-            tourney['teams'] = list(teams)
+            tourney['teams'] = list_teams
+            # tourney['teams'] = list(teams)
             list_tourneys.append(tourney)
         conn.close()
         return jsonify(list_tourneys)
@@ -267,13 +297,23 @@ class Tourney(Resource):
         json_teams = json.loads(row['teams'])
         teams = set(json_teams)
 
+        query_2 = conn.execute(get_teams_info(list(teams)))
+
+        list_teams = []
+        for team_row in query_2:
+            one_team = OrderedDict()
+            one_team['id'] = team_row['id']
+            one_team['name'] = team_row['name']
+            list_teams.append(one_team)
+
         tourney['id'] = row['id']
         tourney['name'] = row['name']
         tourney['slug'] = row['slug']
         tourney['begin_at'] = row['begin_at']
         tourney['end_at'] = row['end_at']
         tourney['game'] = game
-        tourney['teams'] = list(teams)
+        tourney['teams'] = list_teams
+        # tourney['teams'] = list(teams)
         # tourney['teams'] = row['teams']
         conn.close()
         return jsonify(tourney)
