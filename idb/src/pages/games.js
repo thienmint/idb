@@ -23,7 +23,6 @@ export default class Games extends Component {
             stateCopy.games = stateCopy.games.slice();
             stateCopy.games = Object.assign({}, response.data);
             this.setState(stateCopy);
-            console.log(this.state.games);
         }).catch(function (error) {
             console.log(error);
         });
