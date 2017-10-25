@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './../../pages/global.css'
+import './../../pages/global.css';
+import { Link } from 'react-router-dom';
 import NotFound from './../../static/images/image-not-found.png'
 
 class GridTeams extends Component {
@@ -20,10 +21,10 @@ class GridTeams extends Component {
                     <div className="attributes">
                         <div>Name: {this.props.value.name}</div>
                         {this.props.value.current_game ?
-                            <div>Current Game: {this.props.value.current_game.name}</div> :
+                            <div>Current Game: <Link to={`/games/${this.props.value.current_game.id}`}>{this.props.value.current_game.name}</Link></div> :
                             <div>Current Game: None found</div>}
                         {this.props.value.current_players[0] !== undefined ?
-                            <div>Current Players: {this.props.value.current_players[0].tag}</div> :
+                            <div>Current Players: <Link to={`/players/${this.props.value.current_players[0].id}`}>{this.props.value.current_players[0].tag}</Link></div> :
                             <div>Current Players: None found</div>}
                         <div>Acronym: {this.props.value.acronym}</div>
                     </div>
