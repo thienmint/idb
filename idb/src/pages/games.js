@@ -5,7 +5,7 @@ import './global.css'
 import League from '../static/images/League_of_Legends_logo.png';
 import CSGO from '../static/images/csgo.png';
 import SSBM from '../static/images/ssbm.jpeg';
-import GridGames from "../components/grid-details/games";
+import GridGames from "../components/grid-details/gridGames";
 
 class Games extends Component {
 

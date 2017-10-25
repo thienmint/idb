@@ -3,7 +3,7 @@ import Navbar from './../components/nav/navbar';
 import './global.css'
 import axios from 'axios';
 
-import GridPlayers from "../components/grid-details/players";
+import GridPlayers from "../components/grid-details/gridPlayers";
 
 
 export default class Players extends Component {
