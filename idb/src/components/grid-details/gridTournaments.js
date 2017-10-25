@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './../../pages/global.css'
 import NotFound from './../../static/images/image-not-found.png'
+import { Link } from 'react-router-dom';
 
 class GridTournaments extends Component {
     render() {
@@ -15,7 +16,7 @@ class GridTournaments extends Component {
                     <div className="attributes">
                         <div>Name: {this.props.value.name}</div>
                         <div>Slug: {this.props.value.slug}</div>
-                        <div>Game: {this.props.value.game.name}</div>
+                        <div>Game: <Link to={`/games/${this.props.value.game.id}`}>{this.props.value.game.name}</Link></div>
                         <div>Teams: {Object.keys(this.props.value.teams).length}</div>
                         <div>Start Date: {this.props.value.begin_at}</div>
                         <div>End Date: {this.props.value.end_at}</div>

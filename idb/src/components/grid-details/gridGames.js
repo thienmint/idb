@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './../../pages/global.css'
 import NotFound from './../../static/images/image-not-found.png'
 
-
 class GridGames extends Component {
     render() {
         return (

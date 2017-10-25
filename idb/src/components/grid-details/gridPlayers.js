@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './../../pages/global.css'
+import './../../pages/global.css';
 import { Link } from 'react-router-dom';
 
 import NotFound from './../../static/images/image-not-found.png'
