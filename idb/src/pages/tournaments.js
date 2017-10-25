@@ -5,7 +5,7 @@ import './global.css'
 import Dreamhack from '../static/images/dreamhack.png';
 import NALCS from '../static/images/league-championships.jpeg';
 import TI7 from '../static/images/int7.jpg';
-import GridTournaments from "../components/grid-details/tournaments";
+import GridTournaments from "../components/grid-details/gridTournaments";
 
 class Tournaments extends Component {
 

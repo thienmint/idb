@@ -5,7 +5,7 @@ import './global.css'
 import SoloMid from '../static/images/soloMid.jpg';
 import Fnatic from '../static/images/fnatic-logo-font.png';
 import Liquid from '../static/images/team-liquid-logo-B045C2BBCC-seeklogo.com.png';
-import GridTeams from "../components/grid-details/teams";
+import GridTeams from "../components/grid-details/gridTeams";
 
 class Teams extends Component {
     team_data = [
