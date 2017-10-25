@@ -11,18 +11,16 @@ import GridPlayers from "../components/grid-details/players";
 
 export default class Players extends Component {
 
-    componentWillMount() {
-        this.getData();
-    }
+    // componentWillMount() {
+    //     this.getData();
+    // }
 
     constructor(props) {
         super(props);
         this.state = {
             players: [],
         };
-    }
 
-    getData() {
         let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
         axios.get(proxyurl + apiurl + 'players').then((response) => {
@@ -31,7 +29,6 @@ export default class Players extends Component {
             stateCopy.players = stateCopy.players.slice();
             stateCopy.players = Object.assign({}, response.data);
             this.setState(stateCopy);
-            this.setState(this.state);
         }).catch(function (error) {
             console.log(error);
         });
