@@ -5,7 +5,7 @@ import './App.css';
 import Home from './pages/home';
 import About from './pages/about';
 import Players from './pages/players';
-import Page404 from './pages/Page404';
+import Page404 from './pages/404page';
 import Teams from './pages/teams';
 import Games from './pages/games';
 import Tournaments from './pages/tournaments';
