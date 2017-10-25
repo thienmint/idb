@@ -34,10 +34,3 @@ class GridTeams extends Component {
 }
 
 export default GridTeams;
-
-/* acronym:"GV"
-current_game:{id: 1, name: "League of Legends"}
-current_players:[]
-id:9
-image_url:"https://pandacdn.blob.core.windows.net/cdn/uploads/gravity-fg1nz3w2.png"
-name: "Gravity"*/
