@@ -12,7 +12,7 @@ class Navbar extends Component {
                 </button>
                 <Link to='/' className='navbar-brand nav-link'>eSport Guru</Link>
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <Link to='/about' className='nav-link'>About</Link>

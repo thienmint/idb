@@ -5,6 +5,7 @@ import './App.css';
 import Home from './pages/home';
 import About from './pages/about';
 import Players from './pages/players';
+import Page404 from './pages/Page404';
 import Teams from './pages/teams';
 import Games from './pages/games';
 import Tournaments from './pages/tournaments';
@@ -20,6 +21,7 @@ const Main = () => (
             <Route path='/about' component={About}/>
             <Route path='/players' component={Players}/>
             <Route path='players/:id' component={Player}/>
+            <Route path='/404page' component={Page404}/>
             <Route path='/teams' component={Teams}/>
             <Route path='/games' component={Games}/>
             <Route path='/tournaments' component={Tournaments}/>
