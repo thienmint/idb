@@ -65,6 +65,7 @@ def csgo():
 
 @app.route('/soloMid')
 def soloMid():
+<<<<<<< HEAD:app/app.py
     return render_template('soloMid.html')
 
 

@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
+
+nav {
+    font-family: 'Saira Semi Condensed', sans-serif;
+    height: 5%;
+}
+
+body {
+    font-family: 'Saira Semi Condensed', sans-serif;
+    background-color: #F0F0F0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: whitesmoke;
+}
+
+.navbar-light .navbar-brand {
+    color: whitesmoke;
+}
+
+.search-button {
+    background-color: transparent;
+    color: whitesmoke;
+    border-color: whitesmoke;
+}
+
+.search-button:hover {
+    background-color: lightslategray;
+    border-color: lightslategray;
+}
+
+.bg-faded {
+    background-color: #338481;
+}
+Link.nav-link {
+    color: whitesmoke;
+}
+Link.nav-link:hover {
+    color: lightslategray;
+}
+Link.nav-link:visited {
+    color: whitesmoke;
+}
