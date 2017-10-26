@@ -1,0 +1,41 @@
+{
+  "name": "idb",
+  "version": "0.1.0",
+  "private": true,
+  "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "emotion"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.17.0",
+    "moment": "^2.19.1",
+    "bootstrap": "^4.0.0-alpha.6",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-responsive-carousel": "^3.1.27",
+    "react-router": "latest",
+    "react-router-dom": "latest",
+    "react-scripts": "1.0.14",
+    "react-spinners": "^0.1.9"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
+  }
+}
