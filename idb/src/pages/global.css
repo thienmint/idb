@@ -68,7 +68,12 @@ body {
     margin-left: 1%;
     padding-top: 10px;
 }
-
+.page-title-top {
+    text-align: center;
+    width: 100%;
+    margin-left: 1%;
+    padding-top: 100px;
+}
 .circle {
     border-radius: 50%;
 }
