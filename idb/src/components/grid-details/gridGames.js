@@ -23,6 +23,12 @@ class GridGames extends Component {
                         <div>Summary: {this.props.value.summary}</div>
                         <div>Release Date: {this.props.value.release_date}</div>
                         <div>Websites: <Link to={this.props.value.website[0]}>{this.props.value.website[0]}</Link></div>
+                        <div>Players: {this.props.value.sample_players[0] !== undefined ? <Link to={`/players/${this.props.value.sample_players[0].id}`}>{this.props.value.sample_players[0].tag}</Link>
+                                        : 'None found'}
+                        </div>
+                        <div>Teams: {this.props.value.sample_teams[0] !== undefined ? <Link to={`/players/${this.props.value.sample_teams[0].id}`}>{this.props.value.sample_teams[0].name}</Link>
+                            : 'None found'}
+                        </div>
                     </div>
                 </div>
             </div>
