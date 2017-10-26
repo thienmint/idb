@@ -13,7 +13,7 @@ class AboutTools extends Component {
                 <div><b>Number of Unit Tests:</b> 525</div>
                 <br/>
                 <div><a href="http://docs.bealerj2260.apiary.io/#"> Apiary API </a></div>
-                <div><a href="https://github.com/bealerj2260/idb"> Github Repo </a></div>
+                <div><a href="https://github.com/thienmint/idb/"> Github Repo </a></div>
                 <div><a href="https://trello.com/b/kwxUEWxn/website-development"> Trello </a></div>
                 <br/>
                 <p><b> Data Sources</b></p>
