@@ -7,6 +7,7 @@ import League from '../static/images/League_of_Legends_logo.png';
 import CSGO from '../static/images/csgo.png';
 import SSBM from '../static/images/ssbm.jpeg';
 import GridGames from "../components/grid-details/gridGames";
+import { BarLoader } from 'react-spinners';
 
 export default class Games extends Component {
 
@@ -14,6 +15,7 @@ export default class Games extends Component {
         super(props);
         this.state = {
             games: [],
+            loading: true,
         };
 
         let proxyurl = 'https://cors-anywhere.herokuapp.com/';
@@ -22,6 +24,7 @@ export default class Games extends Component {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.games = stateCopy.games.slice();
             stateCopy.games = Object.assign({}, response.data);
+            stateCopy.loading = false;
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
@@ -90,11 +93,21 @@ export default class Games extends Component {
                 <Navbar/>
                 <h1 className="page-title">Games</h1>
                 <hr/>
-                <div className="container">
-                    {grid.map((item, index) => (
-                        <GameRow values={item} key={index}/>
-                    ))}
-                </div>
+                {this.state.loading ?
+                    <div className="loading">
+                        <BarLoader
+                            loading={this.state.loading}
+                            color={'#338481'}
+                            width={200}
+                        />
+                    </div>
+                    :
+                    <div className="container">
+                        {grid.map((item, index) => (
+                            <GameRow values={item} key={index}/>
+                        ))}
+                    </div>
+                }
             </div>
         );
     }

@@ -4,6 +4,7 @@ import './global.css'
 import axios from 'axios';
 
 import GridPlayers from "../components/grid-details/gridPlayers";
+import { BarLoader } from 'react-spinners';
 
 
 export default class Players extends Component {
@@ -12,6 +13,7 @@ export default class Players extends Component {
         super(props);
         this.state = {
             players: [],
+            loading: true,
         };
 
         let proxyurl = 'https://cors-anywhere.herokuapp.com/';
@@ -28,6 +30,7 @@ export default class Players extends Component {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.players = stateCopy.players.slice();
             stateCopy.players = Object.assign({}, response.data);
+            stateCopy.loading = false;
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
@@ -48,11 +51,21 @@ export default class Players extends Component {
                 <Navbar/>
                 <h1 className="page-title">Players</h1>
                 <hr/>
-                <div className="container">
-                    {grid.map((item, index) => (
-                        <PlayerRow values={item} key={index}/>
-                    ))}
-                </div>
+                {this.state.loading ?
+                    <div className="loading">
+                        <BarLoader
+                            loading={this.state.loading}
+                            color={'#338481'}
+                            width={200}
+                        />
+                    </div>
+                    :
+                    <div className="container">
+                        {grid.map((item, index) => (
+                            <PlayerRow values={item} key={index}/>
+                        ))}
+                    </div>
+                }
             </div>
         );
     }

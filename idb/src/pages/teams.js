@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './../components/nav/navbar';
 import './global.css'
 import axios from 'axios';
+import { BarLoader } from 'react-spinners';
 
 import SoloMid from '../static/images/soloMid.jpg';
 import Fnatic from '../static/images/fnatic-logo-font.png';
@@ -14,6 +15,7 @@ export default class Teams extends Component {
         super(props);
         this.state = {
             teams: [],
+            loading: true
         };
 
         let proxyurl = 'https://cors-anywhere.herokuapp.com/';
@@ -22,55 +24,13 @@ export default class Teams extends Component {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.teams = stateCopy.teams.slice();
             stateCopy.teams = Object.assign({}, response.data);
+            stateCopy.loading = false;
             this.setState(stateCopy);
             console.log(this.state.teams);
         }).catch(function (error) {
             console.log(error);
         });
     }
-
-    team_data = [
-        {
-            id: 1,
-            name: 'Team SoloMid',
-            games: ['League of Legends'],
-            roster: ['JHauntzer', 'Svenskeren', 'Bjergsen', 'Doublelift', 'Biofrost'],
-            date: '2009',
-            championships: ['NALCS #1 2017'],
-            logo_url: SoloMid,
-            location: 'California, USA'
-        },
-        {
-            id: 2,
-            name: 'Fnatic',
-            games: ['League of Legends'],
-            roster: ['Krimz', 'JW', 'flusha', 'golden', 'lekr0', 'jump'],
-            date: '2004',
-            championships: ['#2 DreamHack summer 2017'],
-            logo_url: Fnatic,
-            location: 'Europe'
-        },
-        {
-            id: 3,
-            name: 'Liquid',
-            games: ['League of Legends'],
-            roster: ['ken', 'hungrybox', 'chillindude', 'crunch', 'chudat'],
-            date: '2000',
-            championships: ['The International 2017'],
-            logo_url: Liquid,
-            location: 'Netherlands'
-        },
-        {
-            id: 4,
-            name: 'Team SoloMid',
-            games: ['League of Legends'],
-            roster: ['ken', 'hungrybox', 'chillindude', 'crunch', 'chudat'],
-            date: '2000',
-            championships: ['The International 2017'],
-            logo_url: Fnatic,
-            location: 'Netherlands'
-        }
-    ];
 
     render() {
         let numRows = Math.ceil(Object.keys(this.state.teams).length / 3);
@@ -86,11 +46,21 @@ export default class Teams extends Component {
                 <Navbar/>
                 <h1 className="page-title">Teams</h1>
                 <hr/>
-                <div className="container">
-                    {grid.map((item, index) => (
-                        <TeamRow values={item} key={index}/>
-                    ))}
-                </div>
+                {this.state.loading ?
+                    <div className="loading">
+                        <BarLoader
+                            loading={this.state.loading}
+                            color={'#338481'}
+                            width={200}
+                            />
+                    </div>
+                    :
+                    <div className="container">
+                        {grid.map((item, index) => (
+                            <TeamRow values={item} key={index}/>
+                        ))}
+                    </div>
+                }
             </div>
         );
     }
