@@ -381,16 +381,16 @@ class Game(Resource):
         conn.close()
         return jsonify(game)
 
-api.add_resource(Players, '/players')
+api.add_resource(Players, '/players', '/players/')
 api.add_resource(Player, '/players/<player_id>')
 
-api.add_resource(Teams, '/teams')
+api.add_resource(Teams, '/teams', '/teams/')
 api.add_resource(Team, '/teams/<team_id>')
 
-api.add_resource(Tourneys, '/tournaments')
+api.add_resource(Tourneys, '/tournaments', '/tournaments/')
 api.add_resource(Tourney, '/tournaments/<tourney_id>')
 
-api.add_resource(Games, '/games')
+api.add_resource(Games, '/games', '/games/')
 api.add_resource(Game, '/games/<game_id>')
 
 '=====================END API====================='
