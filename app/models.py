@@ -7,6 +7,7 @@ from flask_jsonpify import jsonify
 from collections import OrderedDict
 import os
 import json
+import random
 
 '=====================START CONFIGURATION====================='
 
@@ -92,6 +93,7 @@ def tourney_query(tourney_id = None):
 def get_teams_info(list_teams):
     conditions = []
     # TODO: Make this in to list comprehension
+    list_teams = random.sample(list_teams, min(len(list_teams), 30))
     for t_id in list_teams:
         t_id = int(t_id)
         conditions.append("t.id=%d" % t_id)
