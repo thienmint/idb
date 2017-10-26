@@ -11,7 +11,6 @@ import NotFound from './../../static/images/image-not-found.png'
 export default class DetailPlayer extends Component {
     constructor(props) {
         super(props);
-        console.log('we made it to the component!');
         this.state = {
             player: {}
         };
@@ -22,7 +21,6 @@ export default class DetailPlayer extends Component {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.player = Object.assign({}, response.data);
             this.setState(stateCopy);
-            console.log(this.state.player);
         }).catch(function (error) {
             console.log(error);
         });
