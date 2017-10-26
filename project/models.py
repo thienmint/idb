@@ -111,8 +111,25 @@ def get_teams_info(list_teams):
 def game_query(game_id = None):
     query = (
         """
-          select g.id, g.name, g.release_date, g.screenshots, g.summary, g.website
+          select g.id, g.name, g.release_date, g.screenshots, g.summary, g.website,
+                 pt.list_players, tt.list_teams
           from GAME g
+          left join (
+            select concat('[', 
+            substring_index(
+              group_concat(
+                json_object("id", p.id, "tag", p.tag)), ',', 20), ']') list_players, p.current_game
+            from PLAYER p
+            group by p.current_game
+          ) pt on pt.current_game = g.id
+          left join (
+            select concat('[', 
+              substring_index(
+                group_concat(
+                  json_object("id", t.id, "name", t.name)), ',', 20), ']') list_teams, t.current_game
+            from TEAM t
+            group by t.current_game
+          ) tt on tt.current_game = g.id
           {0}
         """.format("where g.id = %d" % int(game_id) if game_id is not None else "")
     )
@@ -124,6 +141,14 @@ def process_players(players_row):
     if players_row is not None:
         json_players = json.loads(players_row)
         return [OrderedDict([('id', player['id']), ('tag', player['tag'])]) for player in json_players]
+    else:
+        return list()
+
+
+def process_teams(teams_row):
+    if teams_row is not None:
+        json_teams = json.loads(teams_row)
+        return [OrderedDict([('id', team['id']), ('name', team['name'])]) for team in json_teams]
     else:
         return list()
 
@@ -276,7 +301,6 @@ class Tourneys(Resource):
             tourney['end_at'] = row['end_at']
             tourney['game'] = game
             tourney['teams'] = list_teams
-            # tourney['teams'] = list(teams)
             list_tourneys.append(tourney)
         conn.close()
         return jsonify(list_tourneys)
@@ -313,8 +337,6 @@ class Tourney(Resource):
         tourney['end_at'] = row['end_at']
         tourney['game'] = game
         tourney['teams'] = list_teams
-        # tourney['teams'] = list(teams)
-        # tourney['teams'] = row['teams']
         conn.close()
         return jsonify(tourney)
 
@@ -322,6 +344,8 @@ class Tourney(Resource):
 class Games(Resource):
     def get(self):
         conn = engine.connect()
+        _ = conn.execute("set @@session.group_concat_max_len=18446744073709551615")
+
         query = conn.execute(game_query())
         list_games = []
         for row in query:
@@ -332,7 +356,9 @@ class Games(Resource):
             game['release_date'] = str(row['release_date'])
             game['website'] = json.loads(row['website'])
             game['screenshots'] = json.loads(row['screenshots'])
-            list_games.append(game)
+            game['sample_players'] = process_players(row['list_players'])
+            game['sample_teams'] = process_teams(row['list_teams'])
+        list_games.append(game)
         conn.close()
         return jsonify(list_games)
 
@@ -340,6 +366,7 @@ class Games(Resource):
 class Game(Resource):
     def get(self, game_id):
         conn = engine.connect()
+        _ = conn.execute("set @@session.group_concat_max_len=18446744073709551615")
         query = conn.execute(game_query(game_id))
         row = query.fetchone()
         game = OrderedDict()
@@ -349,6 +376,8 @@ class Game(Resource):
         game['release_date'] = str(row['release_date'])
         game['website'] = json.loads(row['website'])
         game['screenshots'] = json.loads(row['screenshots'])
+        game['sample_players'] = process_players(row['list_players'])
+        game['sample_teams'] = process_teams(row['list_teams'])
         conn.close()
         return jsonify(game)
 
