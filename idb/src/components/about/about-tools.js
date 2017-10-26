@@ -8,9 +8,9 @@ class AboutTools extends Component {
             <div className="col center">
                 <h1 className="name">Other Information</h1>
                 <div className="details">
-                <div><b>Number of Commits:</b> 515</div>
-                <div><b>Number of Issues:</b> 520</div>
-                <div><b>Number of Unit Tests:</b> 525</div>
+                <div><b>Number of Commits:</b> 309</div>
+                <div><b>Number of Issues:</b> 50</div>
+                <div><b>Number of Unit Tests:</b> 11</div>
                 <br/>
                 <div><a href="http://docs.bealerj2260.apiary.io/#"> Apiary API </a></div>
                 <div><a href="https://github.com/thienmint/idb/"> Github Repo </a></div>
@@ -39,7 +39,7 @@ class AboutTools extends Component {
                 <div><b>Trello</b> was used for issue tracking.</div>
                 <div><b>PlanItPoker</b> was used to help estimate tasks.</div>
                 <br/>
-                    <a className="nav-link tech-report" href="https://utexas.box.com/s/4i6sws9tbudzfpzjzmn9p3h97pcrphm7">Technical Report</a>
+                    <a className="nav-link tech-report" href="https://utexas.box.com/s/khvs6l4cwm1qo5krsxal6r7zepqbu95c">Technical Report</a>
                 </div>
             </div>
         );
