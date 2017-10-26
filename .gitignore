@@ -10,6 +10,13 @@
 *.ids
 
 #GCloud
+*/lib/
+
+#Jupyter
+*.ipynb
+
+#Persia
+app.sublime-workspace
 project/lib/
 
 #npm

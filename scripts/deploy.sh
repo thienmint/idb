@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
- echo "START PRE-DEPLOYMENT: Authentication"
- echo "CURRENT PATH: `pwd`"
+echo "START PRE-DEPLOYMENT: Authentication"
+echo "CURRENT PATH: `pwd`"
 
 # [START auth]
 # Decrypt the credentials we added to the repo using the key we added with the Travis command line tool
