@@ -14,3 +14,6 @@ project/lib/
 
 #Jupyter
 *.ipynb
+
+#Persia
+app.sublime-workspace
