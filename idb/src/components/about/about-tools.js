@@ -30,6 +30,7 @@ class AboutTools extends Component {
                 <b>Tools</b>
                 <br/>
                 <div><b>BootStrap</b> was used to find templates for our frontend.</div>
+                <div><b>React</b> was used to dynamically create the website based on our data.</div>
                 <div><b>Apiary</b> was used to document our APIs.</div>
                 <div><b>Github</b> was used for version control.</div>
                 <div><b>Flask</b> is our mirco web framework that we used for back-end routing.</div>
