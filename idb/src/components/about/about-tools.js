@@ -38,6 +38,7 @@ class AboutTools extends Component {
                 <div><b>Slack</b> was used for group communication.</div>
                 <div><b>Trello</b> was used for issue tracking.</div>
                 <div><b>PlanItPoker</b> was used to help estimate tasks.</div>
+                <div><b>StarUML</b> was used to model database UML</div>
                 <br/>
                     <a className="nav-link tech-report" href="https://utexas.box.com/s/khvs6l4cwm1qo5krsxal6r7zepqbu95c">Technical Report</a>
                 </div>
