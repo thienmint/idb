@@ -10,10 +10,11 @@ import Teams from './pages/teams';
 import Games from './pages/games';
 import Tournaments from './pages/tournaments';
 
-import Player from "./components/detail-pages/player";
-
-import { Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import DetailGame from "./components/detail-pages/detailGame";
+import DetailTeam from "./components/detail-pages/detailTeam";
+import DetailPlayer from "./components/detail-pages/detailPlayer";
+import DetailTournament from "./components/detail-pages/detailTournaments";
 
 const Main = () => (
     <main>
@@ -21,12 +22,14 @@ const Main = () => (
             <Route exact path='/' component={Home}/>
             <Route exact path='/about' component={About}/>
             <Route exact path='/players' component={Players}/>
-            <Route path='players/:id' component={Player}/>
-            <Route path='/404page' component={Page404}/>
+            <Route path='/players/:id' component={DetailPlayer}/>
             <Route exact path='/teams' component={Teams}/>
+            <Route path='/teams/:id' component={DetailTeam}/>
             <Route exact path='/games' component={Games}/>
             <Route path='/games/:id' component={DetailGame}/>
-            <Route exactmpath='/tournaments' component={Tournaments}/>
+            <Route exact path='/tournaments' component={Tournaments}/>
+            <Route path='/tournaments/:id' component={DetailTournament}/>
+            <Route path='*' exact={true} component={Page404}/>
         </Switch>
     </main>
 )

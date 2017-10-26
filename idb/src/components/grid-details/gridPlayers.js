@@ -9,16 +9,16 @@ class GridPlayers extends Component {
         return (
             <div className="col">
             { this.props.value ?
-                <div key={this.props.id}>
+                <div key={this.props.value.id}>
                     <div className="thumbnail">
-                        <a href="">
+                        <Link  to={`/players/${this.props.value.id}`}>
                             {this.props.value.image_url &&
                             <img className="img-fluid" src={this.props.value.image_url} alt={this.props.value.name}/>
                             }
                             {!this.props.value.image_url &&
                             <img className="img-fluid" src={NotFound} alt={this.props.value.name}/>
                             }
-                        </a>
+                        </Link>
                     </div>
                     <div className="attributes">
                         <div>Tag: {this.props.value.tag}</div>
