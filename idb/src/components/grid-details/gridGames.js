@@ -21,7 +21,7 @@ class GridGames extends Component {
                     <div className="attributes">
                         <div>Name: {this.props.value.name}</div>
                         <div>Summary: {this.props.value.summary}</div>
-                        <div>Release Date: {this.props.release_date}</div>
+                        <div>Release Date: {this.props.value.release_date}</div>
                         <div>Websites: <Link to={this.props.value.website[0]}>{this.props.value.website[0]}</Link></div>
                     </div>
                 </div>
