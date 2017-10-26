@@ -52,6 +52,14 @@ export default class DetailTournament extends Component {
                                 <div className="col-4 lists detail-columns">{this.state.tournament.slug}</div>
                             </div>
                             <div className="row align-items-start">
+                                <div className="col-4 offset-2 labels lists">Start Date</div>
+                                <div className="col-4 lists detail-columns">{this.state.tournament.begin_at}</div>
+                            </div>
+                            <div className="row align-items-start">
+                                <div className="col-4 offset-2 labels lists">End Date</div>
+                                <div className="col-4 lists detail-columns">{this.state.tournament.end_at}</div>
+                            </div>
+                            <div className="row align-items-start">
                                 <div className="col-4 offset-2 labels lists">Game</div>
                                 <div className="col-4 lists detail-columns">
                                     {this.state.tournament.game ?
@@ -69,19 +77,11 @@ export default class DetailTournament extends Component {
                                         'None found'}
                                 </div>
                             </div>
-                            <div className="row align-items-start">
-                                <div className="col-4 offset-2 labels lists">Start Date</div>
-                                <div className="col-4 lists detail-columns">{this.state.tournament.begin_at}</div>
-                            </div>
-                            <div className="row align-items-start">
-                                <div className="col-4 offset-2 labels lists">End Date</div>
-                                <div className="col-4 lists detail-columns">{this.state.tournament.end_at}</div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
                 }
-                <NotFound/>
             </div>
         )
     }
