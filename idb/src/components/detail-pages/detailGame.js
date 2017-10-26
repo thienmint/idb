@@ -19,7 +19,6 @@ export default class DetailGame extends Component {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.game = Object.assign({}, response.data);
             this.setState(stateCopy);
-            console.log(this.state.game);
         }).catch(function (error) {
             console.log(error);
         });
