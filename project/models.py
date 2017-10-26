@@ -358,7 +358,7 @@ class Games(Resource):
             game['screenshots'] = json.loads(row['screenshots'])
             game['sample_players'] = process_players(row['list_players'])
             game['sample_teams'] = process_teams(row['list_teams'])
-        list_games.append(game)
+            list_games.append(game)
         conn.close()
         return jsonify(list_games)
 
