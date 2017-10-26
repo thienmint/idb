@@ -2,6 +2,10 @@
   "name": "idb",
   "version": "0.1.0",
   "private": true,
+  "babel": {
+    "presets": [ "react", "es2015", "stage-0"],
+    "plugins": ["emotion"]
+  },
   "dependencies": {
     "axios": "^0.17.0",
     "react": "^16.0.0",
@@ -9,7 +13,8 @@
     "react-responsive-carousel": "^3.1.27",
     "react-router": "latest",
     "react-router-dom": "latest",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "react-spinners": "^0.1.9"
   },
   "scripts": {
     "start": "react-scripts start",

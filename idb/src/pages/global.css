@@ -89,3 +89,10 @@ body {
 .row {
     padding-bottom: 15px;
 }
+
+.loading {
+    text-align: center;
+    width: 100%;
+    margin-left: 45vw;
+    padding-top: 20vh;
+}
