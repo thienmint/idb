@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import Navbar from './../components/nav/navbar';
 import './global.css'
 import axios from 'axios';
-import { BarLoader } from 'react-spinners';
+import { DotLoader } from 'react-spinners';
 
-import SoloMid from '../static/images/soloMid.jpg';
-import Fnatic from '../static/images/fnatic-logo-font.png';
-import Liquid from '../static/images/team-liquid-logo-B045C2BBCC-seeklogo.com.png';
 import GridTeams from "../components/grid-details/gridTeams";
 
 export default class Teams extends Component {
@@ -26,7 +23,6 @@ export default class Teams extends Component {
             stateCopy.teams = Object.assign({}, response.data);
             stateCopy.loading = false;
             this.setState(stateCopy);
-            console.log(this.state.teams);
         }).catch(function (error) {
             console.log(error);
         });
@@ -48,10 +44,10 @@ export default class Teams extends Component {
                 <hr/>
                 {this.state.loading ?
                     <div className="loading">
-                        <BarLoader
+                        <DotLoader
                             loading={this.state.loading}
                             color={'#338481'}
-                            width={200}
+                            size={200}
                             />
                     </div>
                     :

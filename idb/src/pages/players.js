@@ -4,7 +4,7 @@ import './global.css'
 import axios from 'axios';
 
 import GridPlayers from "../components/grid-details/gridPlayers";
-import { BarLoader } from 'react-spinners';
+import { DotLoader } from 'react-spinners';
 
 
 export default class Players extends Component {
@@ -53,10 +53,10 @@ export default class Players extends Component {
                 <hr/>
                 {this.state.loading ?
                     <div className="loading">
-                        <BarLoader
+                        <DotLoader
                             loading={this.state.loading}
                             color={'#338481'}
-                            width={200}
+                            size={200}
                         />
                     </div>
                     :

@@ -4,7 +4,7 @@ import './global.css'
 import axios from 'axios';
 
 import GridTournaments from "../components/grid-details/gridTournaments";
-import { BarLoader } from 'react-spinners';
+import { DotLoader } from 'react-spinners';
 
 export default class Tournaments extends Component {
 
@@ -23,7 +23,6 @@ export default class Tournaments extends Component {
             stateCopy.tournaments = Object.assign({}, response.data);
             stateCopy.loading = false;
             this.setState(stateCopy);
-            console.log(this.state.tournaments);
         }).catch(function (error) {
             console.log(error);
         });
@@ -45,10 +44,10 @@ export default class Tournaments extends Component {
                 <hr/>
                 {this.state.loading ?
                     <div className="loading">
-                        <BarLoader
+                        <DotLoader
                             loading={this.state.loading}
                             color={'#338481'}
-                            width={200}
+                            size={200}
                         />
                     </div>
                     :
