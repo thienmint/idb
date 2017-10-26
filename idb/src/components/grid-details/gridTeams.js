@@ -9,14 +9,14 @@ class GridTeams extends Component {
             <div className="col">
                 <div key={this.props.id}>
                     <div className="thumbnail">
-                        <a href="">
+                        <Link to={`/teams/${this.props.value.id}`}>
                             {this.props.value.image_url &&
                             <img className="img-fluid" src={this.props.value.image_url} alt={this.props.value.name}/>
                             }
                             {!this.props.value.image_url &&
                             <img className="img-fluid" src={NotFound} alt={this.props.value.name}/>
                             }
-                            </a>
+                            </Link>
                     </div>
                     <div className="attributes">
                         <div>Name: {this.props.value.name}</div>

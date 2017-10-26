@@ -9,9 +9,9 @@ class GridTournaments extends Component {
             <div className="col">
                 <div key={this.props.id}>
                     <div className="thumbnail">
-                        <a href="">
+                        <Link to={`/tournaments/${this.props.value.id}`}>
                             <img className="img-fluid" src={NotFound} alt={this.props.value.slug}/>
-                        </a>
+                        </Link>
                     </div>
                     <div className="attributes">
                         <div>Name: {this.props.value.name}</div>
