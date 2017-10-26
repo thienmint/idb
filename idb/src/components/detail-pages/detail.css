@@ -8,8 +8,10 @@
 
 .detail-image {
     text-align: center;
+    background-color: whitesmoke;
+    padding-top: 15px;
 }
 
 .img {
-    max-height: 25vh
+    max-height: 25vh;
 }
