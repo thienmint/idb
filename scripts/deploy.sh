@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
- echo "START PRE-DEPLOYMENT: auth.sh"
+ echo "START PRE-DEPLOYMENT: Authentication"
  echo "CURRENT PATH: `pwd`"
 
 # [START auth]
@@ -30,13 +30,13 @@ fi
 
  echo "START DEPLOYMENT: deploy.sh"
  echo "CURRENT PATH: `pwd`"
- echo "Install the Python dependencies"
- pip install -r requirements.txt -t project/lib/
+# echo "Install the Python dependencies"
+# pip install -r requirements.txt -t project/lib/
 
- cd project
- echo "Inside project now"
+ cd idb
+ echo "Inside `pwd` now"
     echo "---- Deployment starts"
     gcloud app deploy app.yaml
     echo "---- Deployment ends"
  cd ..
- echo "In root directory now"
+ echo "Back in `pwd` directory now"
