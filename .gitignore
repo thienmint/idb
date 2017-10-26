@@ -10,7 +10,7 @@
 *.ids
 
 #GCloud
-project/lib/
+*/lib/
 
 #Jupyter
 *.ipynb
