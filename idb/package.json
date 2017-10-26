@@ -3,11 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "babel": {
-    "presets": [ "react", "es2015", "stage-0"],
-    "plugins": ["emotion"]
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      "emotion"
+    ]
   },
   "dependencies": {
     "axios": "^0.17.0",
+    "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-responsive-carousel": "^3.1.27",

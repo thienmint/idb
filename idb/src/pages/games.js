@@ -7,7 +7,7 @@ import League from '../static/images/League_of_Legends_logo.png';
 import CSGO from '../static/images/csgo.png';
 import SSBM from '../static/images/ssbm.jpeg';
 import GridGames from "../components/grid-details/gridGames";
-import { BarLoader } from 'react-spinners';
+import { DotLoader } from 'react-spinners';
 
 export default class Games extends Component {
 
@@ -95,10 +95,10 @@ export default class Games extends Component {
                 <hr/>
                 {this.state.loading ?
                     <div className="loading">
-                        <BarLoader
+                        <DotLoader
                             loading={this.state.loading}
                             color={'#338481'}
-                            width={200}
+                            size={200}
                         />
                     </div>
                     :
