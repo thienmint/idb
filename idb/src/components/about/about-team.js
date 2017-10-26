@@ -24,9 +24,9 @@ class AboutTeam extends Component {
                                 a B.S.A. in Computer Science before joining the Blackbaud team full-time in January. </p>
                             <b>Responsibilities:</b>
                             <p>Frontend</p>
-                            <div><b>Number of Commits:</b> 106</div>
-                            <div><b>Number of Issues:</b> 107</div>
-                            <div><b>Number of Unit Tests:</b> 108</div>
+                            <div><b>Number of Commits:</b> 126</div>
+                            <div><b>Number of Issues:</b> 23</div>
+                            <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
                     <div className="col">
@@ -40,9 +40,9 @@ class AboutTeam extends Component {
                                 She will be graduating in Winter of 2017 with a B.S.A in Computer Science. </p>
                             <b>Responsibilities:</b>
                             <p>Scrum Stuff, Backend</p>
-                            <div><b>Number of Commits:</b> 109</div>
-                            <div><b>Number of Issues:</b> 110</div>
-                            <div><b>Number of Unit Tests:</b> 111</div>
+                            <div><b>Number of Commits:</b> 44</div>
+                            <div><b>Number of Issues:</b> 22</div>
+                            <div><b>Number of Unit Tests:</b> 11</div>
                         </div>
                     </div>
                     <div className="col">
@@ -52,12 +52,12 @@ class AboutTeam extends Component {
                         </div>
                         <div className="details">
                             <p>Kevin Zhang likes to spend his free time working on personal projects and practicing technical interviews.
-                                He is efficient in Swift and has developed iOS app(s). He will be graduating in Spring 2019. </p>
+                               He is extremely passionate about graphics. He will be graduating in Spring 2019. </p>
                             <b>Responsibilities:</b>
                             <p>Database, Backend</p>
-                            <div><b>Number of Commits:</b> 112</div>
-                            <div><b>Number of Issues:</b> 113</div>
-                            <div><b>Number of Unit Tests:</b> 114</div>
+                            <div><b>Number of Commits:</b> 25</div>
+                            <div><b>Number of Issues:</b> 16</div>
+                            <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
                 </div>
@@ -72,9 +72,9 @@ class AboutTeam extends Component {
                                 He will be graduating in 2017-2018.</p>
                             <b>Responsibilities:</b>
                             <p>Database, Platform</p>
-                            <div><b>Number of Commits:</b> 115</div>
-                            <div><b>Number of Issues:</b> 116</div>
-                            <div><b>Number of Unit Tests:</b> 117</div>
+                            <div><b>Number of Commits:</b> 58</div>
+                            <div><b>Number of Issues:</b> 15</div>
+                            <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
                     <div className="col">
@@ -86,9 +86,9 @@ class AboutTeam extends Component {
                             <p>Eric Liu will be graduating in spring of 2019.</p>
                             <b>Responsibilities:</b>
                             <p>Frontend</p>
-                            <div><b>Number of Commits:</b> 118</div>
-                            <div><b>Number of Issues:</b> 119</div>
-                            <div><b>Number of Unit Tests:</b> 120</div>
+                            <div><b>Number of Commits:</b> 56</div>
+                            <div><b>Number of Issues:</b> 25</div>
+                            <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
                 </div>
