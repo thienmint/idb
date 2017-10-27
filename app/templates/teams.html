@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--styles-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/templates.css">
+    <link rel="stylesheet" href="static/css/about.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <style type="text/css">
+        body {
+            font-family: 'Saira Semi Condensed', sans-serif;
+        }
+    </style>
+</head>
+
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="height: 5%;">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="./">eSport Guru</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="./about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./players">Players</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./games">Games</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./teams">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./tournaments">Tournaments</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1 style="width: 100%; margin-left: 1%; padding-top: 10px; text-align: center">Teams</h1>
+
+<hr>
+
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col">
+            <div class="thumbnail">
+                <a href="./solomid">
+                    <img class="img-fluid" src="../static/images/soloMid.jpg" alt="why isn't it showing">
+                </a>
+            </div>
+            <div class="attributes">
+                <div>Name: Team SoloMid</div>
+                <div>Games: <a href="./league">League of Legends</a></div>
+                <div>Roster: Hauntzer, Svenskeren, Bjergsen, <a href="./yiliang">Doublelift</a>, Biofrost</div>
+                <div>Date founded: 2009</div>
+                <div> Championships: <a href="./nalcs">NALCS #1 2017</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="thumbnail">
+                <a href="./fnatic">
+                    <img class="img-fluid" src="../static/images/fnatic-logo-font.png" alt="why isn't it showing">
+                </a>
+            </div>
+            <div class="attributes">
+                <div>Name: Fnatic</div>
+                <div>Games: <a href="./league">League of Legends</a>, <a href="./csgo">CS:GO</a></div>
+                <div>Roster: Krimz, JW, flusha, golden, lekr0, jumpy</div>
+                <div>Date founded: 2004</div>
+                <div>Championships: <a href="./dreamhack">#2 Dreamhack summer 2017</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="thumbnail">
+                <a href="/liquid">
+                    <img class="img-fluid" src="../static/images/team-liquid-logo-B045C2BBCC-seeklogo.com.png" alt="why isn't it showing">
+                </a>
+            </div>
+            <div class="attributes">
+                <div>Name: Liquid</div>
+                <div>Games: <a href="./league">League of Legends</a>, <a href="./csgo">CS:GO</a></div>
+                <div>Roster: ken, hungrybox, chillindude, crunch, chudat</div>
+                <div>Date founded: 2000</div>
+                <div>Championships: <a href="./ti7">The International 2017</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
