@@ -15,9 +15,8 @@ export default class DetailTournament extends Component {
             found: true,
         };
 
-        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(proxyurl + apiurl + 'tournaments/' + this.props.match.params.id).then((response) => {
+        axios.get(apiurl + 'tournaments/' + this.props.match.params.id).then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.tournament = Object.assign({}, response.data);
             this.setState(stateCopy);

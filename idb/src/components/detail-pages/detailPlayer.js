@@ -15,9 +15,8 @@ export default class DetailPlayer extends Component {
             player: {}
         };
 
-        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(proxyurl + apiurl + 'players/' + this.props.match.params.id).then((response) => {
+        axios.get(apiurl + 'players/' + this.props.match.params.id).then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.player = Object.assign({}, response.data);
             this.setState(stateCopy);

@@ -16,9 +16,8 @@ export default class Players extends Component {
             loading: true,
         };
 
-        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(proxyurl + apiurl + 'players').then((response) => {
+        axios.get(apiurl + 'players').then((response) => {
             response.data.sort(function (player1, player2) {
                 if (player1.image_url !== null) {
                     return -1;
