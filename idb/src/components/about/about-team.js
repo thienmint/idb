@@ -68,11 +68,11 @@ class AboutTeam extends Component {
                             <img src={Thien} className="img-fluid circle" alt=""/>
                         </div>
                         <div className="details">
-                            <p>Thien is an avid gamer who also like to spend time doing coding challenges on HackerRank.
-                                He will be graduating in 2017-2018.</p>
+                            <p>Thien is a passionate and ambitious developers. He loves spending time playing video games
+                            and cooking. He has been an SWE intern with MaxPoint Inc. on their Big Data Platform team.</p>
                             <b>Responsibilities:</b>
-                            <p>Database, Platform</p>
-                            <div><b>Number of Commits:</b> 58</div>
+                            <p>Database, Platform, Backend</p>
+                            <div><b>Number of Commits:</b> 60</div>
                             <div><b>Number of Issues:</b> 15</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
