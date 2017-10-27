@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect
 from flask_restful import Resource, Api
+from flask_cors import CORS, cross_origin
 from sqlalchemy import create_engine
 import MySQLdb
 from json import dumps
@@ -20,6 +21,8 @@ engine = create_engine(
 
 app = Flask(__name__)
 app.config["JSON_SORT_KEYS"] = False
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
 api = Api(app)
 
 '=====================END CONFIGURATION====================='
@@ -27,6 +30,7 @@ api = Api(app)
 
 
 @app.route('/')
+@cross_origin()
 def hello_world():
     return render_template('api.html')
 
