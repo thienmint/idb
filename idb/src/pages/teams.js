@@ -15,9 +15,8 @@ export default class Teams extends Component {
             loading: true
         };
 
-        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(proxyurl + apiurl + 'teams').then((response) => {
+        axios.get(apiurl + 'teams').then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.teams = stateCopy.teams.slice();
             stateCopy.teams = Object.assign({}, response.data);

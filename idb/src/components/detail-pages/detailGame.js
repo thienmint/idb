@@ -14,9 +14,8 @@ export default class DetailGame extends Component {
             game: {}
         };
 
-        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(proxyurl + apiurl + 'games/' + this.props.match.params.id).then((response) => {
+        axios.get(apiurl + 'games/' + this.props.match.params.id).then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.game = Object.assign({}, response.data);
             this.setState(stateCopy);
