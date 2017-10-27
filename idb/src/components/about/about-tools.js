@@ -10,15 +10,15 @@ class AboutTools extends Component {
                 <div className="details">
                 <div><b>Number of Commits:</b> 309</div>
                 <div><b>Number of Issues:</b> 50</div>
-                <div><b>Number of Unit Tests:</b> 15</div>
+                <div><b>Number of Unit Tests:</b> 11</div>
                 <br/>
-                <div><a href="https://docs.thienmint.apiary.io/"> Apiary API </a></div>
+                <div><a href="http://docs.bealerj2260.apiary.io/#"> Apiary API </a></div>
                 <div><a href="https://github.com/thienmint/idb/"> Github Repo </a></div>
                 <div><a href="https://trello.com/b/kwxUEWxn/website-development"> Trello </a></div>
                 <br/>
                 <p><b> Data Sources</b></p>
                 <div><a href="https://api.pandascore.co/rest"> Pandascore API</a></div>
-                <div><a href="https://www.igdb.com/api"> IGDB API</a></div>
+                <div><a href="https://api.challonge.com/v1"> Challonge API</a></div>
                 <br/>
                 <div>We utilized the python modules requests and json to extract data from our chosen external APIs,
                 PandaScore and IGDB respectfully. For the player, tournament, and team models, we used the PandaScore's
@@ -41,7 +41,6 @@ class AboutTools extends Component {
                 <div><b>StarUML</b> was used to model database UML</div>
                 <br/>
                     <a className="nav-link tech-report" href="https://utexas.box.com/s/khvs6l4cwm1qo5krsxal6r7zepqbu95c">Technical Report</a>
-                    <a className="nav-link tech-report" href="https://utexas.box.com/s/3c0u7f13h77ia188gp8r7hlgfqbrjaap">UML Diagram </a>
                 </div>
             </div>
         );
