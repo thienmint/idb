@@ -42,7 +42,7 @@ class AboutTeam extends Component {
                             <p>Scrum Stuff, Backend</p>
                             <div><b>Number of Commits:</b> 44</div>
                             <div><b>Number of Issues:</b> 22</div>
-                            <div><b>Number of Unit Tests:</b> 15</div>
+                            <div><b>Number of Unit Tests:</b> 11</div>
                         </div>
                     </div>
                     <div className="col">
