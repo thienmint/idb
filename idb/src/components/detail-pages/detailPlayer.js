@@ -80,8 +80,8 @@ export default class DetailPlayer extends Component {
                             <div className="row align-items-start">
                                 <div className="col-4 offset-2 labels lists">Team</div>
                                 <div className="col-4 lists detail-columns">
-                                    {this.state.player.team ?
-                                        <Link to={`/teams/${this.state.player.team.id}`}>{this.state.player.team.name}</Link>:
+                                    {this.state.player.current_team ?
+                                        <Link to={`/teams/${this.state.player.current_team.id}`}>{this.state.player.current_team.name}</Link>:
                                         'None found'}
                                 </div>
                             </div>
