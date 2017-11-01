@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, Markup
 from flask_restful import Resource, Api
 from flask_cors import CORS, cross_origin
 from sqlalchemy import create_engine
@@ -9,6 +9,7 @@ from collections import OrderedDict
 import os
 import json
 import random
+import markdown
 
 '=====================START CONFIGURATION====================='
 
@@ -32,7 +33,17 @@ api = Api(app)
 @app.route('/')
 @cross_origin()
 def hello_world():
-    return render_template('api.html')
+    content = """
+Chapter
+=======
+
+Section
+-------
+
+* Item 1
+* Item 2"""
+    content = Markup(markdown.markdown(content))
+    return render_template('api.html', **locals())
 
 
 @app.errorhandler(404)
