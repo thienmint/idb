@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, Markup
 from flask_restful import Resource, Api
 from flask_cors import CORS, cross_origin
+from flaskext.markdown import Markdown
 from sqlalchemy import create_engine
 import MySQLdb
 from json import dumps
@@ -10,6 +11,7 @@ import os
 import json
 import random
 import markdown
+
 
 '=====================START CONFIGURATION====================='
 
@@ -21,6 +23,7 @@ engine = create_engine(
         os.environ['DB_NAME']))
 
 app = Flask(__name__)
+Markdown(app)
 app.config["JSON_SORT_KEYS"] = False
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
@@ -32,16 +35,10 @@ api = Api(app)
 
 @app.route('/')
 @cross_origin()
-def hello_world():
-    content = """
-Chapter
-=======
+def home():
+    with open('TEST.md', 'r') as myfile:
+        content = myfile.read()
 
-Section
--------
-
-* Item 1
-* Item 2"""
     content = Markup(markdown.markdown(content))
     return render_template('api.html', **locals())
 
