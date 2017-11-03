@@ -53,7 +53,7 @@ if [ "$1" == "dev" ]; then
       echo "---- Done copying to remote"
       sleep 10
       echo "---- Opening remote file"
-      gcloud compute ssh dev-frontend --command="cat /home/tvo/deploy.sh" --zone=us-central1-c
+      gcloud compute ssh dev-frontend --command=". /home/tvo/deploy_apache.sh" --zone=us-central1-c
       echo "---- Done opening remote file"
       sleep 10
    cd ..
