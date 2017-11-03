@@ -1,5 +1,7 @@
 sudo: false
 language: python
+node_js:
+  - "8"
 cache:
   directories:
   - "$HOME/google-cloud-sdk/"
@@ -29,7 +31,7 @@ deploy:
   - provider: script
     script: scripts/deploy.sh dev
     on:
-      branch: dev
+      branch: platform/deploy-to-ce
   # deploy master to production
   - provider: script
     script: scripts/deploy.sh master
