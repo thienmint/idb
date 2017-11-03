@@ -47,7 +47,7 @@ if [ "$1" == "dev" ]; then
       npm install
       npm run build
       echo "---- SCP to CE host"
-      gcloud compute scp build/ dev-frontend:/home/tvo --recurse
+      gcloud compute scp build/ dev-frontend:/home/tvo --recurse --zone=us-central1-c
       echo "---- Done deploying artifact"
    cd ..
    echo "Back in `pwd` directory now"
