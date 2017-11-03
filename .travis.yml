@@ -20,6 +20,7 @@ before_install:
   fi
 - source /home/travis/google-cloud-sdk/path.bash.inc
 - gcloud version
+- ssh-keygen -q -N "" -f ~/.ssh/google_compute_engine
 install:
 - gcloud -q components update gae-python
 script:
