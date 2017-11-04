@@ -19,12 +19,18 @@ INSERT_TOURNEY = "INSERT INTO TOURNEY(id, name, slug, begin_at, end_at, teams, g
 LEAGUE_URL = "https://upload.wikimedia.org/wikipedia/commons/d/d3/LoL_New_Logo.png"
 
 #
+# Queries
+#
+
+LOL_TOURNEY_URL = "UPDATE TOURNEY2 SET league_image = \'{0}\' WHERE game = {1} and league_image is null".format(LEAGUE_URL, 1) 
+PLAYER_HOMETOWN = "UPDATE PLAYER SET hometown = \'{0}\' WHERE hometown IS null".format("Unknown")
+PLAYER_REAL_NAME = "Update PLAYER SET first_name = \'{0}\', last_name = \'{1}\' WHERE first_name is null and last_name is null".format("Unknown", "")
+
+#
 # Public Function Definitions
 #
 
-def add_tourney_urls (db, cur):
-  query = "UPDATE TOURNEY2 SET league_image = \'{0}\' WHERE game = {1} and league_image is null".format(LEAGUE_URL, 1)
-  # query = "UPDATE TOURNEY2 SET league_image = null WHERE league_image = \'1\'"#.format(1, LEAGUE_URL)
+def update_db (db, cur, query):
   try:
     cur.execute(query)
     db.commit()
@@ -41,14 +47,13 @@ if __name__ == "__main__" :
   cur = db.cursor()
 
   # Make sure character set is utf8
-  # db.set_character_set('utf8')
   cur.execute('SET NAMES utf8;')
   cur.execute('SET CHARACTER SET utf8;')
   cur.execute('SET character_set_connection=utf8;')
 
   cur.execute('SET FOREIGN_KEY_CHECKS=0')
 
-  add_tourney_urls(db, cur)
+  update_db(db, cur, PLAYER_REAL_NAME)
 
   cur.execute('SET FOREIGN_KEY_CHECKS=1')
 
