@@ -9,7 +9,7 @@ import Page404 from './pages/404page';
 import Teams from './pages/teams';
 import Games from './pages/games';
 import Tournaments from './pages/tournaments';
-import XML from '/sitemap.xml'
+import XML from './sitemap.xml'
 
 import { Route, Switch } from 'react-router-dom';
 import DetailGame from "./components/detail-pages/detailGame";
