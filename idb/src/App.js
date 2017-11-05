@@ -9,6 +9,7 @@ import Page404 from './pages/404page';
 import Teams from './pages/teams';
 import Games from './pages/games';
 import Tournaments from './pages/tournaments';
+import XML from '/sitemap.xml'
 
 import { Route, Switch } from 'react-router-dom';
 import DetailGame from "./components/detail-pages/detailGame";
@@ -22,6 +23,8 @@ const Main = () => (
             <Route exact path='/' component={Home}/>
             <Route exact path='/about' component={About}/>
             <Route exact path='/players' component={Players}/>
+            <Route exact path='/xml' component={XML}/>
+
             <Route path='/players/:id' component={DetailPlayer}/>
             <Route exact path='/teams' component={Teams}/>
             <Route path='/teams/:id' component={DetailTeam}/>
