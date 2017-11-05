@@ -23,7 +23,7 @@ const Main = () => (
             <Route exact path='/' component={Home}/>
             <Route exact path='/about' component={About}/>
             <Route exact path='/players' component={Players}/>
-            <Route exact path='/xml' component={XML}/>
+            <Route exact path='/sitemap' component={XML}/>
 
             <Route path='/players/:id' component={DetailPlayer}/>
             <Route exact path='/teams' component={Teams}/>
