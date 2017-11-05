@@ -22,7 +22,7 @@ engine = create_engine(
         os.environ['DB_HOST'],
         os.environ['DB_NAME']))
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 Markdown(app)
 app.config["JSON_SORT_KEYS"] = False
 cors = CORS(app)
@@ -36,7 +36,7 @@ api = Api(app)
 @app.route('/')
 @cross_origin()
 def home():
-    with open('TEST.md', 'r') as myfile:
+    with open('apiary.md', 'r') as myfile:
         content = myfile.read()
 
     content = Markup(markdown.markdown(content))
