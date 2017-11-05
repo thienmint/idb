@@ -1,6 +1,3 @@
-FORMAT: 1A  
-HOST: https://api.esportguru.com
-
 # eSportGuru
 
 eSport Guru is an internet database for eSports players. Data provided consists of
