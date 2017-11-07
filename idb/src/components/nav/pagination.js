@@ -15,7 +15,7 @@ export class Pagination extends Component {
         let pages = [];
         for (let i = 0; i < this.state.numberOfPages; i++) {
             pages.push(
-                <li><a className="page-link" href="#" key={i}>{i+1}</a></li>
+                <li><a className="page-link" onClick={this.props.onClick(i)} key={i}>{i+1}</a></li>
             )
         }
         console.log(pages);
