@@ -14,6 +14,7 @@ export default class Games extends Component {
         this.state = {
             games: [],
             loading: true,
+            displayedGames: []
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -21,6 +22,7 @@ export default class Games extends Component {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.games = stateCopy.games.slice();
             stateCopy.games = Object.assign({}, response.data);
+            stateCopy.displayedGames = Object.values(stateCopy.games).slice(0, 30);
             stateCopy.loading = false;
             this.setState(stateCopy);
         }).catch(function (error) {
@@ -28,16 +30,20 @@ export default class Games extends Component {
         });
     }
 
+    updatePage(page) {
+        let startingIndex = 30 * page;
+        this.state.displayedGames = Object.values(this.state.games).slice(startingIndex, startingIndex + 30);
+    }
+
     render() {
-        let numRows = Math.ceil(Object.keys(this.state.games).length / 3);
-        let games = Object.values(this.state.games);
+        let numRows = Math.ceil(Object.keys(this.state.displayedGames).length / 3);
+        let games = Object.values(this.state.displayedGames);
         let grid = [];
         let row = [];
         for(let i = 0; i < numRows; i++){
             row = games.splice(0,3);
             grid.push(row);
         }
-        console.log(grid);
         return (
             <div>
                 <Navbar/>
@@ -53,7 +59,7 @@ export default class Games extends Component {
                     </div>
                     :
                     <div className="container">
-                        <Pagination/>
+                        <Pagination onClick={this.updatePage.bind(this)}/>
                         {grid.map((item, index) => (
                             <GameRow values={item} key={index}/>
                         ))}
