@@ -10,6 +10,13 @@ body {
     background-color: #F0F0F0;
 }
 
+@media all and (max-width: 991px) {
+    /* For mobile phones: */
+    .navbar {
+        padding: 0;
+    }
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: whitesmoke;
 }
