@@ -180,11 +180,6 @@ def process_teams(teams_row):
 
 
 def form_regex(search_str):
-    """
-
-    :param search_str: Normal string. EX: "a b"
-    :return: Inclusive regex with space delimiter. EX: "a|b"
-    """
     # Game
     if search_str == "":
         return None
@@ -477,7 +472,7 @@ class Search(Resource):
     def get(self, search_str):
         search_str = form_regex(search_str)
         if search_str is None:
-            return jsonify([])
+            return jsonify(["Please enter at least one keyword."])
 
         search_results = OrderedDict()
         conn = engine.connect()
