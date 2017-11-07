@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import GridGames from "../components/grid-details/gridGames";
 import { DotLoader } from 'react-spinners';
+import {Pagination} from "../components/nav/pagination";
 
 export default class Games extends Component {
 
@@ -52,6 +53,7 @@ export default class Games extends Component {
                     </div>
                     :
                     <div className="container">
+                        <Pagination/>
                         {grid.map((item, index) => (
                             <GameRow values={item} key={index}/>
                         ))}
