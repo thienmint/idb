@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, Markup
 from flask_restful import Resource, Api
 from flask_cors import CORS, cross_origin
-from flaskext.markdown import Markdown
+# from flaskext.markdown import Markdown
 from sqlalchemy import create_engine
 import MySQLdb
 from json import dumps
@@ -10,7 +10,7 @@ from collections import OrderedDict
 import os
 import json
 import random
-import markdown
+# import markdown
 
 
 '=====================START CONFIGURATION====================='
@@ -23,7 +23,7 @@ engine = create_engine(
         os.environ['DB_NAME']))
 
 app = Flask(__name__, static_url_path='/static')
-Markdown(app)
+# Markdown(app)
 app.config["JSON_SORT_KEYS"] = False
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
@@ -36,11 +36,7 @@ api = Api(app)
 @app.route('/')
 @cross_origin()
 def home():
-    with open('apiary.md', 'r') as myfile:
-        content = myfile.read()
-
-    content = Markup(markdown.markdown(content))
-    return render_template('api.html', **locals())
+    return render_template('api.html')
 
 
 @app.errorhandler(404)
