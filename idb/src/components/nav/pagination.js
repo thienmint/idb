@@ -2,25 +2,27 @@ import React, { Component } from 'react';
 import './navbar.css';
 
 export class Pagination extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPage: 0,
+            numberOfPages: 3,
+        }
+    }
+
     render() {
+        let pages = [];
+        for (let i = 0; i < this.state.numberOfPages; i++) {
+            pages.push(
+                <li><a className="page-link" href="#" key={i}>{i+1}</a></li>
+            )
+        }
+        console.log(pages);
         return (
             <nav>
                 <ul className="pagination">
-                    <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li><a className="page-link" href="#">1</a></li>
-                    <li><a className="page-link" href="#">2</a></li>
-                    <li><a className="page-link" href="#">3</a></li>
-                    <li>
-                        <a className="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span className="sr-only">Next</span>
-                        </a>
-                    </li>
+                    {pages}
                 </ul>
             </nav>
         );
