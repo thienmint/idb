@@ -99,6 +99,20 @@ def tourney_query(tourney_id=None):
 
     return query
 
+def tourney2_query(tourney_id = None):
+    query = (
+        """
+          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
+                 tn.league, tn.league_image, g.name as game_name
+          from TOURNEY2 tn
+          join GAME g on g.id = tn.game
+          {0}
+          LIMIT 40
+        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
+    )
+
+    return query
+
 
 def get_teams_info(list_teams):
     conditions = []
@@ -284,7 +298,7 @@ class Team(Resource):
 class Tourneys(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute(tourney_query())
+        query = conn.execute(tourney2_query())
         list_tourneys = []
         for row in query:
             tourney = OrderedDict()
@@ -313,7 +327,11 @@ class Tourneys(Resource):
             tourney['end_at'] = row['end_at']
             tourney['game'] = game
             tourney['teams'] = list_teams
+            tourney['league'] = row['league']
+            tourney['image_url'] = row['league_image']
+
             list_tourneys.append(tourney)
+        
         conn.close()
         return jsonify(list_tourneys)
 
@@ -321,7 +339,7 @@ class Tourneys(Resource):
 class Tourney(Resource):
     def get(self, tourney_id):
         conn = engine.connect()
-        query = conn.execute(tourney_query(tourney_id))
+        query = conn.execute(tourney2_query(tourney_id))
         row = query.fetchone()
         tourney = OrderedDict()
 
@@ -349,6 +367,9 @@ class Tourney(Resource):
         tourney['end_at'] = row['end_at']
         tourney['game'] = game
         tourney['teams'] = list_teams
+        tourney['league'] = row['league']
+        tourney['image_url'] = row['league_image']
+
         conn.close()
         return jsonify(tourney)
 
