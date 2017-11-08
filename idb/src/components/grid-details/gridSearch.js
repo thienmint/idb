@@ -12,6 +12,8 @@ class GridSearch extends Component {
                     <div className="attributes">
                         <Link to={`/games/${this.props.value.id}`}>
                         <div> {this.props.value.name}</div>
+                        <div> {this.props.value.tag}</div>
+
                         </Link>
                     </div>
                 </div>
