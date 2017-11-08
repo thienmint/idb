@@ -14,7 +14,8 @@ export default class Games extends Component {
             games: [],
             loading: true,
             grid: [],
-            sortOPT: 'Name'
+            sortOpt: 'Name',
+            sortOrder: 'default'
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -30,9 +31,9 @@ export default class Games extends Component {
             console.log(error);
         });
 
-        this.sortAsc = this.sortAsc.bind(this);
-        this.sortDesc = this.sortDesc.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.sortOptChange = this.sortOptChange.bind(this);
+        this.sortHandle = this.sortHandle.bind(this);
+        this.sortGrid = this.sortGrid.bind(this);
     }
 
     static makeGrid(gameState) {
@@ -48,36 +49,39 @@ export default class Games extends Component {
         return grid
     }
 
-    sortAsc() {
+    sortHandle(event) {
         let stateCopy = Object.assign([], this.state);
+        stateCopy.sortOrder = event.target.value;
+        this.sortGrid(stateCopy)
+    }
 
-        if(this.state.sortOPT === "Name")
-            stateCopy.games = stateCopy.games.sort((x, y) => (x.name.toLowerCase().localeCompare(y.name.toLowerCase())));
-        else
-            stateCopy.game = stateCopy.games;
+    sortOptChange(event) {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.sortOpt = event.target.value;
+        this.sortGrid(stateCopy)
+    }
+
+    sortGrid(stateCopy) {
+        switch (stateCopy.sortOrder) {
+            case "asc":
+                switch (stateCopy.sortOpt) {
+                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (x.name.toLowerCase().localeCompare(y.name.toLowerCase())));
+                    break;
+                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (x.release_date.toLowerCase().localeCompare(y.release_date.toLowerCase())));
+                } break;
+            case "desc":
+                switch (stateCopy.sortOpt) {
+                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (y.name.toLowerCase().localeCompare(x.name.toLowerCase())));
+                        break;
+                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (y.release_date.toLowerCase().localeCompare(x.release_date.toLowerCase())));
+                } break;
+            default: stateCopy.games = this.state.games;
+        }
 
         stateCopy.loading = false;
         stateCopy.grid = Games.makeGrid(stateCopy.games);
 
-        this.setState(stateCopy);
-    }
-
-    sortDesc() {
-        let stateCopy = Object.assign([], this.state);
-
-        if(this.state.sortOPT === "Name")
-            stateCopy.games = stateCopy.games.sort((x, y) => (y.name.toLowerCase().localeCompare(x.name.toLowerCase())));
-        else
-            stateCopy.game = stateCopy.games;
-
-        stateCopy.loading = false;
-        stateCopy.grid = Games.makeGrid(stateCopy.games);
-
-        this.setState(stateCopy);
-    }
-
-    handleChange(event) {
-        this.setState({sortOPT: event.target.value});
+        this.setState(stateCopy)
     }
 
     render() {
@@ -89,18 +93,17 @@ export default class Games extends Component {
                 <hr/>
 
                 <p>Sort by: &nbsp;
-                <select value={this.state.sortOPT} onChange={this.handleChange}>
+                <select value={this.state.sortOpt} onChange={this.sortOptChange}>
                     <option value="Name">Name</option>
                     <option value="Date">Release Date</option>
                 </select>
-                </p>
 
-                <button onClick={this.sortAsc}>
-                    Ascending
-                </button>
-                <button onClick={this.sortDesc}>
-                    Descending
-                </button>
+                <select value={this.state.sortOrder} onChange={this.sortHandle}>
+                    <option value="default" className="default-option">Select</option>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+                </p>
 
                 <br/>
 
