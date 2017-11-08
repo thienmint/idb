@@ -22,7 +22,6 @@ export default class SearchPage extends Component {
             stateCopy.games = Object.assign({}, response.data);
             stateCopy.loading = false;
 
-            // console.log(stateCopy.games);
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
