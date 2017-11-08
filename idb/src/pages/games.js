@@ -13,35 +13,101 @@ export default class Games extends Component {
         this.state = {
             games: [],
             loading: true,
+            grid: [],
+            sortOpt: 'Name',
+            sortOrder: 'default'
         };
 
         let apiurl = 'http://api.esportguru.com/';
         axios.get(apiurl + 'games').then((response) => {
-            let stateCopy = Object.assign({}, this.state);
+            let stateCopy = Object.assign([], this.state);
             stateCopy.games = stateCopy.games.slice();
-            stateCopy.games = Object.assign({}, response.data);
+            stateCopy.games = Object.assign([], response.data);
             stateCopy.loading = false;
+
+            stateCopy.grid = Games.makeGrid(stateCopy.games);
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
         });
+
+        this.sortOptChange = this.sortOptChange.bind(this);
+        this.sortHandle = this.sortHandle.bind(this);
+        this.sortGrid = this.sortGrid.bind(this);
     }
 
-    render() {
-        let numRows = Math.ceil(Object.keys(this.state.games).length / 3);
-        let games = Object.values(this.state.games);
+    static makeGrid(gameState) {
+        let numItemPerRow = 3;
+        let numRows = Math.ceil(Object.keys(gameState).length / numItemPerRow);
+        let games = Object.values(gameState);
         let grid = [];
         let row = [];
         for(let i = 0; i < numRows; i++){
-            row = games.splice(0,3);
+            row = games.splice(0,numItemPerRow);
             grid.push(row);
         }
-        console.log(grid);
+        return grid
+    }
+
+    sortHandle(event) {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.sortOrder = event.target.value;
+        this.sortGrid(stateCopy)
+    }
+
+    sortOptChange(event) {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.sortOpt = event.target.value;
+        this.sortGrid(stateCopy)
+    }
+
+    sortGrid(stateCopy) {
+        switch (stateCopy.sortOrder) {
+            case "asc":
+                switch (stateCopy.sortOpt) {
+                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (x.name.toLowerCase().localeCompare(y.name.toLowerCase())));
+                    break;
+                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (x.release_date.toLowerCase().localeCompare(y.release_date.toLowerCase())));
+                } break;
+            case "desc":
+                switch (stateCopy.sortOpt) {
+                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (y.name.toLowerCase().localeCompare(x.name.toLowerCase())));
+                        break;
+                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (y.release_date.toLowerCase().localeCompare(x.release_date.toLowerCase())));
+                } break;
+            default: stateCopy.games = this.state.games;
+        }
+
+        stateCopy.loading = false;
+        stateCopy.grid = Games.makeGrid(stateCopy.games);
+
+        this.setState(stateCopy)
+    }
+
+    render() {
+        console.log(this.state.grid);
         return (
             <div>
                 <Navbar/>
                 <h1 className="page-title">Games</h1>
                 <hr/>
+
+                <p>Sort by: &nbsp;
+                <select value={this.state.sortOpt} onChange={this.sortOptChange}>
+                    <option value="Name">Name</option>
+                    <option value="Date">Release Date</option>
+                </select>
+                    &nbsp;
+                <select value={this.state.sortOrder} onChange={this.sortHandle}>
+                    <option value="default" className="default-option">Select</option>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+                </p>
+
+                <br/>
+
+
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
@@ -52,7 +118,7 @@ export default class Games extends Component {
                     </div>
                     :
                     <div className="container">
-                        {grid.map((item, index) => (
+                        {this.state.grid.map((item, index) => (
                             <GameRow values={item} key={index}/>
                         ))}
                     </div>
