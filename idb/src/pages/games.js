@@ -14,7 +14,9 @@ export default class Games extends Component {
         this.state = {
             games: [],
             loading: true,
-            displayedGames: []
+            displayedGames: [],
+            numberOfPages: 0,
+            currentPage: 0,
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -23,16 +25,22 @@ export default class Games extends Component {
             stateCopy.games = stateCopy.games.slice();
             stateCopy.games = Object.assign({}, response.data);
             stateCopy.displayedGames = Object.values(stateCopy.games).slice(0, 30);
+            stateCopy.numberOfPages = Math.ceil(Object.keys(stateCopy.games).length / 30);
+            stateCopy.currentPage = 0;
             stateCopy.loading = false;
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
         });
+
+        this.updatePage = this.updatePage.bind(this);
     }
 
     updatePage(page) {
         let startingIndex = 30 * page;
-        this.state.displayedGames = Object.values(this.state.games).slice(startingIndex, startingIndex + 30);
+        let stateCopy = Object.assign({}, this.state);
+        stateCopy.displayedGames = Object.values(this.state.games).slice(startingIndex, startingIndex + 30);
+        this.setState(stateCopy);
     }
 
     render() {
@@ -59,7 +67,10 @@ export default class Games extends Component {
                     </div>
                     :
                     <div className="container">
-                        <Pagination onClick={this.updatePage.bind(this)}/>
+                        <Pagination
+                            numberOfPages={this.state.numberOfPages}
+                            onClick={this.updatePage}
+                        />
                         {grid.map((item, index) => (
                             <GameRow values={item} key={index}/>
                         ))}
@@ -76,7 +87,7 @@ class GameRow extends Component {
         let games = [];
         games.push(
             row.map((game, index) => (
-                React.createElement(GridGames, {value: game})
+                React.createElement(GridGames, {value: game, key: index})
             ))
         );
         return (
