@@ -96,3 +96,7 @@ body {
     margin-left: 45vw;
     padding-top: 20vh;
 }
+
+.default-option {
+    display: none;
+}
