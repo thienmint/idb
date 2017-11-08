@@ -13,35 +13,71 @@ export default class Games extends Component {
         this.state = {
             games: [],
             loading: true,
+            grid: []
         };
 
         let apiurl = 'http://api.esportguru.com/';
         axios.get(apiurl + 'games').then((response) => {
-            let stateCopy = Object.assign({}, this.state);
+            let stateCopy = Object.assign([], this.state);
             stateCopy.games = stateCopy.games.slice();
-            stateCopy.games = Object.assign({}, response.data);
+            stateCopy.games = Object.assign([], response.data);
             stateCopy.loading = false;
+
+            stateCopy.grid = Games.makeGrid(stateCopy.games);
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
         });
+
+        this.sortAsc = this.sortAsc.bind(this);
+        this.sortDesc = this.sortDesc.bind(this);
     }
 
-    render() {
-        let numRows = Math.ceil(Object.keys(this.state.games).length / 3);
-        let games = Object.values(this.state.games);
+    static makeGrid(gameState) {
+        let numRows = Math.ceil(Object.keys(gameState).length / 3);
+        let games = Object.values(gameState);
         let grid = [];
         let row = [];
         for(let i = 0; i < numRows; i++){
             row = games.splice(0,3);
             grid.push(row);
         }
-        console.log(grid);
+        return grid
+    }
+
+    sortAsc() {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.games = stateCopy.games.sort((x, y) => (x.name.toLowerCase().localeCompare(y.name.toLowerCase())));
+        stateCopy.loading = false;
+        stateCopy.grid = Games.makeGrid(stateCopy.games);
+
+        this.setState(stateCopy);
+    }
+
+    sortDesc() {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.games = stateCopy.games.sort((x, y) => (y.name.toLowerCase().localeCompare(x.name.toLowerCase())));
+        stateCopy.loading = false;
+        stateCopy.grid = Games.makeGrid(stateCopy.games);
+
+        this.setState(stateCopy);
+    }
+
+    render() {
+        console.log(this.state.grid);
         return (
             <div>
                 <Navbar/>
                 <h1 className="page-title">Games</h1>
                 <hr/>
+                Sort: <br/>
+                <button onClick={this.sortAsc}>
+                    Ascending
+                </button>
+                <button onClick={this.sortDesc}>
+                    Descending
+                </button>
+
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
@@ -52,7 +88,7 @@ export default class Games extends Component {
                     </div>
                     :
                     <div className="container">
-                        {grid.map((item, index) => (
+                        {this.state.grid.map((item, index) => (
                             <GameRow values={item} key={index}/>
                         ))}
                     </div>
