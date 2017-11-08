@@ -67,7 +67,7 @@ class TournamentRow extends Component {
         let tournaments = [];
         tournaments.push(
             row.map((tournament, index) => (
-                React.createElement(GridTournaments, {value: tournament})
+                React.createElement(GridTournaments, {value: tournament, key: index})
             ))
         );
         return (
