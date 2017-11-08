@@ -97,7 +97,7 @@ export default class Games extends Component {
                     <option value="Name">Name</option>
                     <option value="Date">Release Date</option>
                 </select>
-
+                    &nbsp;
                 <select value={this.state.sortOrder} onChange={this.sortHandle}>
                     <option value="default" className="default-option">Select</option>
                     <option value="asc">Ascending</option>
