@@ -37,6 +37,22 @@ body {
     color: #338481;
 }
 
+.pagination {
+    padding-left: 5%;
+}
+
+nav ul {
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+button {
+    cursor: pointer;
+}
+
 Link.nav-link {
     color: whitesmoke;
 }
