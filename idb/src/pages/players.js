@@ -76,7 +76,7 @@ class PlayerRow extends Component {
         let players = [];
         players.push(
             row.map((player, index) => (
-                React.createElement(GridPlayers, {value: player})
+                React.createElement(GridPlayers, {value: player, key: index})
             ))
         );
     return (
