@@ -81,7 +81,7 @@ export default class Players extends Component {
     }
 
     sortGrid(stateCopy) {
-        console.log("SortGrid")
+        // console.log("SortGrid")
         switch (stateCopy.sortOrder) {
             case "asc":
                 switch (stateCopy.sortOpt) {
@@ -130,7 +130,7 @@ export default class Players extends Component {
     }
 
     render() {
-        console.log(this.state.players);
+        // console.log(this.state.players);
       return (
             <div>
                 <Navbar/>
