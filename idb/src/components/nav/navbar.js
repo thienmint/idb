@@ -17,8 +17,7 @@ class Navbar extends Component {
             });
         };
     handleClick = () => {
-    console.log(this.state.query);
-    // window.location = '/search/' + this.state.query;
+    window.location = '/search/' + this.state.query;
         // console.log(this.state.query);
 
     // this.context.location.transitionTo('login');
