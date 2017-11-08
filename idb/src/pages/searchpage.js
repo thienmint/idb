@@ -26,23 +26,25 @@ export default class SearchPage extends Component {
         }).catch(function (error) {
             console.log(error);
         });
+        console.log(this.props.match.params.id);
     }
 
     render() {
         let games = Object.values(this.state.games);
+        // console.log(this.state.games[0]);
         let grid = [];
 
         for(let i = 0; i < Math.ceil(Object.keys(this.state.games).length); i++){
                 let row = games.splice(0,1);
                 // console.log(row[0]);
-                console.log(row[0].length)
+                // console.log(row[0].length);
                 for(let sub = 0; sub<row.length;sub++)
                 {
                     let row2 = row[sub];
                     for(let sub2 = 0; sub2< row2.length;sub++ )
                     {
                         let part = row2.splice(0,1);
-                        console.log(part);
+                        // console.log(part);
                         grid.push(part);
                         
                     }
@@ -50,8 +52,8 @@ export default class SearchPage extends Component {
 
         }
 
-        console.log(grid);
-        console.log("sendhelp");
+        // console.log(grid);
+        // console.log("sendhelp");
         return (
             <div>
                 <Navbar/>
