@@ -49,7 +49,7 @@ nav ul li {
     display: inline-block;
 }
 
-button {
+nav ul li a {
     cursor: pointer;
 }
 
