@@ -12,35 +12,117 @@ export default class Teams extends Component {
         super(props);
         this.state = {
             teams: [],
-            loading: true
+            loading: true,
+            grid: [],
+            sortOpt: 'Name',
+            sortOrder: 'default'
         };
 
         let apiurl = 'http://api.esportguru.com/';
         axios.get(apiurl + 'teams').then((response) => {
-            let stateCopy = Object.assign({}, this.state);
+            let stateCopy = Object.assign([], this.state);
             stateCopy.teams = stateCopy.teams.slice();
-            stateCopy.teams = Object.assign({}, response.data);
+            stateCopy.teams = Object.assign([], response.data);
+            stateCopy.grid = Teams.makeGrid(stateCopy.teams);
             stateCopy.loading = false;
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
         });
+
+        this.sortOptChange = this.sortOptChange.bind(this);
+        this.sortHandle = this.sortHandle.bind(this);
+        this.sortGrid = this.sortGrid.bind(this);
     }
 
-    render() {
-        let numRows = Math.ceil(Object.keys(this.state.teams).length / 3);
-        let teams = Object.values(this.state.teams);
+    static makeGrid(teamState) {
+        let numItemPerRow = 3;
+        let numRows = Math.ceil(Object.keys(teamState).length / numItemPerRow);
+        let teams = Object.values(teamState);
         let grid = [];
         let row = [];
         for(let i = 0; i < numRows; i++){
-            row = teams.splice(0,3);
+            row = teams.splice(0, numItemPerRow);
             grid.push(row);
         }
+        return grid
+    }
+
+    sortHandle(event) {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.sortOrder = event.target.value;
+        this.sortGrid(stateCopy)
+    }
+
+    sortOptChange(event) {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.sortOpt = event.target.value;
+        this.sortGrid(stateCopy)
+    }
+    static compareString(x, y) {
+        if(x === null && y !== null)
+            return -1;
+        else if(x !== null && y === null)
+            return 1;
+        else if(x === null && y === null)
+            return 0;
+        else
+            return x.toLowerCase().localeCompare(y.toLowerCase())
+    }
+
+    sortGrid(stateCopy) {
+        // console.log("SortGrid")
+        switch (stateCopy.sortOrder) {
+            case "asc":
+                switch (stateCopy.sortOpt) {
+                    case "Name":
+                        stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(x.name, y.name)));
+                        break;
+                    case "Acronym":
+                        stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(x.acronym, y.acronym)));
+                        break;
+
+                } break;
+            case "desc":
+                switch (stateCopy.sortOpt) {
+                    case "Name":
+                        stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(y.name, x.name)));
+                        break;
+                    case "Acronym":
+                        stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(y.acronym, x.acronym)));
+                        break;
+                } break;
+            default: stateCopy.teams = this.state.players;
+        }
+
+        stateCopy.loading = false;
+        stateCopy.grid = Teams.makeGrid(stateCopy.teams);
+
+        this.setState(stateCopy)
+    }
+
+    render() {
+        // console.log(this.state.grid);
         return (
             <div>
                 <Navbar/>
                 <h1 className="page-title">Teams</h1>
                 <hr/>
+
+                <p>Sort by: &nbsp;
+                    <select value={this.state.sortOpt} onChange={this.sortOptChange}>
+                        <option value="Name">Name</option>
+                        <option value="Acronym">Acronym</option>
+                    </select>
+                    &nbsp;
+                    <select value={this.state.sortOrder} onChange={this.sortHandle}>
+                        <option value="default" className="default-option">Select</option>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </p>
+
+                <br/>
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
@@ -51,7 +133,7 @@ export default class Teams extends Component {
                     </div>
                     :
                     <div className="container">
-                        {grid.map((item, index) => (
+                        {this.state.grid.map((item, index) => (
                             <TeamRow values={item} key={index}/>
                         ))}
                     </div>
