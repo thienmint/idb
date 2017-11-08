@@ -16,7 +16,7 @@ export default class SearchPage extends Component {
         };
 
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(apiurl + 'games').then((response) => {
+        axios.get(apiurl + 'search').then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.games = stateCopy.games.slice();
             stateCopy.games = Object.assign({}, response.data);

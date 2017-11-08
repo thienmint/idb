@@ -16,6 +16,8 @@ import DetailGame from "./components/detail-pages/detailGame";
 import DetailTeam from "./components/detail-pages/detailTeam";
 import DetailPlayer from "./components/detail-pages/detailPlayer";
 import DetailTournament from "./components/detail-pages/detailTournaments";
+import DetailSearch from "./components/detail-pages/detailSearch";
+
 
 const Main = () => (
     <main>
@@ -23,8 +25,7 @@ const Main = () => (
             <Route exact path='/' component={Home}/>
 
             <Route exact path='/search' component={Search}/>
-
-
+            <Route path='/search/:id' component={DetailSearch}/> 
             <Route exact path='/about' component={About}/>
             <Route exact path='/players' component={Players}/>
             <Route path='/players/:id' component={DetailPlayer}/>
