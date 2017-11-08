@@ -49,6 +49,17 @@ export default class Games extends Component {
         return grid
     }
 
+    static compareString(x, y) {
+        if(x === null && y !== null)
+            return -1;
+        else if(x !== null && y === null)
+            return 1;
+        else if(x === null && y === null)
+            return 0;
+        else
+            return x.toLowerCase().localeCompare(y.toLowerCase())
+    }
+
     sortHandle(event) {
         let stateCopy = Object.assign([], this.state);
         stateCopy.sortOrder = event.target.value;
@@ -65,15 +76,15 @@ export default class Games extends Component {
         switch (stateCopy.sortOrder) {
             case "asc":
                 switch (stateCopy.sortOpt) {
-                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (x.name.toLowerCase().localeCompare(y.name.toLowerCase())));
+                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(x.name, y.name)));
                     break;
-                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (x.release_date.toLowerCase().localeCompare(y.release_date.toLowerCase())));
+                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(x.release_date, y.release_date)));
                 } break;
             case "desc":
                 switch (stateCopy.sortOpt) {
-                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (y.name.toLowerCase().localeCompare(x.name.toLowerCase())));
+                    case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(y.name, x.name)));
                         break;
-                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (y.release_date.toLowerCase().localeCompare(x.release_date.toLowerCase())));
+                    case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(y.release_date, x.release_date)));
                 } break;
             default: stateCopy.games = this.state.games;
         }
@@ -85,7 +96,7 @@ export default class Games extends Component {
     }
 
     render() {
-        console.log(this.state.grid);
+        // console.log(this.state.grid);
         return (
             <div>
                 <Navbar/>
