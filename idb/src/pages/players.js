@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import GridPlayers from "../components/grid-details/gridPlayers";
 import { DotLoader } from 'react-spinners';
+import {Pagination} from "../components/nav/pagination";
 
 
 export default class Players extends Component {
@@ -14,6 +15,9 @@ export default class Players extends Component {
         this.state = {
             players: [],
             loading: true,
+            displayedPlayers: [],
+            numberOfPages: 0,
+            currentPage: 0,
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -29,16 +33,27 @@ export default class Players extends Component {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.players = stateCopy.players.slice();
             stateCopy.players = Object.assign({}, response.data);
+            stateCopy.displayedPlayers = Object.values(stateCopy.players).slice(0,30);
+            stateCopy.numberOfPages = Math.ceil(Object.keys(stateCopy.players).length / 30);
             stateCopy.loading = false;
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
         });
+
+        this.updatePage = this.updatePage.bind(this);
+    }
+
+    updatePage(page) {
+        let startingIndex = 30 * page;
+        let stateCopy = Object.assign({}, this.state);
+        stateCopy.displayedPlayers = Object.values(this.state.players).slice(startingIndex, startingIndex + 30);
+        this.setState(stateCopy);
     }
 
     render() {
-        let numRows = Math.ceil(Object.keys(this.state.players).length / 3);
-        let players = Object.values(this.state.players);
+        let numRows = Math.ceil(Object.keys(this.state.displayedPlayers).length / 3);
+        let players = Object.values(this.state.displayedPlayers);
         let grid = [];
         let row = [];
         for(let i = 0; i < numRows; i++){
@@ -60,6 +75,10 @@ export default class Players extends Component {
                     </div>
                     :
                     <div className="container">
+                        <Pagination
+                            numberOfPages={this.state.numberOfPages}
+                            onClick={this.updatePage}
+                        />
                         {grid.map((item, index) => (
                             <PlayerRow values={item} key={index}/>
                         ))}
