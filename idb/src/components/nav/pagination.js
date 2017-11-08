@@ -22,7 +22,7 @@ class PaginationBoxes extends Component {
         let pages = [];
         for (let i = 0; i < this.props.numberOfPages; i++) {
             pages.push(
-                <li key={i}><button className="page-link" onClick={this.props.onClick.bind(this, i)} >{i+1}</button></li>
+                <li key={i}><a className="page-link" onClick={this.props.onClick.bind(this, i)} >{i+1}</a></li>
             )
         }
         return <div>
