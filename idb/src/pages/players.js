@@ -176,7 +176,10 @@ export default class Players extends Component {
         if(stateCopy.hometownEmpty)
             stateCopy.players = stateCopy.players.filter((x) => (x.hometown !== null && x.hometown !== ""));
 
-        stateCopy.grid = Players.makeGrid(stateCopy.players);
+        stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
+
+        stateCopy.grid = Players.makeGrid(stateCopy.displayedPlayers);
         this.setState(stateCopy)
     }
 
@@ -185,7 +188,11 @@ export default class Players extends Component {
         stateCopy.players = stateCopy.sourcePlayers;
         stateCopy.nameEmpty = false;
         stateCopy.hometownEmpty = false;
-        stateCopy.grid = Players.makeGrid(stateCopy.players);
+
+        stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
+
+        stateCopy.grid = Players.makeGrid(stateCopy.displayedPlayers);
         this.setState(stateCopy)
     }
 
@@ -222,7 +229,7 @@ export default class Players extends Component {
                         </span>
                     &nbsp;
                     <span>
-                            Acronym &nbsp;
+                            Tag &nbsp;
                         <input
                             name="tagCheck"
                             type="checkbox"
