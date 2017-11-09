@@ -22,6 +22,7 @@ export default class Players extends Component {
             sortOpt: 'Tag',
             sortOrder: 'default',
             originalPlayers: [],
+            sourcePlayers: [],
             nameEmpty: false,
             hometownEmpty: false
         };
@@ -40,6 +41,7 @@ export default class Players extends Component {
             let stateCopy = Object.assign([], this.state);
             stateCopy.players = stateCopy.players.slice();
             stateCopy.players = Object.assign([], response.data);
+            stateCopy.sourcePlayers = stateCopy.players;
             stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
             stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
             stateCopy.loading = false;
@@ -180,7 +182,7 @@ export default class Players extends Component {
 
     resetFilter() {
         let stateCopy = Object.assign([], this.state);
-        stateCopy.players = stateCopy.originalPlayers;
+        stateCopy.players = stateCopy.sourcePlayers;
         stateCopy.nameEmpty = false;
         stateCopy.hometownEmpty = false;
         stateCopy.grid = Players.makeGrid(stateCopy.players);
