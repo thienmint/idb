@@ -20,7 +20,10 @@ export default class Players extends Component {
             currentPage: 0,
             grid: [],
             sortOpt: 'Tag',
-            sortOrder: 'default'
+            sortOrder: 'default',
+            originalPlayers: [],
+            nameEmpty: false,
+            hometownEmpty: false
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -50,6 +53,9 @@ export default class Players extends Component {
         this.sortOptChange = this.sortOptChange.bind(this);
         this.sortHandle = this.sortHandle.bind(this);
         this.sortGrid = this.sortGrid.bind(this);
+        this.handleCheckboxes = this.handleCheckboxes.bind(this);
+        this.processFilter = this.processFilter.bind(this);
+        this.resetFilter = this.resetFilter.bind(this);
     }
 
     updatePage(page) {
@@ -138,6 +144,49 @@ export default class Players extends Component {
         this.setState(stateCopy)
     }
 
+    handleCheckboxes(event) {
+        let stateCopy = Object.assign([], this.state);
+        switch (event.target.name) {
+            case  "nameCheck":
+                stateCopy.nameEmpty = event.target.checked
+                break;
+            case  "tagCheck":
+                stateCopy.hometownEmpty = event.target.checked
+                break;
+            default:
+                console.log("Not match")
+        }
+        this.setState(stateCopy)
+    }
+
+    processFilter() {
+        console.log("Process filter called");
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.originalPlayers = stateCopy.players;
+
+        if(stateCopy.nameEmpty)
+            stateCopy.players = stateCopy.players.filter((x) =>
+                (x.first_name !== null && x.last_name !== null &&
+                    (x.first_name !== "" || x.last_name !== "")
+                )
+            );
+
+        if(stateCopy.hometownEmpty)
+            stateCopy.players = stateCopy.players.filter((x) => (x.hometown !== null && x.hometown !== ""));
+
+        stateCopy.grid = Players.makeGrid(stateCopy.players);
+        this.setState(stateCopy)
+    }
+
+    resetFilter() {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.players = stateCopy.originalPlayers;
+        stateCopy.nameEmpty = false;
+        stateCopy.hometownEmpty = false;
+        stateCopy.grid = Players.makeGrid(stateCopy.players);
+        this.setState(stateCopy)
+    }
+
     render() {
         // console.log(this.state.players);
       return (
@@ -151,7 +200,6 @@ export default class Players extends Component {
                         <option value="Tag">Tag</option>
                         <option value="FirstName">First Name</option>
                         <option value="LastName">Last Name</option>
-                        {/*<option value="Role">Role</option>*/}
                         <option value="Hometown">Hometown</option>
                     </select>
                     &nbsp;
@@ -161,7 +209,44 @@ export default class Players extends Component {
                         <option value="desc">Descending</option>
                     </select>
                 </p>
+                <p> Filter by: &nbsp;
+                        <span>
+                            Name &nbsp;
+                            <input
+                                name="nameCheck"
+                                type="checkbox"
+                                checked={this.state.nameEmpty}
+                                onChange={this.handleCheckboxes} />
+                        </span>
+                        &nbsp;
+                        <span>
+                            Hometown &nbsp;
+                            <input
+                                name="tagCheck"
+                                type="checkbox"
+                                checked={this.state.hometownEmpty}
+                                onChange={this.handleCheckboxes} />
+                        </span>
+                        &nbsp;
+                        <span>
+                            <input
+                                name="filter"
+                                type="button"
+                                value="Apply"
+                                onClick={this.processFilter}
+                            />
+                        </span>
+                        &nbsp;
+                        <span>
+                            <input
+                                name="reset"
+                                type="button"
+                                value="Reset"
+                                onClick={this.resetFilter}
+                            />
+                        </span>
 
+                </p>
                 <br/>
                 {this.state.loading ?
                     <div className="loading">
