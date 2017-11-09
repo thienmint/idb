@@ -168,8 +168,6 @@ export default class Tournaments extends Component {
         endMonth =parseInt(endMonth) - 1;
         beginYear = parseInt(beginYear);
         endYear = parseInt(endYear);
-        console.log("beginMonth = " + beginMonth + " | beginYear = " + beginYear);
-        console.log("endMonth = " + endMonth + " | endYear = " + endYear);
         // 03-2015 to 02-2016
         if(begin_at !== null && end_at !== null){
             begin_at = new Date(begin_at);
@@ -178,8 +176,6 @@ export default class Tournaments extends Component {
             let startYear = begin_at.getFullYear();
             let finishedMonth = end_at.getMonth();
             let finishedYear = end_at.getFullYear();
-            console.log("startMonth = " + startMonth + " | startYear = " + startYear);
-            console.log("finishedMonth = " + finishedMonth + " | finishedYear = " + finishedYear);
             if(startYear < beginYear || finishedYear > endYear) // begin 2014 or  end 2017
                 return false;
 
@@ -206,7 +202,10 @@ export default class Tournaments extends Component {
             )
         ));
 
-        stateCopy.grid = Tournaments.makeGrid(stateCopy.tournaments);
+        stateCopy.displayedTournaments = stateCopy.tournaments.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.tournaments.length / 30);
+
+        stateCopy.grid = Tournaments.makeGrid(stateCopy.displayedTournaments);
         this.setState(stateCopy)
     }
 
@@ -217,7 +216,11 @@ export default class Tournaments extends Component {
         stateCopy.beginYear = '2017';
         stateCopy.endMonth = '01';
         stateCopy.endYear = '2017';
-        stateCopy.grid = Tournaments.makeGrid(stateCopy.tournaments);
+
+        stateCopy.displayedTournaments = stateCopy.tournaments.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.tournaments.length / 30);
+
+        stateCopy.grid = Tournaments.makeGrid(stateCopy.displayedTournaments);
         this.setState(stateCopy)
     }
 
