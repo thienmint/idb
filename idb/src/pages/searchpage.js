@@ -47,8 +47,6 @@ export default class SearchPage extends Component {
         for(let i = 0; i < Math.ceil(Object.keys(this.state.games).length); i++){
                 let row = games.splice(0,1);
              
-                // console.log(row[0]);
-                // console.log(row[0].length);
                 for(let sub = 0; sub<row.length;sub++)
                 {
                     let row2 = row[sub];
@@ -98,13 +96,9 @@ export default class SearchPage extends Component {
                                         part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].end_at != null)
                                         part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-
-
                                 }
                                 
                             }
-                           
-
                         }
                         if(i == 0)
                             grid.push(part);
@@ -114,15 +108,10 @@ export default class SearchPage extends Component {
                             grid3.push(part);
                         if(i == 3)
                             grid4.push(part);
-                        
-                        
                     }
                 }
-
         }
 
-        // console.log(grid);
-        // console.log("sendhelp");
         return (
             <div>
                 <Navbar/>
@@ -137,21 +126,25 @@ export default class SearchPage extends Component {
                         />
                     </div>
                     :
-                    <div className="container">
-                        {grid.map((item, index) => (
-                             <GameRow values={item} key={index}/>
-                        ))}
-                        {grid2.map((item, index) => (
-                             <GamePlayer values={item} key={index}/>
-                        ))}
-                        {grid3.map((item, index) => (
-                             <GameTeam values={item} key={index}/>
-                        ))}
-                        {grid4.map((item, index) => (
-                             <GameTournament values={item} key={index}/>
-                        ))}
+                    [ (grid.length >= 1 && grid2.length >=1 && grid3.length >=1 && grid4.length >= 1 ?
+                            <div className="container">
+                                {grid.map((item, index) => (
+                                    <GameRow values={item} key={index}/>
+                                ))}
+                                {grid2.map((item, index) => (
+                                    <GamePlayer values={item} key={index}/>
+                                ))}
+                                {grid3.map((item, index) => (
+                                    <GameTeam values={item} key={index}/>
+                                ))}
+                                {grid4.map((item, index) => (
+                                    <GameTournament values={item} key={index}/>
+                                ))}
 
-                    </div>
+                            </div>
+                            :
+                            <div className="no-search-results">Oh no! No results were found for your search. Please try making your search less specific or searching for a different term.</div>)
+                    ]
                 }
             </div>
         );
