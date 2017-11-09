@@ -24,8 +24,8 @@ class AboutTeam extends Component {
                                 a B.S.A. in Computer Science before joining the Blackbaud team full-time in January. </p>
                             <b>Responsibilities:</b>
                             <p>Frontend</p>
-                            <div><b>Number of Commits:</b> 126</div>
-                            <div><b>Number of Issues:</b> 23</div>
+                            <div><b>Number of Commits:</b> 132</div>
+                            <div><b>Number of Issues:</b> 28</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
@@ -40,9 +40,9 @@ class AboutTeam extends Component {
                                 She will be graduating in Winter of 2017 with a B.S.A in Computer Science. </p>
                             <b>Responsibilities:</b>
                             <p>Scrum Stuff, Backend</p>
-                            <div><b>Number of Commits:</b> 44</div>
-                            <div><b>Number of Issues:</b> 22</div>
-                            <div><b>Number of Unit Tests:</b> 15</div>
+                            <div><b>Number of Commits:</b> 56</div>
+                            <div><b>Number of Issues:</b> 33</div>
+                            <div><b>Number of Unit Tests:</b> 30</div>
                         </div>
                     </div>
                     <div className="col">
@@ -55,8 +55,8 @@ class AboutTeam extends Component {
                                He is extremely passionate about graphics. He will be graduating in Spring 2019. </p>
                             <b>Responsibilities:</b>
                             <p>Database, Backend</p>
-                            <div><b>Number of Commits:</b> 25</div>
-                            <div><b>Number of Issues:</b> 16</div>
+                            <div><b>Number of Commits:</b> 30</div>
+                            <div><b>Number of Issues:</b> 21</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
@@ -72,8 +72,8 @@ class AboutTeam extends Component {
                             and cooking. He has been an SWE intern with MaxPoint Inc. on their Big Data Platform team.</p>
                             <b>Responsibilities:</b>
                             <p>Database, Platform, Backend</p>
-                            <div><b>Number of Commits:</b> 70</div>
-                            <div><b>Number of Issues:</b> 15</div>
+                            <div><b>Number of Commits:</b> 123</div>
+                            <div><b>Number of Issues:</b> 20</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
@@ -86,8 +86,8 @@ class AboutTeam extends Component {
                             <p>Eric Liu will be graduating in spring of 2019.</p>
                             <b>Responsibilities:</b>
                             <p>Frontend</p>
-                            <div><b>Number of Commits:</b> 56</div>
-                            <div><b>Number of Issues:</b> 25</div>
+                            <div><b>Number of Commits:</b> 74</div>
+                            <div><b>Number of Issues:</b> 30</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
