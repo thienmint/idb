@@ -1,5 +1,7 @@
 sudo: false
 language: python
+node_js:
+  - "8"
 cache:
   directories:
   - "$HOME/google-cloud-sdk/"
@@ -18,6 +20,7 @@ before_install:
   fi
 - source /home/travis/google-cloud-sdk/path.bash.inc
 - gcloud version
+- ssh-keygen -q -N "" -f ~/.ssh/google_compute_engine
 install:
 - gcloud -q components update gae-python
 script:
