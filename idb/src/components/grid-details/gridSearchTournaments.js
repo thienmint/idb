@@ -13,15 +13,15 @@ class GridSearchTournaments extends Component {
 
                     <div className="search-title">
                         <Link to={`/tournaments/${this.props.value.id}`}>
-                        <div> {this.props.value.slug}</div>
+                        <div> <text dangerouslySetInnerHTML={{ __html: this.props.value.slug}}/></div>
 
                         </Link>
 
                     </div>
                     <div>
-                            Name: {this.props.value.name + " "} 
-                            Start Time: {this.props.value.begin_at+ " "}
-                            End Time: {this.props.value.end_at+" "}
+                            Name: <text dangerouslySetInnerHTML={{ __html: this.props.value.name + " "}}/>
+                            Start Time: <text dangerouslySetInnerHTML={{ __html: this.props.value.begin_at + " "}}/>
+                            End Time: <text dangerouslySetInnerHTML={{ __html: this.props.value.end_at }}/>
                     </div>
                 </div>
             </div>
