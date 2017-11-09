@@ -212,25 +212,25 @@ export default class Players extends Component {
                     </select>
                 </p>
                 <p> Filter by: &nbsp;
-                        <span>
+                    <span>
                             Name &nbsp;
-                            <input
-                                name="nameCheck"
-                                type="checkbox"
-                                checked={this.state.nameEmpty}
-                                onChange={this.handleCheckboxes} />
+                        <input
+                            name="nameCheck"
+                            type="checkbox"
+                            checked={this.state.nameEmpty}
+                            onChange={this.handleCheckboxes} />
                         </span>
-                        &nbsp;
-                        <span>
-                            Hometown &nbsp;
-                            <input
-                                name="tagCheck"
-                                type="checkbox"
-                                checked={this.state.hometownEmpty}
-                                onChange={this.handleCheckboxes} />
+                    &nbsp;
+                    <span>
+                            Acronym &nbsp;
+                        <input
+                            name="tagCheck"
+                            type="checkbox"
+                            checked={this.state.hometownEmpty}
+                            onChange={this.handleCheckboxes} />
                         </span>
-                        &nbsp;
-                        <span>
+                    &nbsp;
+                    <span>
                             <input
                                 name="filter"
                                 type="button"
@@ -238,8 +238,8 @@ export default class Players extends Component {
                                 onClick={this.processFilter}
                             />
                         </span>
-                        &nbsp;
-                        <span>
+                    &nbsp;
+                    <span>
                             <input
                                 name="reset"
                                 type="button"
