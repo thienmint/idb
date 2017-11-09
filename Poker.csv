@@ -1,22 +1,31 @@
-sep=;
-Story Title;Estimate;Vote Started;Voting Duration;Avg Voting Time;Fastest;Slowest;
-As a developer, I want our code to be well documented so that it is readable.;2;22/10/2017 19:59:47;00:00:32;00:00:04;Rachel;Thien;
-As a developer, I want to create the API so that has the correct endpoints so that we can utilize it in our website.;3;22/10/2017 19:59:28;00:00:14;00:00:06;Rachel;Thien;
-As a developer, I want to have links to instances of a certain model so that it all links together.;2;22/10/2017 19:59:07;00:00:19;00:00:07;Rachel;Thien;
-As a developer, I want instances of my model in my website to be rich with different content so that it is readable and fluid.;2;22/10/2017 19:58:17;00:00:46;00:00:10;Rachel;Thien;
-As a developer, I want my information from the backend flowing to the front end.;5;22/10/2017 19:56:15;00:01:58;00:00:12;Rachel;Thien;
-As a developer, I want my database to be fully connected. As a result, we need to change the GAME ids to match the other tables.;2;22/10/2017 19:55:32;00:00:36;00:00:05;Rachel;Thien;
-As a developer, I want to change the styling to SCSS so that it looks nicer.;½;22/10/2017 19:54:57;00:00:32;00:00:03;Rachel;Thien;
-As a developer, I want to utilize Trello so that it contains the progress of our project in order to keep track of what needs to be done and what is currently done.;½;22/10/2017 19:54:36;00:00:18;00:00:03;Rachel;Thien;
-As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can include filtering, pagination, and sorting.;3;22/10/2017 19:53:50;00:00:38;00:00:11;Rachel;Thien;
-As a developer, I want to implement the RestFul API so that it is implemented using SQLAlchemy and a SQL database so that we can get information from both.;3;22/10/2017 19:53:29;00:00:18;00:00:04;Rachel;Thien;
-As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can route the dynamic pages properly.;2;22/10/2017 19:52:41;00:00:42;00:00:05;Rachel;Thien;
-As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can update the information on the about page to display the correct information.;1;22/10/2017 19:52:16;00:00:22;00:00:05;Rachel;Thien;
-As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can create a 404 page.;1;22/10/2017 19:52:02;00:00:11;00:00:04;Rachel;Thien;
-As a developer, I want to make a set of Unit tests so that it is implemented with Postman so that we can do tests and debug.;2;22/10/2017 19:51:45;00:00:14;00:00:04;Rachel;Thien;
-As a developer, I want to create a UML diagram so that it shows the communication with its users.;½;22/10/2017 19:51:34;00:00:08;00:00:03;Rachel;Thien;
-As a developer, I want to change the technical report so that it contains information about the databases so that other software developers understand what is going on.;1;22/10/2017 19:51:11;00:00:18;00:00:04;Rachel;Thien;
-As a developer, I want to change the frontend so that it is connected to our API so that information can be taken from our API.;3;22/10/2017 19:50:44;00:00:25;00:00:07;Rachel;Thien;
-As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can generate pages dynamically.;5;22/10/2017 19:49:09;00:01:25;00:00:40;Rachel;Thien;
-As a developer, I want to change the frontend so that it is styled with CSS framework so that it looks nice.;2;22/10/2017 19:48:32;00:00:35;00:00:12;Rachel;Thien;
-As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can create dynamic pages for each individual model.;5;22/10/2017 19:47:14;00:01:12;00:00:11;Rachel;Thien;
+Story Title,Estimate,Actual,Vote Started,Voting Duration,Avg Voting Time,Fastest,Slowest
+"As a developer, I want our code to be well documented so that it is readable.",2,3,22/10/2017 19:59:47,0:00:32,0:00:04,Rachel,Thien
+"As a developer, I want to create the API so that has the correct endpoints so that we can utilize it in our website.",3,2,22/10/2017 19:59:28,0:00:14,0:00:06,Rachel,Thien
+"As a developer, I want to have links to instances of a certain model so that it all links together.",2,2,22/10/2017 19:59:07,0:00:19,0:00:07,Rachel,Thien
+"As a developer, I want instances of my model in my website to be rich with different content so that it is readable and fluid.",2,2,22/10/2017 19:58:17,0:00:46,0:00:10,Rachel,Thien
+"As a developer, I want my information from the backend flowing to the front end.",5,3,22/10/2017 19:56:15,0:01:58,0:00:12,Rachel,Thien
+"As a developer, I want my database to be fully connected. As a result, we need to change the GAME ids to match the other tables.",2,1,22/10/2017 19:55:32,0:00:36,0:00:05,Rachel,Thien
+"As a developer, I want to change the styling to SCSS so that it looks nicer.",0.5,0.5,22/10/2017 19:54:57,0:00:32,0:00:03,Rachel,Thien
+"As a developer, I want to utilize Trello so that it contains the progress of our project in order to keep track of what needs to be done and what is currently done.",0.5,0.5,22/10/2017 19:54:36,0:00:18,0:00:03,Rachel,Thien
+"As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can include filtering, pagination, and sorting.",3,8,22/10/2017 19:53:50,0:00:38,0:00:11,Rachel,Thien
+"As a developer, I want to implement the RestFul API so that it is implemented using SQLAlchemy and a SQL database so that we can get information from both.",3,2,22/10/2017 19:53:29,0:00:18,0:00:04,Rachel,Thien
+"As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can route the dynamic pages properly.",2,2,22/10/2017 19:52:41,0:00:42,0:00:05,Rachel,Thien
+"As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can update the information on the about page to display the correct information.",1,2,22/10/2017 19:52:16,0:00:22,0:00:05,Rachel,Thien
+"As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can create a 404 page.",1,2,22/10/2017 19:52:02,0:00:11,0:00:04,Rachel,Thien
+"As a developer, I want to make a set of Unit tests so that it is implemented with Postman so that we can do tests and debug.",2,1,22/10/2017 19:51:45,0:00:14,0:00:04,Rachel,Thien
+"As a developer, I want to create a UML diagram so that it shows the communication with its users.",0.5,1,22/10/2017 19:51:34,0:00:08,0:00:03,Rachel,Thien
+"As a developer, I want to change the technical report so that it contains information about the databases so that other software developers understand what is going on.",1,2,22/10/2017 19:51:11,0:00:18,0:00:04,Rachel,Thien
+"As a developer, I want to change the frontend so that it is connected to our API so that information can be taken from our API.",3,3,22/10/2017 19:50:44,0:00:25,0:00:07,Rachel,Thien
+"As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can generate pages dynamically.",5,8,22/10/2017 19:49:09,0:01:25,0:00:40,Rachel,Thien
+"As a developer, I want to change the frontend so that it is styled with CSS framework so that it looks nice.",2,2,22/10/2017 19:48:32,0:00:35,0:00:12,Rachel,Thien
+"As a developer, I want to change the frontend so that it is implemented with Flask and React so that we can create dynamic pages for each individual model.",5,3,22/10/2017 19:47:14,0:01:12,0:00:11,Rachel,Thien
+"As a user, if my search keywords return more than 10 results, I would like to see the search results be paginated (Total # of search results / 10 = total # of pages)",2,5,8/11/2017 16:55,0:00:09,0:00:07,Rachel,kevin
+"As a user, I would like to be able to click on valid search results returned by my search keywords",1,2,8/11/2017 16:55,0:00:09,0:00:06,Rachel,kevin
+"As a developer, I would like to have the EsportGuru's API (api.esportguru.com) to conform to its respective API document at (https://thienmint.docs.apiary.io/)",1,1,8/11/2017 16:55,0:00:07,0:00:05,Rachel,kevin
+"As a developer, I would like to have robust unit tests for all user-defined functions in models.py",2,2,8/11/2017 16:55,0:00:07,0:00:04,Rachel,kevin
+"As a user, if my search keywords are not found in any of the models, I would like to be informed of that.",1,1,8/11/2017 16:55,0:00:09,0:00:05,Rachel,kevin
+"As a developer, I would like to be able to send a search query and get back a JSON with the search results categorized by each of the models.",2,2,8/11/2017 16:54,0:00:11,0:00:07,Rachel,kevin
+"As a user, I would like to see all instantaces of each model that exceed a certain threshold be paginated (Total # of instances / threshold = # of pages)",2,2,8/11/2017 16:54,0:00:11,0:00:07,Rachel,kevin
+"As a user, I would like to be able to search the entire website with some keywords and get back a search result page with found keywords highlighted",3,5,8/11/2017 16:54,0:00:08,0:00:05,Rachel,kevin
+"As a user, I would like to be able to filter through each of the model (Player, Game, Tournament, Team) by some features (i.e name, date, ...)",2,2,8/11/2017 16:54,0:00:12,0:00:08,Rachel,kevin
+"As a user, I would like to be able to sort each of the model (Player, Game, Tournament, Team) by some features (i.e. name, date, ...)",3,3,8/11/2017 16:53,0:00:30,0:00:10,Rachel,kevin
