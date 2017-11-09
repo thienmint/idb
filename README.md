@@ -2,12 +2,16 @@
 
 [Website](https://www.esportguru.com/) - [Trello](https://trello.com/esportguru)
 
-## Part 1: Static pages
+## Part 1: Static pages  
 
-## Part 2: TBD
-
-## Part 3: TBD
-
+## Part 2: React App & RESTful API
+[Insert API documentation here]  
+[Insert libraries used for React App]  
+[Insert MySQL struggle?]
+## Part 3: Search, Pagination, Filtering, Sort
+- How was **Searching** function implemented?  
+- How were **Pagination, Filtering, Sorting** functions implemented?
+- Additional notes?
 
 ## APIs used:
 
@@ -19,11 +23,14 @@
 - Trello
 - Planitpoker
 - Travis-CI
+- ReactJS/NodeJS (list libraries here)
+- Python & Flask (list libraries here)
+- StarUML
 
 ## Contributors:
 
 
-|Persia Ghaffari|Thien Vo|Rachel Beale|Eric Liu|Kevin Zhang|
-| ------------- |:-------:|:----------:|:------:|:---------:|
-|Scrum Master   |Platform|Frontend     |Frontend|Database   |
-|Backend        |Database|             |        |Backend    |
+|Persia Ghaffari|Thien Vo |Rachel Beale|Eric Liu|Kevin Zhang     |
+| ------------- |:-------:|:----------:|:------:|:--------------:|
+|Scrum Master   |Platform |Frontend    |Frontend|Technical report|
+|Backend        |Database |            |        |Backend         |
