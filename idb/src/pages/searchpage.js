@@ -79,6 +79,8 @@ export default class SearchPage extends Component {
                             }
                             if(i == 2)
                             {
+                                if(part[part_of_part].name != null)
+                                    part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
                                 if(part[part_of_part].acronym != null)
                                     part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
                             }
