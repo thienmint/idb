@@ -13,12 +13,12 @@ class GridSearchTeams extends Component {
 
                     <div className="search-title">
                         <Link to={`/teams/${this.props.value.id}`}>
-                        <div> {this.props.value.name}</div>
+                        <div> <text dangerouslySetInnerHTML={{ __html: this.props.value.name}}/></div>
 
                         </Link>
                     </div>
                     <div>
-                            Acronym: {this.props.value.acronym + " "} 
+                            Acronym: <text dangerouslySetInnerHTML={{ __html: this.props.value.acronym}}/>
 
                     </div>
 
