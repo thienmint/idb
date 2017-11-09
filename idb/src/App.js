@@ -27,6 +27,7 @@ const Main = () => (
             <Route path='/search/:id' component={Search}/> 
             <Route exact path='/about' component={About}/>
             <Route exact path='/players' component={Players}/>
+
             <Route path='/players/:id' component={DetailPlayer}/>
             <Route exact path='/teams' component={Teams}/>
             <Route path='/teams/:id' component={DetailTeam}/>
