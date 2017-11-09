@@ -250,9 +250,18 @@ def search_team(search_str):
 def search_tourney(search_str):
     query = (
         """
-            select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at
-            from TOURNEY tn
-            where tn.name REGEXP "{0}" or tn.slug REGEXP "{0}" or tn.begin_at REGEXP "{0}" or tn.end_at REGEXP "{0}"
+            select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, g.name as game_name, R.list_names as team_names
+            from TOURNEY2 tn
+            join GAME g on g.id = tn.game
+            left join (
+              select tt.tournament_id as id, group_concat(t.name) as list_names
+              from TEAM_TOURNAMENTS tt
+              join TEAM t on tt.team_id = t.id
+              where t.name REGEXP "{0}"
+              group by tt.tournament_id
+            ) R on tn.id = R.id
+            where tn.name REGEXP "{0}" or tn.slug REGEXP "{0}" or tn.begin_at REGEXP "{0}" or tn.end_at REGEXP "{0}" or
+                  g.name REGEXP "{0}" or R.list_names is not null
         """.format(search_str)
     )
     return query
@@ -552,6 +561,8 @@ class Search(Resource):
             tourney['slug'] = row['slug']
             tourney['begin_at'] = row['begin_at']
             tourney['end_at'] = row['end_at']
+            tourney['game'] = row['game_name']
+            tourney['teams'] = row['team_names']
             tourney_data.append(tourney)
 
         search_results['games'] = game_data
