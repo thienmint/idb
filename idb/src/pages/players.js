@@ -109,9 +109,6 @@ export default class Players extends Component {
                     case "LastName":
                         stateCopy.players = stateCopy.players.sort((x, y) => (Players.compareString(x.last_name, y.last_name)));
                         break;
-                    // case "Role":
-                    //     stateCopy.players = stateCopy.players.sort((x, y) => (x.name.toLowerCase().localeCompare(y.name.toLowerCase())));
-                    //     break;
                     case "Hometown":
                         stateCopy.players = stateCopy.players.sort((x, y) => (Players.compareString(x.hometown, y.hometown)));
                         break;
@@ -128,9 +125,6 @@ export default class Players extends Component {
                     case "LastName":
                         stateCopy.players = stateCopy.players.sort((x, y) => (Players.compareString(y.last_name, x.last_name)));
                         break;
-                    // case "Role":
-                    //     stateCopy.players = stateCopy.players.sort((x, y) => (y.name.toLowerCase().localeCompare(x.name.toLowerCase())));
-                    //     break;
                     case "Hometown":
                         stateCopy.players = stateCopy.players.sort((x, y) => (Players.compareString(y.hometown, x.hometown)));
                         break;
