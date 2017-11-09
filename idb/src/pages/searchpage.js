@@ -17,7 +17,8 @@ export default class SearchPage extends Component {
         this.state = {
             games: [],
             loading: true,
-            temp: " "
+            temp: " ",
+            numberOfPages: 0,
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -25,14 +26,14 @@ export default class SearchPage extends Component {
         axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.games = stateCopy.games.slice();
-            stateCopy.games = Object.assign({}, response.data);
+            stateCopy.games = Object.assign([], response.data);
             stateCopy.loading = false;
             stateCopy.temp = this.props.match.params.id;
+            stateCopy.numberOfPages = Math.ceil(stateCopy.games.length / 10);
             this.setState(stateCopy);
         }).catch(function (error) {
             console.log(error);
         });
-        console.log(this.props.match.params.id);
     }
 
     render() {
@@ -42,7 +43,6 @@ export default class SearchPage extends Component {
         let grid3 = [];
         let grid4 = [];
         let individual_words = this.state.temp.split(" ");
-        console.log(this.state.games);
 
         for(let i = 0; i < Math.ceil(Object.keys(this.state.games).length); i++){
                 let row = games.splice(0,1);
