@@ -200,11 +200,15 @@ def search_game(search_str):
 def search_player(search_str):
     query = (
         """
-            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown
+            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, 
+                   t.name as team_name, g.name as game_name
             from PLAYER p
+            join TEAM t on t.id = p.current_team
+            join GAME g on g.id = p.current_game
             where 
               p.tag REGEXP "{0}" or p.first_name REGEXP "{0}" or p.last_name REGEXP "{0}" or
-              p.role REGEXP "{0}" or p.hometown REGEXP "{0}"
+              p.role REGEXP "{0}" or p.hometown REGEXP "{0}" or
+              t.name REGEXP "{0}" or g.name REGEXP "{0}"
         """.format(search_str)
     )
     return query
@@ -502,6 +506,8 @@ class Search(Resource):
             player['last_name'] = row['last_name']
             player['role'] = row['role']
             player['hometown'] = row['hometown']
+            player['current_game'] = row['game_name']
+            player['current_team'] = row['team_name']
             player_data.append(player)
 
         for row in team_results:
