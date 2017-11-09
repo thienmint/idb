@@ -11,11 +11,17 @@ class GridSearchPlayers extends Component {
             <div className="row ">
                 <div key={this.props.id}>
 
-                    <div className="attributes">
+                    <div className="search-title">
                         <Link to={`/players/${this.props.value.id}`}>
                         <div> {this.props.value.tag}</div>
 
                         </Link>
+                    </div>
+                    <div>
+                            First Name: {this.props.value.first_name + " "} 
+                            Last Name: {this.props.value.last_name+ " "}
+                            Role: {this.props.value.role+" "}
+                            Hometown: {this.props.value.hometown}
                     </div>
                 </div>
             </div>

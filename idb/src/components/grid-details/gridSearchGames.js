@@ -11,11 +11,17 @@ class GridSearchGames extends Component {
             <div className="row ">
                 <div key={this.props.id}>
 
-                    <div className="attributes">
+                    <div className="search-title">
                         <Link to={`/games/${this.props.value.id}`}>
                         <div> {this.props.value.name}</div>
 
                         </Link>
+
+                    </div>
+                    <div>
+                            Release Date: {this.props.value.release_date + " "} 
+                            Summary: {this.props.value.summary}
+
                     </div>
                 </div>
             </div>
