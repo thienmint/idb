@@ -10,6 +10,13 @@ body {
     background-color: #F0F0F0;
 }
 
+@media all and (max-width: 991px) {
+    /* For mobile phones: */
+    .navbar {
+        padding: 0;
+    }
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: whitesmoke;
 }
@@ -32,6 +39,27 @@ body {
 .bg-faded {
     background-color: #338481;
 }
+
+.pagination li .page-link {
+    color: #338481;
+}
+
+.pagination {
+    padding-left: 5%;
+}
+
+nav ul {
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    cursor: pointer;
+}
+
 Link.nav-link {
     color: whitesmoke;
 }
