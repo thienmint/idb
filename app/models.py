@@ -231,9 +231,17 @@ def search_player(search_str):
 def search_team(search_str):
     query = (
         """
-            select t.id, t.name, t.acronym
+            select t.id, t.name, t.acronym, g.name as game_name, pt.list_players as players_name
             from TEAM t
-            where t.name REGEXP "{0}" or t.acronym REGEXP "{0}"
+            join GAME g on g.id = t.current_game
+            left join (
+              select group_concat(p.tag) as list_players, p.current_team
+              from PLAYER p
+              where p.tag REGEXP "{0}"
+              group by p.current_team
+            ) pt on pt.current_team = t.id
+            where t.name REGEXP "{0}" or t.acronym REGEXP "{0}" or 
+                  g.name REGEXP "{0}" or pt.list_players is not null
         """.format(search_str)
     )
     return query
@@ -533,6 +541,8 @@ class Search(Resource):
             team['id'] = row['id']
             team['name'] = row['name']
             team['acronym'] = row['acronym']
+            team['current_players'] = row['players_name']
+            team['current_game'] = row['game_name']
             team_data.append(team)
 
         for row in tourney_results:
