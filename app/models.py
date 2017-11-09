@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, Markup
 from flask_restful import Resource, Api
 from flask_cors import CORS, cross_origin
+# from flaskext.markdown import Markdown
 from sqlalchemy import create_engine
 import MySQLdb
 from json import dumps
@@ -9,6 +10,8 @@ from collections import OrderedDict
 import os
 import json
 import random
+# import markdown
+
 
 '=====================START CONFIGURATION====================='
 
@@ -19,7 +22,8 @@ engine = create_engine(
         os.environ['DB_HOST'],
         os.environ['DB_NAME']))
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+# Markdown(app)
 app.config["JSON_SORT_KEYS"] = False
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
@@ -31,12 +35,14 @@ api = Api(app)
 
 @app.route('/')
 @cross_origin()
-def hello_world():
+def home():
     return render_template('api.html')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
     return "What are you looking for m8?"
+
 
 '=====================END UI ROUTING====================='
 '=====================START API QUERIES====================='
@@ -79,12 +85,26 @@ def team_query(team_id=None):
     return query
 
 
-def tourney_query(tourney_id = None):
+def tourney_query(tourney_id=None):
     query = (
         """
           select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
                  g.name as game_name
           from TOURNEY tn
+          join GAME g on g.id = tn.game
+          {0}
+          LIMIT 40
+        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
+    )
+
+    return query
+
+def tourney2_query(tourney_id = None):
+    query = (
+        """
+          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
+                 tn.league, tn.league_image, g.name as game_name
+          from TOURNEY2 tn
           join GAME g on g.id = tn.game
           {0}
           LIMIT 40
@@ -109,12 +129,12 @@ def get_teams_info(list_teams):
             {0}
         """.format(
             "where %s" % (' or '.join(conditions)) if len(conditions) > 0 else '')
-        )
+    )
     # print(query)
     return query
 
 
-def game_query(game_id = None):
+def game_query(game_id=None):
     query = (
         """
           select g.id, g.name, g.release_date, g.screenshots, g.summary, g.website,
@@ -278,7 +298,7 @@ class Team(Resource):
 class Tourneys(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute(tourney_query())
+        query = conn.execute(tourney2_query())
         list_tourneys = []
         for row in query:
             tourney = OrderedDict()
@@ -307,7 +327,11 @@ class Tourneys(Resource):
             tourney['end_at'] = row['end_at']
             tourney['game'] = game
             tourney['teams'] = list_teams
+            tourney['league'] = row['league']
+            tourney['image_url'] = row['league_image']
+
             list_tourneys.append(tourney)
+        
         conn.close()
         return jsonify(list_tourneys)
 
@@ -315,7 +339,7 @@ class Tourneys(Resource):
 class Tourney(Resource):
     def get(self, tourney_id):
         conn = engine.connect()
-        query = conn.execute(tourney_query(tourney_id))
+        query = conn.execute(tourney2_query(tourney_id))
         row = query.fetchone()
         tourney = OrderedDict()
 
@@ -343,6 +367,9 @@ class Tourney(Resource):
         tourney['end_at'] = row['end_at']
         tourney['game'] = game
         tourney['teams'] = list_teams
+        tourney['league'] = row['league']
+        tourney['image_url'] = row['league_image']
+
         conn.close()
         return jsonify(tourney)
 
@@ -387,6 +414,7 @@ class Game(Resource):
         conn.close()
         return jsonify(game)
 
+
 api.add_resource(Players, '/players', '/players/')
 api.add_resource(Player, '/players/<player_id>')
 
@@ -400,7 +428,6 @@ api.add_resource(Games, '/games', '/games/')
 api.add_resource(Game, '/games/<game_id>')
 
 '=====================END API====================='
-
 
 if __name__ == '__main__':
     app.run()
