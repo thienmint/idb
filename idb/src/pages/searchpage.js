@@ -63,41 +63,41 @@ export default class SearchPage extends Component {
                                 if(i==0)
                                 {
                                     if(part[part_of_part].name != null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].summary != null)
-                                        part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                 }
                                 if(i == 1)
                                 {
                                     if(part[part_of_part].tag != null)
-                                        part[part_of_part].tag = part[part_of_part].tag.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].tag = part[part_of_part].tag.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].first_name != null)
-                                        part[part_of_part].first_name = part[part_of_part].first_name.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].first_name = part[part_of_part].first_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].last_name != null)
-                                        part[part_of_part].last_name = part[part_of_part].last_name.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].last_name = part[part_of_part].last_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].role != null)
-                                        part[part_of_part].role = part[part_of_part].role.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].role = part[part_of_part].role.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].hometown != null)
-                                        part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
 
                                 }
                                 if(i == 2)
                                 {
                                     if(part[part_of_part].name != null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].acronym != null)
-                                        part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                 }
                                 if(i == 3)
                                 {
                                     if(part[part_of_part].slug != null)
-                                        part[part_of_part].slug = part[part_of_part].slug.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].slug = part[part_of_part].slug.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].name != null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].begin_at != null)
-                                        part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].end_at != null)
-                                        part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(this.state.temp, 'g'),this.state.temp.bold());
+                                        part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
 
 
                                 }
