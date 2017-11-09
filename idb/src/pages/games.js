@@ -19,7 +19,10 @@ export default class Games extends Component {
             currentPage: 0,
             grid: [],
             sortOpt: 'Name',
-            sortOrder: 'default'
+            sortOrder: 'default',
+            yearMinRange: '2000',
+            yearMaxRange: '2017',
+            originalGames: []
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -40,6 +43,9 @@ export default class Games extends Component {
         this.sortOptChange = this.sortOptChange.bind(this);
         this.sortHandle = this.sortHandle.bind(this);
         this.sortGrid = this.sortGrid.bind(this);
+        this.handleInputs = this.handleInputs.bind(this);
+        this.processFilter = this.processFilter.bind(this);
+        this.resetFilter = this.resetFilter.bind(this);
     }
 
     updatePage(page) {
@@ -109,6 +115,53 @@ export default class Games extends Component {
         this.setState(stateCopy)
     }
 
+    handleInputs(event) {
+        let stateCopy = Object.assign([], this.state);
+        switch (event.target.name) {
+            case  "yearMin":
+                stateCopy.yearMinRange = event.target.value;
+                break;
+            case  "yearMax":
+                stateCopy.yearMaxRange = event.target.value;
+                break;
+            default:
+                console.log("Not match")
+        }
+        this.setState(stateCopy)
+    }
+
+    static compareDate (datestring, min, max) {
+        let year = null;
+        if(datestring !== null){
+             year = datestring.split("-")[0];
+             return (Games.compareString(year, min) >= 0 && Games.compareString(year, max) <= 0)
+        }
+        else
+            return false
+    }
+
+    processFilter() {
+        // console.log("Process filter called");
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.originalGames = stateCopy.games;
+
+        stateCopy.games = stateCopy.games.filter((x) => (
+            Games.compareDate(x.release_date, stateCopy.yearMinRange, stateCopy.yearMaxRange)
+        ));
+
+        stateCopy.grid = Games.makeGrid(stateCopy.games);
+        this.setState(stateCopy)
+    }
+
+    resetFilter() {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.games = stateCopy.originalGames;
+        stateCopy.yearMinRange = '2000';
+        stateCopy.yearMaxRange = '2017';
+        stateCopy.grid = Games.makeGrid(stateCopy.games);
+        this.setState(stateCopy)
+    }
+
     render() {
         return (
             <div>
@@ -127,6 +180,49 @@ export default class Games extends Component {
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                 </select>
+                </p>
+
+                <p>
+                    <span>
+                            From &nbsp;
+                        <input
+                            name="yearMin"
+                            type="number"
+                            min="2000"
+                            max={this.state.yearMaxRange}
+                            value={this.state.yearMinRange}
+                            onChange={this.handleInputs} />
+                        </span>
+                    &nbsp;
+                    <span>
+                            to &nbsp;
+                        <input
+                            name="yearMax"
+                            type="number"
+                            min={this.state.yearMinRange}
+                            max="2017"
+                            value={this.state.yearMaxRange}
+                            onChange={this.handleInputs} />
+                        </span>
+                    &nbsp;
+                    <span>
+                            <input
+                                name="filter"
+                                type="button"
+                                value="Apply"
+                                onClick={this.processFilter}
+                            />
+                        </span>
+                    &nbsp;
+                    <span>
+                            <input
+                                name="reset"
+                                type="button"
+                                value="Reset"
+                                onClick={this.resetFilter}
+                            />
+                        </span>
+
                 </p>
 
                 <br/>
