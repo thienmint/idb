@@ -1,0 +1,610 @@
+{
+	"variables": [],
+	"info": {
+		"name": "IDB 4 Unit Tests",
+		"_postman_id": "d80bfd4c-703f-6366-267a-afcb1056ddf3",
+		"description": "Unit Tests for eSportGuru",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"description": "Unit tests relating to searching.",
+			"item": [
+				{
+					"name": "Test Empty Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Test Invalid Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/'     '",
+						"description": "Test to ensure that an invalid search returns status 500."
+					},
+					"response": []
+				},
+				{
+					"name": "Test Simple Search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be okay to process\", function () { \r",
+									"    pm.response.to.not.be.error; \r",
+									"    pm.response.to.have.jsonBody(\"\"); \r",
+									"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty games\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.games).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty teams\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.teams).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty tournaments\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.tournaments).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned player\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.players).to.not.eql([]);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/pokemon",
+						"description": "Validate that a search returns all models."
+					},
+					"response": []
+				},
+				{
+					"name": "Test Search DB Attributes 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be okay to process\", function () { \r",
+									"    pm.response.to.not.be.error; \r",
+									"    pm.response.to.have.jsonBody(\"\"); \r",
+									"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty games\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.games).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty teams\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.teams).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty tournaments\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.tournaments).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty players\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.players).to.eql([]);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/current_players",
+						"description": "Validate that searches for db attribute names don't yield results."
+					},
+					"response": []
+				},
+				{
+					"name": "Test Search DB Attributes 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be okay to process\", function () { \r",
+									"    pm.response.to.not.be.error; \r",
+									"    pm.response.to.have.jsonBody(\"\"); \r",
+									"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty games\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.games).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty teams\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.teams).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty tournaments\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.tournaments).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty players\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.players).to.eql([]);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/acronym",
+						"description": "Validate that searches for db attribute names don't yield results."
+					},
+					"response": []
+				},
+				{
+					"name": "Test Search DB Attributes 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be okay to process\", function () { \r",
+									"    pm.response.to.not.be.error; \r",
+									"    pm.response.to.have.jsonBody(\"\"); \r",
+									"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty games\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.games).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty teams\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.teams).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty tournaments\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.tournaments).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty players\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.players).to.eql([]);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/summary",
+						"description": "Validate that searches for db attribute names don't yield results."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test Connection",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://api.esportguru.com",
+				"description": "Validate API is being hosted"
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Player Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be okay to process\", function () { \r",
+							"    pm.response.to.not.be.error; \r",
+							"    pm.response.to.have.jsonBody(\"\"); \r",
+							"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Players have ids\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var player in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(player.id).to.not.eql(null);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Players have tags\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var player in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(player.tag).to.not.eql(null);\r",
+							"        pm.expect(player.tag).to.not.eql(\"\");\r",
+							"    }\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://api.esportguru.com/players",
+				"description": "Validate that players' most important attributes are non-null."
+			},
+			"response": []
+		},
+		{
+			"name": "Test Specific Player Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be okay to process\", function () { \r",
+							"    pm.response.to.not.be.error; \r",
+							"    pm.response.to.have.jsonBody(\"\"); \r",
+							"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate Player 4464's Data\", function() {\r",
+							"    var player = pm.response.json();\r",
+							"    pm.expect(player.id).to.eql(4464);\r",
+							"    pm.expect(player.tag).to.eql(\"G\");\r",
+							"    pm.expect(player.first_name).to.eql(\"Sergey Alexandrovich\");\r",
+							"    pm.expect(player.last_name).to.eql(\"Bragin\");\r",
+							"    pm.expect(player.role).to.eql(null);\r",
+							"    pm.expect(player.hometown).to.eql(\"Russia\");\r",
+							"    pm.expect(player.image_url).to.eql(null);\r",
+							"    pm.expect(player.current_game.id).to.eql(2);\r",
+							"    pm.expect(player.current_game.name).to.eql(\"Hearthstone\");\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://api.esportguru.com/players/4464",
+				"description": "Validate a specific player's data."
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Team Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be okay to process\", function () { \r",
+							"    pm.response.to.not.be.error; \r",
+							"    pm.response.to.have.jsonBody(\"\"); \r",
+							"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Teams have ids\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var team in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(team.id).to.not.eql(null);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Teams have names\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var team in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(team.name).to.not.eql(null);\r",
+							"        pm.expect(team.name).to.not.eql(\"\");\r",
+							"    }\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://api.esportguru.com/teams",
+				"description": "Validate that teams' most important attributes are non-null"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Specific Team Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be okay to process\", function () { \r",
+							"    pm.response.to.not.be.error; \r",
+							"    pm.response.to.have.jsonBody(\"\"); \r",
+							"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate Team 45's Data\", function() {\r",
+							"    var team = pm.response.json();\r",
+							"    pm.expect(team.id).to.eql(45);\r",
+							"    pm.expect(team.name).to.eql(\"CLG Academy\");\r",
+							"    pm.expect(team.acronym).to.eql(\"CLA\");\r",
+							"    pm.expect(team.image_url).to.eql(\"https://pandacdn.blob.core.windows.net/cdn/\" +\r",
+							"        \"uploads/clg-black-51p7vy3s.png\");   \r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://api.esportguru.com/teams/45",
+				"description": "Validate a specific team's data."
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Tournament Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be okay to process\", function () { \r",
+							"    pm.response.to.not.be.error; \r",
+							"    pm.response.to.have.jsonBody(\"\"); \r",
+							"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tournaments have ids\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var tourney in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(tourney.id).to.not.eql(null);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tournments have names\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var tourney in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(tourney.name).to.not.eql(null);\r",
+							"        pm.expect(tourney.name).to.not.eql(\"\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tournments have leagues\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var tourney in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(tourney.league).to.not.eql(null);\r",
+							"        pm.expect(tourney.league).to.not.eql(\"\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tournments have images\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var tourney in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(tourney.image_url).to.not.eql(null);\r",
+							"        pm.expect(tourney.image_url).to.not.eql(\"\");\r",
+							"    }\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://api.esportguru.com/tournaments",
+				"description": "Validate that tournaments' most important attributes are non-null"
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Game Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be okay to process\", function () { \r",
+							"    pm.response.to.not.be.error; \r",
+							"    pm.response.to.have.jsonBody(\"\"); \r",
+							"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Games have ids\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var g in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(g.id).to.not.eql(null);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Games have names\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var g in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(g.name).to.not.eql(null);\r",
+							"        pm.expect(g.name).to.not.eql(\"\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Games have summaries\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var g in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(g.summary).to.not.eql(null);\r",
+							"        pm.expect(g.summary).to.not.eql(\"\");\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Games have release dates\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var g in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(g.release_date).to.not.eql(null);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Games have websites\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var g in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(g.website).to.not.eql(null);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Games have screenshots\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    for (var g in jsonData.results)\r",
+							"    {   \r",
+							"        pm.expect(g.screenshots).to.not.eql(null);\r",
+							"    }\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://api.esportguru.com/games",
+				"description": "Validate that games' most important attributes are non-null"
+			},
+			"response": []
+		}
+	]
+}
