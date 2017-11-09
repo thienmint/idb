@@ -189,9 +189,23 @@ def form_regex(search_str):
 def search_game(search_str):
     query = (
         """
-            select g.id, g.name, g.summary, g.release_date
-            from GAME g
-            where g.name REGEXP "{0}" or g.summary REGEXP "{0}" or g.release_date REGEXP "{0}"
+        select g.id, g.name, g.summary, g.release_date,
+             pt.list_players, tt.list_teams
+          from GAME g
+          left join (
+            select group_concat(p.tag) as list_players, p.current_game
+            from PLAYER p
+            where p.tag REGEXP "{0}"
+            group by p.current_game
+          ) pt on pt.current_game = g.id
+          left join (
+            select group_concat(t.name) as list_teams, t.current_game
+            from TEAM t
+            where t.name REGEXP "{0}"
+            group by t.current_game
+          ) tt on tt.current_game = g.id
+        where g.name REGEXP "{0}" or g.summary REGEXP "{0}" or g.release_date REGEXP "{0}" or
+        tt.list_teams is not null or pt.list_players is not null
         """.format(search_str)
     )
     return query
@@ -480,6 +494,8 @@ class Search(Resource):
         search_results = OrderedDict()
         conn = engine.connect()
 
+        _ = conn.execute("set @@session.group_concat_max_len=18446744073709551615")
+
         game_results = conn.execute(search_game(search_str))
         player_results = conn.execute(search_player(search_str))
         team_results = conn.execute(search_team(search_str))
@@ -496,6 +512,8 @@ class Search(Resource):
             game['name'] = row['name']
             game['summary'] = row['summary']
             game['release_date'] = row['release_date']
+            game['sample_players'] = row['list_players']
+            game['sample_teams'] = row['list_teams']
             game_data.append(game)
 
         for row in player_results:
