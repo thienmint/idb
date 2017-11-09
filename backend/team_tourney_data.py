@@ -15,10 +15,14 @@ import re
 GET_TOURNEY_TEAMS = "SELECT id, teams FROM TOURNEY"
 GET_TEAMS = "SELECT id FROM TEAM"
 INSERT_TEAMS = "UPDATE TEAM SET tournaments = \'{0}\' WHERE id = {1}"
+GET_TEAM_TOURNEYS = "SELECT id, tournaments FROM TEAM"
+INSERT_TEAM_TOURNEYS = "INSERT INTO TEAM_TOURNAMENTS (team_id, tournament_id) VALUES ({0}, {1})"
 
 #
 # Public Function Declarations
 #
+
+# Fetching data from tourney to put into teams
 
 
 def get_tourney_teams(db, cur):
@@ -67,6 +71,41 @@ def insert_tourneys_to_teams(db, cur, data):
       print("Could not add tourney to {0}".format(team_id))
       print(e)
 
+
+# Putting team-tourney data into join table
+def get_team_tourney_pairs(db, cur):
+  cur.execute(GET_TEAM_TOURNEYS)
+  result = cur.fetchall()
+
+  team_tourney_pairs = []
+  for row in result:
+    tourney_list = str(json.loads(row[1]))
+    tourney_list = re.findall(r'\d+', tourney_list)
+    team_tourney_pairs += [{"id": row[0], "tournaments": tourney_list}]
+
+  return team_tourney_pairs
+
+
+def insert_into_team_tourney_table(db, cur, team_tourney_pairs):
+  for team_tourney in team_tourney_pairs:
+    team_id = team_tourney["id"]
+    tourneys = team_tourney["tournaments"]
+
+    for tourney_id in tourneys:
+      query = INSERT_TEAM_TOURNEYS.format(team_id, tourney_id)
+      try:
+        cur.execute(query)
+        db.commit()
+        # print("Successfully added pair {0} {1}".format(team_id, tourney_id))
+      except Exception as e:
+        db.rollback()
+        print("Could not add pair {0} {1}".format(team_id, tourney_id))
+        print(e)
+
+  #
+  # Main
+  #
+
 if __name__ == "__main__":
   db = MySQLdb.connect(host="db.esportguru.com",
                        user="persia",
@@ -81,8 +120,11 @@ if __name__ == "__main__":
 
   cur.execute('SET FOREIGN_KEY_CHECKS=0')
 
-  data = find_team_tourneys(get_tourney_teams(db, cur))
-  insert_tourneys_to_teams(db, cur, data)
+  # Insert team-tourney data
+  # data = find_team_tourneys(get_tourney_teams(db, cur))
+  # insert_tourneys_to_teams(db, cur, data)
+
+  insert_into_team_tourney_table(db, cur, get_team_tourney_pairs(db, cur))
 
   cur.execute('SET FOREIGN_KEY_CHECKS=1')
 
