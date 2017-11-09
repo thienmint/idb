@@ -19,7 +19,10 @@ export default class Teams extends Component {
             currentPage: 0,
             grid: [],
             sortOpt: 'Name',
-            sortOrder: 'default'
+            sortOrder: 'default',
+            originalTeams: [],
+            sourceTeams: [],
+            emptyPlayers: false
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -27,6 +30,7 @@ export default class Teams extends Component {
             let stateCopy = Object.assign([], this.state);
             stateCopy.teams = stateCopy.teams.slice();
             stateCopy.teams = Object.assign([], response.data);
+            stateCopy.sourceTeams = stateCopy.teams;
             stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
             stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
             stateCopy.currentPage = 0;
@@ -41,6 +45,9 @@ export default class Teams extends Component {
         this.sortOptChange = this.sortOptChange.bind(this);
         this.sortHandle = this.sortHandle.bind(this);
         this.sortGrid = this.sortGrid.bind(this);
+        this.handleCheckboxes = this.handleCheckboxes.bind(this);
+        this.processFilter = this.processFilter.bind(this);
+        this.resetFilter = this.resetFilter.bind(this);
     }
 
     updatePage(page) {
@@ -117,6 +124,47 @@ export default class Teams extends Component {
         this.setState(stateCopy)
     }
 
+    handleCheckboxes(event) {
+        let stateCopy = Object.assign([], this.state);
+        switch (event.target.name) {
+            case  "playersCheck":
+                stateCopy.emptyPlayers = event.target.checked;
+                break;
+            default:
+                console.log("Not match")
+        }
+        this.setState(stateCopy)
+    }
+
+    processFilter() {
+        console.log("Process filter called");
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.originalTeams = stateCopy.teams;
+
+        if(stateCopy.emptyPlayers)
+            stateCopy.teams = stateCopy.teams.filter((x) =>
+                (Object.keys(x.current_players).length > 0)
+            );
+
+        stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
+
+        stateCopy.grid = Teams.makeGrid(stateCopy.displayedTeams);
+        this.setState(stateCopy)
+    }
+
+    resetFilter() {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.teams = stateCopy.sourceTeams;
+        stateCopy.emptyPlayers = false;
+
+        stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
+
+        stateCopy.grid = Teams.makeGrid(stateCopy.displayedTeams);
+        this.setState(stateCopy)
+    }
+
     render() {
         // console.log(this.state.grid);
         return (
@@ -136,6 +184,36 @@ export default class Teams extends Component {
                         <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>
                     </select>
+                </p>
+
+                <p> Filter by: &nbsp;
+                    <span>
+                            Players &nbsp;
+                        <input
+                            name="playersCheck"
+                            type="checkbox"
+                            checked={this.state.emptyPlayers}
+                            onChange={this.handleCheckboxes} />
+                        </span>
+                    &nbsp;
+                    <span>
+                            <input
+                                name="filter"
+                                type="button"
+                                value="Apply"
+                                onClick={this.processFilter}
+                            />
+                        </span>
+                    &nbsp;
+                    <span>
+                            <input
+                                name="reset"
+                                type="button"
+                                value="Reset"
+                                onClick={this.resetFilter}
+                            />
+                        </span>
+
                 </p>
 
                 <br/>
