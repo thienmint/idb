@@ -3,7 +3,11 @@ import Navbar from './../components/nav/navbar';
 import './global.css'
 import axios from 'axios';
 
-import GridGames from "../components/grid-details/gridSearch";
+import GridGames from "../components/grid-details/gridSearchGames";
+import GridPlayers from "../components/grid-details/gridSearchPlayers";
+import GridTeams from "../components/grid-details/gridSearchTeams";
+import GridTournaments from "../components/grid-details/gridSearchTournaments";
+
 import { DotLoader } from 'react-spinners';
 
 export default class SearchPage extends Component {
@@ -32,6 +36,9 @@ export default class SearchPage extends Component {
     render() {
         let games = Object.values(this.state.games);
         let grid = [];
+        let grid2 = [];
+        let grid3 = [];
+        let grid4 = [];
         console.log(this.state.games);
 
         for(let i = 0; i < Math.ceil(Object.keys(this.state.games).length); i++){
@@ -44,8 +51,15 @@ export default class SearchPage extends Component {
                     for(let sub2 = 0; sub2< row2.length;sub++ )
                     {
                         let part = row2.splice(0,1);
-                        // console.log(part);
-                        grid.push(part);
+                        if(i == 0)
+                            grid.push(part);
+                        if(i == 1)
+                            grid2.push(part);
+                        if(i == 2)
+                            grid3.push(part);
+                        if(i == 3)
+                            grid4.push(part);
+                        
                         
                     }
                 }
@@ -72,6 +86,16 @@ export default class SearchPage extends Component {
                         {grid.map((item, index) => (
                              <GameRow values={item} key={index}/>
                         ))}
+                        {grid2.map((item, index) => (
+                             <GamePlayer values={item} key={index}/>
+                        ))}
+                        {grid3.map((item, index) => (
+                             <GameTeam values={item} key={index}/>
+                        ))}
+                        {grid4.map((item, index) => (
+                             <GameTournament values={item} key={index}/>
+                        ))}
+
                     </div>
                 }
             </div>
@@ -95,3 +119,53 @@ class GameRow extends Component {
         );
     }
 }
+class GamePlayer extends Component {
+    render() {
+        let row = this.props.values;
+        let games = [];
+        games.push(
+            row.map((game, index) => (
+                React.createElement(GridPlayers, {value: game})
+            ))
+        );
+        return (
+            <div className="row align-items-start">
+                {games}
+            </div>
+        );
+    }
+}
+class GameTeam extends Component {
+    render() {
+        let row = this.props.values;
+        let games = [];
+        games.push(
+            row.map((game, index) => (
+                React.createElement(GridTeams, {value: game})
+            ))
+        );
+        return (
+            <div className="row align-items-start">
+                {games}
+            </div>
+        );
+    }
+}
+
+class GameTournament extends Component {
+    render() {
+        let row = this.props.values;
+        let games = [];
+        games.push(
+            row.map((game, index) => (
+                React.createElement(GridTournaments, {value: game})
+            ))
+        );
+        return (
+            <div className="row align-items-start">
+                {games}
+            </div>
+        );
+    }
+}
+

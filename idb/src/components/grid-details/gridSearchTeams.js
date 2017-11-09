@@ -3,7 +3,7 @@ import './../../pages/global.css'
 import { Link } from 'react-router-dom';
 import NotFound from './../../static/images/image-not-found.png'
 
-class GridSearch extends Component {
+class GridSearchTeams extends Component {
 
     render() {
 
@@ -12,9 +12,8 @@ class GridSearch extends Component {
                 <div key={this.props.id}>
 
                     <div className="attributes">
-                        <Link to={`/games/${this.props.value.id}`}>
+                        <Link to={`/teams/${this.props.value.id}`}>
                         <div> {this.props.value.name}</div>
-                        <div> {this.props.value.tag}</div>
 
                         </Link>
                     </div>
@@ -24,4 +23,4 @@ class GridSearch extends Component {
     }
 }
 
-export default GridSearch;
+export default GridSearchTeams;
