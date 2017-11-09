@@ -15,9 +15,8 @@ export default class DetailTeam extends Component {
             hasPlayers: false,
         };
 
-        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(proxyurl + apiurl + 'teams/' + this.props.match.params.id).then((response) => {
+        axios.get(apiurl + 'teams/' + this.props.match.params.id).then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.team = Object.assign({}, response.data);
             if (Object.keys(response.data.current_players).length !== 0) {

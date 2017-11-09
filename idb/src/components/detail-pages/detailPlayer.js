@@ -15,9 +15,8 @@ export default class DetailPlayer extends Component {
             player: {}
         };
 
-        let proxyurl = 'https://cors-anywhere.herokuapp.com/';
         let apiurl = 'http://api.esportguru.com/';
-        axios.get(proxyurl + apiurl + 'players/' + this.props.match.params.id).then((response) => {
+        axios.get(apiurl + 'players/' + this.props.match.params.id).then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.player = Object.assign({}, response.data);
             this.setState(stateCopy);
@@ -80,8 +79,8 @@ export default class DetailPlayer extends Component {
                             <div className="row align-items-start">
                                 <div className="col-4 offset-2 labels lists">Team</div>
                                 <div className="col-4 lists detail-columns">
-                                    {this.state.player.team ?
-                                        <Link to={`/teams/${this.state.player.team.id}`}>{this.state.player.team.name}</Link>:
+                                    {this.state.player.current_team ?
+                                        <Link to={`/teams/${this.state.player.current_team.id}`}>{this.state.player.current_team.name}</Link>:
                                         'None found'}
                                 </div>
                             </div>
