@@ -11,11 +11,17 @@ class GridSearchTournaments extends Component {
             <div className="row ">
                 <div key={this.props.id}>
 
-                    <div className="attributes">
+                    <div className="search-title">
                         <Link to={`/tournaments/${this.props.value.id}`}>
-                        <div> {this.props.value.name}</div>
+                        <div> {this.props.value.slug}</div>
 
                         </Link>
+
+                    </div>
+                    <div>
+                            Name: {this.props.value.name + " "} 
+                            Start Time: {this.props.value.begin_at+ " "}
+                            End Time: {this.props.value.end_at+" "}
                     </div>
                 </div>
             </div>
