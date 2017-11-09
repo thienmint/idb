@@ -22,7 +22,8 @@ export default class Games extends Component {
             sortOrder: 'default',
             yearMinRange: '2000',
             yearMaxRange: '2017',
-            originalGames: []
+            originalGames: [],
+            sourceGames: []
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -30,6 +31,7 @@ export default class Games extends Component {
             let stateCopy = Object.assign([], this.state);
             stateCopy.games = stateCopy.games.slice();
             stateCopy.games = Object.assign([], response.data);
+            stateCopy.sourceGames = stateCopy.games;
             stateCopy.displayedGames = stateCopy.games.slice(0, 30);
             stateCopy.numberOfPages = Math.ceil(stateCopy.games.length / 30);
             stateCopy.currentPage = 0;
@@ -155,7 +157,7 @@ export default class Games extends Component {
 
     resetFilter() {
         let stateCopy = Object.assign([], this.state);
-        stateCopy.games = stateCopy.originalGames;
+        stateCopy.games = stateCopy.sourceGames;
         stateCopy.yearMinRange = '2000';
         stateCopy.yearMaxRange = '2017';
         stateCopy.grid = Games.makeGrid(stateCopy.games);
