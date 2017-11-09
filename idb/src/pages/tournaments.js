@@ -19,7 +19,13 @@ export default class Tournaments extends Component {
             currentPage: 0,
             grid: [],
             sortOpt: 'Name',
-            sortOrder: 'default'
+            sortOrder: 'default',
+            originalTournaments: [],
+            sourceTournaments: [],
+            beginMonth: "01",
+            beginYear: "2017",
+            endMonth: "01",
+            endYear: "2017"
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -27,6 +33,7 @@ export default class Tournaments extends Component {
             let stateCopy = Object.assign([], this.state);
             stateCopy.tournaments = stateCopy.tournaments.slice();
             stateCopy.tournaments = Object.assign([], response.data);
+            stateCopy.sourceTournaments = stateCopy.tournaments;
             stateCopy.displayedTournaments = stateCopy.tournaments.slice(0,30);
             stateCopy.numberOfPages = Math.ceil(stateCopy.tournaments.length / 30);
             stateCopy.currentPage = 0;
@@ -41,6 +48,9 @@ export default class Tournaments extends Component {
         this.sortOptChange = this.sortOptChange.bind(this);
         this.sortHandle = this.sortHandle.bind(this);
         this.sortGrid = this.sortGrid.bind(this);
+        this.handleInputs = this.handleInputs.bind(this);
+        this.processFilter = this.processFilter.bind(this);
+        this.resetFilter = this.resetFilter.bind(this);
     }
 
     updatePage(page) {
@@ -128,6 +138,92 @@ export default class Tournaments extends Component {
         this.setState(stateCopy)
     }
 
+    handleInputs(event) {
+        let stateCopy = Object.assign([], this.state);
+        switch (event.target.name) {
+            case  "beginMonth":
+                stateCopy.beginMonth = event.target.value;
+                break;
+            case  "beginYear":
+                stateCopy.beginYear = event.target.value;
+                if(stateCopy.beginYear > stateCopy.endYear)
+                    stateCopy.endYear = stateCopy.beginYear;
+                if(stateCopy.beginYear === stateCopy.endYear && stateCopy.endMonth < stateCopy.beginMonth)
+                    stateCopy.endMonth = stateCopy.beginMonth;
+                break;
+            case  "endMonth":
+                stateCopy.endMonth = event.target.value;
+                break;
+            case  "endYear":
+                stateCopy.endYear = event.target.value;
+                break;
+            default:
+                console.log("Not match")
+        }
+        this.setState(stateCopy)
+    }
+
+    static compareDate (begin_at, end_at, beginMonth, beginYear, endMonth, endYear) {
+        beginMonth = parseInt(beginMonth) - 1;
+        endMonth =parseInt(endMonth) - 1;
+        beginYear = parseInt(beginYear);
+        endYear = parseInt(endYear);
+        // 03-2015 to 02-2016
+        if(begin_at !== null && end_at !== null){
+            begin_at = new Date(begin_at);
+            end_at = new Date(end_at);
+            let startMonth = begin_at.getMonth();
+            let startYear = begin_at.getFullYear();
+            let finishedMonth = end_at.getMonth();
+            let finishedYear = end_at.getFullYear();
+            if(startYear < beginYear || finishedYear > endYear) // begin 2014 or  end 2017
+                return false;
+
+            else if(startYear === beginYear && startMonth < beginMonth) //begin in 2015, january
+                return false;
+
+            else
+                return !(finishedYear === endYear && finishedMonth > endMonth);
+            }
+        else
+            return false
+    }
+
+    processFilter() {
+        console.log("Process filter called");
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.originalTournaments = stateCopy.tournaments;
+
+        stateCopy.tournaments = stateCopy.tournaments.filter((x) => (
+            Tournaments.compareDate(
+                x.begin_at, x.end_at,
+                stateCopy.beginMonth, stateCopy.beginYear,
+                stateCopy.endMonth, stateCopy.endYear
+            )
+        ));
+
+        stateCopy.displayedTournaments = stateCopy.tournaments.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.tournaments.length / 30);
+
+        stateCopy.grid = Tournaments.makeGrid(stateCopy.displayedTournaments);
+        this.setState(stateCopy)
+    }
+
+    resetFilter() {
+        let stateCopy = Object.assign([], this.state);
+        stateCopy.tournaments = stateCopy.sourceTournaments;
+        stateCopy.beginMonth = '01';
+        stateCopy.beginYear = '2017';
+        stateCopy.endMonth = '01';
+        stateCopy.endYear = '2017';
+
+        stateCopy.displayedTournaments = stateCopy.tournaments.slice(0,30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.tournaments.length / 30);
+
+        stateCopy.grid = Tournaments.makeGrid(stateCopy.displayedTournaments);
+        this.setState(stateCopy)
+    }
+
     render() {
 
         return (
@@ -149,6 +245,63 @@ export default class Tournaments extends Component {
                         <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>
                     </select>
+                </p>
+
+                <p>
+                    <span>
+                            From &nbsp;
+                        <input
+                            name="beginMonth"
+                            type="number"
+                            min="01"
+                            max="12"
+                            value={this.state.beginMonth}
+                            onChange={this.handleInputs} />
+                        <input
+                            name="beginYear"
+                            type="number"
+                            min="1990"
+                            max="2017"
+                            value={this.state.beginYear}
+                            onChange={this.handleInputs} />
+
+                    </span>
+                    &nbsp; to &nbsp;
+                    <span>
+                        <input
+                            name="endMonth"
+                            type="number"
+                            min={this.state.beginYear === this.state.endYear ? this.state.beginMonth : "01"}
+                            max="12"
+                            value={this.state.endMonth}
+                            onChange={this.handleInputs} />
+                        <input
+                            name="endYear"
+                            type="number"
+                            min={this.state.beginYear}
+                            max="2017"
+                            value={this.state.endYear}
+                            onChange={this.handleInputs} />
+                        </span>
+                    &nbsp;
+                    <span>
+                            <input
+                                name="filter"
+                                type="button"
+                                value="Apply"
+                                onClick={this.processFilter}
+                            />
+                        </span>
+                    &nbsp;
+                    <span>
+                            <input
+                                name="reset"
+                                type="button"
+                                value="Reset"
+                                onClick={this.resetFilter}
+                            />
+                        </span>
+
                 </p>
 
                 <br/>
