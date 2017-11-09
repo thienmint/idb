@@ -151,7 +151,10 @@ export default class Games extends Component {
             Games.compareDate(x.release_date, stateCopy.yearMinRange, stateCopy.yearMaxRange)
         ));
 
-        stateCopy.grid = Games.makeGrid(stateCopy.games);
+        stateCopy.displayedGames = stateCopy.games.slice(0, 30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.games.length / 30);
+
+        stateCopy.grid = Games.makeGrid(stateCopy.displayedGames);
         this.setState(stateCopy)
     }
 
@@ -160,7 +163,11 @@ export default class Games extends Component {
         stateCopy.games = stateCopy.sourceGames;
         stateCopy.yearMinRange = '2000';
         stateCopy.yearMaxRange = '2017';
-        stateCopy.grid = Games.makeGrid(stateCopy.games);
+
+        stateCopy.displayedGames = stateCopy.games.slice(0, 30);
+        stateCopy.numberOfPages = Math.ceil(stateCopy.games.length / 30);
+
+        stateCopy.grid = Games.makeGrid(stateCopy.displayedGames);
         this.setState(stateCopy)
     }
 
