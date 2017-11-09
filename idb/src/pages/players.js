@@ -229,7 +229,7 @@ export default class Players extends Component {
                         </span>
                     &nbsp;
                     <span>
-                            Tag &nbsp;
+                            Hometown &nbsp;
                         <input
                             name="tagCheck"
                             type="checkbox"
