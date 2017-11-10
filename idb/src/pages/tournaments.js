@@ -166,10 +166,10 @@ export default class Tournaments extends Component {
     }
 
     static compareDate (begin_at, end_at, beginMonth, beginYear, endMonth, endYear) {
-        beginMonth = parseInt(beginMonth) - 1;
-        endMonth =parseInt(endMonth) - 1;
-        beginYear = parseInt(beginYear);
-        endYear = parseInt(endYear);
+        beginMonth = parseInt(beginMonth, 10) - 1;
+        endMonth =parseInt(endMonth, 10) - 1;
+        beginYear = parseInt(beginYear, 10);
+        endYear = parseInt(endYear, 10);
         if (
             isNaN(beginMonth) || isNaN(endMonth) ||
             isNaN(beginYear) || isNaN(endYear)
