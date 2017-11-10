@@ -221,9 +221,9 @@ export default class Players extends Component {
                         <option value="desc">Descending</option>
                     </select>
                 </p>
-                <p> Filter empty: &nbsp;
+                <p> Filter by: &nbsp;
                     <span>
-                            Name &nbsp;
+                            Nonempty name &nbsp;
                         <input
                             name="nameCheck"
                             type="checkbox"
@@ -232,7 +232,7 @@ export default class Players extends Component {
                         </span>
                     &nbsp;
                     <span>
-                            Hometown &nbsp;
+                            Nonempty hometown &nbsp;
                         <input
                             name="tagCheck"
                             type="checkbox"
