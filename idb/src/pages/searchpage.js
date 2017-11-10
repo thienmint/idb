@@ -19,24 +19,41 @@ export default class SearchPage extends Component {
             loading: true,
             temp: " ",
             numberOfPages: 0,
+
         };
 
         let apiurl = 'http://api.esportguru.com/';
 
-        axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
-            let stateCopy = Object.assign({}, this.state);
-            stateCopy.games = stateCopy.games.slice();
-            stateCopy.games = Object.assign([], response.data);
-            stateCopy.loading = false;
-            stateCopy.temp = this.props.match.params.id;
-            stateCopy.numberOfPages = Math.ceil(stateCopy.games.length / 10);
-            this.setState(stateCopy);
-        }).catch(function (error) {
-            console.log(error);
-        });
+        if (typeof this.props.match.params.id !== "undefined" && this.props.match.params.id !== null && this.props.match.params.id.trim() !== "")
+            axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
+                let stateCopy = Object.assign({}, this.state);
+                stateCopy.games = stateCopy.games.slice();
+                stateCopy.games = Object.assign([], response.data);
+                stateCopy.loading = false;
+                stateCopy.temp = this.props.match.params.id;
+                stateCopy.numberOfPages = Math.ceil(stateCopy.games.length / 10);
+                this.setState(stateCopy);
+            }).catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
+        if(typeof this.props.match.params.id === "undefined")
+            return(
+                <div>
+                    <Navbar/>
+                    <h1 className="page-title">Please use the search bar!</h1>
+                </div>
+            );
+        if(this.props.match.params.id === null || this.props.match.params.id.trim() === "")
+            return(
+                <div>
+                    <Navbar/>
+                    <h1 className="page-title">Please use enter at least one nonempty search word!</h1>
+                </div>
+            );
+
         let games = Object.values(this.state.games);
         let grid = [];
         let grid2 = [];
