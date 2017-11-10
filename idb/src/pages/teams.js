@@ -139,7 +139,7 @@ export default class Teams extends Component {
     processFilter() {
         console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
-        stateCopy.originalTeams = stateCopy.teams;
+        stateCopy.teams = stateCopy.sourceTeams;
 
         if(stateCopy.emptyPlayers)
             stateCopy.teams = stateCopy.teams.filter((x) =>
@@ -188,7 +188,7 @@ export default class Teams extends Component {
 
                 <p> Filter by: &nbsp;
                     <span>
-                            Players &nbsp;
+                            Only 1 or more players: &nbsp;
                         <input
                             name="playersCheck"
                             type="checkbox"
