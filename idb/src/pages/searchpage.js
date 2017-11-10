@@ -319,6 +319,7 @@ class GamePlayer extends Component {
         let players = [];
         players.push(
             row.map((player, index) => (
+                React.createElement(GridPlayers, {value: player})
             ))
         );
         return (
