@@ -21,6 +21,9 @@ class GridSearchTournaments extends Component {
                             Name: <text dangerouslySetInnerHTML={{ __html: this.props.value.name + " "}}/>
                             Start Time: <text dangerouslySetInnerHTML={{ __html: this.props.value.begin_at + " "}}/>
                             End Time: <text dangerouslySetInnerHTML={{ __html: this.props.value.end_at }}/>
+                            Game: <text dangerouslySetInnerHTML={{ __html: this.props.value.game }}/>
+                            Teams: <text dangerouslySetInnerHTML={{ __html: this.props.value.teams }}/>
+
                     </div>
                 </div>
             </div>

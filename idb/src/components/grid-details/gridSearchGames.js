@@ -19,7 +19,9 @@ class GridSearchGames extends Component {
                     </div>
                     <div>
                             Release Date: {this.props.value.release_date + " "} 
-                            Summary: <text dangerouslySetInnerHTML={{ __html: this.props.value.summary}}/>
+                            Sample Players: <text dangerouslySetInnerHTML={{ __html: this.props.value.players + " "}}/>
+                            Sample Teams: <text dangerouslySetInnerHTML={{ __html: this.props.value.teams + " "}}/>
+                            Summary: <text dangerouslySetInnerHTML={{ __html: this.props.value.summary }}/>
                     </div>
                 </div>
             </div>
