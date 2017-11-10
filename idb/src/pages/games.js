@@ -150,8 +150,8 @@ export default class Games extends Component {
         // console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
         stateCopy.games = stateCopy.sourceGames;
-        let min = parseInt(stateCopy.yearMinRange);
-        let max = parseInt(stateCopy.yearMaxRange);
+        let min = parseInt(stateCopy.yearMinRange, 10);
+        let max = parseInt(stateCopy.yearMaxRange, 10);
 
         if(!isNaN(max) && !isNaN(min))
             stateCopy.games = stateCopy.games.filter((x) => (
