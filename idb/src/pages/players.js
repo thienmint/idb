@@ -164,17 +164,20 @@ export default class Players extends Component {
     processFilter() {
         console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
-        stateCopy.originalPlayers = stateCopy.players;
+        stateCopy.players = stateCopy.sourcePlayers;
 
         if(stateCopy.nameEmpty)
             stateCopy.players = stateCopy.players.filter((x) =>
                 (x.first_name !== null && x.last_name !== null &&
-                    (x.first_name !== "" || x.last_name !== "")
+                    (
+                        (x.first_name !== "" && x.first_name !== "Unknown") ||
+                        (x.last_name !== "" && x.last_name !== "Unknown")
+                    )
                 )
             );
 
         if(stateCopy.hometownEmpty)
-            stateCopy.players = stateCopy.players.filter((x) => (x.hometown !== null && x.hometown !== ""));
+            stateCopy.players = stateCopy.players.filter((x) => (x.hometown !== null && x.hometown !== "" && x.hometown !== "Unknown"));
 
         stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
@@ -218,7 +221,7 @@ export default class Players extends Component {
                         <option value="desc">Descending</option>
                     </select>
                 </p>
-                <p> Filter by: &nbsp;
+                <p> Filter empty: &nbsp;
                     <span>
                             Name &nbsp;
                         <input
