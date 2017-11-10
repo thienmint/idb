@@ -3,7 +3,28 @@ import './navbar.css';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
-    render() {
+        constructor(props) {
+        super(props);
+        this.state = {
+            query: ' '
+    };
+            console.log(this.state.query);
+
+    }
+        handleChange = (event) => {
+            this.setState({
+            query: event.target.value,
+            });
+        };
+    handleClick = () => {
+    window.location = '/search/' + this.state.query;
+        // console.log(this.state.query);
+
+    // this.context.location.transitionTo('login');
+    };
+
+
+    render()  {
         return (
             <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
                 <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +52,8 @@ class Navbar extends Component {
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                        <button className="btn search-button my-2 my-sm-0" type="submit">Search</button>
+                        <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={this.handleChange}/>
+                        <button onClick={() => {this.handleClick()}}   className="btn search-button my-2 my-sm-0" type="button">Search</button>
                     </form>
                 </div>
             </nav>

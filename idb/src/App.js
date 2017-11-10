@@ -9,6 +9,7 @@ import Page404 from './pages/404page';
 import Teams from './pages/teams';
 import Games from './pages/games';
 import Tournaments from './pages/tournaments';
+import Search from './pages/searchpage'
 
 import { Route, Switch } from 'react-router-dom';
 import DetailGame from "./components/detail-pages/detailGame";
@@ -16,10 +17,14 @@ import DetailTeam from "./components/detail-pages/detailTeam";
 import DetailPlayer from "./components/detail-pages/detailPlayer";
 import DetailTournament from "./components/detail-pages/detailTournaments";
 
+
 const Main = () => (
     <main>
         <Switch>
             <Route exact path='/' component={Home}/>
+
+            <Route exact path='/search' component={Search}/>
+            <Route path='/search/:id' component={Search}/> 
             <Route exact path='/about' component={About}/>
             <Route exact path='/players' component={Players}/>
 
