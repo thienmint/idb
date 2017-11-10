@@ -168,6 +168,11 @@ export default class Tournaments extends Component {
         endMonth =parseInt(endMonth) - 1;
         beginYear = parseInt(beginYear);
         endYear = parseInt(endYear);
+        if (
+            isNaN(beginMonth) || isNaN(endMonth) ||
+            isNaN(beginYear) || isNaN(endYear)
+        )
+            return true;
         // 03-2015 to 02-2016
         if(begin_at !== null && end_at !== null){
             begin_at = new Date(begin_at);
