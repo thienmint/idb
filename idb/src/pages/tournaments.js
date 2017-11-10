@@ -129,7 +129,7 @@ export default class Tournaments extends Component {
                         stateCopy.tournaments = stateCopy.tournaments.sort((x, y) => (Tournaments.compareString(y.end_at, x.end_at)));
                         break;
                 } break;
-            default: stateCopy.tournaments = this.state.players;
+            default: stateCopy.tournaments = this.state.tournaments;
         }
 
         stateCopy.loading = false;
@@ -168,6 +168,11 @@ export default class Tournaments extends Component {
         endMonth =parseInt(endMonth) - 1;
         beginYear = parseInt(beginYear);
         endYear = parseInt(endYear);
+        if (
+            isNaN(beginMonth) || isNaN(endMonth) ||
+            isNaN(beginYear) || isNaN(endYear)
+        )
+            return true;
         // 03-2015 to 02-2016
         if(begin_at !== null && end_at !== null){
             begin_at = new Date(begin_at);
@@ -192,7 +197,7 @@ export default class Tournaments extends Component {
     processFilter() {
         console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
-        stateCopy.originalTournaments = stateCopy.tournaments;
+        stateCopy.tournaments = stateCopy.sourceTournaments;
 
         stateCopy.tournaments = stateCopy.tournaments.filter((x) => (
             Tournaments.compareDate(
@@ -249,7 +254,7 @@ export default class Tournaments extends Component {
 
                 <p>
                     <span>
-                            From &nbsp;
+                            Begin after &nbsp;
                         <input
                             name="beginMonth"
                             type="number"
@@ -257,6 +262,7 @@ export default class Tournaments extends Component {
                             max="12"
                             value={this.state.beginMonth}
                             onChange={this.handleInputs} />
+                        /
                         <input
                             name="beginYear"
                             type="number"
@@ -266,7 +272,7 @@ export default class Tournaments extends Component {
                             onChange={this.handleInputs} />
 
                     </span>
-                    &nbsp; to &nbsp;
+                    &nbsp; Ending  before&nbsp;
                     <span>
                         <input
                             name="endMonth"
@@ -275,6 +281,7 @@ export default class Tournaments extends Component {
                             max="12"
                             value={this.state.endMonth}
                             onChange={this.handleInputs} />
+                        /
                         <input
                             name="endYear"
                             type="number"
