@@ -17,7 +17,10 @@ class GridSearchTeams extends Component {
                         </Link>
                     </div>
                     <div>
-                            Acronym: <text dangerouslySetInnerHTML={{ __html: this.props.value.acronym}}/>
+                            Acronym: <text dangerouslySetInnerHTML={{ __html: this.props.value.acronym + " "}}/>
+                            Current Players: <text dangerouslySetInnerHTML={{ __html: this.props.value.current_players + " "}}/>
+                            Current Game: <text dangerouslySetInnerHTML={{ __html: this.props.value.current_game}}/>
+
 
                     </div>
 
