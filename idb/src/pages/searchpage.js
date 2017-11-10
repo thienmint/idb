@@ -32,7 +32,8 @@ export default class SearchPage extends Component {
 
         let apiurl = 'http://api.esportguru.com/';
 
-        axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
+        if (typeof this.props.match.params.id !== "undefined" && this.props.match.params.id !== null && this.props.match.params.id.trim() !== "")
+            axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
             let stateCopy = Object.assign({}, this.state);
             stateCopy.results = stateCopy.results.slice();
             stateCopy.results = Object.assign([], response.data);
@@ -232,6 +233,20 @@ export default class SearchPage extends Component {
     }
 
     render() {
+        if(typeof this.props.match.params.id === "undefined")
+            return(
+                <div>
+                    <Navbar/>
+                    <h1 className="page-title">Please use the search bar!</h1>
+                </div>
+            );
+        if(this.props.match.params.id === null || this.props.match.params.id.trim() === "")
+            return(
+                <div>
+                    <Navbar/>
+                    <h1 className="page-title">Please use enter at least one nonempty search word!</h1>
+                </div>
+            );
         return (
             <div>
                 <Navbar/>
