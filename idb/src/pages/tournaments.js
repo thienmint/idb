@@ -113,6 +113,7 @@ export default class Tournaments extends Component {
                     case "EndDate":
                         stateCopy.tournaments = stateCopy.tournaments.sort((x, y) => (Tournaments.compareString(x.end_at, y.end_at)));
                         break;
+                    default:
                 } break;
             case "desc":
                 switch (stateCopy.sortOpt) {
@@ -128,6 +129,7 @@ export default class Tournaments extends Component {
                     case "EndDate":
                         stateCopy.tournaments = stateCopy.tournaments.sort((x, y) => (Tournaments.compareString(y.end_at, x.end_at)));
                         break;
+                    default:
                 } break;
             default: stateCopy.tournaments = this.state.tournaments;
         }
