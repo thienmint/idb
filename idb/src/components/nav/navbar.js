@@ -6,21 +6,23 @@ class Navbar extends Component {
         constructor(props) {
         super(props);
         this.state = {
-            query: ' '
+            query: ''
     };
-            console.log(this.state.query);
+        console.log(this.state.query);
 
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
-        handleChange = (event) => {
-            this.setState({
-            query: event.target.value,
-            });
-        };
-    handleClick = () => {
-    window.location = '/search/' + this.state.query;
-        // console.log(this.state.query);
 
-    // this.context.location.transitionTo('login');
+    handleChange(event){
+        this.setState({
+        query: event.target.value,
+        });
+    };
+
+    handleClick(event) {
+        event.preventDefault();
+        window.location = '/search/' + this.state.query;
     };
 
 
@@ -51,9 +53,18 @@ class Navbar extends Component {
                             <Link to='/tournaments' className='nav-link'>Tournaments</Link>
                         </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={this.handleChange}/>
-                        <button onClick={() => {this.handleClick()}}   className="btn search-button my-2 my-sm-0" type="button">Search</button>
+                    <form className="form-inline my-2 my-lg-0" onSubmit={this.handleClick}>
+                        <input
+                            className="form-control mr-sm-2"
+                            type="text"
+                            placeholder="Search"
+                            value={this.state.query}
+                            required
+                            onChange={this.handleChange}/>
+                        <input
+                            className="btn search-button my-2 my-sm-0"
+                            value="Search"
+                            type="submit"/>
                     </form>
                 </div>
             </nav>
