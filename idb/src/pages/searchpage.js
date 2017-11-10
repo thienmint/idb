@@ -74,7 +74,6 @@ export default class SearchPage extends Component {
         let endOfPlayers = Object.keys(state.players).length - 1;
         let endOfTeams = Object.keys(state.teams).length - 1;
         let arrayLengths = [ endOfGames, endOfPlayers, endOfTeams];
-        let values = [state.games, state.players, state.teams, state.tournaments];
 
         let numResults = 0;
         let numLeftToGrab = 10;
@@ -121,14 +120,15 @@ export default class SearchPage extends Component {
                     state.displayedTournaments = Object.values(state.tournaments).splice(startingIndex, startingIndex + numLeftToGrab);
                 }
                 startingIndex = 0;
-                numResults = numResults + Object.keys(values[arraysUntilStart]).length;
+                numResults = Object.keys(state.displayedGames).length + Object.keys(state.displayedPlayers).length +
+                    Object.keys(state.displayedTeams).length + Object.keys(state.displayedTournaments).length;
                 numLeftToGrab = 10 - numResults;
                 arraysUntilStart++;
             }
         }
-
         return state;
     }
+
 
     highlightAllKeywords(state) {
         let games = Object.values(state.results);
@@ -138,7 +138,7 @@ export default class SearchPage extends Component {
         let grid4 = [];
         let individual_words = state.temp.split(" ");
 
-        for(let i = 0; i < Math.ceil(Object.keys(state.games).length); i++){
+        for(let i = 0; i < Math.ceil(Object.keys(state.results).length); i++){
                 let row = games.splice(0,1);
              
                 for(let sub = 0; sub<row.length;sub++)
