@@ -20,5 +20,24 @@
 <a href="tournaments">/GET/tournaments</a> <br>
 <a href="games">/GET/games</a>
 
+<div>
+    <label for="keywords">Search keywords:</label>
+    <input type="text" name="keywords" id="keywords" />
+    <button type="button" id="button">Search</button>
+</div>
+
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#button').click(function(e) {
+            var inputvalue = $("#keywords").val();
+            if(window.location.port != 80)
+                window.location.href = (" http://" + window.location.hostname + ":" + window.location.port + "/search/"+inputvalue);
+            else
+                window.location.href = (" http://" + window.location.hostname + "/search/"+inputvalue);
+        });
+    });
+</script>
+
 </html>
