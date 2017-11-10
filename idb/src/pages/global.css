@@ -97,6 +97,19 @@ body {
     padding-top: 20vh;
 }
 
+.search-title{
+    text-align: left;
+    padding-right: 10px;
+
+}
+
+.no-search-results {
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 17%;
+    padding-top: 20vh;
+}
 .default-option {
     display: none;
 }
