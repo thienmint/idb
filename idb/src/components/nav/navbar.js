@@ -23,6 +23,7 @@ class Navbar extends Component {
     // this.context.location.transitionTo('login');
     };
 
+
     render()  {
         return (
             <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -52,7 +53,7 @@ class Navbar extends Component {
                     </ul>
                     <form className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="text" placeholder="Search" onChange={this.handleChange}/>
-                        <button onClick={() => {this.handleClick()}} className="btn search-button my-2 my-sm-0" type="button">Search</button>
+                        <button onClick={() => {this.handleClick()}}   className="btn search-button my-2 my-sm-0" type="button">Search</button>
                     </form>
                 </div>
             </nav>
