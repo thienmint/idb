@@ -115,7 +115,7 @@ export default class Teams extends Component {
                         stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(y.acronym, x.acronym)));
                         break;
                 } break;
-            default: stateCopy.teams = this.state.players;
+            default: stateCopy.teams = this.state.teams;
         }
 
         stateCopy.loading = false;
