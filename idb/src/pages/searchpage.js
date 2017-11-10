@@ -50,7 +50,6 @@ export default class SearchPage extends Component {
                 Object.keys(stateCopy.teams).length + Object.keys(stateCopy.tournaments).length) / 10);
 
             let displayedValues = Object.assign({}, stateCopy);
-            console.log(displayedValues.tournaments);
             let stateToDisplay = this.getTenResults(0, displayedValues);
             stateCopy.displayedGames = stateToDisplay.displayedGames;
             stateCopy.displayedPlayers = stateToDisplay.displayedPlayers;
@@ -67,7 +66,6 @@ export default class SearchPage extends Component {
     updatePage(page) {
         let startingIndex = 10 * page;
         let stateCopy = Object.assign({}, this.state);
-        console.log(stateCopy);
         let stateToBeDisplayed = this.getTenResults(startingIndex, stateCopy);
         this.setState(stateToBeDisplayed);
     }
@@ -101,24 +99,18 @@ export default class SearchPage extends Component {
             arraysUntilEnd++;
         }
 
-        console.log(arraysUntilStart);
-        console.log(arraysUntilEnd);
-        console.log(startingIndex);
-        console.log(endingIndex);
-        console.log(state.tournaments);
-
         if (arraysUntilStart === arraysUntilEnd) {
             if (arraysUntilStart === 0) {
                 state.displayedGames = Object.values(state.games).splice(startingIndex, 10);
             } else if (arraysUntilStart === 1) {
+                startingIndex = startingIndex - arrayLengths[0];
                 state.displayedPlayers = Object.values(state.players).splice(startingIndex, 10);
             } else if (arraysUntilStart === 2) {
+                startingIndex = startingIndex - arrayLengths[0] - arrayLengths[1];
                 state.displayedTeams = Object.values(state.teams).splice(startingIndex, 10);
-                console.log()
             } else {
-                // console.log(Object.values(state.tournaments).splice(startingIndex, 10));
+                startingIndex = startingIndex - arrayLengths[0] - arrayLengths[1] - arrayLengths[2];
                 state.displayedTournaments = Object.values(state.tournaments).splice(startingIndex,  10);
-                console.log(state.displayedTournaments);
             }
         } else {
             while (numResults < 10) {
