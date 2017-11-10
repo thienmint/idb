@@ -145,7 +145,7 @@ export default class Games extends Component {
     processFilter() {
         // console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
-        stateCopy.originalGames = stateCopy.games;
+        stateCopy.games = stateCopy.sourceGames;
 
         stateCopy.games = stateCopy.games.filter((x) => (
             Games.compareDate(x.release_date, stateCopy.yearMinRange, stateCopy.yearMaxRange)
@@ -193,7 +193,7 @@ export default class Games extends Component {
 
                 <p>
                     <span>
-                            From &nbsp;
+                            Release date from &nbsp;
                         <input
                             name="yearMin"
                             type="number"
