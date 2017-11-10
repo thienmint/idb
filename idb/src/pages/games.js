@@ -101,12 +101,16 @@ export default class Games extends Component {
                     case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(x.name, y.name)));
                     break;
                     case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(x.release_date, y.release_date)));
+                    break;
+                    default:
                 } break;
             case "desc":
                 switch (stateCopy.sortOpt) {
                     case "Name": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(y.name, x.name)));
                         break;
                     case "Date": stateCopy.games = stateCopy.games.sort((x, y) => (Games.compareString(y.release_date, x.release_date)));
+                    break;
+                    default:
                 } break;
             default: stateCopy.games = this.state.games;
         }

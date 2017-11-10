@@ -123,7 +123,7 @@ export default class Players extends Component {
                     case "Hometown":
                         stateCopy.players = stateCopy.players.sort((x, y) => (Players.compareString(x.hometown, y.hometown)));
                         break;
-
+                    default:
                 } break;
             case "desc":
                 switch (stateCopy.sortOpt) {
@@ -139,6 +139,7 @@ export default class Players extends Component {
                     case "Hometown":
                         stateCopy.players = stateCopy.players.sort((x, y) => (Players.compareString(y.hometown, x.hometown)));
                         break;
+                    default:
                 } break;
             default: stateCopy.players = this.state.players;
         }
