@@ -22,7 +22,10 @@ export default class Teams extends Component {
             sortOrder: 'default',
             originalTeams: [],
             sourceTeams: [],
-            emptyPlayers: false
+            emptyPlayers: false,
+            playOverwatch: false,
+            playLeague: false,
+            playHS: false
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -115,7 +118,7 @@ export default class Teams extends Component {
                         stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(y.acronym, x.acronym)));
                         break;
                 } break;
-            default: stateCopy.teams = this.state.players;
+            default: stateCopy.teams = this.state.teams;
         }
 
         stateCopy.loading = false;
@@ -130,21 +133,52 @@ export default class Teams extends Component {
             case  "playersCheck":
                 stateCopy.emptyPlayers = event.target.checked;
                 break;
+            case "overwatchCheck":
+                stateCopy.playOverwatch = event.target.checked;
+                break;
+            case "leagueCheck":
+                stateCopy.playLeague = event.target.checked;
+                break;
+            case "hsCheck":
+                stateCopy.playHS = event.target.checked;
+                break;
             default:
                 console.log("Not match")
         }
         this.setState(stateCopy)
     }
+  
+    static checkGame(x, id) {
+        if(x !== null && Object.keys(x).length > 0)
+            return new Map(Object.entries(x)).get("id") === id;
+        else
+            return false;
+    }
 
     processFilter() {
         console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
-        stateCopy.originalTeams = stateCopy.teams;
+        stateCopy.teams = stateCopy.sourceTeams;
 
         if(stateCopy.emptyPlayers)
             stateCopy.teams = stateCopy.teams.filter((x) =>
                 (Object.keys(x.current_players).length > 0)
             );
+
+        if(stateCopy.playOverwatch)
+            stateCopy.teams = stateCopy.teams.filter((x) => (
+                Teams.checkGame(x.current_game, 14)
+            ));
+
+        if(stateCopy.playLeague)
+            stateCopy.teams = stateCopy.teams.filter((x) => (
+                Teams.checkGame(x.current_game, 1)
+            ));
+
+        if(stateCopy.playHS)
+            stateCopy.teams = stateCopy.teams.filter((x) => (
+                Teams.checkGame(x.current_game, 2)
+            ));
 
         stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
@@ -157,6 +191,10 @@ export default class Teams extends Component {
         let stateCopy = Object.assign([], this.state);
         stateCopy.teams = stateCopy.sourceTeams;
         stateCopy.emptyPlayers = false;
+        stateCopy.playOverwatch = false;
+        stateCopy.playLeague = false;
+        stateCopy.playHS = false;
+
 
         stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
@@ -186,16 +224,44 @@ export default class Teams extends Component {
                     </select>
                 </p>
 
-                <p> Filter by: &nbsp;
+                <p> Filter by: <br/>
                     <span>
-                            Players &nbsp;
+                            Only 1 or more players: &nbsp;
                         <input
                             name="playersCheck"
                             type="checkbox"
                             checked={this.state.emptyPlayers}
                             onChange={this.handleCheckboxes} />
                         </span>
+                    <br/>
+                    <span>
+                            Overwatch &nbsp;
+                        <input
+                            name="overwatchCheck"
+                            type="checkbox"
+                            checked={this.state.playOverwatch}
+                            onChange={this.handleCheckboxes} />
+                        </span>
                     &nbsp;
+                    <span>
+                            League of Legends &nbsp;
+                        <input
+                            name="leagueCheck"
+                            type="checkbox"
+                            checked={this.state.playLeague}
+                            onChange={this.handleCheckboxes} />
+                        </span>
+                    &nbsp;
+                    <span>
+                            HearthStone &nbsp;
+                        <input
+                            name="hsCheck"
+                            type="checkbox"
+                            checked={this.state.playHS}
+                            onChange={this.handleCheckboxes} />
+                        </span>
+
+                    <br/>
                     <span>
                             <input
                                 name="filter"

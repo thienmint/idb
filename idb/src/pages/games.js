@@ -145,11 +145,14 @@ export default class Games extends Component {
     processFilter() {
         // console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
-        stateCopy.originalGames = stateCopy.games;
+        stateCopy.games = stateCopy.sourceGames;
+        let min = parseInt(stateCopy.yearMinRange);
+        let max = parseInt(stateCopy.yearMaxRange);
 
-        stateCopy.games = stateCopy.games.filter((x) => (
-            Games.compareDate(x.release_date, stateCopy.yearMinRange, stateCopy.yearMaxRange)
-        ));
+        if(!isNaN(max) && !isNaN(min))
+            stateCopy.games = stateCopy.games.filter((x) => (
+                Games.compareDate(x.release_date, stateCopy.yearMinRange, stateCopy.yearMaxRange)
+            ));
 
         stateCopy.displayedGames = stateCopy.games.slice(0, 30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.games.length / 30);
@@ -193,7 +196,7 @@ export default class Games extends Component {
 
                 <p>
                     <span>
-                            From &nbsp;
+                            Release date from &nbsp;
                         <input
                             name="yearMin"
                             type="number"
