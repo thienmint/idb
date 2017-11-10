@@ -5,17 +5,14 @@ import { Link } from 'react-router-dom';
 class GridSearchGames extends Component {
 
     render() {
-
         return (
             <div className="row ">
                 <div key={this.props.id}>
 
                     <div className="search-title">
                         <Link to={`/games/${this.props.value.id}`}>
-                        <div><text dangerouslySetInnerHTML={{ __html: this.props.value.name}}/></div>
-
+                            <div><text dangerouslySetInnerHTML={{ __html: this.props.value.name}}/></div>
                         </Link>
-
                     </div>
                     <div>
                             Release Date:<text dangerouslySetInnerHTML={{ __html: this.props.value.release_date + " "}}/>
