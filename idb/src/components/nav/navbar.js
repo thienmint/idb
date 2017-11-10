@@ -3,7 +3,30 @@ import './navbar.css';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
-    render() {
+        constructor(props) {
+        super(props);
+        this.state = {
+            query: ''
+    };
+        console.log(this.state.query);
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleChange(event){
+        this.setState({
+        query: event.target.value,
+        });
+    };
+
+    handleClick(event) {
+        event.preventDefault();
+        window.location = '/search/' + this.state.query.trim();
+    };
+
+
+    render()  {
         return (
             <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
                 <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +53,18 @@ class Navbar extends Component {
                             <Link to='/tournaments' className='nav-link'>Tournaments</Link>
                         </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                        <button className="btn search-button my-2 my-sm-0" type="submit">Search</button>
+                    <form className="form-inline my-2 my-lg-0" onSubmit={this.handleClick}>
+                        <input
+                            className="form-control mr-sm-2"
+                            type="text"
+                            placeholder="Search"
+                            value={this.state.query}
+                            required
+                            onChange={this.handleChange}/>
+                        <input
+                            className="btn search-button my-2 my-sm-0"
+                            value="Search"
+                            type="submit"/>
                     </form>
                 </div>
             </nav>
