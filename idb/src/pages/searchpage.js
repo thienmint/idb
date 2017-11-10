@@ -136,102 +136,102 @@ export default class SearchPage extends Component {
 
     highlightAllKeywords(state) {
         let games = Object.values(state.results);
-        let grid = [];
-        let grid2 = [];
-        let grid3 = [];
-        let grid4 = [];
+        let games_grid = [];
+        let players_grid = [];
+        let teams_grid = [];
+        let tournaments_grid = [];
         let individual_words = state.temp.split(" ");
 
         for(let i = 0; i < Math.ceil(Object.keys(state.results).length); i++){
-                let row = games.splice(0,1);
+                let type_of_model_list = games.splice(0,1);
              
-                for(let sub = 0; sub<row.length;sub++)
+                for(let idx_model = 0; idx_model<type_of_model_list.length;idx_model++)
                 {
-                    let row2 = row[sub];
-                    for(let sub2 = 0; sub2< row2.length;sub++ )
+                    let row2 = type_of_model_list[idx_model];
+                    for(let _ = 0; _< row2.length; _++ )
                     {
-                        let part = row2.splice(0,1);
-                        for(let part_of_part = 0; part_of_part < part.length; part_of_part++)
+                        let model = row2.splice(0,1);
+                        for(let attributes = 0; attributes < model.length; attributes++)
                         {
                             for(let word_position = 0; word_position< individual_words.length; word_position++)
                             {
                                 state.temp = individual_words[word_position];
                                 if(i === 0)
                                 {
-                                    if(part[part_of_part].name !== null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].summary !== null)
-                                        part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].release_date !== null)
-                                        part[part_of_part].release_date = part[part_of_part].release_date.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].sample_players !== null)
-                                        part[part_of_part].sample_players = part[part_of_part].sample_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].sample_teams !== null)
-                                        part[part_of_part].sample_teams = part[part_of_part].sample_teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].name !== null)
+                                        model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].summary !== null)
+                                        model[attributes].summary = model[attributes].summary.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].release_date !== null)
+                                        model[attributes].release_date = model[attributes].release_date.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].sample_players !== null)
+                                        model[attributes].sample_players = model[attributes].sample_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].sample_teams !== null)
+                                        model[attributes].sample_teams = model[attributes].sample_teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                 }
                                 if(i === 1)
                                 {
-                                    if(part[part_of_part].tag !== null)
-                                        part[part_of_part].tag = part[part_of_part].tag.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].first_name !== null)
-                                        part[part_of_part].first_name = part[part_of_part].first_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].last_name !== null)
-                                        part[part_of_part].last_name = part[part_of_part].last_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].role !== null)
-                                        part[part_of_part].role = part[part_of_part].role.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].hometown !== null)
-                                        part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].current_game !== null)
-                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].current_team !== null)
-                                        part[part_of_part].current_team = part[part_of_part].current_team.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].tag !== null)
+                                        model[attributes].tag = model[attributes].tag.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].first_name !== null)
+                                        model[attributes].first_name = model[attributes].first_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].last_name !== null)
+                                        model[attributes].last_name = model[attributes].last_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].role !== null)
+                                        model[attributes].role = model[attributes].role.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].hometown !== null)
+                                        model[attributes].hometown = model[attributes].hometown.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].current_game !== null)
+                                        model[attributes].current_game = model[attributes].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].current_team !== null)
+                                        model[attributes].current_team = model[attributes].current_team.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
 
                                 }
                                 if(i === 2)
                                 {
-                                    if(part[part_of_part].name !== null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].acronym !== null)
-                                        part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].current_players !== null)
-                                        part[part_of_part].current_players = part[part_of_part].current_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].current_game !== null)
-                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].name !== null)
+                                        model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].acronym !== null)
+                                        model[attributes].acronym = model[attributes].acronym.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].current_players !== null)
+                                        model[attributes].current_players = model[attributes].current_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].current_game !== null)
+                                        model[attributes].current_game = model[attributes].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                 }
                                 if(i === 3)
                                 {
-                                    if(part[part_of_part].slug !== null)
-                                        part[part_of_part].slug = part[part_of_part].slug.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].name !== null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].begin_at !== null)
-                                        part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].end_at !== null)
-                                        part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].game !== null)
-                                        part[part_of_part].game = part[part_of_part].game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(part[part_of_part].teams !== null)
-                                        part[part_of_part].teams = part[part_of_part].teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].slug !== null)
+                                        model[attributes].slug = model[attributes].slug.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].name !== null)
+                                        model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].begin_at !== null)
+                                        model[attributes].begin_at = model[attributes].begin_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].end_at !== null)
+                                        model[attributes].end_at = model[attributes].end_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].game !== null)
+                                        model[attributes].game = model[attributes].game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                    if(model[attributes].teams !== null)
+                                        model[attributes].teams = model[attributes].teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                 }
                                 
                             }
                         }
                         if(i === 0)
-                            grid.push(part);
+                            games_grid.push(model);
                         if(i === 1)
-                            grid2.push(part);
+                            players_grid.push(model);
                         if(i === 2)
-                            grid3.push(part);
+                            teams_grid.push(model);
                         if(i === 3)
-                            grid4.push(part);
+                            tournaments_grid.push(model);
                     }
                 }
         }
 
-        state.games = grid;
-        state.players = grid2;
-        state.teams = grid3;
-        state.tournaments = grid4;
+        state.games = games_grid;
+        state.players = players_grid;
+        state.teams = teams_grid;
+        state.tournaments = tournaments_grid;
         return state;
     }
 
@@ -316,15 +316,14 @@ class GameRow extends Component {
 class GamePlayer extends Component {
     render() {
         let row = this.props.values;
-        let games = [];
-        games.push(
-            row.map((game, index) => (
-                React.createElement(GridPlayers, {value: game})
+        let players = [];
+        players.push(
+            row.map((player, index) => (
             ))
         );
         return (
             <div className="row align-items-start">
-                {games}
+                {players}
             </div>
         );
     }
@@ -332,15 +331,15 @@ class GamePlayer extends Component {
 class GameTeam extends Component {
     render() {
         let row = this.props.values;
-        let games = [];
-        games.push(
-            row.map((game, index) => (
-                React.createElement(GridTeams, {value: game})
+        let teams = [];
+        teams.push(
+            row.map((team, index) => (
+                React.createElement(GridTeams, {value: team})
             ))
         );
         return (
             <div className="row align-items-start">
-                {games}
+                {teams}
             </div>
         );
     }
@@ -349,15 +348,15 @@ class GameTeam extends Component {
 class GameTournament extends Component {
     render() {
         let row = this.props.values;
-        let games = [];
-        games.push(
-            row.map((game, index) => (
-                React.createElement(GridTournaments, {value: game})
+        let tournaments = [];
+        tournaments.push(
+            row.map((tournament, index) => (
+                React.createElement(GridTournaments, {value: tournament})
             ))
         );
         return (
             <div className="row align-items-start">
-                {games}
+                {tournaments}
             </div>
         );
     }
