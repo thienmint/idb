@@ -5,15 +5,13 @@ import { Link } from 'react-router-dom';
 class GridSearchTournaments extends Component {
 
     render() {
-
         return (
             <div className="row ">
                 <div key={this.props.id}>
 
                     <div className="search-title">
                         <Link to={`/tournaments/${this.props.value.id}`}>
-                        <div> <text dangerouslySetInnerHTML={{ __html: this.props.value.slug}}/></div>
-
+                            <div> <text dangerouslySetInnerHTML={{ __html: this.props.value.slug}}/></div>
                         </Link>
 
                     </div>
@@ -23,7 +21,6 @@ class GridSearchTournaments extends Component {
                             End Time: <text dangerouslySetInnerHTML={{ __html: this.props.value.end_at }}/>
                             Game: <text dangerouslySetInnerHTML={{ __html: this.props.value.game }}/>
                             Teams: <text dangerouslySetInnerHTML={{ __html: this.props.value.teams }}/>
-
                     </div>
                 </div>
             </div>

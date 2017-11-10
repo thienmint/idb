@@ -8,7 +8,6 @@ class Navbar extends Component {
         this.state = {
             query: ''
     };
-        console.log(this.state.query);
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);

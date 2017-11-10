@@ -11,7 +11,6 @@ class GridSearchPlayers extends Component {
 
                     <div className="search-title">
                         <Link to={`/players/${this.props.value.id}`}>
-                        
                            <div><text dangerouslySetInnerHTML={{ __html: this.props.value.tag}}/> </div>
 
                         </Link>
