@@ -147,7 +147,7 @@ export default class Teams extends Component {
         }
         this.setState(stateCopy)
     }
-
+  
     static checkGame(x, id) {
         if(x !== null && Object.keys(x).length > 0)
             return new Map(Object.entries(x)).get("id") === id;
@@ -194,6 +194,7 @@ export default class Teams extends Component {
         stateCopy.playOverwatch = false;
         stateCopy.playLeague = false;
         stateCopy.playHS = false;
+
 
         stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);

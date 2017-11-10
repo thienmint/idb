@@ -112,6 +112,20 @@ def tourney2_query(tourney_id = None):
 
     return query
 
+def tourney2_query(tourney_id = None):
+    query = (
+        """
+          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
+                 tn.league, tn.league_image, g.name as game_name
+          from TOURNEY2 tn
+          join GAME g on g.id = tn.game
+          {0}
+          LIMIT 40
+        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
+    )
+
+    return query
+
 
 def get_teams_info(list_teams):
     conditions = []
