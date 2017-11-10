@@ -64,6 +64,12 @@ export default class SearchPage extends Component {
                                         part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].summary != null)
                                         part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].release_date != null)
+                                        part[part_of_part].release_date = part[part_of_part].release_date.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].sample_players != null)
+                                        part[part_of_part].sample_players = part[part_of_part].sample_players.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].sample_teams != null)
+                                        part[part_of_part].sample_teams = part[part_of_part].sample_teams.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                 }
                                 if(i === 1)
                                 {
@@ -77,6 +83,10 @@ export default class SearchPage extends Component {
                                         part[part_of_part].role = part[part_of_part].role.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].hometown != null)
                                         part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_game != null)
+                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_team != null)
+                                        part[part_of_part].current_team = part[part_of_part].current_team.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
 
                                 }
                                 if(i === 2)
@@ -85,6 +95,10 @@ export default class SearchPage extends Component {
                                         part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].acronym != null)
                                         part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_players != null)
+                                        part[part_of_part].current_players = part[part_of_part].current_players.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_game != null)
+                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                 }
                                 if(i === 3)
                                 {
@@ -96,6 +110,10 @@ export default class SearchPage extends Component {
                                         part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                     if(part[part_of_part].end_at != null)
                                         part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].game != null)
+                                        part[part_of_part].game = part[part_of_part].game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].teams != null)
+                                        part[part_of_part].teams = part[part_of_part].teams.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
                                 }
                                 
                             }
