@@ -20,7 +20,9 @@ class GridSearchPlayers extends Component {
                             First Name: <text dangerouslySetInnerHTML={{ __html: this.props.value.first_name + " "}}/>
                             Last Name: <text dangerouslySetInnerHTML={{ __html: this.props.value.last_name + " "}}/>
                             Role: <text dangerouslySetInnerHTML={{ __html: this.props.value.role + " "}}/>
-                            Hometown: <text dangerouslySetInnerHTML={{ __html: this.props.value.hometown}}/>
+                            Hometown: <text dangerouslySetInnerHTML={{ __html: this.props.value.hometown + " "}}/>
+                            Current Game: <text dangerouslySetInnerHTML={{ __html: this.props.value.current_game + " "}}/>
+                            Current Team: <text dangerouslySetInnerHTML={{ __html: this.props.value.current_team }}/>
                     </div>
                 </div>
             </div>

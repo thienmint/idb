@@ -138,72 +138,90 @@ export default class SearchPage extends Component {
         let grid4 = [];
         let individual_words = state.temp.split(" ");
 
-        for(let i = 0; i < Math.ceil(Object.keys(state.results).length); i++){
-            let row = games.splice(0,1);
-
-            for(let sub = 0; sub<row.length;sub++)
-            {
-                let row2 = row[sub];
-                for(let sub2 = 0; sub2< row2.length;sub++ )
+        for(let i = 0; i < Math.ceil(Object.keys(state.games).length); i++){
+                let row = games.splice(0,1);
+             
+                for(let sub = 0; sub<row.length;sub++)
                 {
-                    let part = row2.splice(0,1);
-                    for(let part_of_part = 0; part_of_part < part.length; part_of_part++)
+                    let row2 = row[sub];
+                    for(let sub2 = 0; sub2< row2.length;sub++ )
                     {
-                        for(let word_position = 0; word_position< individual_words.length; word_position++)
+                        let part = row2.splice(0,1);
+                        for(let part_of_part = 0; part_of_part < part.length; part_of_part++)
                         {
-                            this.state.temp = individual_words[word_position];
-                            if(i === 0)
+                            for(let word_position = 0; word_position< individual_words.length; word_position++)
                             {
-                                if(part[part_of_part].name !== null)
-                                    part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].summary !== null)
-                                    part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                            }
-                            if(i === 1)
-                            {
-                                if(part[part_of_part].tag !== null)
-                                    part[part_of_part].tag = part[part_of_part].tag.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].first_name !==null)
-                                    part[part_of_part].first_name = part[part_of_part].first_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].last_name !==null)
-                                    part[part_of_part].last_name = part[part_of_part].last_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].role !==null)
-                                    part[part_of_part].role = part[part_of_part].role.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].hometown !==null)
-                                    part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                this.state.temp = individual_words[word_position];
+                                if(i === 0)
+                                {
+                                    if(part[part_of_part].name !== null)
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].summary !== null)
+                                        part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].release_date !== null)
+                                        part[part_of_part].release_date = part[part_of_part].release_date.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].sample_players !== null)
+                                        part[part_of_part].sample_players = part[part_of_part].sample_players.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].sample_teams !== null)
+                                        part[part_of_part].sample_teams = part[part_of_part].sample_teams.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                }
+                                if(i === 1)
+                                {
+                                    if(part[part_of_part].tag !== null)
+                                        part[part_of_part].tag = part[part_of_part].tag.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].first_name !== null)
+                                        part[part_of_part].first_name = part[part_of_part].first_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].last_name !== null)
+                                        part[part_of_part].last_name = part[part_of_part].last_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].role !== null)
+                                        part[part_of_part].role = part[part_of_part].role.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].hometown !== null)
+                                        part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_game !== null)
+                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_team !== null)
+                                        part[part_of_part].current_team = part[part_of_part].current_team.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
 
+                                }
+                                if(i === 2)
+                                {
+                                    if(part[part_of_part].name !== null)
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].acronym !== null)
+                                        part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_players !== null)
+                                        part[part_of_part].current_players = part[part_of_part].current_players.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].current_game !== null)
+                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                }
+                                if(i === 3)
+                                {
+                                    if(part[part_of_part].slug !== null)
+                                        part[part_of_part].slug = part[part_of_part].slug.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].name !== null)
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].begin_at !== null)
+                                        part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].end_at !== null)
+                                        part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].game !== null)
+                                        part[part_of_part].game = part[part_of_part].game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                    if(part[part_of_part].teams !== null)
+                                        part[part_of_part].teams = part[part_of_part].teams.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                }
+                                
                             }
-                            if(i === 2)
-                            {
-                                if(part[part_of_part].name !==null)
-                                    part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].acronym !==null)
-                                    part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                            }
-                            if(i === 3)
-                            {
-                                if(part[part_of_part].slug !==null)
-                                    part[part_of_part].slug = part[part_of_part].slug.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].name !==null)
-                                    part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].begin_at !==null)
-                                    part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                                if(part[part_of_part].end_at !==null)
-                                    part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
-                            }
-
                         }
+                        if(i === 0)
+                            grid.push(part);
+                        if(i === 1)
+                            grid2.push(part);
+                        if(i === 2)
+                            grid3.push(part);
+                        if(i === 3)
+                            grid4.push(part);
                     }
-                    if(i === 0)
-                        grid.push(part);
-                    if(i === 1)
-                        grid2.push(part);
-                    if(i === 2)
-                        grid3.push(part);
-                    if(i === 3)
-                        grid4.push(part);
                 }
-            }
         }
 
         state.games = grid;
