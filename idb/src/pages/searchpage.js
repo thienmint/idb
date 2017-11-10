@@ -54,7 +54,6 @@ export default class SearchPage extends Component {
             stateCopy.displayedPlayers = stateToDisplay.displayedPlayers;
             stateCopy.displayedTeams = stateToDisplay.displayedTeams;
             stateCopy.displayedTournaments = stateToDisplay.displayedTournaments;
-            console.log(stateToDisplay);
 
             this.setState(stateCopy);
         }).catch(function (error) {
@@ -67,7 +66,6 @@ export default class SearchPage extends Component {
         let startingIndex = 10 * page;
         let stateCopy = Object.assign({}, this.state);
         let stateToBeDisplayed = this.getTenResults(startingIndex, stateCopy);
-        console.log(stateToBeDisplayed);
         this.setState(stateToBeDisplayed);
     }
 
@@ -101,12 +99,6 @@ export default class SearchPage extends Component {
             arraysUntilEnd++;
         }
 
-        console.log('startingIndex endingIndex arraysUntilStart arraysUntilEnd');
-        console.log(startingIndex);
-        console.log(endingIndex);
-        console.log(arraysUntilStart);
-        console.log(arraysUntilEnd);
-
         if (arraysUntilStart === arraysUntilEnd) {
             if (arraysUntilStart === 0) {
                 state.displayedGames = Object.values(state.games).splice(startingIndex, 10);
@@ -130,7 +122,6 @@ export default class SearchPage extends Component {
                 }
                 startingIndex = 0;
                 numResults = numResults + Object.keys(values[arraysUntilStart]).length;
-                console.log(numResults);
                 numLeftToGrab = 10 - numResults;
                 arraysUntilStart++;
             }
