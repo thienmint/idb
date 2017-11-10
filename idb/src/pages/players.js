@@ -167,7 +167,6 @@ export default class Players extends Component {
             case "hsCheck":
                 stateCopy.playHS = event.target.checked;
                 break;
-
             default:
                 console.log("Not match")
         }
