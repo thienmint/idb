@@ -22,7 +22,7 @@ class Navbar extends Component {
 
     handleClick(event) {
         event.preventDefault();
-        window.location = '/search/' + this.state.query;
+        window.location = '/search/' + this.state.query.trim();
     };
 
 
