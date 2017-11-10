@@ -50,6 +50,7 @@ export default class SearchPage extends Component {
                 Object.keys(stateCopy.teams).length + Object.keys(stateCopy.tournaments).length) / 10);
 
             let displayedValues = Object.assign({}, stateCopy);
+            console.log(displayedValues.tournaments);
             let stateToDisplay = this.getTenResults(0, displayedValues);
             stateCopy.displayedGames = stateToDisplay.displayedGames;
             stateCopy.displayedPlayers = stateToDisplay.displayedPlayers;
@@ -66,6 +67,7 @@ export default class SearchPage extends Component {
     updatePage(page) {
         let startingIndex = 10 * page;
         let stateCopy = Object.assign({}, this.state);
+        console.log(stateCopy);
         let stateToBeDisplayed = this.getTenResults(startingIndex, stateCopy);
         this.setState(stateToBeDisplayed);
     }
@@ -99,6 +101,12 @@ export default class SearchPage extends Component {
             arraysUntilEnd++;
         }
 
+        console.log(arraysUntilStart);
+        console.log(arraysUntilEnd);
+        console.log(startingIndex);
+        console.log(endingIndex);
+        console.log(state.tournaments);
+
         if (arraysUntilStart === arraysUntilEnd) {
             if (arraysUntilStart === 0) {
                 state.displayedGames = Object.values(state.games).splice(startingIndex, 10);
@@ -106,8 +114,11 @@ export default class SearchPage extends Component {
                 state.displayedPlayers = Object.values(state.players).splice(startingIndex, 10);
             } else if (arraysUntilStart === 2) {
                 state.displayedTeams = Object.values(state.teams).splice(startingIndex, 10);
-            } else if (arraysUntilStart ===3) {
+                console.log()
+            } else {
+                // console.log(Object.values(state.tournaments).splice(startingIndex, 10));
                 state.displayedTournaments = Object.values(state.tournaments).splice(startingIndex,  10);
+                console.log(state.displayedTournaments);
             }
         } else {
             while (numResults < 10) {
@@ -152,63 +163,63 @@ export default class SearchPage extends Component {
                         {
                             for(let word_position = 0; word_position< individual_words.length; word_position++)
                             {
-                                this.state.temp = individual_words[word_position];
+                                state.temp = individual_words[word_position];
                                 if(i === 0)
                                 {
                                     if(part[part_of_part].name !== null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].summary !== null)
-                                        part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].summary = part[part_of_part].summary.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].release_date !== null)
-                                        part[part_of_part].release_date = part[part_of_part].release_date.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].release_date = part[part_of_part].release_date.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].sample_players !== null)
-                                        part[part_of_part].sample_players = part[part_of_part].sample_players.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].sample_players = part[part_of_part].sample_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].sample_teams !== null)
-                                        part[part_of_part].sample_teams = part[part_of_part].sample_teams.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].sample_teams = part[part_of_part].sample_teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                 }
                                 if(i === 1)
                                 {
                                     if(part[part_of_part].tag !== null)
-                                        part[part_of_part].tag = part[part_of_part].tag.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].tag = part[part_of_part].tag.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].first_name !== null)
-                                        part[part_of_part].first_name = part[part_of_part].first_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].first_name = part[part_of_part].first_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].last_name !== null)
-                                        part[part_of_part].last_name = part[part_of_part].last_name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].last_name = part[part_of_part].last_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].role !== null)
-                                        part[part_of_part].role = part[part_of_part].role.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].role = part[part_of_part].role.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].hometown !== null)
-                                        part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].hometown = part[part_of_part].hometown.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].current_game !== null)
-                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].current_team !== null)
-                                        part[part_of_part].current_team = part[part_of_part].current_team.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].current_team = part[part_of_part].current_team.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
 
                                 }
                                 if(i === 2)
                                 {
                                     if(part[part_of_part].name !== null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].acronym !== null)
-                                        part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].acronym = part[part_of_part].acronym.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].current_players !== null)
-                                        part[part_of_part].current_players = part[part_of_part].current_players.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].current_players = part[part_of_part].current_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].current_game !== null)
-                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].current_game = part[part_of_part].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                 }
                                 if(i === 3)
                                 {
                                     if(part[part_of_part].slug !== null)
-                                        part[part_of_part].slug = part[part_of_part].slug.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].slug = part[part_of_part].slug.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].name !== null)
-                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].name = part[part_of_part].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].begin_at !== null)
-                                        part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].begin_at = part[part_of_part].begin_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].end_at !== null)
-                                        part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].end_at = part[part_of_part].end_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].game !== null)
-                                        part[part_of_part].game = part[part_of_part].game.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].game = part[part_of_part].game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                     if(part[part_of_part].teams !== null)
-                                        part[part_of_part].teams = part[part_of_part].teams.replace(new RegExp(this.state.temp, 'gi'),this.state.temp.bold());
+                                        part[part_of_part].teams = part[part_of_part].teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                                 }
                                 
                             }
