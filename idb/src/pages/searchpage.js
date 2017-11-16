@@ -92,13 +92,17 @@ export default class SearchPage extends Component {
         let arraysUntilStart = 0;
         while (srtInx > 0) {
             srtInx = srtInx - arrayLengths[arraysUntilStart];
-            arraysUntilStart++;
+            if (srtInx > 0) {
+                arraysUntilStart++;
+            }
         }
 
         let arraysUntilEnd = 0;
         while (endInx > 0) {
             endInx = endInx - arrayLengths[arraysUntilEnd];
-            arraysUntilEnd++;
+            if (endInx > 0) {
+                arraysUntilEnd++;
+            }
         }
 
         if (arraysUntilStart === arraysUntilEnd) {
@@ -117,23 +121,6 @@ export default class SearchPage extends Component {
             }
         } else {
 
-            let startingLength = 0;
-            startingLength += Object.keys(state.games).length;
-            startingLength += Object.keys(state.players).length;
-            startingLength += Object.keys(state.teams).length;
-            startingLength += Object.keys(state.tournaments).length;
-
-            if (startingLength > 0 && startingLength < 10) {
-                console.log("here ");
-                console.log("startingLenght: " + startingLength);
-                state.displayedGames = Object.values(state.games).splice(0, Object.keys(state.games).length);
-                state.displayedPlayers = Object.values(state.players).splice(0, Object.keys(state.players).length);
-                state.displayedTeams = Object.values(state.teams).splice(0, Object.keys(state.teams).length);
-                state.displayedTournaments = Object.values(state.tournaments).splice(0, Object.keys(state.tournaments).length);
-
-                return state;
-            }
-
             while (numResults < 10) {
                 // TODO change this to switch case
                 if (arraysUntilStart === 0) {
@@ -150,7 +137,7 @@ export default class SearchPage extends Component {
 
                 if (arraysUntilStart === 3) {
                     state.displayedTournaments = Object.values(state.tournaments).splice(startingIndex, startingIndex + numLeftToGrab);
-                    break; // If there are less than 10 elements in the array we want to get out of the loop
+                    break; // If there are less than 10 elements in the last array we want to get out of the loop
                 }
                 startingIndex = 0;
                 numResults = Object.keys(state.displayedGames).length + Object.keys(state.displayedPlayers).length +
@@ -165,7 +152,7 @@ export default class SearchPage extends Component {
 
     highlightAllKeywords(state) {
         // TODO camel cases everything, conform to 1 coding style
-        let games = Object.values(state.results);
+        let games = Object.values(state.results).slice();
         let games_grid = [];
         let players_grid = [];
         let teams_grid = [];
