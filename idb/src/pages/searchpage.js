@@ -34,33 +34,36 @@ export default class SearchPage extends Component {
 
         if (typeof this.props.match.params.id !== "undefined" && this.props.match.params.id !== null && this.props.match.params.id.trim() !== "")
             axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
-            let stateCopy = Object.assign({}, this.state);
-            stateCopy.results = stateCopy.results.slice();
-            stateCopy.results = Object.assign([], response.data);
-            stateCopy.loading = false;
-            stateCopy.temp = this.props.match.params.id;
+                let stateCopy = Object.assign({}, this.state);
+                stateCopy.results = stateCopy.results.slice();
+                stateCopy.results = Object.assign([], response.data);
+                stateCopy.loading = false;
+                stateCopy.temp = this.props.match.params.id;
 
-            let valuesForHighlighting = Object.assign({}, stateCopy);
-            let stateTwo = this.highlightAllKeywords(valuesForHighlighting);
-            stateCopy.games = stateTwo.games;
-            stateCopy.players = stateTwo.players;
-            stateCopy.teams = stateTwo.teams;
-            stateCopy.tournaments = stateTwo.tournaments;
-            stateCopy.numberOfPages = Math.ceil((Object.keys(stateCopy.games).length + Object.keys(stateCopy.players).length +
-                Object.keys(stateCopy.teams).length + Object.keys(stateCopy.tournaments).length) / 10);
+                let valuesForHighlighting = Object.assign({}, stateCopy);
+                let stateTwo = this.highlightAllKeywords(valuesForHighlighting);
+                stateCopy.games = stateTwo.games;
+                stateCopy.players = stateTwo.players;
+                stateCopy.teams = stateTwo.teams;
+                stateCopy.tournaments = stateTwo.tournaments;
+                stateCopy.numberOfPages = Math.ceil((Object.keys(stateCopy.games).length + Object.keys(stateCopy.players).length +
+                    Object.keys(stateCopy.teams).length + Object.keys(stateCopy.tournaments).length) / 10);
+                if(stateCopy.numberOfPages > 0)
+                {
+                    let displayedValues = Object.assign({}, stateCopy);
+                    let stateToDisplay = this.getTenResults(0, displayedValues);
+                    stateCopy.displayedGames = stateToDisplay.displayedGames;
+                    stateCopy.displayedPlayers = stateToDisplay.displayedPlayers;
+                    stateCopy.displayedTeams = stateToDisplay.displayedTeams;
+                    stateCopy.displayedTournaments = stateToDisplay.displayedTournaments;
+                }
+                this.setState(stateCopy);
+            }).catch(function (error) {
+                console.log(error);
+            });
 
-            let displayedValues = Object.assign({}, stateCopy);
-            let stateToDisplay = this.getTenResults(0, displayedValues);
-            stateCopy.displayedGames = stateToDisplay.displayedGames;
-            stateCopy.displayedPlayers = stateToDisplay.displayedPlayers;
-            stateCopy.displayedTeams = stateToDisplay.displayedTeams;
-            stateCopy.displayedTournaments = stateToDisplay.displayedTournaments;
-
-            this.setState(stateCopy);
-        }).catch(function (error) {
-            console.log(error);
-        });
         this.updatePage = this.updatePage.bind(this);
+
     }
 
     updatePage(page) {
@@ -71,9 +74,9 @@ export default class SearchPage extends Component {
     }
 
     getTenResults(startingIndex, state) {
-        let endOfGames = Object.keys(state.games).length - 1;
-        let endOfPlayers = Object.keys(state.players).length - 1;
-        let endOfTeams = Object.keys(state.teams).length - 1;
+        let endOfGames = Object.keys(state.games).length;
+        let endOfPlayers = Object.keys(state.players).length;
+        let endOfTeams = Object.keys(state.teams).length;
         let arrayLengths = [ endOfGames, endOfPlayers, endOfTeams];
 
         let numResults = 0;
@@ -113,15 +116,40 @@ export default class SearchPage extends Component {
                 state.displayedTournaments = Object.values(state.tournaments).splice(startingIndex,  10);
             }
         } else {
+
+            let startingLength = 0;
+            startingLength += Object.keys(state.games).length;
+            startingLength += Object.keys(state.players).length;
+            startingLength += Object.keys(state.teams).length;
+            startingLength += Object.keys(state.tournaments).length;
+
+            if (startingLength > 0 && startingLength < 10){
+                console.log("here ");
+                console.log("startingLenght: " + startingLength);
+                state.displayedGames = Object.values(state.games).splice(0, Object.keys(state.games).length);
+                state.displayedPlayers = Object.values(state.players).splice(0, Object.keys(state.players).length);
+                state.displayedTeams = Object.values(state.teams).splice(0, Object.keys(state.teams).length);
+                state.displayedTournaments = Object.values(state.tournaments).splice(0, Object.keys(state.tournaments).length);
+
+                return state;
+            }
+
             while (numResults < 10) {
                 if (arraysUntilStart === 0) {
                     state.displayedGames = Object.values(state.games).splice(startingIndex, startingIndex + numLeftToGrab);
-                } else if (arraysUntilStart === 1) {
+                }
+
+                if (arraysUntilStart === 1) {
                     state.displayedPlayers = Object.values(state.players).splice(startingIndex, startingIndex + numLeftToGrab);
-                } else if (arraysUntilStart === 2) {
+                }
+
+                if (arraysUntilStart === 2) {
                     state.displayedTeams = Object.values(state.teams).splice(startingIndex, startingIndex + numLeftToGrab);
-                } else if (arraysUntilStart ===3) {
+                }
+
+                if (arraysUntilStart === 3) {
                     state.displayedTournaments = Object.values(state.tournaments).splice(startingIndex, startingIndex + numLeftToGrab);
+                    break; // If there are less than 10 elements in the array we want to get out of the loop
                 }
                 startingIndex = 0;
                 numResults = Object.keys(state.displayedGames).length + Object.keys(state.displayedPlayers).length +
@@ -135,7 +163,9 @@ export default class SearchPage extends Component {
 
 
     highlightAllKeywords(state) {
+        console.log(state.results);
         let games = Object.values(state.results);
+        console.log(games);
         let games_grid = [];
         let players_grid = [];
         let teams_grid = [];
@@ -143,89 +173,89 @@ export default class SearchPage extends Component {
         let individual_words = state.temp.split(" ");
 
         for(let i = 0; i < Math.ceil(Object.keys(state.results).length); i++){
-                let type_of_model_list = games.splice(0,1);
-             
-                for(let idx_model = 0; idx_model<type_of_model_list.length;idx_model++)
-                {
-                    let row2 = type_of_model_list[idx_model];
-                    for(let _ = 0; _< row2.length; _++ )
-                    {
-                        let model = row2.splice(0,1);
-                        for(let attributes = 0; attributes < model.length; attributes++)
-                        {
-                            for(let word_position = 0; word_position< individual_words.length; word_position++)
-                            {
-                                state.temp = individual_words[word_position];
-                                if(i === 0)
-                                {
-                                    if(model[attributes].name !== null)
-                                        model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].summary !== null)
-                                        model[attributes].summary = model[attributes].summary.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].release_date !== null)
-                                        model[attributes].release_date = model[attributes].release_date.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].sample_players !== null)
-                                        model[attributes].sample_players = model[attributes].sample_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].sample_teams !== null)
-                                        model[attributes].sample_teams = model[attributes].sample_teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                }
-                                if(i === 1)
-                                {
-                                    if(model[attributes].tag !== null)
-                                        model[attributes].tag = model[attributes].tag.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].first_name !== null)
-                                        model[attributes].first_name = model[attributes].first_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].last_name !== null)
-                                        model[attributes].last_name = model[attributes].last_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].role !== null)
-                                        model[attributes].role = model[attributes].role.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].hometown !== null)
-                                        model[attributes].hometown = model[attributes].hometown.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].current_game !== null)
-                                        model[attributes].current_game = model[attributes].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].current_team !== null)
-                                        model[attributes].current_team = model[attributes].current_team.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+            let type_of_model_list = games.slice(i,i+1);
 
-                                }
-                                if(i === 2)
-                                {
-                                    if(model[attributes].name !== null)
-                                        model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].acronym !== null)
-                                        model[attributes].acronym = model[attributes].acronym.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].current_players !== null)
-                                        model[attributes].current_players = model[attributes].current_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].current_game !== null)
-                                        model[attributes].current_game = model[attributes].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                }
-                                if(i === 3)
-                                {
-                                    if(model[attributes].slug !== null)
-                                        model[attributes].slug = model[attributes].slug.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].name !== null)
-                                        model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].begin_at !== null)
-                                        model[attributes].begin_at = model[attributes].begin_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].end_at !== null)
-                                        model[attributes].end_at = model[attributes].end_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].game !== null)
-                                        model[attributes].game = model[attributes].game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                    if(model[attributes].teams !== null)
-                                        model[attributes].teams = model[attributes].teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
-                                }
-                                
+            for(let idx_model = 0; idx_model<type_of_model_list.length;idx_model++)
+            {
+                let row2 = type_of_model_list[idx_model];
+                for(let _ = 0; _< row2.length; _++ )
+                {
+                    let model = row2.slice(_,_ + 1);
+                    for(let attributes = 0; attributes < model.length; attributes++)
+                    {
+                        for(let word_position = 0; word_position< individual_words.length; word_position++)
+                        {
+                            state.temp = individual_words[word_position];
+                            if(i === 0)
+                            {
+                                if(model[attributes].name !== null)
+                                    model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].summary !== null)
+                                    model[attributes].summary = model[attributes].summary.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].release_date !== null)
+                                    model[attributes].release_date = model[attributes].release_date.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].sample_players !== null)
+                                    model[attributes].sample_players = model[attributes].sample_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].sample_teams !== null)
+                                    model[attributes].sample_teams = model[attributes].sample_teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
                             }
+                            if(i === 1)
+                            {
+                                if(model[attributes].tag !== null)
+                                    model[attributes].tag = model[attributes].tag.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].first_name !== null)
+                                    model[attributes].first_name = model[attributes].first_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].last_name !== null)
+                                    model[attributes].last_name = model[attributes].last_name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].role !== null)
+                                    model[attributes].role = model[attributes].role.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].hometown !== null)
+                                    model[attributes].hometown = model[attributes].hometown.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].current_game !== null)
+                                    model[attributes].current_game = model[attributes].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].current_team !== null)
+                                    model[attributes].current_team = model[attributes].current_team.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+
+                            }
+                            if(i === 2)
+                            {
+                                if(model[attributes].name !== null)
+                                    model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].acronym !== null)
+                                    model[attributes].acronym = model[attributes].acronym.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].current_players !== null)
+                                    model[attributes].current_players = model[attributes].current_players.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].current_game !== null)
+                                    model[attributes].current_game = model[attributes].current_game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                            }
+                            if(i === 3)
+                            {
+                                if(model[attributes].slug !== null)
+                                    model[attributes].slug = model[attributes].slug.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].name !== null)
+                                    model[attributes].name = model[attributes].name.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].begin_at !== null)
+                                    model[attributes].begin_at = model[attributes].begin_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].end_at !== null)
+                                    model[attributes].end_at = model[attributes].end_at.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].game !== null)
+                                    model[attributes].game = model[attributes].game.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                                if(model[attributes].teams !== null)
+                                    model[attributes].teams = model[attributes].teams.replace(new RegExp(state.temp, 'gi'),state.temp.bold());
+                            }
+
                         }
-                        if(i === 0)
-                            games_grid.push(model);
-                        if(i === 1)
-                            players_grid.push(model);
-                        if(i === 2)
-                            teams_grid.push(model);
-                        if(i === 3)
-                            tournaments_grid.push(model);
                     }
+                    if(i === 0)
+                        games_grid.push(model);
+                    if(i === 1)
+                        players_grid.push(model);
+                    if(i === 2)
+                        teams_grid.push(model);
+                    if(i === 3)
+                        tournaments_grid.push(model);
                 }
+            }
         }
 
         state.games = games_grid;
@@ -289,7 +319,7 @@ export default class SearchPage extends Component {
                             <div className="no-search-results">Oh no! No results were found for your search.
                                 Please try making your search less specific or searching for a different term.
                             </div>
-                      )
+                    )
                     ]
                 }
             </div>
@@ -319,6 +349,7 @@ class GamePlayer extends Component {
         let players = [];
         players.push(
             row.map((player, index) => (
+                React.createElement(GridPlayers, {value: player})
             ))
         );
         return (
@@ -361,4 +392,3 @@ class GameTournament extends Component {
         );
     }
 }
-
