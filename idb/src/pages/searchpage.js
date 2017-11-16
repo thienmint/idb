@@ -33,8 +33,7 @@ export default class SearchPage extends Component {
         let apiurl = 'http://api.esportguru.com/';
 
         if (typeof this.props.match.params.id !== "undefined" && this.props.match.params.id !== null && this.props.match.params.id.trim() !== "")
-            axios.get(apiurl + 'search/' + this.props.match.params.id).then((response) => {
-                console.log("This is right after super");
+            axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
                 let stateCopy = Object.assign({}, this.state);
                 stateCopy.results = stateCopy.results.slice();
                 stateCopy.results = Object.assign([], response.data);
@@ -49,16 +48,8 @@ export default class SearchPage extends Component {
                 stateCopy.tournaments = stateTwo.tournaments;
                 stateCopy.numberOfPages = Math.ceil((Object.keys(stateCopy.games).length + Object.keys(stateCopy.players).length +
                     Object.keys(stateCopy.teams).length + Object.keys(stateCopy.tournaments).length) / 10);
-                // if (stateCopy.numberOfPages === 0) {
-                //     console.log(stateCopy.loading);
-                //     console.log(Object.keys(stateCopy.games).length);
-                //     console.log(Object.keys(stateCopy.players).length);
-                //     console.log(Object.keys(stateCopy.teams).length);
-                //     console.log(Object.keys(stateCopy.tournaments).length);
-                // }
-
-                if (stateCopy.numberOfPages > 0) {
-
+                if(stateCopy.numberOfPages > 0)
+                {
                     let displayedValues = Object.assign({}, stateCopy);
                     let stateToDisplay = this.getTenResults(0, displayedValues);
                     stateCopy.displayedGames = stateToDisplay.displayedGames;
@@ -66,14 +57,12 @@ export default class SearchPage extends Component {
                     stateCopy.displayedTeams = stateToDisplay.displayedTeams;
                     stateCopy.displayedTournaments = stateToDisplay.displayedTournaments;
                 }
-                console.log("Number of pages = " + stateCopy.numberOfPages);
                 this.setState(stateCopy);
             }).catch(function (error) {
                 console.log(error);
             });
 
         this.updatePage = this.updatePage.bind(this);
-
     }
 
     updatePage(page) {
@@ -84,10 +73,10 @@ export default class SearchPage extends Component {
     }
 
     getTenResults(startingIndex, state) {
-        let endOfGames = Object.keys(state.games).length - 1;
-        let endOfPlayers = Object.keys(state.players).length - 1;
-        let endOfTeams = Object.keys(state.teams).length - 1;
-        let arrayLengths = [endOfGames, endOfPlayers, endOfTeams];
+        let endOfGames = Object.keys(state.games).length;
+        let endOfPlayers = Object.keys(state.players).length;
+        let endOfTeams = Object.keys(state.teams).length;
+        let arrayLengths = [ endOfGames, endOfPlayers, endOfTeams];
 
         let numResults = 0;
         let numLeftToGrab = 10;
@@ -103,13 +92,17 @@ export default class SearchPage extends Component {
         let arraysUntilStart = 0;
         while (srtInx > 0) {
             srtInx = srtInx - arrayLengths[arraysUntilStart];
-            arraysUntilStart++;
+            if (srtInx > 0) {
+                arraysUntilStart++;
+            }
         }
 
         let arraysUntilEnd = 0;
         while (endInx > 0) {
             endInx = endInx - arrayLengths[arraysUntilEnd];
-            arraysUntilEnd++;
+            if (endInx > 0) {
+                arraysUntilEnd++;
+            }
         }
 
         if (arraysUntilStart === arraysUntilEnd) {
@@ -128,23 +121,6 @@ export default class SearchPage extends Component {
             }
         } else {
 
-            let startingLength = 0;
-            startingLength += Object.keys(state.games).length;
-            startingLength += Object.keys(state.players).length;
-            startingLength += Object.keys(state.teams).length;
-            startingLength += Object.keys(state.tournaments).length;
-
-            if (startingLength > 0 && startingLength < 10) {
-                console.log("here ");
-                console.log("startingLenght: " + startingLength);
-                state.displayedGames = Object.values(state.games).splice(0, Object.keys(state.games).length);
-                state.displayedPlayers = Object.values(state.players).splice(0, Object.keys(state.players).length);
-                state.displayedTeams = Object.values(state.teams).splice(0, Object.keys(state.teams).length);
-                state.displayedTournaments = Object.values(state.tournaments).splice(0, Object.keys(state.tournaments).length);
-
-                return state;
-            }
-
             while (numResults < 10) {
                 // TODO change this to switch case
                 if (arraysUntilStart === 0) {
@@ -161,6 +137,7 @@ export default class SearchPage extends Component {
 
                 if (arraysUntilStart === 3) {
                     state.displayedTournaments = Object.values(state.tournaments).splice(startingIndex, startingIndex + numLeftToGrab);
+                    break; // If there are less than 10 elements in the last array we want to get out of the loop
                 }
                 startingIndex = 0;
                 numResults = Object.keys(state.displayedGames).length + Object.keys(state.displayedPlayers).length +
@@ -175,7 +152,7 @@ export default class SearchPage extends Component {
 
     highlightAllKeywords(state) {
         // TODO camel cases everything, conform to 1 coding style
-        let games = Object.values(state.results);
+        let games = Object.values(state.results).slice();
         let games_grid = [];
         let players_grid = [];
         let teams_grid = [];
@@ -183,12 +160,12 @@ export default class SearchPage extends Component {
         let individual_words = state.temp.split(" ");
 
         for (let i = 0; i < Math.ceil(Object.keys(state.results).length); i++) {
-            let type_of_model_list = games.splice(0, 1);
+            let type_of_model_list = games.slice(i,i+1);
 
             for (let idx_model = 0; idx_model < type_of_model_list.length; idx_model++) {
                 let row2 = type_of_model_list[idx_model];
                 for (let _ = 0; _ < row2.length; _++) {
-                    let model = row2.splice(0, 1);
+                    let model = row2.slice(_,_ + 1);
                     for (let attributes = 0; attributes < model.length; attributes++) {
                         for (let word_position = 0; word_position < individual_words.length; word_position++) {
                             state.temp = individual_words[word_position];
@@ -306,8 +283,7 @@ export default class SearchPage extends Component {
                         />
                     </div>
                     :
-                    [(Object.keys(this.state.games).length >= 1 || Object.keys(this.state.players).length >= 1
-                        || Object.keys(this.state.teams).length >= 1 || Object.keys(this.state.tournaments).length >= 1 ?
+                    [ this.state.numberOfPages > 0 ?
                             <div className="container">
                                 <Pagination
                                     numberOfPages={this.state.numberOfPages}
@@ -331,7 +307,6 @@ export default class SearchPage extends Component {
                             <div className="no-search-results">Oh no! No results were found for your search.
                                 Please try making your search less specific or searching for a different term.
                             </div>
-                    )
                     ]
                 }
             </div>
