@@ -294,8 +294,7 @@ export default class SearchPage extends Component {
                         />
                     </div>
                     :
-                    [ (Object.keys(this.state.games).length >= 1 || Object.keys(this.state.players).length >=1
-                        || Object.keys(this.state.teams).length >=1 || Object.keys(this.state.tournaments).length >= 1 ?
+                    [ this.state.numberOfPages > 0 ?
                             <div className="container">
                                 <Pagination
                                     numberOfPages={this.state.numberOfPages}
@@ -319,7 +318,6 @@ export default class SearchPage extends Component {
                             <div className="no-search-results">Oh no! No results were found for your search.
                                 Please try making your search less specific or searching for a different term.
                             </div>
-                    )
                     ]
                 }
             </div>
