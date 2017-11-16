@@ -163,9 +163,7 @@ export default class SearchPage extends Component {
 
 
     highlightAllKeywords(state) {
-        console.log(state.results);
         let games = Object.values(state.results);
-        console.log(games);
         let games_grid = [];
         let players_grid = [];
         let teams_grid = [];
