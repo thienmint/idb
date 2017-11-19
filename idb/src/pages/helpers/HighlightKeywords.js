@@ -63,6 +63,7 @@ export default class HighlightKeywords {
         state.players = HighlightKeywords.boldData(results.players, regex);
         state.teams = HighlightKeywords.boldData(results.teams, regex);
         state.tournaments = HighlightKeywords.boldData(results.tournaments, regex);
+        state.dataLength = [state.games.length, state.players.length, state.teams.length, state.tournaments.length];
         return state
     }
 }
