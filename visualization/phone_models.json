@@ -1,0 +1,3099 @@
+{
+  "name": "Phone Models",
+  "children": [
+    {
+      "name": "LEAGOO",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "S Series S8 Pro Dual SIM TD-LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "OTEDA Industrial",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Asus",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "ZenFone 2 Laser 5.5 S Dual SIM Global LTE ZE550KL",
+              "size": 1
+            },
+            {
+              "name": "ZenWatch 3 WI503Q",
+              "size": 1
+            },
+            {
+              "name": "ZenFone 3 Zoom Dual SIM Global LTE 64GB ZE553KL",
+              "size": 1
+            },
+            {
+              "name": "ZenFone 4 Pro Dual SIM TD-LTE JP IN ZS551KL 64GB",
+              "size": 1
+            },
+            {
+              "name": "ZenPad 3S 10 LTE Z500KL / ZenPad Z10",
+              "size": 1
+            },
+            {
+              "name": "ZenFone Pegasus 4S Dual SIM TD-LTE CN 64GB",
+              "size": 1
+            },
+            {
+              "name": "ZenFone Selfie Dual SIM Global LTE ZD551KL 32GB",
+              "size": 1
+            },
+            {
+              "name": "ZenFone 3 Dual SIM Global LTE ZE552KL 64GB",
+              "size": 1
+            },
+            {
+              "name": "ZenFone 4 Max 5.5 Dual SIM LTE EMEA IN ID ZC554KL 16GB",
+              "size": 1
+            },
+            {
+              "name": "ZenFone 3 Zoom Dual SIM LTE US BR 64GB ZE553KL",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "ASUSTeK Computer",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "South America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Worldwide",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Australia",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "China Mobile Limited",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            },
+            {
+              "name": "Reliance Jio Infocomm",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "verykool",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Kolorpad IV T7445",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "InfoSonics",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Huawei",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Y7 Prime 2017 Dual SIM TD-LTE CN TRT-TL00 32GB",
+              "size": 1
+            },
+            {
+              "name": "MediaPad T3 8.0 2017 WiFi KOB-W09 16GB / KOB-W09C / KOB-W09CHN",
+              "size": 1
+            },
+            {
+              "name": "Y5 2017 Dual SIM TD-LTE MYA-L22",
+              "size": 1
+            },
+            {
+              "name": "Honor 8 Pro Dual SIM TD-LTE 64GB DUK-L09",
+              "size": 1
+            },
+            {
+              "name": "Y6 2017 Dual SIM TD-LTE MYA-L41",
+              "size": 1
+            },
+            {
+              "name": "MediaPad M3 Youth Edition 8.0 TD-LTE CPN-AL00B 64GB",
+              "size": 1
+            },
+            {
+              "name": "G8 Premium Edition TD-LTE Dual SIM RIO-L02",
+              "size": 1
+            },
+            {
+              "name": "MediaPad T3 10 2017 WiFi AGS-W09 16GB",
+              "size": 1
+            },
+            {
+              "name": "Mate 10 Dual SIM TD-LTE ALP-L29",
+              "size": 1
+            },
+            {
+              "name": "Honor 6X Dual SIM LTE-A US BLN-L24",
+              "size": 1
+            },
+            {
+              "name": "Y6II Compact 4G LTE LYO-L01 / Y6 II Compact",
+              "size": 1
+            },
+            {
+              "name": "Mate 10 Standard Edition Dual SIM TD-LTE CN ALP-AL00",
+              "size": 1
+            },
+            {
+              "name": "Mate 9 Dual SIM TD-LTE MHA-L29",
+              "size": 1
+            },
+            {
+              "name": "Mate 8 Dual SIM TD-LTE 64GB NXT-L09",
+              "size": 1
+            },
+            {
+              "name": "Ascend G615",
+              "size": 1
+            },
+            {
+              "name": "Y3 II Dual SIM LUA-U22",
+              "size": 1
+            },
+            {
+              "name": "Honor Changwan 7X Dual SIM TD-LTE CN BND-AL10 64GB",
+              "size": 1
+            },
+            {
+              "name": "MediaPad M3 Lite 8.0 WiFi CPN-W09C 64GB",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Huawei Technologies",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "South America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Worldwide",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Africa",
+              "size": 1
+            },
+            {
+              "name": "Australia",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            },
+            {
+              "name": "Oceania",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "Vodafone Spain",
+              "size": 1
+            },
+            {
+              "name": "Vodafone Italia",
+              "size": 1
+            },
+            {
+              "name": "Claro Peru",
+              "size": 1
+            },
+            {
+              "name": "T-Mobile Hungary",
+              "size": 1
+            },
+            {
+              "name": "TELCEL",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            },
+            {
+              "name": "Vodafone United Kingdom",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fujitsu",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Smartphone ARROWS M04 PREMIUM 4G LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Fujitsu",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "UQ Communications",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sony",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Xperia XZ1 Compact TD-LTE SO-02K",
+              "size": 1
+            },
+            {
+              "name": "Xperia XZ Dual SIM TD-LTE F8332",
+              "size": 1
+            },
+            {
+              "name": "Xperia L1 LTE G3311",
+              "size": 1
+            },
+            {
+              "name": "Xperia XA1 Dual LTE-A G3112",
+              "size": 1
+            },
+            {
+              "name": "Xperia L1 LTE G3313",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Sony",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "NTT DoCoMo",
+              "size": 1
+            },
+            {
+              "name": "Movistar Spain",
+              "size": 1
+            },
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Elephone",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "C1 Mini Dual SIM TD-LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "ELEPHONE Communication Technology Co., L",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "uleFone",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Tiger Dual SIM LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Shenzen Gotron Electronic Co. Ltd.",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Africa",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Allview",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "X4 Soul Lite Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "X4 Xtreme Soul Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "X4 Soul Infinity N Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "A8 Lite Dual SIM",
+              "size": 1
+            },
+            {
+              "name": "X4 Soul Vision Dual SIM TD-LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "GiONEE Communications Equipment",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Motorola",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Moto G Dual XT1033 Global GSM 8GB",
+              "size": 1
+            },
+            {
+              "name": "Moto G5 Plus LTE-A LATAM 32GB XT1680",
+              "size": 1
+            },
+            {
+              "name": "Moto C Dual SIM TD-LTE AU XT1758",
+              "size": 1
+            },
+            {
+              "name": "Moto G5S Global TD-LTE 32GB XT1793 / G5 Special Edition",
+              "size": 1
+            },
+            {
+              "name": "Moto Z2 Play Dual SIM LTE IN 64GB XT1710-10",
+              "size": 1
+            },
+            {
+              "name": "Moto Z2 Force Edition LTE-A XT1789-02",
+              "size": 1
+            },
+            {
+              "name": "Moto G Dual XT1033 Global GSM 16GB / G Music Edition",
+              "size": 1
+            },
+            {
+              "name": "Moto G5 Plus TD-LTE 64GB XT1687",
+              "size": 1
+            },
+            {
+              "name": "Moto G5S Dual SIM TD-LTE JP 32GB XT1797",
+              "size": 1
+            },
+            {
+              "name": "Moto X4 HDTV Dual SIM LTE-A LATAM 64GB XT1900-6",
+              "size": 1
+            },
+            {
+              "name": "Moto X4 Dual SIM TD-LTE EMEA 32GB XT1900-5",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Lenovo",
+              "size": 1
+            },
+            {
+              "name": "Motorola Mobile Devices",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "South America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Worldwide",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Australia",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "Reliance Jio Infocomm",
+              "size": 1
+            },
+            {
+              "name": "UQ Communications",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ZTE",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Primetime LTE-A",
+              "size": 1
+            },
+            {
+              "name": "Blade V7 Lite Dual SIM LTE",
+              "size": 1
+            },
+            {
+              "name": "Libero 2 TD-LTE 602ZT",
+              "size": 1
+            },
+            {
+              "name": "Nubia M2 Dual SIM TD-LTE 128GB NX551J",
+              "size": 1
+            },
+            {
+              "name": "Nubia Z11 Black Gold Edition Dual SIM Global TD-LTE 64GB NX531J",
+              "size": 1
+            },
+            {
+              "name": "Blade Vec 4G LTE-A / Soshphone 4G / Orange Rono / Turkcell T50",
+              "size": 1
+            },
+            {
+              "name": "Z917VL ZMAX Champ LTE",
+              "size": 1
+            },
+            {
+              "name": "Axon 7 Mini B2017G Dual SIM TD-LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "ZTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Worldwide",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "AT&T; Mobility",
+              "size": 1
+            },
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "SoftBank Corp.",
+              "size": 1
+            },
+            {
+              "name": "TELCEL",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RIM",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "BlackBerry Z3 STJ100-2",
+              "size": 1
+            },
+            {
+              "name": "BlackBerry Motion TD-LTE AM APAC BBD100-2",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "TCL",
+              "size": 1
+            },
+            {
+              "name": "Foxconn",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "South America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Central America",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "AT&T; Mobility",
+              "size": 1
+            },
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "Rogers Wireless",
+              "size": 1
+            },
+            {
+              "name": "Telus Mobility",
+              "size": 1
+            },
+            {
+              "name": "Verizon Wireless",
+              "size": 1
+            },
+            {
+              "name": "Manitoba Telecom Services",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wiko",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "WIM Lite Dual SIM LTE-A",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Shenzhen TINNO Mobile Technology",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Africa",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Samsung",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "SM-G950FD Galaxy S8 Duos TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-J330L Galaxy J3 2017 TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-W620 Galaxy Book 10.6-inch WiFi 64GB",
+              "size": 1
+            },
+            {
+              "name": "SM-G925F Galaxy S6 Edge LTE-A 32GB",
+              "size": 1
+            },
+            {
+              "name": "SM-G900H Galaxy S5 HSPA 16GB",
+              "size": 1
+            },
+            {
+              "name": "SM-T113 Galaxy Tab3 Lite VE WiFi / Galaxy Tab 3 Value Edition",
+              "size": 1
+            },
+            {
+              "name": "SM-G9550 Galaxy S8+ Duos TD-LTE 64GB",
+              "size": 1
+            },
+            {
+              "name": "SM-G920T Galaxy S6 LTE-A 64GB",
+              "size": 1
+            },
+            {
+              "name": "SM-G920W8 Galaxy S6 LTE-A",
+              "size": 1
+            },
+            {
+              "name": "SM-G903W Galaxy S5 Neo LTE-A",
+              "size": 1
+            },
+            {
+              "name": "SM-G570M/DS Galaxy J5 Prime Duos 4G LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-G920R4 Galaxy S6 LTE-A",
+              "size": 1
+            },
+            {
+              "name": "SM-G920R7 Galaxy S6 LTE-A",
+              "size": 1
+            },
+            {
+              "name": "SM-G532M Galaxy J2 Prime 4G LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-G570Y Galaxy J5 Prime Duos TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-G9500 Galaxy S8 Duos Pirates of the Caribbean Edition TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-G900F Galaxy S5 LTE-A 16GB",
+              "size": 1
+            },
+            {
+              "name": "GT-i9001 Galaxy S Plus / Galaxy S 2011 Edition",
+              "size": 1
+            },
+            {
+              "name": "SM-G531F Galaxy Grand Prime Value Edition Duos LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-G530M Galaxy Grand Prime LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-T825Y Galaxy Tab S3 9.7 TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-G892U Galaxy S8 Active TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-R765T Gear S3 Frontier LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-T113 Galaxy Kids Tablet 7.0 The Lego Ninjago Movie Edition WiFi",
+              "size": 1
+            },
+            {
+              "name": "SM-J530K Galaxy J5 2017 TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-T805C Galaxy Tab S 10.5-inch 4G TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-W703 Galaxy TabPro S WiFi 128GB",
+              "size": 1
+            },
+            {
+              "name": "SM-R765 Gear S3 Frontier LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-T815C Galaxy Tab S2 9.7 TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "SM-G920FD Galaxy S6 Duos LTE-A 64GB",
+              "size": 1
+            },
+            {
+              "name": "SM-G610F/DS Galaxy J7 Prime TD-LTE 16GB",
+              "size": 1
+            },
+            {
+              "name": "SM-G928F Galaxy S6 Edge+ LTE-A 32GB",
+              "size": 1
+            },
+            {
+              "name": "SM-N920F Galaxy Note 5 LTE-A 32GB",
+              "size": 1
+            },
+            {
+              "name": "SM-G570F/DS Galaxy J5 Prime Duos TD-LTE 32GB",
+              "size": 1
+            },
+            {
+              "name": "SM-J330G Galaxy J3 2017 TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "GT-i9300 Galaxy S III 32GB",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Samsung Electronics",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "South America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Central America",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Australia",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            },
+            {
+              "name": "Oceania",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "T-Mobile Germany",
+              "size": 1
+            },
+            {
+              "name": "MTS Russia",
+              "size": 1
+            },
+            {
+              "name": "MetroPCS Communications",
+              "size": 1
+            },
+            {
+              "name": "Telus Mobility",
+              "size": 1
+            },
+            {
+              "name": "Verizon Wireless",
+              "size": 1
+            },
+            {
+              "name": "Manitoba Telecom Services",
+              "size": 1
+            },
+            {
+              "name": "TELCEL",
+              "size": 1
+            },
+            {
+              "name": "LG Uplus Corporation",
+              "size": 1
+            },
+            {
+              "name": "Wind Mobile Canada",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            },
+            {
+              "name": "UQ Communications",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alcatel",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "One Touch Idol 4 TD-LTE 6055Y",
+              "size": 1
+            },
+            {
+              "name": "A7 XL LTE Dual SIM LTE 7071D / 7071DX",
+              "size": 1
+            },
+            {
+              "name": "One Touch Pop 3 5.5 Dual SIM TD-LTE 5054T",
+              "size": 1
+            },
+            {
+              "name": "A7 LTE Dual SIM TD-LTE 5090Y",
+              "size": 1
+            },
+            {
+              "name": "Plus 12 LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "TCL",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Worldwide",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blackview",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "E7 Dual Sim LTE-A",
+              "size": 1
+            },
+            {
+              "name": "BV7000 Pro 4G Dual Sim LTE-A",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Shenzhen JEKO Communication",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Africa",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Apple",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "iPhone SE A1662 4G LTE 16GB",
+              "size": 1
+            },
+            {
+              "name": "iPhone 6 Plus CDMA A1522 16GB",
+              "size": 1
+            },
+            {
+              "name": "Watch Series 3 42mm A1859",
+              "size": 1
+            },
+            {
+              "name": "iPad Pro 10.5-inch 2017 A1701 WiFi 512GB",
+              "size": 1
+            },
+            {
+              "name": "iPhone 6 TD-LTE A1586 128GB",
+              "size": 1
+            },
+            {
+              "name": "iPhone 7 A1780 TD-LTE CN 128GB",
+              "size": 1
+            },
+            {
+              "name": "iPhone 6 Plus TD-LTE A1524 128GB",
+              "size": 1
+            },
+            {
+              "name": "iPad Pro 12.9-inch 2017 2nd gen A1671 TD-LTE 512GB / A1821",
+              "size": 1
+            },
+            {
+              "name": "iPhone 6s Plus A1687 TD-LTE 128GB",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Quanta Computer",
+              "size": 1
+            },
+            {
+              "name": "Foxconn, Pegatron",
+              "size": 1
+            },
+            {
+              "name": "Foxconn",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "Central America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Australia",
+              "size": 1
+            },
+            {
+              "name": "Africa",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "Boost Mobile US",
+              "size": 1
+            },
+            {
+              "name": "KDDI Corporation",
+              "size": 1
+            },
+            {
+              "name": "SoftBank Corp.",
+              "size": 1
+            },
+            {
+              "name": "Virgin Mobile USA",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LG",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "V400 G Pad 7.0",
+              "size": 1
+            },
+            {
+              "name": "M160 K Series K4 2017 LTE",
+              "size": 1
+            },
+            {
+              "name": "K428 K Series K10 4G LTE / K428SG",
+              "size": 1
+            },
+            {
+              "name": "W150 Urbane Luxe Smart Watch",
+              "size": 1
+            },
+            {
+              "name": "X230Z K Series K4 2017 LTE",
+              "size": 1
+            },
+            {
+              "name": "G5 Speed H858 Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "K200ds X Series X Style Dual SIM LTE",
+              "size": 1
+            },
+            {
+              "name": "K121L X400 LTE-A / X401",
+              "size": 1
+            },
+            {
+              "name": "au isai Beat WiMAX 2+ LGV34 / V20 S",
+              "size": 1
+            },
+            {
+              "name": "G600SR G6 TD-LTE 32GB",
+              "size": 1
+            },
+            {
+              "name": "H961S V10 Dual SIM LTE",
+              "size": 1
+            },
+            {
+              "name": "M700H Q6 Prime LTE-A 32GB",
+              "size": 1
+            },
+            {
+              "name": "G2 D802 4G LTE 32GB",
+              "size": 1
+            },
+            {
+              "name": "L83BL Stylo 3 LTE-A",
+              "size": 1
+            },
+            {
+              "name": "W280 Watch Sport LTE",
+              "size": 1
+            },
+            {
+              "name": "H650E Zero 4G LTE",
+              "size": 1
+            },
+            {
+              "name": "G600KR G6 TD-LTE 32GB",
+              "size": 1
+            },
+            {
+              "name": "H630D G4 Stylus Dual SIM 4G LTE",
+              "size": 1
+            },
+            {
+              "name": "L59BL Grace LTE-A",
+              "size": 1
+            },
+            {
+              "name": "M200N K Series K8 2017 4G LTE",
+              "size": 1
+            },
+            {
+              "name": "MS210 Aristo LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "LG Electronics",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Central America",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Africa",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "FarEasTone Telecommunications",
+              "size": 1
+            },
+            {
+              "name": "Telecom Italia",
+              "size": 1
+            },
+            {
+              "name": "MetroPCS Communications",
+              "size": 1
+            },
+            {
+              "name": "Telus Mobility",
+              "size": 1
+            },
+            {
+              "name": "Verizon Wireless",
+              "size": 1
+            },
+            {
+              "name": "SoftBank Corp.",
+              "size": 1
+            },
+            {
+              "name": "KT Corporation",
+              "size": 1
+            },
+            {
+              "name": "TELCEL",
+              "size": 1
+            },
+            {
+              "name": "LG Uplus Corporation",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Xiaomi",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Mi Mix 2 Black Ceramic Edition Global Dual SIM TD-LTE 128GB MDE5",
+              "size": 1
+            },
+            {
+              "name": "Mi3 WCDMA 64GB 2013062",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Foxconn",
+              "size": 1
+            },
+            {
+              "name": "Xiaomi Tech",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meizu",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "m1 note M463M Dual SIM TD-LTE 32GB",
+              "size": 1
+            },
+            {
+              "name": "m5s note Dual SIM TD-LTE 64GB M621C-S",
+              "size": 1
+            },
+            {
+              "name": "m6 note Dual SIM TD-LTE CN 32GB M721M",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "MEIZU Electronic Technology",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tonino Lamborghini",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Alpha-One Dual SIM TD-LTE TL99",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "ZTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Polaroid",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Cosmo K LTE P5006A",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "JSR Technology",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "South America",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "NGM",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Dynamic E451 Dual SIM E451D",
+              "size": 1
+            },
+            {
+              "name": "You Color Smart 5 Dual SIM LTE YC-SMART50",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "GiONEE Communications Equipment",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Middle East",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "T-Mobile",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "SDA Music",
+              "size": 1
+            },
+            {
+              "name": "SDA II",
+              "size": 1
+            },
+            {
+              "name": "REVVL LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "TCL",
+              "size": 1
+            },
+            {
+              "name": "HTC",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "TELCEL",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HTC",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Desire 555 4G LTE NA",
+              "size": 1
+            },
+            {
+              "name": "One mini LTE NA",
+              "size": 1
+            },
+            {
+              "name": "One A9 TD-LTE 32GB A9u",
+              "size": 1
+            },
+            {
+              "name": "One A9 TD-LTE 16GB A9u",
+              "size": 1
+            },
+            {
+              "name": "Desire 626s 4G LTE LATAM 8GB",
+              "size": 1
+            },
+            {
+              "name": "One M9 LTE-A NA",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "HTC",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "South America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "Claro Peru",
+              "size": 1
+            },
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            },
+            {
+              "name": "AT&T; Mobility",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Intex",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Aqua Trend Lite SIM TD-LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Intex Mobile",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "Reliance Jio Infocomm",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sharp",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Telios HC-AJ2",
+              "size": 1
+            },
+            {
+              "name": "AQUOS ea LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Sharp",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "SoftBank Corp.",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LeEco",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "X656 Le Pro 3 AI Edition Dual SIM TD-LTE CN 32GB / X658 / X659",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Leshi",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "China Mobile Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GiONEE",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "GN8002 M6 Plus TD-LTE 64GB",
+              "size": 1
+            },
+            {
+              "name": "M5L TD-LTE Dual SIM",
+              "size": 1
+            },
+            {
+              "name": "A1 Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "W909 Cheonjian Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "Elife S7 GN9006 Dual SIM TD-LTE 32GB",
+              "size": 1
+            },
+            {
+              "name": "GN8003 M6 TD-LTE 64GB",
+              "size": 1
+            },
+            {
+              "name": "F301 TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "Elife E7 16GB",
+              "size": 1
+            },
+            {
+              "name": "V183 TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "Elife S9 Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "M5 Marathon Dual SIM TD-LTE",
+              "size": 1
+            },
+            {
+              "name": "P5W Dual SIM",
+              "size": 1
+            },
+            {
+              "name": "GN9011 Elife S8 Dual SIM TD-LTE 64GB",
+              "size": 1
+            },
+            {
+              "name": "Elife S6s Dual SIM TD-LTE IN",
+              "size": 1
+            },
+            {
+              "name": "Elife E7L TD-LTE 32GB",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "GiONEE Communications Equipment",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "China Telecom Corporation Limited",
+              "size": 1
+            },
+            {
+              "name": "China Mobile Limited",
+              "size": 1
+            },
+            {
+              "name": "China Unicom Netcom Limited",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nokia",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "5 Dual SIM TD-LTE CN",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "FIH Precision Electronics",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Oppo",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "A57 Dual SIM TD-LTE APAC CPH1701 / F3 Lite",
+              "size": 1
+            },
+            {
+              "name": "Neo 5 2015 Global Dual SIM",
+              "size": 1
+            },
+            {
+              "name": "A53 Global Dual SIM TD-LTE A53f",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Oppo",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Australia",
+              "size": 1
+            },
+            {
+              "name": "Worldwide",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Southeast Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Coolpad",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Conjr Dual SIM LTE US",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Yulong Computer",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SoftBank",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Lenovo Tab3 8 Dual SIM LTE 16GB 601LV",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Lenovo",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "SoftBank Corp.",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nomu",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "S30 Dual SIM LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Shenzhen Xin KingBrand Enterprises",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LYF",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Earth 2 Dual SIM TD-LTE",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Reliance Retail Ltd.",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "Reliance Jio Infocomm",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lenovo",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Vibe K4 Note Dual SIM TD-LTE A7010a48",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Lenovo",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "Boost Mobile US",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sonim",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "XP6 XP6700 LTE NA",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Sonim Technologies",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "AT&T; Mobility",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OnePlus",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "One A0001 16GB",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Shenzhen Oneplus Science & Technology",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Asia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+            {
+              "name": "Boost Mobile US",
+              "size": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Athesi",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "AT-C5000",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Mobile Compia",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TELE System",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "TS8500PND",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "TELE System Electronic",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PalmOne",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Treo 600 CDMA",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Handspring",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "I-Mate",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Pocket PC Phone Edition",
+              "size": 1
+            },
+            {
+              "name": "JAM",
+              "size": 1
+            },
+            {
+              "name": "JAQ3",
+              "size": 1
+            },
+            {
+              "name": "Ultimate 9502",
+              "size": 1
+            },
+            {
+              "name": "SP3",
+              "size": 1
+            },
+            {
+              "name": "JAQ",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "HTC",
+              "size": 1
+            },
+            {
+              "name": "Foxconn",
+              "size": 1
+            },
+            {
+              "name": "Inventec",
+              "size": 1
+            },
+            {
+              "name": "TechFaithWireless",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Middle East",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Psion",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Series 3c",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Psion",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fujitsu-Siemens",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "RPDA N520c",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Andres Industries",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hewlett-Packard",
+      "children": [
+        {
+          "name": "Models",
+          "children": [
+            {
+              "name": "Jornada 720",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Manufacturers",
+          "children": [
+            {
+              "name": "Hewlett-Packard",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Market Regions",
+          "children": [
+            {
+              "name": "North America",
+              "size": 1
+            },
+            {
+              "name": "Asia",
+              "size": 1
+            },
+            {
+              "name": "Europe",
+              "size": 1
+            },
+            {
+              "name": "Eastern Europe",
+              "size": 1
+            },
+            {
+              "name": "Western Europe",
+              "size": 1
+            }
+          ]
+        },
+        {
+          "name": "Carriers",
+          "children": [
+
+          ]
+        }
+      ]
+    }
+  ]
+}
