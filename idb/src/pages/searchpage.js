@@ -22,6 +22,7 @@ export default class SearchPage extends Component {
             loading: true,
             temp: " ",
             numberOfPages: 0,
+            page: 0,
             games: [],
             players: [],
             teams: [],
@@ -29,7 +30,8 @@ export default class SearchPage extends Component {
             displayedGames: [],
             displayedPlayers: [],
             displayedTeams: [],
-            displayedTournaments: []
+            displayedTournaments: [],
+            dataLength: []
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -175,6 +177,8 @@ export default class SearchPage extends Component {
             );
         console.log("Return from rendering now");
 
+        console.log(`${Object.keys(this.state.displayedGames).length} | ${Object.keys(this.state.displayedPlayers).length} | ${Object.keys(this.state.displayedTeams).length} | ${Object.keys(this.state.displayedTournaments).length}`);
+
         return (
             <div>
                 <Navbar/>
@@ -190,7 +194,7 @@ export default class SearchPage extends Component {
                     </div>
                     :
                     [ this.state.numberOfPages > 0 ?
-                            <div className="container">
+                            <div className="container" key={this.state.numberOfPages}>
                                 <Pagination
                                     numberOfPages={this.state.numberOfPages}
                                     onClick={this.updatePage}
