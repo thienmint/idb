@@ -1,6 +1,6 @@
 # eSportGuru
 
-A website dedicated to the competitive eSports world.
+A website dedicated to the competitive eSports world
 
 ---
 
@@ -16,10 +16,10 @@ A website dedicated to the competitive eSports world.
 
 ## Demonstration
 
-[eSportGuru](esportguru.com)
+[eSportGuru](http://esportguru.com)
 
-1. Navigation
-2. Search
+1. Navigation - models: players, teams, games, tournaments
+2. Search - "league legends", "tsm", "pokemon"
 3. Run Unit Tests
 
 ---
@@ -31,7 +31,7 @@ A website dedicated to the competitive eSports world.
 - Used Trello effectively
 - Quickly set up the database and platform
 - Automated builds and deployment
-- Separated branches and had good naming patterns
+- Separated branches and maintained good naming patterns
 - Created a copy of production for dev testing
 
 +++
