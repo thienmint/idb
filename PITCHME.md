@@ -34,12 +34,16 @@ A website dedicated to the competitive eSports world.
 - Separated branches and had good naming patterns
 - Created a copy of production for dev testing
 
++++
+
 ### What did we learn?
 
 - GCP can eat a lot of money quickly if you're not careful
 - Creating and hosting an API with Flask is relatively painless
 - Storing JSON data in a SQL database can make queries slow
  - Time consuming to parse a JSON of ids; better to create a join table
+
++++
 
 ### What can we do better?
 
@@ -50,6 +54,8 @@ A website dedicated to the competitive eSports world.
    display five attributes, it doesn't look as attractive as our other pages
 - As with any group project, communication could always be better
 
++++
+
 ### What puzzles us?
 
 - There isn't enough available data for eSports tournaments
@@ -59,6 +65,8 @@ A website dedicated to the competitive eSports world.
 - There are thousands of tournaments every year and tracking most of it for 
   rankings is still done by hand
 
+---
+
 ## Critique of Phonedb (Group 19)
 
 ### What did they do well?
@@ -67,6 +75,8 @@ A website dedicated to the competitive eSports world.
 - Searching/pagination/filtering works very well
 - Models are nicely interconnected with descriptive attributes
 
++++
+
 ### What did we learn from their website?
 
 - For the number of countries and people in the world, there aren't a lot of
@@ -74,6 +84,8 @@ A website dedicated to the competitive eSports world.
  - Could be that mass data is not available, or there are monopolies
 - Alibaba has a phone operating system
 - Tables are considered as cellular devices
+
++++
 
 ### What can they do better?
 
@@ -85,9 +97,13 @@ changed substantially since then)
 - Did not have a "no results found" page to indicate that users entered a bad
   query
 
++++
+
 ### What puzzles us about their website?
 
 Why is your stock photo a picture of a very cute kitten? What does that have 
 to do with phones?
+
+---
 
 ## Visualization
