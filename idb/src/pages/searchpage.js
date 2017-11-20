@@ -112,9 +112,9 @@ export default class SearchPage extends Component {
             if(numLeftToGrab <= 0)
                 break;
 
+            let length = dataLength[i];
             // This means that we can start grabbing items
             if(numToOffset === 0){
-                let length = dataLength[i];
 
                 // How many left would we need to grab after processing this array?
                 let leftover = numLeftToGrab - (length - offset);
