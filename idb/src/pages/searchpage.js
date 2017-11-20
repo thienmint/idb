@@ -22,7 +22,6 @@ export default class SearchPage extends Component {
             loading: true,
             temp: " ",
             numberOfPages: 0,
-            page: 0,
             games: [],
             players: [],
             teams: [],
@@ -39,14 +38,10 @@ export default class SearchPage extends Component {
         if (typeof this.props.match.params.id !== "undefined" && this.props.match.params.id !== null && this.props.match.params.id.trim() !== "")
             axios.get(apiurl + 'search/'+ this.props.match.params.id).then((response) => {
                 let stateCopy = Object.assign({}, this.state);
-                // TODO this line is not nececssary?
-                // stateCopy.results = stateCopy.results.slice();
-
                 stateCopy.results = Object.assign({}, response.data);
                 stateCopy.loading = false;
                 stateCopy.temp = this.props.match.params.id;
 
-                // Necessary to make copy so that we continue to keep the original data as is
                 let highlightedState = HighlightKeywords.boldKeywords(Object.assign({}, stateCopy));
 
                 stateCopy.games = highlightedState.games;
@@ -55,20 +50,14 @@ export default class SearchPage extends Component {
                 stateCopy.tournaments = highlightedState.tournaments;
 
                 stateCopy.dataLength = highlightedState.dataLength;
-                console.log(stateCopy.dataLength);
-                // TODO after refactor everything to simple array, we won't have to use Object.keys anymore
-                stateCopy.numberOfPages = Math.ceil((Object.keys(stateCopy.games).length + Object.keys(stateCopy.players).length +
-                    Object.keys(stateCopy.teams).length + Object.keys(stateCopy.tournaments).length) / 10);
+                stateCopy.numberOfPages = Math.ceil(stateCopy.dataLength.reduce((a,b) => a + b, 0) / 10);
 
                 console.log("Number of pages = " + stateCopy.numberOfPages);
-                if(stateCopy.numberOfPages > 0)
-                {
-                    let stateToDisplay = SearchPage.getResults(Object.assign({}, stateCopy), 1);
-                    stateCopy.displayedGames = stateToDisplay.displayedGames;
-                    stateCopy.displayedPlayers = stateToDisplay.displayedPlayers;
-                    stateCopy.displayedTeams = stateToDisplay.displayedTeams;
-                    stateCopy.displayedTournaments = stateToDisplay.displayedTournaments;
-                }
+                let displayState = SearchPage.getResults(Object.assign({}, stateCopy), stateCopy.numberOfPages & 1);
+                stateCopy.displayedGames = displayState.displayedGames;
+                stateCopy.displayedPlayers = displayState.displayedPlayers;
+                stateCopy.displayedTeams = displayState.displayedTeams;
+                stateCopy.displayedTournaments = displayState.displayedTournaments;
                 this.setState(stateCopy);
             }).catch(function (error) {
                 console.log(error);
@@ -203,9 +192,6 @@ export default class SearchPage extends Component {
                     <h1 className="page-title">Please use enter at least one nonempty search word!</h1>
                 </div>
             );
-        console.log("Return from rendering now");
-
-        console.log(`${Object.keys(this.state.displayedGames).length} | ${Object.keys(this.state.displayedPlayers).length} | ${Object.keys(this.state.displayedTeams).length} | ${Object.keys(this.state.displayedTournaments).length}`);
 
         return (
             <div>
