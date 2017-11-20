@@ -92,10 +92,10 @@
 									"    pm.expect(search.tournaments).to.eql([]);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Search returned player\", function() {\r",
-									"    var search = pm.response.json();\r",
-									"    pm.expect(search.players).to.not.eql([]);\r",
-									"});"
+									"// pm.test(\"Search returned player\", function() {\r",
+									"//     var search = pm.response.json();\r",
+									"//     pm.expect(search.players).to.not.eql([]);\r",
+									"// });"
 								]
 							}
 						}
@@ -255,6 +255,145 @@
 						"header": [],
 						"body": {},
 						"url": "http://api.esportguru.com/search/summary",
+						"description": "Validate that searches for db attribute names don't yield results."
+					},
+					"response": []
+				},
+				{
+					"name": "Test Search Date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be okay to process\", function () { \r",
+									"    pm.response.to.not.be.error; \r",
+									"    pm.response.to.have.jsonBody(\"\"); \r",
+									"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty games\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.games).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty teams\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.teams).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty players\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.players).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned tournaments dated in 2017\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.tournaments).to.not.eql([]);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/2017",
+						"description": "Validate that searches for db attribute names don't yield results."
+					},
+					"response": []
+				},
+				{
+					"name": "Test Search Bug 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be okay to process\", function () { \r",
+									"    pm.response.to.not.be.error; \r",
+									"    pm.response.to.have.jsonBody(\"\"); \r",
+									"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty games\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.games).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty teams; should have returned Double Dimension\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.teams).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty players\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.players).to.eql([]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned tournaments with team as Double Dimension\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    for (var tourney in search.results)\r",
+									"    {   \r",
+									"        pm.expect(tourney.teams).to.not.eql(null);\r",
+									"        pm.expect(tourney.teams[0]).to.eql(\"Double Dimension\");\r",
+									"    }\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/double double",
+						"description": "Validate that searches for db attribute names don't yield results."
+					},
+					"response": []
+				},
+				{
+					"name": "Test Search Bug 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response should be okay to process\", function () { \r",
+									"    pm.response.to.not.be.error; \r",
+									"    pm.response.to.have.jsonBody(\"\"); \r",
+									"    pm.response.to.not.have.jsonBody(\"error\"); \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Search returned empty tourneys; should've returned tourneys in 2017\", function() {\r",
+									"    var search = pm.response.json();\r",
+									"    pm.expect(search.tournaments).to.eql([]);\r",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "http://api.esportguru.com/search/Jan",
 						"description": "Validate that searches for db attribute names don't yield results."
 					},
 					"response": []
