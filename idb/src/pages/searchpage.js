@@ -63,10 +63,10 @@ export default class SearchPage extends Component {
                 console.log(error);
             });
 
-        this.updatePage = this.updatePage.bind(this);
+        this.handlePage = this.handlePage.bind(this);
     }
 
-    updatePage(page) {
+    handlePage(page) {
         let stateCopy = Object.assign({}, this.state);
         let stateToBeDisplayed = SearchPage.getResults(stateCopy, page+1);
         this.setState(stateToBeDisplayed);
@@ -211,7 +211,7 @@ export default class SearchPage extends Component {
                             <div className="container" key={this.state.numberOfPages}>
                                 <Pagination
                                     numberOfPages={this.state.numberOfPages}
-                                    onClick={this.updatePage}
+                                    onClick={this.handlePage}
                                 />
                                 {this.state.displayedGames.map((item, index) => (
                                     <GameRow values={item} key={index}/>
