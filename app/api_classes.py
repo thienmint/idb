@@ -50,19 +50,9 @@ class PlayerInstance:
     def __init__(self, row=None):
         self.row = row
 
-    def get_dict(self):
-        row = self.row
+    def get_dict(self, search=False, input_row=None):
+        row = self.row if input_row is None else input_row
         player = OrderedDict()
-
-        team = {
-            "id": row['current_team'],
-            "name": row['team_name']
-        }
-
-        game = {
-            "id": row['current_game'],
-            "name": row['game_name']
-        }
 
         player['id'] = row['id']
         player['tag'] = row['tag']
@@ -70,9 +60,20 @@ class PlayerInstance:
         player['last_name'] = row['last_name']
         player['role'] = row['role']
         player['hometown'] = row['hometown']
-        player['image_url'] = row['image_url']
-        player['current_team'] = team
-        player['current_game'] = game
+        if search:
+            player['current_game'] = row['game_name']
+            player['current_team'] = row['team_name']
+        else:
+            player['image_url'] = row['image_url']
+            player['current_team'] = {
+                "id": row['current_team'],
+                "name": row['team_name']
+            }
+            player['current_game'] = {
+                "id": row['current_game'],
+                "name": row['game_name']
+            }
+
         return player
 
 

@@ -266,16 +266,7 @@ class Search(Resource):
             game_data.append(game_formatter.get_dict(search=True, input_row=row))
 
         for row in player_results:
-            player = OrderedDict()
-            player['id'] = row['id']
-            player['tag'] = row['tag']
-            player['first_name'] = row['first_name']
-            player['last_name'] = row['last_name']
-            player['role'] = row['role']
-            player['hometown'] = row['hometown']
-            player['current_game'] = row['game_name']
-            player['current_team'] = row['team_name']
-            player_data.append(player)
+            player_data.append(player_formatter.get_dict(search=True, input_row=row))
 
         for row in team_results:
             team = OrderedDict()
