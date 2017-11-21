@@ -176,22 +176,6 @@ def game_query(game_id=None):
     return query
 
 
-def process_players(players_row):
-    if players_row is not None:
-        json_players = json.loads(players_row)
-        return [OrderedDict([('id', player['id']), ('tag', player['tag'])]) for player in json_players]
-    else:
-        return list()
-
-
-def process_teams(teams_row):
-    if teams_row is not None:
-        json_teams = json.loads(teams_row)
-        return [OrderedDict([('id', team['id']), ('name', team['name'])]) for team in json_teams]
-    else:
-        return list()
-
-
 def form_regex(search_str):
     # Game
     if search_str == "":
