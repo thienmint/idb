@@ -2,21 +2,9 @@ from collections import OrderedDict
 import json
 
 
-class GameInstance:
-    def __init__(self, row):
-        self.row = row
-
-    def get_dict(self):
-        game = OrderedDict()
-        game['id'] = self.row['id']
-        game['name'] = self.row['name']
-        game['summary'] = self.row['summary']
-        game['release_date'] = str(self.row['release_date'])
-        game['website'] = json.loads(self.row['website'])
-        game['screenshots'] = json.loads(self.row['screenshots'])
-        game['sample_players'] = GameInstance.process_players(self.row['list_players'])
-        game['sample_teams'] = GameInstance.process_teams(self.row['list_teams'])
-        return game
+class Helper:
+    def __init__(self):
+        pass
 
     @staticmethod
     def process_players(players_row):
@@ -25,6 +13,7 @@ class GameInstance:
             return [OrderedDict([('id', player['id']), ('tag', player['tag'])]) for player in json_players]
         else:
             return list()
+
     @staticmethod
     def process_teams(teams_row):
         if teams_row is not None:
@@ -34,9 +23,54 @@ class GameInstance:
             return list()
 
 
+class GameInstance:
+    def __init__(self, row):
+        self.row = row
+
+    def get_dict(self):
+        row = self.row
+        game = OrderedDict()
+        game['id'] = row['id']
+        game['name'] = row['name']
+        game['summary'] = row['summary']
+        game['release_date'] = str(row['release_date'])
+        game['website'] = json.loads(row['website'])
+        game['screenshots'] = json.loads(row['screenshots'])
+        game['sample_players'] = Helper.process_players(row['list_players'])
+        game['sample_teams'] = Helper.process_teams(row['list_teams'])
+        return game
+
+
+
+
 class PlayerInstance:
-    def __init__(self):
-        pass
+    def __init__(self, row):
+        self.row = row
+
+    def get_dict(self):
+        row = self.row
+        player = OrderedDict()
+
+        team = {
+            "id": row['current_team'],
+            "name": row['team_name']
+        }
+
+        game = {
+            "id": row['current_game'],
+            "name": row['game_name']
+        }
+
+        player['id'] = row['id']
+        player['tag'] = row['tag']
+        player['first_name'] = row['first_name']
+        player['last_name'] = row['last_name']
+        player['role'] = row['role']
+        player['hometown'] = row['hometown']
+        player['image_url'] = row['image_url']
+        player['current_team'] = team
+        player['current_game'] = game
+        return player
 
 
 class TeamInstance:

@@ -266,7 +266,7 @@ def search_tourney(search_str):
 
 '=====================END API QUERIES====================='
 '=====================START API====================='
-from api_classes import GameInstance
+from api_classes import Helper, GameInstance, PlayerInstance
 
 
 class Players(Resource):
@@ -275,27 +275,7 @@ class Players(Resource):
         query = conn.execute(player_query())
         list_players = []
         for row in query:
-            player = OrderedDict()
-
-            team = {
-                "id": row['current_team'],
-                "name": row['team_name']
-            }
-
-            game = {
-                "id": row['current_game'],
-                "name": row['game_name']
-            }
-
-            player['id'] = row['id']
-            player['tag'] = row['tag']
-            player['first_name'] = row['first_name']
-            player['last_name'] = row['last_name']
-            player['role'] = row['role']
-            player['hometown'] = row['hometown']
-            player['image_url'] = row['image_url']
-            player['current_team'] = team
-            player['current_game'] = game
+            player = PlayerInstance(row).get_dict()
             list_players.append(player)
         conn.close()
         return jsonify(list_players)
@@ -305,28 +285,8 @@ class Player(Resource):
     def get(self, player_id):
         conn = engine.connect()
         query = conn.execute(player_query(player_id))
-        player = OrderedDict()
         row = query.fetchone()
-
-        team = {
-            "id": row['current_team'],
-            "name": row['team_name']
-        }
-
-        game = {
-            "id": row['current_game'],
-            "name": row['game_name']
-        }
-
-        player['id'] = row['id']
-        player['tag'] = row['tag']
-        player['first_name'] = row['first_name']
-        player['last_name'] = row['last_name']
-        player['role'] = row['role']
-        player['hometown'] = row['hometown']
-        player['image_url'] = row['image_url']
-        player['current_team'] = team
-        player['current_game'] = game
+        player = PlayerInstance(row).get_dict()
         conn.close()
         return jsonify(player)
 
@@ -339,7 +299,7 @@ class Teams(Resource):
         list_teams = []
         for row in query:
             team = OrderedDict()
-            list_players = process_players(row['list_players'])
+            list_players = Helper.process_players(row['list_players'])
 
             game = {
                 "id": row['current_game'],
