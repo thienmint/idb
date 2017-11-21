@@ -27,17 +27,22 @@ class GameInstance:
     def __init__(self, row):
         self.row = row
 
-    def get_dict(self):
+    def get_dict(self, search=False):
         row = self.row
         game = OrderedDict()
         game['id'] = row['id']
         game['name'] = row['name']
         game['summary'] = row['summary']
         game['release_date'] = str(row['release_date'])
-        game['website'] = json.loads(row['website'])
-        game['screenshots'] = json.loads(row['screenshots'])
-        game['sample_players'] = Helper.process_players(row['list_players'])
-        game['sample_teams'] = Helper.process_teams(row['list_teams'])
+        if search:
+            game['sample_players'] = row['list_players']
+            game['sample_teams'] = row['list_teams']
+        else:
+            game['website'] = json.loads(row['website'])
+            game['screenshots'] = json.loads(row['screenshots'])
+            game['sample_players'] = Helper.process_players(row['list_players'])
+            game['sample_teams'] = Helper.process_teams(row['list_teams'])
+
         return game
 
 
