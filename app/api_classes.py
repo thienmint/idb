@@ -81,22 +81,23 @@ class TeamInstance:
     def __init__(self, row=None):
         self.row = row
 
-    def get_dict(self):
-        row = self.row
+    def get_dict(self, search=False, input_row=None):
+        row = self.row if input_row is None else input_row
         team = OrderedDict()
-        list_players = Helper.process_players(row['list_players'])
-
-        game = {
-            "id": row['current_game'],
-            "name": row['game_name']
-        }
-
         team['id'] = row['id']
         team['name'] = row['name']
         team['acronym'] = row['acronym']
-        team['image_url'] = row['image_url']
-        team['current_players'] = list_players
-        team['current_game'] = game
+
+        if search:
+            team['current_players'] = row['players_name']
+            team['current_game'] = row['game_name']
+        else:
+            team['image_url'] = row['image_url']
+            team['current_players'] = Helper.process_players(row['list_players'])
+            team['current_game'] = {
+                "id": row['current_game'],
+                "name": row['game_name']
+            }
 
         return team
 
