@@ -107,7 +107,7 @@ export default class Teams extends Component {
                     case "Acronym":
                         stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(x.acronym, y.acronym)));
                         break;
-
+                    default:
                 } break;
             case "desc":
                 switch (stateCopy.sortOpt) {
@@ -117,6 +117,7 @@ export default class Teams extends Component {
                     case "Acronym":
                         stateCopy.teams = stateCopy.teams.sort((x, y) => (Teams.compareString(y.acronym, x.acronym)));
                         break;
+                    default:
                 } break;
             default: stateCopy.teams = this.state.teams;
         }
