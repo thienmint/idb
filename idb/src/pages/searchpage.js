@@ -217,13 +217,13 @@ export default class SearchPage extends Component {
                                     <GameRow values={item} key={index}/>
                                 ))}
                                 {this.state.displayedPlayers.map((item, index) => (
-                                    <GamePlayer values={item} key={index}/>
+                                    <PlayerRow values={item} key={index}/>
                                 ))}
                                 {this.state.displayedTeams.map((item, index) => (
-                                    <GameTeam values={item} key={index}/>
+                                    <TeamRow values={item} key={index}/>
                                 ))}
                                 {this.state.displayedTournaments.map((item, index) => (
-                                    <GameTournament values={item} key={index}/>
+                                    <TournamentRow values={item} key={index}/>
                                 ))}
 
                             </div>
@@ -255,7 +255,7 @@ class GameRow extends Component {
     }
 }
 
-class GamePlayer extends Component {
+class PlayerRow extends Component {
     render() {
         let row = this.props.values;
         let players = [];
@@ -272,7 +272,7 @@ class GamePlayer extends Component {
     }
 }
 
-class GameTeam extends Component {
+class TeamRow extends Component {
     render() {
         let row = this.props.values;
         let teams = [];
@@ -289,7 +289,7 @@ class GameTeam extends Component {
     }
 }
 
-class GameTournament extends Component {
+class TournamentRow extends Component {
     render() {
         let row = this.props.values;
         let tournaments = [];
