@@ -282,6 +282,7 @@ def search_tourney(search_str):
 
 '=====================END API QUERIES====================='
 '=====================START API====================='
+from api_classes import GameInstance
 
 
 class Players(Resource):
@@ -432,7 +433,7 @@ class Tourneys(Resource):
             tourney['image_url'] = row['league_image']
 
             list_tourneys.append(tourney)
-        
+
         conn.close()
         return jsonify(list_tourneys)
 
@@ -483,16 +484,7 @@ class Games(Resource):
         query = conn.execute(game_query())
         list_games = []
         for row in query:
-            game = OrderedDict()
-            game['id'] = row['id']
-            game['name'] = row['name']
-            game['summary'] = row['summary']
-            game['release_date'] = str(row['release_date'])
-            game['website'] = json.loads(row['website'])
-            game['screenshots'] = json.loads(row['screenshots'])
-            game['sample_players'] = process_players(row['list_players'])
-            game['sample_teams'] = process_teams(row['list_teams'])
-            list_games.append(game)
+            list_games.append(GameInstance(row).get_dict())
         conn.close()
         return jsonify(list_games)
 
@@ -503,17 +495,8 @@ class Game(Resource):
         _ = conn.execute("set @@session.group_concat_max_len=18446744073709551615")
         query = conn.execute(game_query(game_id))
         row = query.fetchone()
-        game = OrderedDict()
-        game['id'] = row['id']
-        game['name'] = row['name']
-        game['summary'] = row['summary']
-        game['release_date'] = str(row['release_date'])
-        game['website'] = json.loads(row['website'])
-        game['screenshots'] = json.loads(row['screenshots'])
-        game['sample_players'] = process_players(row['list_players'])
-        game['sample_teams'] = process_teams(row['list_teams'])
         conn.close()
-        return jsonify(game)
+        return jsonify(GameInstance(row).get_dict())
 
 
 class Search(Resource):
