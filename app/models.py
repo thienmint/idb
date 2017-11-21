@@ -302,23 +302,7 @@ class Tourneys(Resource):
         query = conn.execute(tourney_query())
         list_tourneys = []
         for row in query:
-            tourney = OrderedDict()
-
-            game = {
-                "id": row['game'],
-                "name": row['game_name']
-            }
-
-            tourney['id'] = row['id']
-            tourney['name'] = row['name']
-            tourney['slug'] = row['slug']
-            tourney['begin_at'] = row['begin_at']
-            tourney['end_at'] = row['end_at']
-            tourney['game'] = game
-            tourney['teams'] = json.loads(row['list_teams'])
-            tourney['league'] = row['league']
-            tourney['image_url'] = row['league_image']
-
+            tourney = TourneyInstance(row).get_dict()
             list_tourneys.append(tourney)
 
         conn.close()
@@ -332,24 +316,7 @@ class Tourney(Resource):
 
         query = conn.execute(tourney_query(tourney_id))
         row = query.fetchone()
-        tourney = OrderedDict()
-        print row['name']
-        print row['list_teams']
-        game = {
-            "id": row['game'],
-            "name": row['game_name']
-        }
-
-        tourney['id'] = row['id']
-        tourney['name'] = row['name']
-        tourney['slug'] = row['slug']
-        tourney['begin_at'] = row['begin_at']
-        tourney['end_at'] = row['end_at']
-        tourney['game'] = game
-        tourney['teams'] = json.loads(row['list_teams'])
-        tourney['league'] = row['league']
-        tourney['image_url'] = row['league_image']
-
+        tourney = TourneyInstance(row).get_dict()
         conn.close()
         return jsonify(tourney)
 

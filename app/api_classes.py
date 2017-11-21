@@ -96,5 +96,26 @@ class TeamInstance:
 
 
 class TourneyInstance:
-    def __init__(self):
-        pass
+    def __init__(self, row):
+        self.row = row
+
+    def get_dict(self):
+        row = self.row
+        tourney = OrderedDict()
+
+        game = {
+            "id": row['game'],
+            "name": row['game_name']
+        }
+
+        tourney['id'] = row['id']
+        tourney['name'] = row['name']
+        tourney['slug'] = row['slug']
+        tourney['begin_at'] = row['begin_at']
+        tourney['end_at'] = row['end_at']
+        tourney['game'] = game
+        tourney['teams'] = json.loads(row['list_teams'])
+        tourney['league'] = row['league']
+        tourney['image_url'] = row['league_image']
+
+        return tourney
