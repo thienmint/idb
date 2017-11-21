@@ -41,8 +41,6 @@ class GameInstance:
         return game
 
 
-
-
 class PlayerInstance:
     def __init__(self, row):
         self.row = row
@@ -74,8 +72,27 @@ class PlayerInstance:
 
 
 class TeamInstance:
-    def __init__(self):
-        pass
+    def __init__(self, row):
+        self.row = row
+
+    def get_dict(self):
+        row = self.row
+        team = OrderedDict()
+        list_players = Helper.process_players(row['list_players'])
+
+        game = {
+            "id": row['current_game'],
+            "name": row['game_name']
+        }
+
+        team['id'] = row['id']
+        team['name'] = row['name']
+        team['acronym'] = row['acronym']
+        team['image_url'] = row['image_url']
+        team['current_players'] = list_players
+        team['current_game'] = game
+
+        return team
 
 
 class TourneyInstance:

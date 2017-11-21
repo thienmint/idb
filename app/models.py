@@ -266,7 +266,7 @@ def search_tourney(search_str):
 
 '=====================END API QUERIES====================='
 '=====================START API====================='
-from api_classes import Helper, GameInstance, PlayerInstance
+from api_classes import Helper, GameInstance, PlayerInstance, TeamInstance, TourneyInstance
 
 
 class Players(Resource):
@@ -298,20 +298,7 @@ class Teams(Resource):
         query = conn.execute(team_query())
         list_teams = []
         for row in query:
-            team = OrderedDict()
-            list_players = Helper.process_players(row['list_players'])
-
-            game = {
-                "id": row['current_game'],
-                "name": row['game_name']
-            }
-
-            team['id'] = row['id']
-            team['name'] = row['name']
-            team['acronym'] = row['acronym']
-            team['image_url'] = row['image_url']
-            team['current_players'] = list_players
-            team['current_game'] = game
+            team = TeamInstance(row).get_dict()
             list_teams.append(team)
         conn.close()
         return jsonify(list_teams)
@@ -323,20 +310,7 @@ class Team(Resource):
         conn.execute("set @@session.group_concat_max_len=4294967295")
         query = conn.execute(team_query(team_id))
         row = query.fetchone()
-        list_players = process_players(row['list_players'])
-
-        game = {
-            "id": row['current_game'],
-            "name": row['game_name']
-        }
-
-        team = OrderedDict()
-        team['id'] = row['id']
-        team['name'] = row['name']
-        team['acronym'] = row['acronym']
-        team['image_url'] = row['image_url']
-        team['current_players'] = list_players
-        team['current_game'] = game
+        team = TeamInstance(row).get_dict()
         conn.close()
         return jsonify(team)
 
