@@ -257,15 +257,13 @@ class Search(Resource):
         team_data = []
         tourney_data = []
 
+        game_formatter = GameInstance()
+        player_formatter = PlayerInstance()
+        team_formatter = TeamInstance()
+        tourney_formatter = TourneyInstance()
+
         for row in game_results:
-            game = OrderedDict()
-            game['id'] = row['id']
-            game['name'] = row['name']
-            game['summary'] = row['summary']
-            game['release_date'] = row['release_date']
-            game['sample_players'] = row['list_players']
-            game['sample_teams'] = row['list_teams']
-            game_data.append(game)
+            game_data.append(game_formatter.get_dict(search=True, input_row=row))
 
         for row in player_results:
             player = OrderedDict()
