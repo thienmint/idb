@@ -85,42 +85,23 @@ def team_query(team_id=None):
     return query
 
 
-def tourney_query(tourney_id=None):
+def tourney_query(tourney_id = None):
     query = (
         """
-          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                 g.name as game_name
-          from TOURNEY tn
-          join GAME g on g.id = tn.game
-          {0}
-        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
-    )
-
-    return query
-
-
-def tourney2_query(tourney_id = None):
-    query = (
-        """
-          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                 tn.league, tn.league_image, g.name as game_name
+          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game,
+                 tn.league, tn.league_image, g.name as game_name, R.list_teams as list_teams
           from TOURNEY2 tn
           join GAME g on g.id = tn.game
+          left join (
+              select tt.tournament_id as id, concat('[', 
+              substring_index(
+                group_concat(
+                  json_object("id", t.id, "name", t.name)), ',', 40), ']') list_teams
+              from TEAM_TOURNAMENTS tt
+              join TEAM t on tt.team_id = t.id
+              group by tt.tournament_id
+            ) R on tn.id = R.id
           {0}
-        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
-    )
-
-    return query
-
-def tourney2_query(tourney_id = None):
-    query = (
-        """
-          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                 tn.league, tn.league_image, g.name as game_name
-          from TOURNEY2 tn
-          join GAME g on g.id = tn.game
-          {0}
-          LIMIT 40
         """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
     )
 
@@ -318,7 +299,7 @@ class Team(Resource):
 class Tourneys(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute(tourney2_query())
+        query = conn.execute(tourney_query())
         list_tourneys = []
         for row in query:
             tourney = OrderedDict()
@@ -328,25 +309,13 @@ class Tourneys(Resource):
                 "name": row['game_name']
             }
 
-            json_teams = json.loads(row['teams'])
-            teams = set(json_teams)
-
-            query_2 = conn.execute(get_teams_info(list(teams)))
-
-            list_teams = []
-            for team_row in query_2:
-                one_team = OrderedDict()
-                one_team['id'] = team_row['id']
-                one_team['name'] = team_row['name']
-                list_teams.append(one_team)
-
             tourney['id'] = row['id']
             tourney['name'] = row['name']
             tourney['slug'] = row['slug']
             tourney['begin_at'] = row['begin_at']
             tourney['end_at'] = row['end_at']
             tourney['game'] = game
-            tourney['teams'] = list_teams
+            tourney['teams'] = json.loads(row['list_teams'])
             tourney['league'] = row['league']
             tourney['image_url'] = row['league_image']
 
@@ -359,26 +328,17 @@ class Tourneys(Resource):
 class Tourney(Resource):
     def get(self, tourney_id):
         conn = engine.connect()
-        query = conn.execute(tourney2_query(tourney_id))
+        _ = conn.execute("set @@session.group_concat_max_len=18446744073709551615")
+
+        query = conn.execute(tourney_query(tourney_id))
         row = query.fetchone()
         tourney = OrderedDict()
-
+        print row['name']
+        print row['list_teams']
         game = {
             "id": row['game'],
             "name": row['game_name']
         }
-
-        json_teams = json.loads(row['teams'])
-        teams = set(json_teams)
-
-        query_2 = conn.execute(get_teams_info(list(teams)))
-
-        list_teams = []
-        for team_row in query_2:
-            one_team = OrderedDict()
-            one_team['id'] = team_row['id']
-            one_team['name'] = team_row['name']
-            list_teams.append(one_team)
 
         tourney['id'] = row['id']
         tourney['name'] = row['name']
@@ -386,7 +346,7 @@ class Tourney(Resource):
         tourney['begin_at'] = row['begin_at']
         tourney['end_at'] = row['end_at']
         tourney['game'] = game
-        tourney['teams'] = list_teams
+        tourney['teams'] = json.loads(row['list_teams'])
         tourney['league'] = row['league']
         tourney['image_url'] = row['league_image']
 
