@@ -272,15 +272,7 @@ class Search(Resource):
             team_data.append(team_formatter.get_dict(search=True, input_row=row))
 
         for row in tourney_results:
-            tourney = OrderedDict()
-            tourney['id'] = row['id']
-            tourney['name'] = row['name']
-            tourney['slug'] = row['slug']
-            tourney['begin_at'] = row['begin_at']
-            tourney['end_at'] = row['end_at']
-            tourney['game'] = row['game_name']
-            tourney['teams'] = row['team_names']
-            tourney_data.append(tourney)
+            tourney_data.append(tourney_formatter.get_dict(search=True, input_row=row))
 
         search_results['games'] = game_data
         search_results['players'] = player_data
