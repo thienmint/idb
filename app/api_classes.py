@@ -24,11 +24,11 @@ class Helper:
 
 
 class GameInstance:
-    def __init__(self, row):
+    def __init__(self, row=None):
         self.row = row
 
-    def get_dict(self, search=False):
-        row = self.row
+    def get_dict(self, search=False, input_row=None):
+        row = self.row if input_row is None else input_row
         game = OrderedDict()
         game['id'] = row['id']
         game['name'] = row['name']
@@ -47,7 +47,7 @@ class GameInstance:
 
 
 class PlayerInstance:
-    def __init__(self, row):
+    def __init__(self, row=None):
         self.row = row
 
     def get_dict(self):
@@ -77,7 +77,7 @@ class PlayerInstance:
 
 
 class TeamInstance:
-    def __init__(self, row):
+    def __init__(self, row=None):
         self.row = row
 
     def get_dict(self):
@@ -101,7 +101,7 @@ class TeamInstance:
 
 
 class TourneyInstance:
-    def __init__(self, row):
+    def __init__(self, row=None):
         self.row = row
 
     def get_dict(self):
