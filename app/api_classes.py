@@ -23,6 +23,14 @@ class Helper:
             return list()
 
 
+    @staticmethod
+    def form_regex(search_str):
+        if search_str == "":
+            return None
+
+        return search_str.replace(" ", "|")
+
+
 class GameInstance:
     def __init__(self, row=None):
         self.row = row
