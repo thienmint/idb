@@ -29,33 +29,37 @@ public class Example  {
   
 
     Thread.sleep(5000);
+
+
+
+
     // Test 2
-
-
-
-    WebElement link = driver.findElement(By.linkText("About"));
-    link.click();
+    WebElement linkGames = driver.findElement(By.linkText("Games"));
+    linkGames.click();
     Thread.sleep(5000);
-
+    WebElement linkLeague = driver.findElement(By.linkText("Games"));
+    linkLeague.click();
+    Thread.sleep(5000);
     // Test 3
-    WebElement link = driver.findElement(By.linkText("Games"));
-    link.click();
+    WebElement linkPlayers = driver.findElement(By.linkText("Players"));
+    linkPlayers.click();
     Thread.sleep(5000);
     // Test 4
-    WebElement link = driver.findElement(By.linkText("Players"));
-    link.click();
+    WebElement linkTeams = driver.findElement(By.linkText("Teams"));
+    linkTeams.click();
     Thread.sleep(5000);
     // Test 5
-    WebElement link = driver.findElement(By.linkText("Teams"));
-    link.click();
+    WebElement linkTournaments = driver.findElement(By.linkText("Tournaments"));
+    linkTournaments.click();
     Thread.sleep(5000);
     // Test 6
-    WebElement link = driver.findElement(By.linkText("Tournaments"));
-    link.click();
+    WebElement linkLogo = driver.findElement(By.linkText("eSport Guru"));
+    linkLogo.click();
     Thread.sleep(5000);
     // Test 7
-    WebElement link = driver.findElement(By.linkText("eSport Guru"));
-    link.click();
+    WebElement linkAbout = driver.findElement(By.linkText("About"));
+    linkAbout.click();
+    WebElement linkGithub = driver.findElement(By.linkText("Technical Report"));
     Thread.sleep(5000);
     // Conclude a test
     driver.quit();
