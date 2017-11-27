@@ -37,15 +37,16 @@ public class Example  {
     WebElement linkGames = driver.findElement(By.linkText("Games"));
     linkGames.click();
     Thread.sleep(5000);
+
+    // Test 3
+    WebElement linkPlayers = driver.findElement(By.linkText("Players"));
+    linkPlayers.click();
+    Thread.sleep(5000);
     WebElement linkLeague = driver.findElement(By.linkText("League of Legends"));
     linkLeague.click();
     Thread.sleep(5000);
     WebElement linkLeaguePlayers = driver.findElement(By.linkText("PCS Tet"));
     linkLeaguePlayers.click();
-    Thread.sleep(5000);
-    // Test 3
-    WebElement linkPlayers = driver.findElement(By.linkText("Players"));
-    linkPlayers.click();
     Thread.sleep(5000);
     // Test 4
     WebElement linkTeams = driver.findElement(By.linkText("Teams"));
