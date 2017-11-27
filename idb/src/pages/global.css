@@ -113,3 +113,8 @@ body {
 .default-option {
     display: none;
 }
+
+.matched-result {
+    font-weight: bold;
+    background-color: #FFFF00
+}
