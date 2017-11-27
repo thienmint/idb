@@ -89,7 +89,7 @@ export default class SliceResults {
      */
     static getResults(state, page){
         let dataLengthCopy = Object.assign([], state.dataLength);
-        let indices = SearchPage.computeIndices(dataLengthCopy, page * 10);
+        let indices = SliceResults.computeIndices(dataLengthCopy, page * 10);
 
         let startArray = indices.start;
         let endArray = indices.end;

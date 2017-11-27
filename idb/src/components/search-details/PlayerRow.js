@@ -9,17 +9,17 @@ class PlayerRow extends Component {
                 <div>
                     <div className="search-title">
                         <Link to={`/players/${this.props.value.id}`}>
-                            <div><text dangerouslySetInnerHTML={{ __html: this.props.value.tag}}/> </div>
+                            <div><span dangerouslySetInnerHTML={{ __html: this.props.value.tag}}/> </div>
 
                         </Link>
                     </div>
                     <div>
-                        First Name: <text dangerouslySetInnerHTML={{ __html: this.props.value.first_name + " "}}/>
-                        Last Name: <text dangerouslySetInnerHTML={{ __html: this.props.value.last_name + " "}}/>
-                        Role: <text dangerouslySetInnerHTML={{ __html: this.props.value.role + " "}}/>
-                        Hometown: <text dangerouslySetInnerHTML={{ __html: this.props.value.hometown + " "}}/>
-                        Current Game: <text dangerouslySetInnerHTML={{ __html: this.props.value.current_game + " "}}/>
-                        Current Team: <text dangerouslySetInnerHTML={{ __html: this.props.value.current_team }}/>
+                        First Name: <span dangerouslySetInnerHTML={{ __html: this.props.value.first_name + " "}}/> |
+                        Last Name: <span dangerouslySetInnerHTML={{ __html: this.props.value.last_name + " "}}/> |
+                        Role: <span dangerouslySetInnerHTML={{ __html: this.props.value.role + " "}}/> |
+                        Hometown: <span dangerouslySetInnerHTML={{ __html: this.props.value.hometown + " "}}/> |
+                        Current Game: <span dangerouslySetInnerHTML={{ __html: this.props.value.current_game + " "}}/> |
+                        Current Team: <span dangerouslySetInnerHTML={{ __html: this.props.value.current_team }}/>
                     </div>
                 </div>
             </div>

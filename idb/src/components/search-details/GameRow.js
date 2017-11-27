@@ -9,14 +9,14 @@ class GameRow extends Component {
                 <div>
                     <div className="search-title">
                         <Link to={`/games/${this.props.value.id}`}>
-                            <div><text dangerouslySetInnerHTML={{ __html: this.props.value.name}}/></div>
+                            <div><span dangerouslySetInnerHTML={{ __html: this.props.value.name}}/></div>
                         </Link>
                     </div>
                     <div>
-                        Release Date:<text dangerouslySetInnerHTML={{ __html: this.props.value.release_date + " "}}/>
-                        Current Players: <text dangerouslySetInnerHTML={{ __html: this.props.value.sample_players + " "}}/>
-                        Current Teams: <text dangerouslySetInnerHTML={{ __html: this.props.value.sample_teams + " "}}/>
-                        Summary: <text dangerouslySetInnerHTML={{ __html: this.props.value.summary }}/>
+                        Release Date:<span dangerouslySetInnerHTML={{ __html: this.props.value.release_date + " "}}/> |
+                        Current Players: <span dangerouslySetInnerHTML={{ __html: this.props.value.sample_players + " "}}/> |
+                        Current Teams: <span dangerouslySetInnerHTML={{ __html: this.props.value.sample_teams + " "}}/> |
+                        Summary: <span dangerouslySetInnerHTML={{ __html: this.props.value.summary }}/> |
                     </div>
                 </div>
             </div>
