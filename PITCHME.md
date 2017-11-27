@@ -67,42 +67,36 @@ A website dedicated to the competitive eSports world
 
 ---
 
-## Critique of Phonedb (Group 19)
+## Critique of Musemary (Group 20)
 
 ### What did they do well?
 
-- Visuals are clean and slick
-- Searching/pagination/filtering works very well
-- Models are nicely interconnected with descriptive attributes
+- Searching/sorting works very well
+- Models have a good degree of interconnectivity
+- A lot of content for users to explore and absorb
 
 +++
 
 ### What did we learn from their website?
 
-- For the number of countries and people in the world, there aren't a lot of
-  phone carriers
- - Could be that mass data is not available, or there are monopolies
-- Alibaba has a phone operating system
-- Tables are considered as cellular devices
+- There are a lot of artists that we've never heard about
+- Harvard has an arts museum
+- Chairmaking is a type of art
 
 +++
 
 ### What can they do better?
 
-(Just to preface, this critque was done on 11-18-17; the website could've
-changed substantially since then)
-
-- Some of the photos are low resolution, making them look grainy
-- Searching did not highlight search query terms
-- Did not have a "no results found" page to indicate that users entered a bad
-  query
+- Some of the photos are stretched to fit and look a little awkward
+- Some order by selections did not work properly
+- There's only one notable work for van Gogh and Picasso
+- Some cases where pagination doesn't work perfectly
 
 +++
 
 ### What puzzles us about their website?
 
-Why is your stock photo a picture of a very cute kitten? What does that have 
-to do with phones?
+Why don't famous artists have more of their works listed?
 
 ---
 
