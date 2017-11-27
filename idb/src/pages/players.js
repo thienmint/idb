@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './../components/nav/navbar';
 import './global.css'
+import './grid.css'
 import axios from 'axios';
 
 import GridPlayers from "../components/grid-details/gridPlayers";
@@ -249,86 +250,84 @@ export default class Players extends Component {
                 <Navbar/>
                 <h1 className="page-title">Players</h1>
                 <hr/>
-
-                <p>Sort by: &nbsp;
-                    <select value={this.state.sortOpt} onChange={this.sortOptChange}>
-                        <option value="Tag">Tag</option>
-                        <option value="FirstName">First Name</option>
-                        <option value="LastName">Last Name</option>
-                        <option value="Hometown">Hometown</option>
-                    </select>
-                    &nbsp;
-                    <select value={this.state.sortOrder} onChange={this.sortHandle}>
-                        <option value="default" className="default-option">Select</option>
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                </p>
-                <p> Filter by: <br/>
-                    <span>
+                <div className="container sort-filter">
+                    <div className="col card">
+                    <div className="row fields sort"><b>Sort by:</b> &nbsp;
+                        <select className="btn btn-default dropdown-toggle" value={this.state.sortOpt} onChange={this.sortOptChange}>
+                            <option value="Tag" className="default-option">Tag</option>
+                            <option value="FirstName">First Name</option>
+                            <option value="LastName">Last Name</option>
+                            <option value="Hometown">Hometown</option>
+                        </select>
+                        &nbsp;
+                        <select className="btn btn-default dropdown-toggle" value={this.state.sortOrder} onChange={this.sortHandle}>
+                            <option value="default" className="default-option">Select</option>
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                    <div className="fields"><span className="filter"><b>Filter by:</b></span>
+                    <br/>
+                    <div className="row">
                             Nonempty name &nbsp;
                         <input
                             name="nameCheck"
                             type="checkbox"
                             checked={this.state.filterOpts.nameEmpty}
                             onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
+                        </div>
+                    <div className="row">
                             Nonempty hometown &nbsp;
                         <input
                             name="tagCheck"
                             type="checkbox"
                             checked={this.state.filterOpts.hometownEmpty}
                             onChange={this.handleCheckboxes} />
-                        </span>
-                    <br/>
-                    <span>
+                        </div>
+                    <div className="row">
                             Overwatch &nbsp;
                         <input
                             name="overwatchCheck"
                             type="checkbox"
                             checked={this.state.filterOpts.playOverwatch}
                             onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
+                        </div>
+                    <div className="row">
                             League of Legends &nbsp;
                         <input
                             name="leagueCheck"
                             type="checkbox"
                             checked={this.state.filterOpts.playLeague}
                             onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
+                        </div>
+                    <div className="row">
                             HearthStone &nbsp;
                         <input
                             name="hsCheck"
                             type="checkbox"
                             checked={this.state.filterOpts.playHearthStone}
                             onChange={this.handleCheckboxes} />
-                        </span>
+                        </div>
                     <br/>
-                    <span>
+                    <div className="row">
                             <input
                                 name="filter"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Apply"
                                 onClick={this.processFilter}
-                            />
-                        </span>
-                    &nbsp;
-                    <span>
+                            /> &nbsp;
                             <input
                                 name="reset"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Reset"
                                 onClick={this.resetFilter}
                             />
-                        </span>
-
-                </p>
+                    </div>
+                </div>
+                    </div>
+                </div>
                 <br/>
                 {this.state.loading ?
                     <div className="loading">
@@ -339,7 +338,7 @@ export default class Players extends Component {
                         />
                     </div>
                     :
-                    <div className="container">
+                    <div className="container my-grid">
                         <Pagination
                             numberOfPages={this.state.numberOfPages}
                             onClick={this.updatePage}

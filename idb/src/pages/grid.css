@@ -1,0 +1,41 @@
+.sort-filter {
+    float: left;
+    position: fixed;
+    width: 330px;
+}
+
+.dropdown-toggle {
+    text-align: left;
+    padding: 10px;
+}
+
+.my-grid {
+    float: right;
+}
+
+.fields {
+    padding-left: 15px;
+}
+
+.filter {
+    padding-left: 0px;
+}
+
+.fields-title {
+    padding-left: -15px;
+}
+
+.sort {
+    padding-top: 15px;
+}
+
+.btn {
+    background-color: #338481;
+    color: whitesmoke;
+    border-color: whitesmoke;
+}
+
+.btn:hover {
+    background-color: lightslategray;
+    border-color: lightslategray;
+}
