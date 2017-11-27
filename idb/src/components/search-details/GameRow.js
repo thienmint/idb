@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class GameRow extends Component {
     render() {
-            console.log(this.props.value);
         return (
             <div className="row align-items-start">
                 <div>

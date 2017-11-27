@@ -3,12 +3,10 @@ import Navbar from './../components/nav/navbar';
 import './global.css'
 import axios from 'axios';
 
-// import GridGames from "../components/grid-details/gridSearchGames";
 import GameRow from "../components/search-details/GameRow"
-
-import GridPlayers from "../components/grid-details/gridSearchPlayers";
-import GridTeams from "../components/grid-details/gridSearchTeams";
-import GridTournaments from "../components/grid-details/gridSearchTournaments";
+import PlayerRow from "../components/search-details/PlayerRow"
+import TeamRow from "../components/search-details/TeamRow"
+import TournamentRow from "../components/search-details/TournamentRow"
 
 import {DotLoader} from 'react-spinners';
 import {Pagination} from "../components/nav/pagination";
@@ -193,7 +191,6 @@ export default class SearchPage extends Component {
                     <h1 className="page-title">Please use enter at least one nonempty search word!</h1>
                 </div>
             );
-        console.log(this.state.displayedGames);
         // TODO make sure all displayed items are not in array wrapper. refactor item[0]
         return (
             <div>
@@ -219,13 +216,13 @@ export default class SearchPage extends Component {
                                     <GameRow value={item[0]} key={index}/>
                                 ))}
                                 {this.state.displayedPlayers.map((item, index) => (
-                                    <PlayerRow values={item} key={index}/>
+                                    <PlayerRow value={item[0]} key={index}/>
                                 ))}
                                 {this.state.displayedTeams.map((item, index) => (
-                                    <TeamRow values={item} key={index}/>
+                                    <TeamRow value={item[0]} key={index}/>
                                 ))}
                                 {this.state.displayedTournaments.map((item, index) => (
-                                    <TournamentRow values={item} key={index}/>
+                                    <TournamentRow value={item[0]} key={index}/>
                                 ))}
 
                             </div>
@@ -239,56 +236,3 @@ export default class SearchPage extends Component {
         );
     }
 }
-
-
-class PlayerRow extends Component {
-    render() {
-        let row = this.props.values;
-        let players = [];
-        players.push(
-            row.map((player, index) => (
-                React.createElement(GridPlayers, {value: player})
-            ))
-        );
-        return (
-            <div className="row align-items-start">
-                {players}
-            </div>
-        );
-    }
-}
-
-class TeamRow extends Component {
-    render() {
-        let row = this.props.values;
-        let teams = [];
-        teams.push(
-            row.map((team, index) => (
-                React.createElement(GridTeams, {value: team})
-            ))
-        );
-        return (
-            <div className="row align-items-start">
-                {teams}
-            </div>
-        );
-    }
-}
-
-class TournamentRow extends Component {
-    render() {
-        let row = this.props.values;
-        let tournaments = [];
-        tournaments.push(
-            row.map((tournament, index) => (
-                React.createElement(GridTournaments, {value: tournament})
-            ))
-        );
-        return (
-            <div className="row align-items-start">
-                {tournaments}
-            </div>
-        );
-    }
-}
-
