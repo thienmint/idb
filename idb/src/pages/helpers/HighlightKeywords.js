@@ -9,9 +9,7 @@ export default class HighlightKeywords {
      * @param string The whole string being examined.
      */
     static regexReplaceFunction(match, p1, offset, string) {
-        // console.log("p1 = " + p1.bold());
-        // TODO convert this to <span> as specified above, keeping .bold() for backward compatibility for nwo
-        return p1.bold();
+        return '<span class="matched-result">' + p1 + '</span>';
     }
 
 
@@ -42,8 +40,7 @@ export default class HighlightKeywords {
                     item[label] = HighlightKeywords.highlightKeywords(String(item[label]), regex);
                 }
             }
-            // TODO this line is necessary for backward compatitbility, but will need to be taken out eventually
-            array[i] = [item]
+            array[i] = item
         }
 
         return array;

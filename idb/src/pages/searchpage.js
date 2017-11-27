@@ -191,7 +191,6 @@ export default class SearchPage extends Component {
                     <h1 className="page-title">Please use enter at least one nonempty search word!</h1>
                 </div>
             );
-        // TODO make sure all displayed items are not in array wrapper. refactor item[0]
         return (
             <div>
                 <Navbar/>
@@ -213,16 +212,16 @@ export default class SearchPage extends Component {
                                     onClick={this.handlePage}
                                 />
                                 {this.state.displayedGames.map((item, index) => (
-                                    <GameRow value={item[0]} key={index}/>
+                                    <GameRow value={item} key={index}/>
                                 ))}
                                 {this.state.displayedPlayers.map((item, index) => (
-                                    <PlayerRow value={item[0]} key={index}/>
+                                    <PlayerRow value={item} key={index}/>
                                 ))}
                                 {this.state.displayedTeams.map((item, index) => (
-                                    <TeamRow value={item[0]} key={index}/>
+                                    <TeamRow value={item} key={index}/>
                                 ))}
                                 {this.state.displayedTournaments.map((item, index) => (
-                                    <TournamentRow value={item[0]} key={index}/>
+                                    <TournamentRow value={item} key={index}/>
                                 ))}
 
                             </div>
