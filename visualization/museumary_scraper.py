@@ -9,7 +9,7 @@ import json
 
 # Global Variables
 
-BASE_URL = 'http://api.museumary.me/artist/'
+BASE_URL = 'http://api.museumary.me/artist/?entries_per_page=12000'
 
 #
 # Typedefs
