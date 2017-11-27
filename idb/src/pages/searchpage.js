@@ -3,7 +3,9 @@ import Navbar from './../components/nav/navbar';
 import './global.css'
 import axios from 'axios';
 
-import GridGames from "../components/grid-details/gridSearchGames";
+// import GridGames from "../components/grid-details/gridSearchGames";
+import GameRow from "../components/search-details/GameRow"
+
 import GridPlayers from "../components/grid-details/gridSearchPlayers";
 import GridTeams from "../components/grid-details/gridSearchTeams";
 import GridTournaments from "../components/grid-details/gridSearchTournaments";
@@ -81,7 +83,6 @@ export default class SearchPage extends Component {
      * @param numItems
      */
 
-    //TODO refactor number 10 as a global variable
     static computeIndices(dataLength, numItems) {
         let startingIndex = [0, 0, 0, 0];
         let endingIndex = [0, 0, 0, 0];
@@ -192,7 +193,8 @@ export default class SearchPage extends Component {
                     <h1 className="page-title">Please use enter at least one nonempty search word!</h1>
                 </div>
             );
-
+        console.log(this.state.displayedGames);
+        // TODO make sure all displayed items are not in array wrapper. refactor item[0]
         return (
             <div>
                 <Navbar/>
@@ -214,7 +216,7 @@ export default class SearchPage extends Component {
                                     onClick={this.handlePage}
                                 />
                                 {this.state.displayedGames.map((item, index) => (
-                                    <GameRow values={item} key={index}/>
+                                    <GameRow value={item[0]} key={index}/>
                                 ))}
                                 {this.state.displayedPlayers.map((item, index) => (
                                     <PlayerRow values={item} key={index}/>
@@ -238,22 +240,6 @@ export default class SearchPage extends Component {
     }
 }
 
-class GameRow extends Component {
-    render() {
-        let row = this.props.values;
-        let games = [];
-        games.push(
-            row.map((game, index) => (
-                React.createElement(GridGames, {value: game})
-            ))
-        );
-        return (
-            <div className="row align-items-start">
-                {games}
-            </div>
-        );
-    }
-}
 
 class PlayerRow extends Component {
     render() {
