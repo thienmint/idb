@@ -23,11 +23,13 @@ export default class Players extends Component {
             sortOrder: 'default',
             originalPlayers: [],
             sourcePlayers: [],
-            nameEmpty: false,
-            hometownEmpty: false,
-            playOverwatch: false,
-            playLeague: false,
-            playHS: false
+            filterOpts: {
+                'nameEmpty': false,
+                'hometownEmpty': false,
+                'playOverwatch': false,
+                'playLeague': false,
+                'playHearthStone': false
+            },
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -150,29 +152,31 @@ export default class Players extends Component {
         this.setState(stateCopy)
     }
 
+    // TODO change this
     handleCheckboxes(event) {
         let stateCopy = Object.assign([], this.state);
         switch (event.target.name) {
             case  "nameCheck":
-                stateCopy.nameEmpty = event.target.checked;
+                stateCopy.filterOpts.nameEmpty = event.target.checked;
                 break;
             case  "tagCheck":
-                stateCopy.hometownEmpty = event.target.checked;
+                stateCopy.filterOpts.hometownEmpty = event.target.checked;
                 break;
             case "overwatchCheck":
-                stateCopy.playOverwatch = event.target.checked;
+                stateCopy.filterOpts.playOverwatch = event.target.checked;
                 break;
             case "leagueCheck":
-                stateCopy.playLeague = event.target.checked;
+                stateCopy.filterOpts.playLeague = event.target.checked;
                 break;
             case "hsCheck":
-                stateCopy.playHS = event.target.checked;
+                stateCopy.filterOpts.playHearthStone = event.target.checked;
                 break;
             default:
                 console.log("Not match")
         }
         this.setState(stateCopy)
     }
+
     static checkGame(x, id) {
         if(x !== null && Object.keys(x).length > 0)
             return new Map(Object.entries(x)).get("id") === id;
@@ -180,12 +184,13 @@ export default class Players extends Component {
             return false;
     }
 
+    // TODO change this
     processFilter() {
         console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
         stateCopy.players = stateCopy.sourcePlayers;
 
-        if(stateCopy.nameEmpty)
+        if(stateCopy.filterOpts.nameEmpty)
             stateCopy.players = stateCopy.players.filter((x) =>
                 (x.first_name !== null && x.last_name !== null &&
                     (
@@ -195,24 +200,27 @@ export default class Players extends Component {
                 )
             );
 
-        if(stateCopy.hometownEmpty)
+        if(stateCopy.filterOpts.hometownEmpty)
             stateCopy.players = stateCopy.players.filter((x) => (x.hometown !== null && x.hometown !== "" && x.hometown !== "Unknown"));
 
-        if(stateCopy.playOverwatch)
-            stateCopy.players = stateCopy.players.filter((x) => (
+        let filterByGame = [];
+
+        if(stateCopy.filterOpts.playOverwatch)
+            filterByGame = filterByGame.concat(stateCopy.players.filter((x) => (
                 Players.checkGame(x.current_game, 14)
-            ));
+            )));
 
-        if(stateCopy.playLeague)
-            stateCopy.players = stateCopy.players.filter((x) => (
+        if(stateCopy.filterOpts.playLeague)
+            filterByGame = filterByGame.concat(stateCopy.players.filter((x) => (
                 Players.checkGame(x.current_game, 1)
-            ));
+            )));
 
-        if(stateCopy.playHS)
-            stateCopy.players = stateCopy.players.filter((x) => (
+        if(stateCopy.filterOpts.playHearthStone)
+            filterByGame = filterByGame.concat(stateCopy.players.filter((x) => (
                 Players.checkGame(x.current_game, 2)
-            ));
+            )));
 
+        stateCopy.players = filterByGame;
         stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
 
@@ -223,11 +231,10 @@ export default class Players extends Component {
     resetFilter() {
         let stateCopy = Object.assign([], this.state);
         stateCopy.players = stateCopy.sourcePlayers;
-        stateCopy.nameEmpty = false;
-        stateCopy.hometownEmpty = false;
-        stateCopy.playOverwatch = false;
-        stateCopy.playLeague = false;
-        stateCopy.playHS = false;
+        // Unset all options
+        for (let key in stateCopy.filterOpts)
+            if(stateCopy.filterOpts.hasOwnProperty(key))
+                stateCopy.filterOpts[key] = false;
 
         stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
@@ -237,7 +244,6 @@ export default class Players extends Component {
     }
 
     render() {
-        // console.log(this.state.players);
       return (
             <div>
                 <Navbar/>
@@ -264,7 +270,7 @@ export default class Players extends Component {
                         <input
                             name="nameCheck"
                             type="checkbox"
-                            checked={this.state.nameEmpty}
+                            checked={this.state.filterOpts.nameEmpty}
                             onChange={this.handleCheckboxes} />
                         </span>
                     &nbsp;
@@ -273,7 +279,7 @@ export default class Players extends Component {
                         <input
                             name="tagCheck"
                             type="checkbox"
-                            checked={this.state.hometownEmpty}
+                            checked={this.state.filterOpts.hometownEmpty}
                             onChange={this.handleCheckboxes} />
                         </span>
                     <br/>
@@ -282,7 +288,7 @@ export default class Players extends Component {
                         <input
                             name="overwatchCheck"
                             type="checkbox"
-                            checked={this.state.playOverwatch}
+                            checked={this.state.filterOpts.playOverwatch}
                             onChange={this.handleCheckboxes} />
                         </span>
                     &nbsp;
@@ -291,7 +297,7 @@ export default class Players extends Component {
                         <input
                             name="leagueCheck"
                             type="checkbox"
-                            checked={this.state.playLeague}
+                            checked={this.state.filterOpts.playLeague}
                             onChange={this.handleCheckboxes} />
                         </span>
                     &nbsp;
@@ -300,7 +306,7 @@ export default class Players extends Component {
                         <input
                             name="hsCheck"
                             type="checkbox"
-                            checked={this.state.playHS}
+                            checked={this.state.filterOpts.playHearthStone}
                             onChange={this.handleCheckboxes} />
                         </span>
                     <br/>
