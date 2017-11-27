@@ -27,6 +27,36 @@ public class Example  {
  
     searchBox.submit();        // submit by form element
   
+
+    Thread.sleep(5000);
+    // Test 2
+
+
+
+    WebElement link = driver.findElement(By.linkText("About"));
+    link.click();
+    Thread.sleep(5000);
+
+    // Test 3
+    WebElement link = driver.findElement(By.linkText("Games"));
+    link.click();
+    Thread.sleep(5000);
+    // Test 4
+    WebElement link = driver.findElement(By.linkText("Players"));
+    link.click();
+    Thread.sleep(5000);
+    // Test 5
+    WebElement link = driver.findElement(By.linkText("Teams"));
+    link.click();
+    Thread.sleep(5000);
+    // Test 6
+    WebElement link = driver.findElement(By.linkText("Tournaments"));
+    link.click();
+    Thread.sleep(5000);
+    // Test 7
+    WebElement link = driver.findElement(By.linkText("eSport Guru"));
+    link.click();
+    Thread.sleep(5000);
     // Conclude a test
     driver.quit();
  
