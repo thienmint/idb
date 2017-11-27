@@ -23,6 +23,12 @@ export default class Teams extends Component {
             originalTeams: [],
             sourceTeams: [],
             emptyPlayers: false,
+            filterOpts: {
+                'emptyPlayers': false,
+                'playOverwatch': false,
+                'playLeague': false,
+                'playHearthStone': false
+            },
             playOverwatch: false,
             playLeague: false,
             playHS: false
@@ -132,16 +138,16 @@ export default class Teams extends Component {
         let stateCopy = Object.assign([], this.state);
         switch (event.target.name) {
             case  "playersCheck":
-                stateCopy.emptyPlayers = event.target.checked;
+                stateCopy.filterOpts.emptyPlayers = event.target.checked;
                 break;
             case "overwatchCheck":
-                stateCopy.playOverwatch = event.target.checked;
+                stateCopy.filterOpts.playOverwatch = event.target.checked;
                 break;
             case "leagueCheck":
-                stateCopy.playLeague = event.target.checked;
+                stateCopy.filterOpts.playLeague = event.target.checked;
                 break;
             case "hsCheck":
-                stateCopy.playHS = event.target.checked;
+                stateCopy.filterOpts.playHS = event.target.checked;
                 break;
             default:
                 console.log("Not match")
@@ -161,25 +167,29 @@ export default class Teams extends Component {
         let stateCopy = Object.assign([], this.state);
         stateCopy.teams = stateCopy.sourceTeams;
 
-        if(stateCopy.emptyPlayers)
+        if(stateCopy.filterOpts.emptyPlayers)
             stateCopy.teams = stateCopy.teams.filter((x) =>
                 (Object.keys(x.current_players).length > 0)
             );
 
-        if(stateCopy.playOverwatch)
-            stateCopy.teams = stateCopy.teams.filter((x) => (
+        let filterByGame = [];
+
+        if(stateCopy.filterOpts.playOverwatch)
+            filterByGame = filterByGame.concat(stateCopy.teams.filter((x) => (
                 Teams.checkGame(x.current_game, 14)
-            ));
+            )));
 
-        if(stateCopy.playLeague)
-            stateCopy.teams = stateCopy.teams.filter((x) => (
+        if(stateCopy.filterOpts.playLeague)
+            filterByGame = filterByGame.concat(stateCopy.teams.filter((x) => (
                 Teams.checkGame(x.current_game, 1)
-            ));
+            )));
 
-        if(stateCopy.playHS)
-            stateCopy.teams = stateCopy.teams.filter((x) => (
+        if(stateCopy.filterOpts.playHS)
+            filterByGame = filterByGame.concat(stateCopy.teams.filter((x) => (
                 Teams.checkGame(x.current_game, 2)
-            ));
+            )));
+
+        stateCopy.teams = filterByGame;
 
         stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
@@ -191,10 +201,10 @@ export default class Teams extends Component {
     resetFilter() {
         let stateCopy = Object.assign([], this.state);
         stateCopy.teams = stateCopy.sourceTeams;
-        stateCopy.emptyPlayers = false;
-        stateCopy.playOverwatch = false;
-        stateCopy.playLeague = false;
-        stateCopy.playHS = false;
+        stateCopy.filterOpts.emptyPlayers = false;
+        stateCopy.filterOpts.playOverwatch = false;
+        stateCopy.filterOpts.playLeague = false;
+        stateCopy.filterOpts.playHS = false;
 
 
         stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
@@ -231,7 +241,7 @@ export default class Teams extends Component {
                         <input
                             name="playersCheck"
                             type="checkbox"
-                            checked={this.state.emptyPlayers}
+                            checked={this.state.filterOpts.emptyPlayers}
                             onChange={this.handleCheckboxes} />
                         </span>
                     <br/>
@@ -240,7 +250,7 @@ export default class Teams extends Component {
                         <input
                             name="overwatchCheck"
                             type="checkbox"
-                            checked={this.state.playOverwatch}
+                            checked={this.state.filterOpts.playOverwatch}
                             onChange={this.handleCheckboxes} />
                         </span>
                     &nbsp;
@@ -249,7 +259,7 @@ export default class Teams extends Component {
                         <input
                             name="leagueCheck"
                             type="checkbox"
-                            checked={this.state.playLeague}
+                            checked={this.state.filterOpts.playLeague}
                             onChange={this.handleCheckboxes} />
                         </span>
                     &nbsp;
@@ -258,7 +268,7 @@ export default class Teams extends Component {
                         <input
                             name="hsCheck"
                             type="checkbox"
-                            checked={this.state.playHS}
+                            checked={this.state.filterOpts.playHS}
                             onChange={this.handleCheckboxes} />
                         </span>
 
