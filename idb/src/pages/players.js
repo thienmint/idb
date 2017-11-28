@@ -178,6 +178,14 @@ export default class Players extends Component {
         this.setState(stateCopy)
     }
 
+    static checkMultipleGames(x, ids) {
+        let ret = false;
+        for(let i = 0; i < ids.length; ++i)
+            ret = ret || Players.checkGame(x, ids[i])
+
+        return ret
+    }
+
     static checkGame(x, id) {
         if(x !== null && Object.keys(x).length > 0)
             return new Map(Object.entries(x)).get("id") === id;
@@ -207,21 +215,19 @@ export default class Players extends Component {
         let filterByGame = [];
 
         if(stateCopy.filterOpts.playOverwatch)
-            filterByGame = filterByGame.concat(stateCopy.players.filter((x) => (
-                Players.checkGame(x.current_game, 14)
-            )));
+            filterByGame.push(14);
 
         if(stateCopy.filterOpts.playLeague)
-            filterByGame = filterByGame.concat(stateCopy.players.filter((x) => (
-                Players.checkGame(x.current_game, 1)
-            )));
+            filterByGame.push(1);
 
         if(stateCopy.filterOpts.playHearthStone)
-            filterByGame = filterByGame.concat(stateCopy.players.filter((x) => (
-                Players.checkGame(x.current_game, 2)
-            )));
+            filterByGame.push(2);
 
-        stateCopy.players = filterByGame;
+        if (filterByGame.length > 0)
+            stateCopy.players = stateCopy.players.filter((x) => (
+                Players.checkMultipleGames(x.current_game, filterByGame)
+            ));
+
         stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
 
