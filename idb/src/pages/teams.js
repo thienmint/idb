@@ -154,7 +154,15 @@ export default class Teams extends Component {
         }
         this.setState(stateCopy)
     }
-  
+
+    static checkMultipleGames(x, ids) {
+        let ret = false;
+        for(let i = 0; i < ids.length; ++i)
+            ret = ret || Teams.checkGame(x, ids[i])
+
+        return ret
+    }
+
     static checkGame(x, id) {
         if(x !== null && Object.keys(x).length > 0)
             return new Map(Object.entries(x)).get("id") === id;
@@ -175,21 +183,18 @@ export default class Teams extends Component {
         let filterByGame = [];
 
         if(stateCopy.filterOpts.playOverwatch)
-            filterByGame = filterByGame.concat(stateCopy.teams.filter((x) => (
-                Teams.checkGame(x.current_game, 14)
-            )));
+            filterByGame.push(14);
 
         if(stateCopy.filterOpts.playLeague)
-            filterByGame = filterByGame.concat(stateCopy.teams.filter((x) => (
-                Teams.checkGame(x.current_game, 1)
-            )));
+            filterByGame.push(1);
 
         if(stateCopy.filterOpts.playHS)
-            filterByGame = filterByGame.concat(stateCopy.teams.filter((x) => (
-                Teams.checkGame(x.current_game, 2)
-            )));
+            filterByGame.push(2);
 
-        stateCopy.teams = filterByGame;
+        if(filterByGame.length > 0)
+            stateCopy.teams = stateCopy.teams.filter((x) => (
+                Teams.checkMultipleGames(x.current_game, filterByGame)
+            ));
 
         stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
@@ -201,11 +206,9 @@ export default class Teams extends Component {
     resetFilter() {
         let stateCopy = Object.assign([], this.state);
         stateCopy.teams = stateCopy.sourceTeams;
-        stateCopy.filterOpts.emptyPlayers = false;
-        stateCopy.filterOpts.playOverwatch = false;
-        stateCopy.filterOpts.playLeague = false;
-        stateCopy.filterOpts.playHS = false;
-
+        for (let key in stateCopy.filterOpts)
+            if(stateCopy.filterOpts.hasOwnProperty(key))
+                stateCopy.filterOpts[key] = false;
 
         stateCopy.displayedTeams = stateCopy.teams.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.teams.length / 30);
