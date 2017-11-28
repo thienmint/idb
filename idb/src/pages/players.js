@@ -256,7 +256,8 @@ export default class Players extends Component {
                 <Navbar/>
                 <h1 className="page-title">Players</h1>
                 <hr/>
-                <div className="container sort-filter">
+                <div className="row">
+                <div className="container sort-filter col-md-3">
                     <div className="col card">
                     <div className="row fields sort"><b>Sort by:</b> &nbsp;
                         <select className="btn btn-default dropdown-toggle" value={this.state.sortOpt} onChange={this.sortOptChange}>
@@ -351,7 +352,7 @@ export default class Players extends Component {
                         />
                     </div>
                     :
-                    <div className="container my-grid">
+                    <div className="container my-grid col-md-9">
                         <Pagination
                             numberOfPages={this.state.numberOfPages}
                             onClick={this.updatePage}
@@ -361,6 +362,7 @@ export default class Players extends Component {
                         ))}
                     </div>
                 }
+            </div>
             </div>
         );
     }

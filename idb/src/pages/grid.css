@@ -1,6 +1,6 @@
 .sort-filter {
     float: left;
-    position: fixed;
+    /*position: fixed;*/
     width: 330px;
 }
 
