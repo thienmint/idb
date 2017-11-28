@@ -29,3 +29,13 @@ Story Title,Estimate,Actual,Vote Started,Voting Duration,Avg Voting Time,Fastest
 "As a user, I would like to be able to search the entire website with some keywords and get back a search result page with found keywords highlighted",3,5,8/11/2017 16:54,0:00:08,0:00:05,Rachel,kevin
 "As a user, I would like to be able to filter through each of the model (Player, Game, Tournament, Team) by some features (i.e name, date, ...)",2,2,8/11/2017 16:54,0:00:12,0:00:08,Rachel,kevin
 "As a user, I would like to be able to sort each of the model (Player, Game, Tournament, Team) by some features (i.e. name, date, ...)",3,3,8/11/2017 16:53,0:00:30,0:00:10,Rachel,kevin
+"As a user, I want the about page to accurately display information, so I know who I can appreciate for making this awesome website",1,1,27/11/2017 16:59:21,00:00:10,00:00:04,Thien,Kevin,
+"As a user, I want to redesign the frontend utilizing css, because then the website is more readable",1,1,27/11/2017 16:59:07,00:00:12,00:00:04,Thien,Kevin,
+"As a user, I want to able to have items on a page be paginated correctly, because this helps divide the data into manageable, absorb-able chunks",1,1,27/11/2017 16:58:35,00:00:27,00:00:13,Thien,Kevin,
+"As a user, I want the information I receive to be displayed and loaded correctly in all cases, because that will allow me to absorb data more efficiently",1,1,27/11/2017 16:57:50,00:00:42,00:00:18,Thien,Kevin,
+"As a user, I want to be able to filter by model when searching, because that will help me narrow down results that are most relevant",1,1,27/11/2017 16:57:30,00:00:11,00:00:05,Thien,Kevin,
+"As a user, I want to be able to sort models by different attributes unique to each type of model, because it will help me understand and absorb data more efficiently",1,1,27/11/2017 16:57:13,00:00:14,00:00:08,Thien,Kevin,
+"As a user, I want my viewing experience of the website to remain unchanged while refactoring occurs under the hood, because refactoring shouldn't introduce new bugs/slow down the website",2,2,27/11/2017 16:56:57,00:00:13,00:00:07,Thien,Kevin,
+"As a user, I want any buttons or features in the UI to work correctly, because unresponsiveness negatively impacts my experience",1,1,27/11/2017 16:56:43,00:00:10,00:00:05,Thien,Kevin,
+"As a user, I want to be able to search for multiple terms, because it allows me to narrow down the results to those that are most relevant",1,2,27/11/2017 16:56:10,00:00:26,00:00:06,Thien,Kevin,
+"As a user, I want to be able to browse the website with minimal crashes and bugs, because those negatively impact my experience",1,1,27/11/2017 16:55:22,00:00:44,00:00:41,Thien,Kevin,
