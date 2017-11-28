@@ -5,19 +5,25 @@ from selenium.webdriver.common.keys import Keys
 driver = webdriver.Firefox()
 driver.get("https://www.esportguru.com/")
 # this tests search
-searchBox = driver.find_element_by_id('searchInput')
+searchBox = driver.find_element_by_tag_name('input')
 searchBox.send_keys("League of Legends")
 searchBox.send_keys(Keys.RETURN)
 assert "League of Legends" in driver.page_source
+link_home_button = driver.find_element_by_link_text('eSport Guru')
+link_home_button.click()
+driver.implicitly_wait(10)
 # this test checks to see if there is infinite loop
-searchBox = driver.find_element_by_id('searchInput')
-searchBox.send_keys("Pokemon")
-searchBox.send_keys(Keys.RETURN)
+searchBox2 = driver.find_element_by_tag_name('input')
+searchBox2.send_keys("Pokemon")
+searchBox2.send_keys(Keys.RETURN)
 assert "Oh no! No results were found for your search." in driver.page_source
+link_home_button = driver.find_element_by_link_text('eSport Guru')
+link_home_button.click()
+driver.implicitly_wait(10)
 
-searchBox = driver.find_element_by_id('searchInput')
-searchBox.send_keys("0")
-searchBox.send_keys(Keys.RETURN)
+searchBox3 = driver.find_element_by_tag_name('input')
+searchBox3.send_keys("0")
+searchBox3.send_keys(Keys.RETURN)
 assert "0" in driver.page_source
 # this checks navbar functionality 
 link_games = driver.find_element_by_link_text('Games')

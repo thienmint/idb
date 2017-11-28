@@ -311,3 +311,113 @@ dispatch/</<@chrome://marionette/content/listener.js:530:40
 1511889433238	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
 1511889433526	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
 *** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1511890129193	geckodriver	INFO	geckodriver 0.19.1
+1511890129196	geckodriver	INFO	Listening on 127.0.0.1:57958
+1511890130347	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.um4mSrFZEvEr"
+1511890130494	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///usr/lib/firefox/omni.ja!/components/addonManager.js:65
+1511890131005	Marionette	INFO	Enabled via --marionette
+1511890133157	Marionette	INFO	Listening on port 33208
+1511890133259	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511890133289	Marionette	DEBUG	Register listener.js for window 2147483649
+1511890133307	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511890133462	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511890133462	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511890134675	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/"
+1511890135712	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/"
+1511890136147	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890136452	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890136619	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.esportguru.com/teams"
+1511890136620	Marionette	DEBUG	Received DOM event "unload" for "https://www.esportguru.com/teams"
+1511890136970	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/search/League%20of%20Legends"
+1511890136979	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/search/League%20of%20Legends"
+1511890137301	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890137591	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890197715	geckodriver	INFO	geckodriver 0.19.1
+1511890197718	geckodriver	INFO	Listening on 127.0.0.1:55208
+1511890198799	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.qKGsTJ3cTUO9"
+1511890198953	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///usr/lib/firefox/omni.ja!/components/addonManager.js:65
+1511890199486	Marionette	INFO	Enabled via --marionette
+1511890201827	Marionette	INFO	Listening on port 37542
+1511890201915	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511890201947	Marionette	DEBUG	Register listener.js for window 2147483649
+1511890201964	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511890202121	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511890202122	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+[Child 18203] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-l1g98U/firefox-56.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1511890203694	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/"
+1511890204449	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/"
+1511890233381	geckodriver	INFO	geckodriver 0.19.1
+1511890233384	geckodriver	INFO	Listening on 127.0.0.1:40166
+1511890234467	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.c7i8Xs4DjghC"
+1511890234627	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///usr/lib/firefox/omni.ja!/components/addonManager.js:65
+1511890235186	Marionette	INFO	Enabled via --marionette
+1511890237344	Marionette	INFO	Listening on port 34446
+1511890237386	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511890237418	Marionette	DEBUG	Register listener.js for window 2147483649
+1511890237440	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511890237541	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511890237541	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511890239221	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/"
+1511890240572	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/"
+1511890276278	geckodriver	INFO	geckodriver 0.19.1
+1511890276280	geckodriver	INFO	Listening on 127.0.0.1:42275
+1511890277366	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.JSXIe4jwyTlo"
+1511890277525	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///usr/lib/firefox/omni.ja!/components/addonManager.js:65
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1511890278304	Marionette	INFO	Enabled via --marionette
+1511890280486	Marionette	INFO	Listening on port 37357
+1511890280579	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511890280610	Marionette	DEBUG	Register listener.js for window 2147483649
+1511890280627	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511890280725	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511890280725	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511890281979	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/"
+1511890282613	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/"
+1511890283007	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.esportguru.com/games"
+1511890283008	Marionette	DEBUG	Received DOM event "unload" for "https://www.esportguru.com/games"
+1511890283341	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/search/League%20of%20LegendsPokemon0"
+1511890283349	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/search/League%20of%20LegendsPokemon0"
+1511890283674	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890283962	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890284254	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890284565	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+JavaScript error: https://www.esportguru.com/sockjs-node/iframe.html#dk5nudrv, line 9: ReferenceError: SockJS is not defined
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+[Child 18349] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-l1g98U/firefox-56.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1511890346053	geckodriver	INFO	geckodriver 0.19.1
+1511890346056	geckodriver	INFO	Listening on 127.0.0.1:47684
+1511890347138	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ch7xYYLVFxJ3"
+1511890347289	addons.xpi	WARN	Error parsing extensions state: [Exception... "Component returned failure code: 0x80520012 (NS_ERROR_FILE_NOT_FOUND) [amIAddonManagerStartup.readStartupData]"  nsresult: "0x80520012 (NS_ERROR_FILE_NOT_FOUND)"  location: "JS frame :: resource://gre/modules/addons/XPIProvider.jsm :: loadExtensionState :: line 1554"  data: no] Stack trace: loadExtensionState()@resource://gre/modules/addons/XPIProvider.jsm:1554 < getInstallState()@resource://gre/modules/addons/XPIProvider.jsm:1589 < checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:3109 < startup()@resource://gre/modules/addons/XPIProvider.jsm:2188 < callProvider()@resource://gre/modules/AddonManager.jsm:269 < _startProvider()@resource://gre/modules/AddonManager.jsm:739 < startup()@resource://gre/modules/AddonManager.jsm:906 < startup()@resource://gre/modules/AddonManager.jsm:3090 < observe()@jar:file:///usr/lib/firefox/omni.ja!/components/addonManager.js:65
+1511890347830	Marionette	INFO	Enabled via --marionette
+1511890350259	Marionette	INFO	Listening on port 39286
+1511890350351	Marionette	WARN	TLS certificate errors will be ignored for this session
+1511890350380	Marionette	DEBUG	Register listener.js for window 2147483649
+1511890350398	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1511890350562	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1511890350563	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1511890351809	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/"
+1511890352659	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/"
+1511890352875	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.esportguru.com/"
+1511890352877	Marionette	DEBUG	Received DOM event "unload" for "https://www.esportguru.com/"
+1511890352937	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "2147483653"
+1511890353208	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/search/League%20of%20Legends"
+1511890353216	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/search/League%20of%20Legends"
+1511890353486	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.esportguru.com/"
+1511890353486	Marionette	DEBUG	Received DOM event "unload" for "https://www.esportguru.com/"
+1511890353820	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/search/Pokemon"
+1511890353833	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/search/Pokemon"
+1511890353975	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.esportguru.com/games"
+1511890353975	Marionette	DEBUG	Received DOM event "unload" for "https://www.esportguru.com/games"
+1511890354300	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.esportguru.com/search/0"
+1511890354308	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.esportguru.com/search/0"
+1511890354609	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890354900	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890355198	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1511890355497	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
