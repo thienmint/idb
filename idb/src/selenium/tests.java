@@ -13,7 +13,7 @@ public class Example  {
   public static void main(String[] args) {
  
     // Create an instance of the driver
-    // Test 1?
+    // Test 1
     WebDriver driver = new FirefoxDriver();
  
     // Navigate to a web page
