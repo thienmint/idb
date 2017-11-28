@@ -23,6 +23,7 @@ before_install:
 - ssh-keygen -q -N "" -f ~/.ssh/google_compute_engine
 install:
 - gcloud -q components update gae-python
+- pip install requests
 script:
 # Run unit tests here
 - echo "Running unit tests now"
