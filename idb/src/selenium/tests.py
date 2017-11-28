@@ -9,22 +9,25 @@ searchBox = driver.find_element_by_tag_name('input')
 searchBox.send_keys("League of Legends")
 searchBox.send_keys(Keys.RETURN)
 assert "League of Legends" in driver.page_source
+driver.implicitly_wait(10)
 link_home_button = driver.find_element_by_link_text('eSport Guru')
 link_home_button.click()
-driver.implicitly_wait(10)
-# this test checks to see if there is infinite loop
+
+# this test checks to see if the infinite loop still exists
 searchBox2 = driver.find_element_by_tag_name('input')
 searchBox2.send_keys("Pokemon")
 searchBox2.send_keys(Keys.RETURN)
 assert "Oh no! No results were found for your search." in driver.page_source
+driver.implicitly_wait(10)
 link_home_button = driver.find_element_by_link_text('eSport Guru')
 link_home_button.click()
-driver.implicitly_wait(10)
 
 searchBox3 = driver.find_element_by_tag_name('input')
 searchBox3.send_keys("0")
 searchBox3.send_keys(Keys.RETURN)
 assert "0" in driver.page_source
+driver.implicitly_wait(10)
+
 # this checks navbar functionality 
 link_games = driver.find_element_by_link_text('Games')
 link_games.click()
@@ -51,7 +54,7 @@ link_league = driver.find_element_by_link_text('League of Legends')
 link_players.click()
 assert "League of Legends" in driver.page_source
 driver.implicitly_wait(10)
-#this test checks if the player is clickable within the league info page
+# #this test checks if the player is clickable within the league info page
 link_league_players = driver.find_element_by_link_text('PCS Tet')
 link_league_players.click()
 assert "PCS Tet" in driver.page_source
