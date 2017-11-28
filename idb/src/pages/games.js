@@ -187,12 +187,12 @@ export default class Games extends Component {
                 <div className="container sort-filter">
                     <div className="col card">
                         <div className="row fields sort"><b>Sort by:</b> &nbsp;
-                            <select value={this.state.sortOpt} onChange={this.sortOptChange}>
+                            <select className="btn btn-default dropdown-toggle" value={this.state.sortOpt} onChange={this.sortOptChange}>
                                 <option value="Name">Name</option>
                                 <option value="Date">Release Date</option>
                             </select>
                             &nbsp;
-                            <select value={this.state.sortOrder} onChange={this.sortHandle}>
+                            <select className="btn btn-default dropdown-toggle" value={this.state.sortOrder} onChange={this.sortHandle}>
                                 <option value="default" className="default-option">Select</option>
                                 <option value="asc">Ascending</option>
                                 <option value="desc">Descending</option>
