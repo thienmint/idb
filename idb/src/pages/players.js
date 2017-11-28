@@ -266,50 +266,59 @@ export default class Players extends Component {
                             <option value="desc">Descending</option>
                         </select>
                     </div>
-                    <div className="fields"><span className="filter"><b>Filter by:</b></span>
-                    <br/>
+                    <div className="fields row"><b>Filter by:</b></div>
                     <div className="row">
-                            Nonempty name &nbsp;
+                        <div className="col">Nonempty name &nbsp;</div>
+                        <div className="col">
                         <input
                             name="nameCheck"
                             type="checkbox"
                             checked={this.state.filterOpts.nameEmpty}
                             onChange={this.handleCheckboxes} />
                         </div>
-                    <div className="row">
-                            Nonempty hometown &nbsp;
-                        <input
-                            name="tagCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.hometownEmpty}
-                            onChange={this.handleCheckboxes} />
                         </div>
                     <div className="row">
-                            Overwatch &nbsp;
-                        <input
-                            name="overwatchCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.playOverwatch}
-                            onChange={this.handleCheckboxes} />
+                        <div className="col">Nonempty hometown &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="tagCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.hometownEmpty}
+                                onChange={this.handleCheckboxes} />
+                        </div>
                         </div>
                     <div className="row">
-                            League of Legends &nbsp;
-                        <input
-                            name="leagueCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.playLeague}
-                            onChange={this.handleCheckboxes} />
+                        <div className="col">Overwatch &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="overwatchCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playOverwatch}
+                                onChange={this.handleCheckboxes} />
+                        </div>
                         </div>
                     <div className="row">
-                            HearthStone &nbsp;
-                        <input
-                            name="hsCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.playHearthStone}
-                            onChange={this.handleCheckboxes} />
+                        <div className="col">League of Legends &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="leagueCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playLeague}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                        </div>
+                    <div className="row">
+                        <div className="col">HearthStone &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="hsCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playHearthStone}
+                                onChange={this.handleCheckboxes} />
+                        </div>
                         </div>
                     <br/>
-                    <div className="row">
+                    <div className="fields row">
                             <input
                                 name="filter"
                                 type="submit"
@@ -325,7 +334,6 @@ export default class Players extends Component {
                                 onClick={this.resetFilter}
                             />
                     </div>
-                </div>
                     </div>
                 </div>
                 <br/>
