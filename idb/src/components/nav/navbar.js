@@ -52,7 +52,7 @@ class Navbar extends Component {
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0" onSubmit={this.handleClick}>
-                        <input
+                        <input id ="searchInput"
                             className="form-control mr-sm-2"
                             type="text"
                             placeholder="Search"
