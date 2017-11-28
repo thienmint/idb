@@ -342,7 +342,6 @@ export default class Players extends Component {
                     </div>
                     </div>
                 </div>
-                <br/>
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
