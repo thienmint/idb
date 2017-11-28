@@ -67,7 +67,7 @@ A website dedicated to the competitive eSports world
 
 ---
 
-## Critique of Musemary (Group 20)
+## Critique of Museumary (Group 20)
 
 ### What did they do well?
 
