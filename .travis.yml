@@ -25,7 +25,11 @@ install:
 - gcloud -q components update gae-python
 script:
 # Run unit tests here
-- echo "No testing for now."
+- echo "Running unit tests now"
+- cd app
+- python tests.py
+- cd ..
+- echo "Finished unit tests and back in `pwd`"
 # Run E2E tests here
 deploy:
   # deploy develop to the staging environment
