@@ -4,35 +4,43 @@
     path {
         stroke: #fff;
     }
+
+    #item-info {
+        text-align: center;
+        font-weight: bold;
+    }
 </style>
 <body>
-<script src="//d3js.org/d3.v3.min.js"></script>
+<div id="item-info">
+    Hover an Item!
+</div>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
 
-    var width = 960,
+    let width = 960,
         height = 700,
         radius = (Math.min(width, height) / 2) - 10;
 
-    var formatNumber = d3.format(",d");
+    let formatNumber = d3.format(",d");
 
-    var x = d3.scale.linear()
+    let x = d3.scale.linear()
         .range([0, 2 * Math.PI]);
 
-    var y = d3.scale.sqrt()
+    let y = d3.scale.sqrt()
         .range([0, radius]);
 
-    var color = d3.scale.category20c();
+    let color = d3.scale.category20c();
 
-    var partition = d3.layout.partition()
+    let partition = d3.layout.partition()
         .value(function(d) { return d.size; });
 
-    var arc = d3.svg.arc()
+    let arc = d3.svg.arc()
         .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
         .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
         .innerRadius(function(d) { return Math.max(0, y(d.y)); })
         .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
 
-    var svg = d3.select("body").append("svg")
+    let svg = d3.select("body").append("svg")
         .attr("width", width)
         .attr("height", height)
         .append("g")
@@ -48,6 +56,7 @@
                 .attr("d", arc)
                 .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
                 .on("click", click)
+                .on("mouseover", hover)
                 .append("title")
                 .text(function(d) { return d.name + "\n" + formatNumber(d.value); });
         });
@@ -57,7 +66,7 @@
             .duration(750)
             .tween("scale",
                 function() {
-                    var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+                    let xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
                         yd = d3.interpolate(y.domain(), [d.y, 1]),
                         yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
                     return function(t) {
@@ -67,6 +76,21 @@
                 })
             .selectAll("path")
             .attrTween("d", function(d) { return function() { return arc(d); }; });
+    }
+
+    function hover(d) {
+        let infos = [];
+
+        let obj = d;
+        infos.push(d.name + ", " + formatNumber(d.value));
+        for (let i = 0; i < d.depth; ++i) {
+            obj = obj.parent;
+            if (obj !== null) {
+                infos.push(obj.name + ", " + formatNumber(obj.value));
+            }
+        }
+
+        document.getElementById("item-info").innerHTML = infos.reverse().join("<br/>");
     }
 
     d3.select(self.frameElement).style("height", height + "px");
