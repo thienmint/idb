@@ -184,66 +184,64 @@ export default class Games extends Component {
                 <Navbar/>
                 <h1 className="page-title">Games</h1>
                 <hr/>
-
-                <p>Sort by: &nbsp;
-                <select value={this.state.sortOpt} onChange={this.sortOptChange}>
-                    <option value="Name">Name</option>
-                    <option value="Date">Release Date</option>
-                </select>
-                    &nbsp;
-                <select value={this.state.sortOrder} onChange={this.sortHandle}>
-                    <option value="default" className="default-option">Select</option>
-                    <option value="asc">Ascending</option>
-                    <option value="desc">Descending</option>
-                </select>
-                </p>
-
-                <p>
-                    <span>
-                            Release date from &nbsp;
-                        <input
-                            name="yearMin"
-                            type="number"
-                            min="2000"
-                            max={this.state.yearMaxRange}
-                            value={this.state.yearMinRange}
-                            onChange={this.handleInputs} />
-                        </span>
-                    &nbsp;
-                    <span>
-                            to &nbsp;
-                        <input
-                            name="yearMax"
-                            type="number"
-                            min={this.state.yearMinRange}
-                            max="2017"
-                            value={this.state.yearMaxRange}
-                            onChange={this.handleInputs} />
-                        </span>
-                    &nbsp;
-                    <span>
+                <div className="container sort-filter">
+                    <div className="col card">
+                        <div className="row fields sort"><b>Sort by:</b> &nbsp;
+                            <select value={this.state.sortOpt} onChange={this.sortOptChange}>
+                                <option value="Name">Name</option>
+                                <option value="Date">Release Date</option>
+                            </select>
+                            &nbsp;
+                            <select value={this.state.sortOrder} onChange={this.sortHandle}>
+                                <option value="default" className="default-option">Select</option>
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                        <div className="fields row"><b>Filter by:</b></div>
+                        <div className="row">
+                            <div className="col"> Release date from &nbsp;</div>
+                            <div className="col">
+                                <input
+                                    name="yearMin"
+                                    type="number"
+                                    min="2000"
+                                    max={this.state.yearMaxRange}
+                                    value={this.state.yearMinRange}
+                                    onChange={this.handleInputs} />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">to &nbsp;</div>
+                            <div className="col">
+                                <input
+                                    name="yearMax"
+                                    type="number"
+                                    min={this.state.yearMinRange}
+                                    max="2017"
+                                    value={this.state.yearMaxRange}
+                                    onChange={this.handleInputs} />
+                            </div>
+                        </div>
+                        <div className="fields row">
                             <input
                                 name="filter"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Apply"
                                 onClick={this.processFilter}
                             />
-                        </span>
-                    &nbsp;
-                    <span>
+                            &nbsp;
                             <input
                                 name="reset"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Reset"
                                 onClick={this.resetFilter}
                             />
-                        </span>
-
-                </p>
-
-                <br/>
-
-
+                        </div>
+                    </div>
+                </div>
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
@@ -253,7 +251,7 @@ export default class Games extends Component {
                         />
                     </div>
                     :
-                    <div className="container">
+                    <div className="container my-grid">
                         <Pagination
                             numberOfPages={this.state.numberOfPages}
                             onClick={this.updatePage}
