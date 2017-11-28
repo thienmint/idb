@@ -9,12 +9,9 @@ from selenium.webdriver.common.keys import Keys
 # def test_search_in_python_org(self):
 driver = webdriver.Firefox()
 driver.get("https://www.esportguru.com/")
-searchBox = driver.findElement(By.id("loginForm"));
-searchBox.send_keys("League of Legends")
-searchBox.send_keys(Keys.RETURN)
-
-
-
+# searchBox = driver.find_element_by_id('loginForm')
+# searchBox.send_keys("League of Legends")
+# searchBox.send_keys(Keys.RETURN)
 
 link_games = driver.find_element_by_link_text('Games')
 link_games.click()
