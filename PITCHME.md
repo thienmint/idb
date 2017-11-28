@@ -102,4 +102,4 @@ Why don't famous artists have more of their works listed?
 
 ## Visualization
 
-[Phonedb Visualization](http://phonedbvisualization.azurewebsites.net)
+[Museumary Visualization](http://esportguru.com/visualization.html)
