@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './../components/nav/navbar';
 import './global.css'
+import './grid.css'
 import axios from 'axios';
 import { DotLoader } from 'react-spinners';
 
@@ -224,79 +225,83 @@ export default class Teams extends Component {
                 <Navbar/>
                 <h1 className="page-title">Teams</h1>
                 <hr/>
-
-                <p>Sort by: &nbsp;
-                    <select value={this.state.sortOpt} onChange={this.sortOptChange}>
-                        <option value="Name">Name</option>
-                        <option value="Acronym">Acronym</option>
-                    </select>
-                    &nbsp;
-                    <select value={this.state.sortOrder} onChange={this.sortHandle}>
-                        <option value="default" className="default-option">Select</option>
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                </p>
-
-                <p> Filter by: <br/>
-                    <span>
-                            Only 1 or more players: &nbsp;
-                        <input
-                            name="playersCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.emptyPlayers}
-                            onChange={this.handleCheckboxes} />
-                        </span>
-                    <br/>
-                    <span>
-                            Overwatch &nbsp;
-                        <input
-                            name="overwatchCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.playOverwatch}
-                            onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
-                            League of Legends &nbsp;
-                        <input
-                            name="leagueCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.playLeague}
-                            onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
-                            HearthStone &nbsp;
-                        <input
-                            name="hsCheck"
-                            type="checkbox"
-                            checked={this.state.filterOpts.playHS}
-                            onChange={this.handleCheckboxes} />
-                        </span>
-
-                    <br/>
-                    <span>
+                <div className="container sort-filter">
+                    <div className="col card">
+                        <div className="row fields sort"><b>Sort by:</b> &nbsp;
+                            <select className="btn btn-default dropdown-toggle" value={this.state.sortOpt} onChange={this.sortOptChange}>
+                                <option value="Name">Name</option>
+                                <option value="Acronym">Acronym</option>
+                            </select>
+                            &nbsp;
+                            <select className="btn btn-default dropdown-toggle" value={this.state.sortOrder} onChange={this.sortHandle}>
+                                <option value="default" className="default-option">Select</option>
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                        <div className="fields row"><b>Filter by:</b></div>
+                        <div className="row">
+                            <div className="col-8">
+                                Only 1 or more players: &nbsp;
+                            </div>
+                            <div className="col">
+                                <input
+                                    name="playersCheck"
+                                    type="checkbox"
+                                    checked={this.state.filterOpts.emptyPlayers}
+                                    onChange={this.handleCheckboxes} />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-8">Overwatch &nbsp;</div>
+                            <div className="col">
                             <input
-                                name="filter"
-                                type="button"
-                                value="Apply"
-                                onClick={this.processFilter}
-                            />
-                        </span>
-                    &nbsp;
-                    <span>
+                                name="overwatchCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playOverwatch}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-8">League of Legends &nbsp;</div>
+                        <div className="col">
                             <input
-                                name="reset"
-                                type="button"
-                                value="Reset"
-                                onClick={this.resetFilter}
-                            />
-                        </span>
-
-                </p>
-
-                <br/>
+                                name="leagueCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playLeague}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-8">HearthStone</div>
+                        <div className="col">
+                            <input
+                                name="hsCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playHS}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="fields row">
+                        <input
+                            name="filter"
+                            type="submit"
+                            className="btn"
+                            value="Apply"
+                            onClick={this.processFilter}
+                        />
+                        &nbsp;
+                        <input
+                            name="reset"
+                            type="submit"
+                            className="btn"
+                            value="Reset"
+                            onClick={this.resetFilter}
+                        />
+                    </div>
+                </div>
+                </div>
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
@@ -306,8 +311,8 @@ export default class Teams extends Component {
                             />
                     </div>
                     :
-                    <div className="container">
-                        <Pagination className="pagination"
+                    <div className="container my-grid">
+                        <Pagination
                             numberOfPages={this.state.numberOfPages}
                             onClick={this.updatePage}
                         />

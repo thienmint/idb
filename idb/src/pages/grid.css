@@ -39,3 +39,13 @@
     background-color: lightslategray;
     border-color: lightslategray;
 }
+
+.btn:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
