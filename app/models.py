@@ -12,6 +12,13 @@ import json
 import random
 # import markdown
 
+# API Formatter classes
+from api_classes import Helper, GameInstance, PlayerInstance, TeamInstance, TourneyInstance
+
+# Queries
+from api_queries import game_query, player_query, team_query, tourney_query
+from search_queries import search_game, search_player, search_team, search_tourney
+
 
 '=====================START CONFIGURATION====================='
 
@@ -45,242 +52,6 @@ def page_not_found(e):
 
 
 '=====================END UI ROUTING====================='
-'=====================START API QUERIES====================='
-
-
-def player_query(player_id=None):
-    query = (
-        """
-            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, p.image_url, 
-                   p.current_game, p.current_team,
-                   g.name as game_name, t.name as team_name
-            from PLAYER p
-            join GAME g on g.id = p.current_game
-            join TEAM t on t.id = p.current_team
-            {0}
-            """.format("where p.id = %d" % int(player_id) if player_id is not None else "")
-    )
-
-    return query
-
-
-def team_query(team_id=None):
-    query = (
-        """
-          select t.id, t.name, t.acronym, t.image_url, t.current_game, 
-                 g.name as game_name,
-                 pt.list_players
-          from TEAM t
-          
-          join GAME g on g.id = t.current_game
-          left join (
-            select concat('[', group_concat(json_object("id", p.id, "tag", p.tag)), ']') list_players, p.current_team
-            from PLAYER p
-            group by p.current_team
-          ) pt on pt.current_team = t.id
-          {0}
-        """.format("where t.id = %d" % int(team_id) if team_id is not None else "")
-    )
-
-    return query
-
-
-def tourney_query(tourney_id=None):
-    query = (
-        """
-          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                 g.name as game_name
-          from TOURNEY tn
-          join GAME g on g.id = tn.game
-          {0}
-        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
-    )
-
-    return query
-
-
-def tourney2_query(tourney_id = None):
-    query = (
-        """
-          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                 tn.league, tn.league_image, g.name as game_name
-          from TOURNEY2 tn
-          join GAME g on g.id = tn.game
-          {0}
-        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
-    )
-
-    return query
-
-def tourney2_query(tourney_id = None):
-    query = (
-        """
-          select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, tn.game, tn.teams,
-                 tn.league, tn.league_image, g.name as game_name
-          from TOURNEY2 tn
-          join GAME g on g.id = tn.game
-          {0}
-          LIMIT 40
-        """.format("where tn.id = %d" % int(tourney_id) if tourney_id is not None else "")
-    )
-
-    return query
-
-
-def get_teams_info(list_teams):
-    conditions = []
-    # TODO: Make this in to list comprehension
-    list_teams = random.sample(list_teams, min(len(list_teams), 30))
-    for t_id in list_teams:
-        t_id = int(t_id)
-        conditions.append("t.id=%d" % t_id)
-
-    query = (
-        """
-            select t.id, t.name
-            from TEAM t
-            {0}
-        """.format(
-            "where %s" % (' or '.join(conditions)) if len(conditions) > 0 else '')
-    )
-    # print(query)
-    return query
-
-
-def game_query(game_id=None):
-    query = (
-        """
-          select g.id, g.name, g.release_date, g.screenshots, g.summary, g.website,
-                 pt.list_players, tt.list_teams
-          from GAME g
-          left join (
-            select concat('[', 
-            substring_index(
-              group_concat(
-                json_object("id", p.id, "tag", p.tag)), ',', 20), ']') list_players, p.current_game
-            from PLAYER p
-            group by p.current_game
-          ) pt on pt.current_game = g.id
-          left join (
-            select concat('[', 
-              substring_index(
-                group_concat(
-                  json_object("id", t.id, "name", t.name)), ',', 20), ']') list_teams, t.current_game
-            from TEAM t
-            group by t.current_game
-          ) tt on tt.current_game = g.id
-          {0}
-        """.format("where g.id = %d" % int(game_id) if game_id is not None else "")
-    )
-
-    return query
-
-
-def process_players(players_row):
-    if players_row is not None:
-        json_players = json.loads(players_row)
-        return [OrderedDict([('id', player['id']), ('tag', player['tag'])]) for player in json_players]
-    else:
-        return list()
-
-
-def process_teams(teams_row):
-    if teams_row is not None:
-        json_teams = json.loads(teams_row)
-        return [OrderedDict([('id', team['id']), ('name', team['name'])]) for team in json_teams]
-    else:
-        return list()
-
-
-def form_regex(search_str):
-    # Game
-    if search_str == "":
-        return None
-
-    return search_str.replace(" ", "|")
-
-
-def search_game(search_str):
-    query = (
-        """
-        select g.id, g.name, g.summary, g.release_date,
-             pt.list_players, tt.list_teams
-          from GAME g
-          left join (
-            select group_concat(p.tag) as list_players, p.current_game
-            from PLAYER p
-            where p.tag REGEXP "{0}"
-            group by p.current_game
-          ) pt on pt.current_game = g.id
-          left join (
-            select group_concat(t.name) as list_teams, t.current_game
-            from TEAM t
-            where t.name REGEXP "{0}"
-            group by t.current_game
-          ) tt on tt.current_game = g.id
-        where g.name REGEXP "{0}" or g.summary REGEXP "{0}" or g.release_date REGEXP "{0}" or
-        tt.list_teams is not null or pt.list_players is not null
-        """.format(search_str)
-    )
-    return query
-
-
-def search_player(search_str):
-    query = (
-        """
-            select p.id, p.tag, p.first_name, p.last_name, p.role, p.hometown, 
-                   t.name as team_name, g.name as game_name
-            from PLAYER p
-            join TEAM t on t.id = p.current_team
-            join GAME g on g.id = p.current_game
-            where 
-              p.tag REGEXP "{0}" or p.first_name REGEXP "{0}" or p.last_name REGEXP "{0}" or
-              p.role REGEXP "{0}" or p.hometown REGEXP "{0}" or
-              t.name REGEXP "{0}" or g.name REGEXP "{0}"
-        """.format(search_str)
-    )
-    return query
-
-
-def search_team(search_str):
-    query = (
-        """
-            select t.id, t.name, t.acronym, g.name as game_name, pt.list_players as players_name
-            from TEAM t
-            join GAME g on g.id = t.current_game
-            left join (
-              select group_concat(p.tag) as list_players, p.current_team
-              from PLAYER p
-              where p.tag REGEXP "{0}"
-              group by p.current_team
-            ) pt on pt.current_team = t.id
-            where t.name REGEXP "{0}" or t.acronym REGEXP "{0}" or 
-                  g.name REGEXP "{0}" or pt.list_players is not null
-        """.format(search_str)
-    )
-    return query
-
-
-def search_tourney(search_str):
-    query = (
-        """
-            select tn.id, tn.name, tn.slug, tn.begin_at, tn.end_at, g.name as game_name, R.list_names as team_names
-            from TOURNEY2 tn
-            join GAME g on g.id = tn.game
-            left join (
-              select tt.tournament_id as id, group_concat(t.name) as list_names
-              from TEAM_TOURNAMENTS tt
-              join TEAM t on tt.team_id = t.id
-              where t.name REGEXP "{0}"
-              group by tt.tournament_id
-            ) R on tn.id = R.id
-            where tn.name REGEXP "{0}" or tn.slug REGEXP "{0}" or tn.begin_at REGEXP "{0}" or tn.end_at REGEXP "{0}" or
-                  g.name REGEXP "{0}" or R.list_names is not null
-        """.format(search_str)
-    )
-    return query
-
-'=====================END API QUERIES====================='
 '=====================START API====================='
 
 
@@ -290,27 +61,7 @@ class Players(Resource):
         query = conn.execute(player_query())
         list_players = []
         for row in query:
-            player = OrderedDict()
-
-            team = {
-                "id": row['current_team'],
-                "name": row['team_name']
-            }
-
-            game = {
-                "id": row['current_game'],
-                "name": row['game_name']
-            }
-
-            player['id'] = row['id']
-            player['tag'] = row['tag']
-            player['first_name'] = row['first_name']
-            player['last_name'] = row['last_name']
-            player['role'] = row['role']
-            player['hometown'] = row['hometown']
-            player['image_url'] = row['image_url']
-            player['current_team'] = team
-            player['current_game'] = game
+            player = PlayerInstance(row).get_dict()
             list_players.append(player)
         conn.close()
         return jsonify(list_players)
@@ -320,28 +71,8 @@ class Player(Resource):
     def get(self, player_id):
         conn = engine.connect()
         query = conn.execute(player_query(player_id))
-        player = OrderedDict()
         row = query.fetchone()
-
-        team = {
-            "id": row['current_team'],
-            "name": row['team_name']
-        }
-
-        game = {
-            "id": row['current_game'],
-            "name": row['game_name']
-        }
-
-        player['id'] = row['id']
-        player['tag'] = row['tag']
-        player['first_name'] = row['first_name']
-        player['last_name'] = row['last_name']
-        player['role'] = row['role']
-        player['hometown'] = row['hometown']
-        player['image_url'] = row['image_url']
-        player['current_team'] = team
-        player['current_game'] = game
+        player = PlayerInstance(row).get_dict()
         conn.close()
         return jsonify(player)
 
@@ -353,20 +84,7 @@ class Teams(Resource):
         query = conn.execute(team_query())
         list_teams = []
         for row in query:
-            team = OrderedDict()
-            list_players = process_players(row['list_players'])
-
-            game = {
-                "id": row['current_game'],
-                "name": row['game_name']
-            }
-
-            team['id'] = row['id']
-            team['name'] = row['name']
-            team['acronym'] = row['acronym']
-            team['image_url'] = row['image_url']
-            team['current_players'] = list_players
-            team['current_game'] = game
+            team = TeamInstance(row).get_dict()
             list_teams.append(team)
         conn.close()
         return jsonify(list_teams)
@@ -378,20 +96,7 @@ class Team(Resource):
         conn.execute("set @@session.group_concat_max_len=4294967295")
         query = conn.execute(team_query(team_id))
         row = query.fetchone()
-        list_players = process_players(row['list_players'])
-
-        game = {
-            "id": row['current_game'],
-            "name": row['game_name']
-        }
-
-        team = OrderedDict()
-        team['id'] = row['id']
-        team['name'] = row['name']
-        team['acronym'] = row['acronym']
-        team['image_url'] = row['image_url']
-        team['current_players'] = list_players
-        team['current_game'] = game
+        team = TeamInstance(row).get_dict()
         conn.close()
         return jsonify(team)
 
@@ -399,40 +104,12 @@ class Team(Resource):
 class Tourneys(Resource):
     def get(self):
         conn = engine.connect()
-        query = conn.execute(tourney2_query())
+        query = conn.execute(tourney_query())
         list_tourneys = []
         for row in query:
-            tourney = OrderedDict()
-
-            game = {
-                "id": row['game'],
-                "name": row['game_name']
-            }
-
-            json_teams = json.loads(row['teams'])
-            teams = set(json_teams)
-
-            query_2 = conn.execute(get_teams_info(list(teams)))
-
-            list_teams = []
-            for team_row in query_2:
-                one_team = OrderedDict()
-                one_team['id'] = team_row['id']
-                one_team['name'] = team_row['name']
-                list_teams.append(one_team)
-
-            tourney['id'] = row['id']
-            tourney['name'] = row['name']
-            tourney['slug'] = row['slug']
-            tourney['begin_at'] = row['begin_at']
-            tourney['end_at'] = row['end_at']
-            tourney['game'] = game
-            tourney['teams'] = list_teams
-            tourney['league'] = row['league']
-            tourney['image_url'] = row['league_image']
-
+            tourney = TourneyInstance(row).get_dict()
             list_tourneys.append(tourney)
-        
+
         conn.close()
         return jsonify(list_tourneys)
 
@@ -440,37 +117,11 @@ class Tourneys(Resource):
 class Tourney(Resource):
     def get(self, tourney_id):
         conn = engine.connect()
-        query = conn.execute(tourney2_query(tourney_id))
+        _ = conn.execute("set @@session.group_concat_max_len=18446744073709551615")
+
+        query = conn.execute(tourney_query(tourney_id))
         row = query.fetchone()
-        tourney = OrderedDict()
-
-        game = {
-            "id": row['game'],
-            "name": row['game_name']
-        }
-
-        json_teams = json.loads(row['teams'])
-        teams = set(json_teams)
-
-        query_2 = conn.execute(get_teams_info(list(teams)))
-
-        list_teams = []
-        for team_row in query_2:
-            one_team = OrderedDict()
-            one_team['id'] = team_row['id']
-            one_team['name'] = team_row['name']
-            list_teams.append(one_team)
-
-        tourney['id'] = row['id']
-        tourney['name'] = row['name']
-        tourney['slug'] = row['slug']
-        tourney['begin_at'] = row['begin_at']
-        tourney['end_at'] = row['end_at']
-        tourney['game'] = game
-        tourney['teams'] = list_teams
-        tourney['league'] = row['league']
-        tourney['image_url'] = row['league_image']
-
+        tourney = TourneyInstance(row).get_dict()
         conn.close()
         return jsonify(tourney)
 
@@ -483,16 +134,7 @@ class Games(Resource):
         query = conn.execute(game_query())
         list_games = []
         for row in query:
-            game = OrderedDict()
-            game['id'] = row['id']
-            game['name'] = row['name']
-            game['summary'] = row['summary']
-            game['release_date'] = str(row['release_date'])
-            game['website'] = json.loads(row['website'])
-            game['screenshots'] = json.loads(row['screenshots'])
-            game['sample_players'] = process_players(row['list_players'])
-            game['sample_teams'] = process_teams(row['list_teams'])
-            list_games.append(game)
+            list_games.append(GameInstance(row).get_dict())
         conn.close()
         return jsonify(list_games)
 
@@ -503,22 +145,13 @@ class Game(Resource):
         _ = conn.execute("set @@session.group_concat_max_len=18446744073709551615")
         query = conn.execute(game_query(game_id))
         row = query.fetchone()
-        game = OrderedDict()
-        game['id'] = row['id']
-        game['name'] = row['name']
-        game['summary'] = row['summary']
-        game['release_date'] = str(row['release_date'])
-        game['website'] = json.loads(row['website'])
-        game['screenshots'] = json.loads(row['screenshots'])
-        game['sample_players'] = process_players(row['list_players'])
-        game['sample_teams'] = process_teams(row['list_teams'])
         conn.close()
-        return jsonify(game)
+        return jsonify(GameInstance(row).get_dict())
 
 
 class Search(Resource):
     def get(self, search_str):
-        search_str = form_regex(search_str)
+        search_str = Helper.form_regex(search_str)
         if search_str is None:
             return jsonify(["Please enter at least one keyword."])
 
@@ -537,47 +170,22 @@ class Search(Resource):
         team_data = []
         tourney_data = []
 
+        game_formatter = GameInstance()
+        player_formatter = PlayerInstance()
+        team_formatter = TeamInstance()
+        tourney_formatter = TourneyInstance()
+
         for row in game_results:
-            game = OrderedDict()
-            game['id'] = row['id']
-            game['name'] = row['name']
-            game['summary'] = row['summary']
-            game['release_date'] = row['release_date']
-            game['sample_players'] = row['list_players']
-            game['sample_teams'] = row['list_teams']
-            game_data.append(game)
+            game_data.append(game_formatter.get_dict(search=True, input_row=row))
 
         for row in player_results:
-            player = OrderedDict()
-            player['id'] = row['id']
-            player['tag'] = row['tag']
-            player['first_name'] = row['first_name']
-            player['last_name'] = row['last_name']
-            player['role'] = row['role']
-            player['hometown'] = row['hometown']
-            player['current_game'] = row['game_name']
-            player['current_team'] = row['team_name']
-            player_data.append(player)
+            player_data.append(player_formatter.get_dict(search=True, input_row=row))
 
         for row in team_results:
-            team = OrderedDict()
-            team['id'] = row['id']
-            team['name'] = row['name']
-            team['acronym'] = row['acronym']
-            team['current_players'] = row['players_name']
-            team['current_game'] = row['game_name']
-            team_data.append(team)
+            team_data.append(team_formatter.get_dict(search=True, input_row=row))
 
         for row in tourney_results:
-            tourney = OrderedDict()
-            tourney['id'] = row['id']
-            tourney['name'] = row['name']
-            tourney['slug'] = row['slug']
-            tourney['begin_at'] = row['begin_at']
-            tourney['end_at'] = row['end_at']
-            tourney['game'] = row['game_name']
-            tourney['teams'] = row['team_names']
-            tourney_data.append(tourney)
+            tourney_data.append(tourney_formatter.get_dict(search=True, input_row=row))
 
         search_results['games'] = game_data
         search_results['players'] = player_data
