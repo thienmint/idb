@@ -238,83 +238,82 @@ export default class Tournaments extends Component {
                 <Navbar/>
                 <h1 className="page-title">Tournaments</h1>
                 <hr/>
-
-                <p>Sort by: &nbsp;
-                    <select value={this.state.sortOpt} onChange={this.sortOptChange}>
-                        <option value="Name">Name</option>
-                        <option value="Slug">Slug</option>
-                        <option value="StartDate">Start Date</option>
-                        <option value="EndDate">End Date</option>
-                    </select>
-                    &nbsp;
-                    <select value={this.state.sortOrder} onChange={this.sortHandle}>
-                        <option value="default" className="default-option">Select</option>
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                </p>
-
-                <p>
-                    <span>
+                <div className="container sort-filter">
+                    <div className="col card">
+                        <div className="row fields sort"><b>Sort by:</b> &nbsp;
+                            <select className="btn btn-default dropdown-toggle" value={this.state.sortOpt} onChange={this.sortOptChange}>
+                                <option value="Name">Name</option>
+                                <option value="Slug">Slug</option>
+                                <option value="StartDate">Start Date</option>
+                                <option value="EndDate">End Date</option>
+                            </select>
+                            &nbsp;
+                            <select className="btn btn-default dropdown-toggle" value={this.state.sortOrder} onChange={this.sortHandle}>
+                                <option value="default" className="default-option">Select</option>
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                        <div className="fields row"><b>Filter by:</b></div>
+                        <div className="row">
+                            <div className="col">
                             Begin after &nbsp;
-                        <input
-                            name="beginMonth"
-                            type="number"
-                            min="01"
-                            max="12"
-                            value={this.state.beginMonth}
-                            onChange={this.handleInputs} />
-                        /
-                        <input
-                            name="beginYear"
-                            type="number"
-                            min="1990"
-                            max="2017"
-                            value={this.state.beginYear}
-                            onChange={this.handleInputs} />
-
-                    </span>
-                    &nbsp; Ending  before&nbsp;
-                    <span>
-                        <input
-                            name="endMonth"
-                            type="number"
-                            min={this.state.beginYear === this.state.endYear ? this.state.beginMonth : "01"}
-                            max="12"
-                            value={this.state.endMonth}
-                            onChange={this.handleInputs} />
-                        /
-                        <input
-                            name="endYear"
-                            type="number"
-                            min={this.state.beginYear}
-                            max="2017"
-                            value={this.state.endYear}
-                            onChange={this.handleInputs} />
-                        </span>
-                    &nbsp;
-                    <span>
+                            <input
+                                name="beginMonth"
+                                type="number"
+                                min="01"
+                                max="12"
+                                value={this.state.beginMonth}
+                                onChange={this.handleInputs} />
+                            &nbsp;
+                            <input
+                                name="beginYear"
+                                type="number"
+                                min="1990"
+                                max="2017"
+                                value={this.state.beginYear}
+                                onChange={this.handleInputs} />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                            Ending  before&nbsp;
+                            <input
+                                name="endMonth"
+                                type="number"
+                                min={this.state.beginYear === this.state.endYear ? this.state.beginMonth : "01"}
+                                max="12"
+                                value={this.state.endMonth}
+                                onChange={this.handleInputs} />
+                            &nbsp;
+                            <input
+                                name="endYear"
+                                type="number"
+                                min={this.state.beginYear}
+                                max="2017"
+                                value={this.state.endYear}
+                                onChange={this.handleInputs} />
+                            </div>
+                        </div>
+                        <div className="fields row">
                             <input
                                 name="filter"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Apply"
                                 onClick={this.processFilter}
                             />
-                        </span>
-                    &nbsp;
-                    <span>
+                            &nbsp;
                             <input
                                 name="reset"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Reset"
                                 onClick={this.resetFilter}
                             />
-                        </span>
-
-                </p>
-
-                <br/>
-
+                        </div>
+                    </div>
+                </div>
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
@@ -324,7 +323,7 @@ export default class Tournaments extends Component {
                         />
                     </div>
                     :
-                    <div className="container">
+                    <div className="container my-grid">
                         <Pagination
                             numberOfPages={this.state.numberOfPages}
                             onClick={this.updatePage}
