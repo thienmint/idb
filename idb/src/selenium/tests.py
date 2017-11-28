@@ -15,7 +15,19 @@ driver.get("https://www.esportguru.com/")
 
 link_games = driver.find_element_by_link_text('Games')
 link_games.click()
-
+driver.implicitly_wait(10)
+link_games = driver.find_element_by_link_text('About')
+link_games.click()
+driver.implicitly_wait(10)
+link_games = driver.find_element_by_link_text('Teams')
+link_games.click()
+driver.implicitly_wait(10)
+link_games = driver.find_element_by_link_text('Tournaments')
+link_games.click()
+driver.implicitly_wait(10)
+link_games = driver.find_element_by_link_text('Players')
+link_games.click()
+driver.implicitly_wait(10)
 
     # def tearDown(self):
 driver.close()
