@@ -49,3 +49,7 @@
     outline: none;
     box-shadow: none;
 }
+
+.gutter-for-sorting {
+    padding-left: 1%;
+}

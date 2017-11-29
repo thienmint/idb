@@ -184,7 +184,7 @@ export default class Games extends Component {
                 <Navbar/>
                 <h1 className="page-title">Games</h1>
                 <hr/>
-                <div className="row">
+                <div className="row gutter-for-sorting">
                 <div className="container sort-filter col-md-3">
                     <div className="col card">
                         <div className="row fields sort"><b>Sort by:</b> &nbsp;
