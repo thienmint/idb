@@ -8,9 +8,9 @@ class AboutTools extends Component {
             <div className="col center">
                 <h1 className="name">Other Information</h1>
                 <div className="details">
-                <div><b>Number of Commits:</b> 403</div>
-                <div><b>Number of Issues:</b> 70</div>
-                <div><b>Number of Unit Tests:</b> 30</div>
+                <div><b>Number of Commits:</b> 536</div>
+                <div><b>Number of Issues:</b> 83</div>
+                <div><b>Number of Unit Tests:</b> 55</div>
                 <br/>
                 <div><a href="https://docs.thienmint.apiary.io/"> Apiary API </a></div>
                 <div><a href="https://github.com/thienmint/idb/"> Github Repo </a></div>
@@ -42,6 +42,7 @@ class AboutTools extends Component {
                 <br/>
                     <a className="nav-link tech-report" href="https://utexas.app.box.com/s/6ua5ejpdaywv2nq39sfi4vxrnivqecex">Technical Report</a>
                     <a className="nav-link tech-report" href="https://utexas.box.com/s/3c0u7f13h77ia188gp8r7hlgfqbrjaap">UML Diagram </a>
+                    <a className="nav-link tech-report" href="https://kevinisninja.gitbooks.io/esportsguru/content/"> Git Book </a>
                 </div>
             </div>
         );

@@ -24,8 +24,8 @@ class AboutTeam extends Component {
                                 a B.S.A. in Computer Science before joining the Blackbaud team full-time in January. </p>
                             <b>Responsibilities:</b>
                             <p>Frontend</p>
-                            <div><b>Number of Commits:</b> 132</div>
-                            <div><b>Number of Issues:</b> 28</div>
+                            <div><b>Number of Commits:</b> 153</div>
+                            <div><b>Number of Issues:</b> 31</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
@@ -35,14 +35,14 @@ class AboutTeam extends Component {
                             <img src={Persia} className="img-fluid circle" alt=""/>
                         </div>
                         <div className="details">
-                            <p>Is looking to get a job in the gaming industry and programmed for hidden achievement where her team
+                            <p> Has a job in the gaming industry and programmed for hidden achievement where her team
                                 won Best Overall Game at the Intel Game Developers Showcase. She also hosts Super Smash Bro tournments on Friday.
                                 She will be graduating in Winter of 2017 with a B.S.A in Computer Science. </p>
                             <b>Responsibilities:</b>
                             <p>Scrum Stuff, Backend</p>
-                            <div><b>Number of Commits:</b> 56</div>
-                            <div><b>Number of Issues:</b> 33</div>
-                            <div><b>Number of Unit Tests:</b> 30</div>
+                            <div><b>Number of Commits:</b> 75</div>
+                            <div><b>Number of Issues:</b> 36</div>
+                            <div><b>Number of Unit Tests:</b> 45</div>
                         </div>
                     </div>
                     <div className="col">
@@ -55,8 +55,8 @@ class AboutTeam extends Component {
                                He is extremely passionate about graphics. He will be graduating in Spring 2019. </p>
                             <b>Responsibilities:</b>
                             <p>Database, Backend</p>
-                            <div><b>Number of Commits:</b> 30</div>
-                            <div><b>Number of Issues:</b> 21</div>
+                            <div><b>Number of Commits:</b> 32</div>
+                            <div><b>Number of Issues:</b> 28</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
@@ -74,8 +74,8 @@ class AboutTeam extends Component {
                             </p>
                             <b>Responsibilities:</b>
                             <p>Database, Platform, Backend</p>
-                            <div><b>Number of Commits:</b> 123</div>
-                            <div><b>Number of Issues:</b> 20</div>
+                            <div><b>Number of Commits:</b> 200</div>
+                            <div><b>Number of Issues:</b> 23</div>
                             <div><b>Number of Unit Tests:</b> 0</div>
                         </div>
                     </div>
@@ -88,9 +88,9 @@ class AboutTeam extends Component {
                             <p>Eric Liu will be graduating in spring of 2019.</p>
                             <b>Responsibilities:</b>
                             <p>Frontend</p>
-                            <div><b>Number of Commits:</b> 74</div>
-                            <div><b>Number of Issues:</b> 30</div>
-                            <div><b>Number of Unit Tests:</b> 0</div>
+                            <div><b>Number of Commits:</b> 88</div>
+                            <div><b>Number of Issues:</b> 33</div>
+                            <div><b>Number of Unit Tests:</b> 10</div>
                         </div>
                     </div>
                 </div>
