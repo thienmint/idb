@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './../components/nav/navbar';
 import './global.css'
+import './grid.css'
 import axios from 'axios';
 
 import GridPlayers from "../components/grid-details/gridPlayers";
@@ -23,11 +24,13 @@ export default class Players extends Component {
             sortOrder: 'default',
             originalPlayers: [],
             sourcePlayers: [],
-            nameEmpty: false,
-            hometownEmpty: false,
-            playOverwatch: false,
-            playLeague: false,
-            playHS: false
+            filterOpts: {
+                'nameEmpty': false,
+                'hometownEmpty': false,
+                'playOverwatch': false,
+                'playLeague': false,
+                'playHearthStone': false
+            },
         };
 
         let apiurl = 'http://api.esportguru.com/';
@@ -150,29 +153,39 @@ export default class Players extends Component {
         this.setState(stateCopy)
     }
 
+    // TODO change this
     handleCheckboxes(event) {
         let stateCopy = Object.assign([], this.state);
         switch (event.target.name) {
             case  "nameCheck":
-                stateCopy.nameEmpty = event.target.checked;
+                stateCopy.filterOpts.nameEmpty = event.target.checked;
                 break;
             case  "tagCheck":
-                stateCopy.hometownEmpty = event.target.checked;
+                stateCopy.filterOpts.hometownEmpty = event.target.checked;
                 break;
             case "overwatchCheck":
-                stateCopy.playOverwatch = event.target.checked;
+                stateCopy.filterOpts.playOverwatch = event.target.checked;
                 break;
             case "leagueCheck":
-                stateCopy.playLeague = event.target.checked;
+                stateCopy.filterOpts.playLeague = event.target.checked;
                 break;
             case "hsCheck":
-                stateCopy.playHS = event.target.checked;
+                stateCopy.filterOpts.playHearthStone = event.target.checked;
                 break;
             default:
                 console.log("Not match")
         }
         this.setState(stateCopy)
     }
+
+    static checkMultipleGames(x, ids) {
+        let ret = false;
+        for(let i = 0; i < ids.length; ++i)
+            ret = ret || Players.checkGame(x, ids[i])
+
+        return ret
+    }
+
     static checkGame(x, id) {
         if(x !== null && Object.keys(x).length > 0)
             return new Map(Object.entries(x)).get("id") === id;
@@ -180,12 +193,13 @@ export default class Players extends Component {
             return false;
     }
 
+    // TODO change this
     processFilter() {
         console.log("Process filter called");
         let stateCopy = Object.assign([], this.state);
         stateCopy.players = stateCopy.sourcePlayers;
 
-        if(stateCopy.nameEmpty)
+        if(stateCopy.filterOpts.nameEmpty)
             stateCopy.players = stateCopy.players.filter((x) =>
                 (x.first_name !== null && x.last_name !== null &&
                     (
@@ -195,22 +209,23 @@ export default class Players extends Component {
                 )
             );
 
-        if(stateCopy.hometownEmpty)
+        if(stateCopy.filterOpts.hometownEmpty)
             stateCopy.players = stateCopy.players.filter((x) => (x.hometown !== null && x.hometown !== "" && x.hometown !== "Unknown"));
 
-        if(stateCopy.playOverwatch)
-            stateCopy.players = stateCopy.players.filter((x) => (
-                Players.checkGame(x.current_game, 14)
-            ));
+        let filterByGame = [];
 
-        if(stateCopy.playLeague)
-            stateCopy.players = stateCopy.players.filter((x) => (
-                Players.checkGame(x.current_game, 1)
-            ));
+        if(stateCopy.filterOpts.playOverwatch)
+            filterByGame.push(14);
 
-        if(stateCopy.playHS)
+        if(stateCopy.filterOpts.playLeague)
+            filterByGame.push(1);
+
+        if(stateCopy.filterOpts.playHearthStone)
+            filterByGame.push(2);
+
+        if (filterByGame.length > 0)
             stateCopy.players = stateCopy.players.filter((x) => (
-                Players.checkGame(x.current_game, 2)
+                Players.checkMultipleGames(x.current_game, filterByGame)
             ));
 
         stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
@@ -223,11 +238,10 @@ export default class Players extends Component {
     resetFilter() {
         let stateCopy = Object.assign([], this.state);
         stateCopy.players = stateCopy.sourcePlayers;
-        stateCopy.nameEmpty = false;
-        stateCopy.hometownEmpty = false;
-        stateCopy.playOverwatch = false;
-        stateCopy.playLeague = false;
-        stateCopy.playHS = false;
+        // Unset all options
+        for (let key in stateCopy.filterOpts)
+            if(stateCopy.filterOpts.hasOwnProperty(key))
+                stateCopy.filterOpts[key] = false;
 
         stateCopy.displayedPlayers = stateCopy.players.slice(0,30);
         stateCopy.numberOfPages = Math.ceil(stateCopy.players.length / 30);
@@ -237,93 +251,98 @@ export default class Players extends Component {
     }
 
     render() {
-        // console.log(this.state.players);
       return (
             <div>
                 <Navbar/>
                 <h1 className="page-title">Players</h1>
                 <hr/>
-
-                <p>Sort by: &nbsp;
-                    <select value={this.state.sortOpt} onChange={this.sortOptChange}>
-                        <option value="Tag">Tag</option>
-                        <option value="FirstName">First Name</option>
-                        <option value="LastName">Last Name</option>
-                        <option value="Hometown">Hometown</option>
-                    </select>
-                    &nbsp;
-                    <select value={this.state.sortOrder} onChange={this.sortHandle}>
-                        <option value="default" className="default-option">Select</option>
-                        <option value="asc">Ascending</option>
-                        <option value="desc">Descending</option>
-                    </select>
-                </p>
-                <p> Filter by: <br/>
-                    <span>
-                            Nonempty name &nbsp;
+                <div className="row gutter-for-sorting">
+                <div className="container sort-filter col-md-3">
+                    <div className="col card">
+                    <div className="row fields sort"><b>Sort by:</b> &nbsp;
+                        <select className="btn btn-default dropdown-toggle" value={this.state.sortOpt} onChange={this.sortOptChange}>
+                            <option value="Tag" className="default-option">Tag</option>
+                            <option value="FirstName">First Name</option>
+                            <option value="LastName">Last Name</option>
+                            <option value="Hometown">Hometown</option>
+                        </select>
+                        &nbsp;
+                        <select className="btn btn-default dropdown-toggle" value={this.state.sortOrder} onChange={this.sortHandle}>
+                            <option value="default" className="default-option">Select</option>
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                    <div className="fields row"><b>Filter by:</b></div>
+                    <div className="row">
+                        <div className="col">Nonempty name &nbsp;</div>
+                        <div className="col">
                         <input
                             name="nameCheck"
                             type="checkbox"
-                            checked={this.state.nameEmpty}
+                            checked={this.state.filterOpts.nameEmpty}
                             onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
-                            Nonempty hometown &nbsp;
-                        <input
-                            name="tagCheck"
-                            type="checkbox"
-                            checked={this.state.hometownEmpty}
-                            onChange={this.handleCheckboxes} />
-                        </span>
+                        </div>
+                        </div>
+                    <div className="row">
+                        <div className="col">Nonempty hometown &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="tagCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.hometownEmpty}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                        </div>
+                    <div className="row">
+                        <div className="col">Overwatch &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="overwatchCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playOverwatch}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                        </div>
+                    <div className="row">
+                        <div className="col">League of Legends &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="leagueCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playLeague}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                        </div>
+                    <div className="row">
+                        <div className="col">HearthStone &nbsp;</div>
+                        <div className="col">
+                            <input
+                                name="hsCheck"
+                                type="checkbox"
+                                checked={this.state.filterOpts.playHearthStone}
+                                onChange={this.handleCheckboxes} />
+                        </div>
+                        </div>
                     <br/>
-                    <span>
-                            Overwatch &nbsp;
-                        <input
-                            name="overwatchCheck"
-                            type="checkbox"
-                            checked={this.state.playOverwatch}
-                            onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
-                            League of Legends &nbsp;
-                        <input
-                            name="leagueCheck"
-                            type="checkbox"
-                            checked={this.state.playLeague}
-                            onChange={this.handleCheckboxes} />
-                        </span>
-                    &nbsp;
-                    <span>
-                            HearthStone &nbsp;
-                        <input
-                            name="hsCheck"
-                            type="checkbox"
-                            checked={this.state.playHS}
-                            onChange={this.handleCheckboxes} />
-                        </span>
-                    <br/>
-                    <span>
+                    <div className="fields row">
                             <input
                                 name="filter"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Apply"
                                 onClick={this.processFilter}
-                            />
-                        </span>
-                    &nbsp;
-                    <span>
+                            /> &nbsp;
                             <input
                                 name="reset"
-                                type="button"
+                                type="submit"
+                                className="btn"
                                 value="Reset"
                                 onClick={this.resetFilter}
                             />
-                        </span>
-
-                </p>
-                <br/>
+                    </div>
+                    </div>
+                </div>
                 {this.state.loading ?
                     <div className="loading">
                         <DotLoader
@@ -333,7 +352,7 @@ export default class Players extends Component {
                         />
                     </div>
                     :
-                    <div className="container">
+                    <div className="container my-grid col-md-9">
                         <Pagination
                             numberOfPages={this.state.numberOfPages}
                             onClick={this.updatePage}
@@ -343,6 +362,7 @@ export default class Players extends Component {
                         ))}
                     </div>
                 }
+            </div>
             </div>
         );
     }
