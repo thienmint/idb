@@ -8,7 +8,7 @@ driver.get("https://www.esportguru.com/")
 searchBox = driver.find_element_by_tag_name('input')
 searchBox.send_keys("League of Legends")
 searchBox.send_keys(Keys.RETURN)
-# assert "League of Legends" in driver.page_source
+assert "League of Legends" in driver.page_source
 driver.implicitly_wait(10)
 link_home_button = driver.find_element_by_link_text('eSport Guru')
 link_home_button.click()
