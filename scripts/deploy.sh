@@ -28,6 +28,16 @@ if [ "$1" == "master" ]; then
 
  cd idb
  echo "Inside `pwd` now"
+    echo "---- Checking npm and node version"
+    npm -v
+    node -v
+    echo "---- Building artifact"
+    npm install
+    npm run build
+    echo "---- Done building artifact"
+    sleep 5
+    echo "---- Removing node_modules"
+    rm -rf node_modules/
     echo "---- Deployment starts"
     gcloud app deploy app.yaml
     echo "---- Deployment ends"

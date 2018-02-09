@@ -1,10 +1,12 @@
-runtime: nodejs
-env: flex
+runtime: python27
+api_version: 1
+threadsafe: true
 
-manual_scaling:
-  instances: 1
+handlers:
+- url: /
+  static_files: build/index.html
+  upload: build/index.html
 
-resources:
-  cpu: 1
-  memory_gb: 0.5
-  disk_size_gb: 10
+- url: /(.*)
+  static_files: build/\1
+  upload: build/(.*)
